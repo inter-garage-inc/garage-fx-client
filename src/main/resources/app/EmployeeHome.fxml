@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controllers.ControllerEmployeeHome">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerEmployeeHome">
    <stylesheets>
       <URL value="@css/styles.css" />
    </stylesheets>
