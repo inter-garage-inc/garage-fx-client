@@ -22,4 +22,4 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = "app.Login"
+mainClassName = "app.Main"
