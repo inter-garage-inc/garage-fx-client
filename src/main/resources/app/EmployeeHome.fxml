@@ -22,5 +22,6 @@
             <Image url="@images/imagotypeBlue.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblDateTime" layoutX="403.0" layoutY="616.0" prefHeight="30.0" prefWidth="295.0" />
    </children>
 </AnchorPane>
