@@ -3,9 +3,9 @@
 @import url("default.css");
 
 .button {
-    -fx-pref-width: 130px;
-    -fx-pref-height: 40px;
-    -fx-color: white;
+    -fx-pref-min-width: 130px;
+    -fx-pref-min-height: 40px;
+    -fx-text-fill: white;
     -fx-background-position: left 5px;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 15px 30px;
