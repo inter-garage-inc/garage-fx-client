@@ -1,16 +1,14 @@
 @import url("fonts.css");
-@import url("default.css");
 
 .button {
-    -fx-pref-width: 130px;
     -fx-pref-height: 40px;
-    -fx-color: white;
     -fx-background-position: left 5px;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 15px 30px;
 }
 
 .button-blue {
+    -fx-text-fill: white;
     -fx-background-color: #2689D0;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
 }
@@ -18,6 +16,11 @@
 .button-green {
     -fx-background-color: #11C543;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
+}
+
+.label-welcome {
+    -fx-text-fill: #999999;
+    -fx-font-size: 46px;
 }
 
 
@@ -33,4 +36,12 @@
 
 .label-field-blue {
     -fx-text-fill: #2689d0;
+}
+
+.button-blue-menu {
+    -fx-pref-width: 136px;
+    -fx-background-color: #2689D0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
 }
