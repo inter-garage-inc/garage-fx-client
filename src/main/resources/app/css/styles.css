@@ -1,5 +1,4 @@
 @import url("fonts.css");
-
 @import url("default.css");
 
 .button {
@@ -27,6 +26,11 @@
     -fx-pref-height: 40px;
 }
 
-.label-field {
 
+.label-field {
+    -fx-font-weight: 600;
+}
+
+.label-field-blue {
+    -fx-text-fill: #2689d0;
 }
