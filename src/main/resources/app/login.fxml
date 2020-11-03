@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Login">
+<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <stylesheets>
       <URL value="@css/styles.css" />
    </stylesheets>
@@ -14,11 +14,11 @@
       <Image url="@images/imagotypeBlue.png" />
    </ImageView>
 
-   <Label layoutX="76.0" layoutY="153.0" text="Usuario" textFill="#2689d0" />
+   <Label layoutX="76.0" layoutY="153.0" text="Usuário" styleClass="label-field, label-field-blue" />
    <TextField layoutX="76.0" layoutY="180.0" styleClass="field" />
 
-   <Label layoutX="76.0" layoutY="253.0" text="Senha" textFill="#2689d0" />
+   <Label layoutX="76.0" layoutY="253.0" text="Senha" styleClass="label-field, label-field-blue" />
    <PasswordField layoutX="76.0" layoutY="277.0" styleClass="field" />
 
-   <Button layoutX="76.0" layoutY="338.0" mnemonicParsing="false" styleClass="button, button-blue" text="Entrar" textFill="WHITE" />
+   <Button layoutX="76.0" layoutY="338.0" mnemonicParsing="false" styleClass="button, button-blue" text="Entrar" />
 </AnchorPane>

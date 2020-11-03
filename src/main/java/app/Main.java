@@ -10,30 +10,24 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Login extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-            Scene scene = new Scene(root);
-            //scene.getStylesheets().add(getClass().getResource("css/styles.css").toExternalForm()); already importing in fxml
-            primaryStage.setScene(scene);
+            primaryStage.setScene(new Scene(root));
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/isotypeBlue.png")));
             primaryStage.setTitle("Login - Garage Inc.");
             primaryStage.show();
         } catch (IOException e) {
-            System.err.println("Impossível carregar fxml");
+            System.err.println("Couldn't load some resource");
             e.printStackTrace();
         }
     }
 
-    @FXML
-    public void buttonz() {
-        System.out.println("Hello");
+    public static void main(String[] args) {
+        launch(args);
     }
+
 }
