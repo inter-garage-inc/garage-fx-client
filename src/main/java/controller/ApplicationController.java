@@ -1,10 +1,14 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
-public abstract class ButtonController {
+import java.io.IOException;
+
+public abstract class ApplicationController {
 
     @FXML
     protected Button btnChekin;
@@ -23,6 +27,9 @@ public abstract class ButtonController {
 
     @FXML
     protected Button btnBack;
+
+    @FXML
+    protected Button btnClose;
 
     /**
      * método para abrir a tela de checkin
@@ -70,5 +77,15 @@ public abstract class ButtonController {
      */
     public void back(Event e){
 
+    }
+
+    /**
+     * Método para fechar a notificação
+     * @param event
+     */
+    @FXML
+    public void closeForm(ActionEvent event) {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
     }
 }

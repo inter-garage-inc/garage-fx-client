@@ -1,6 +1,6 @@
 package controller;
 
 
-public class EmployeeHomeController extends ButtonController {
+public class EmployeeHomeController extends ApplicationController {
 
 }
