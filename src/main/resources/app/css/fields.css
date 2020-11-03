@@ -1,0 +1,13 @@
+.field {
+    -fx-pref-width: 450px;
+    -fx-pref-height: 40px;
+}
+
+
+.label-field {
+    -fx-font-weight: 600;
+}
+
+.label-field-blue {
+    -fx-text-fill: #2689d0;
+}

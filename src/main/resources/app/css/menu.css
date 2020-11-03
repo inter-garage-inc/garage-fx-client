@@ -1,0 +1,7 @@
+.button-blue-menu {
+    -fx-pref-width: 136px;
+    -fx-background-color: #2689D0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
