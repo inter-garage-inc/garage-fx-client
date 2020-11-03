@@ -12,17 +12,12 @@ import java.io.IOException;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-            primaryStage.setScene(new Scene(root));
-            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/isotypeBlue.png")));
-            primaryStage.setTitle("Login - Garage Inc.");
-            primaryStage.show();
-        } catch (IOException e) {
-            System.err.println("Couldn't load some resource");
-            e.printStackTrace();
-        }
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("EmployeeHome.fxml"));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/isotypeBlue.png")));
+        primaryStage.setTitle("Login - Garage Inc.");
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
