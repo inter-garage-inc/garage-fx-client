@@ -19,7 +19,7 @@ public class Login extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("EmployeeHome.fxml"));
             Scene scene = new Scene(root);
             //scene.getStylesheets().add(getClass().getResource("css/styles.css").toExternalForm()); already importing in fxml
             primaryStage.setScene(scene);

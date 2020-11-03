@@ -22,7 +22,5 @@ public class ControllerEmployeeHome {
         @FXML
         private Button btnVanancyMap;
 
-
-
     }
 }
