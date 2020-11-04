@@ -3,6 +3,10 @@
     -fx-pref-height: 40px;
 }
 
+.label {
+    -fx-font-size: 30px;
+    -fx-text-fill: black;
+}
 
 .label-field {
     -fx-font-weight: 600;
