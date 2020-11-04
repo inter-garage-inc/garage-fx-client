@@ -1,4 +1,5 @@
 .button {
+    -fx-font-size: 14px;
     -fx-pref-height: 40px;
     -fx-background-position: left 5px;
     -fx-background-repeat: no-repeat;
@@ -6,6 +7,7 @@
 }
 
 .button-blue {
+    -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-background-color: #2689D0;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
@@ -14,4 +16,12 @@
 .button-green {
     -fx-background-color: #11C543;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
+}
+
+.button-white {
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-text-fill: #2689D0;
+    -fx-border-color: #2689D0;
+    -fx-border-radius: 4px;
 }
