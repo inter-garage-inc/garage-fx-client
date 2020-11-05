@@ -8,12 +8,16 @@
 
 .button-blue {
     -fx-font-weight: bold;
+    -fx-font-size: 14px;
     -fx-text-fill: white;
     -fx-background-color: #2689D0;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
 }
 
 .button-green {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
     -fx-background-color: #11C543;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
 }
