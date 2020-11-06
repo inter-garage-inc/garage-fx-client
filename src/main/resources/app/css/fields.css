@@ -4,6 +4,7 @@
 }
 
 .label {
+    -fx-font-weight: bold;
     -fx-font-size: 30px;
     -fx-text-fill: black;
 }
