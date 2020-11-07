@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoginController">
    <stylesheets>
       <URL value="@css/styles.css" />
    </stylesheets>
@@ -20,5 +20,5 @@
    <Label layoutX="76.0" layoutY="226.0" styleClass="label-field, label-field-blue" text="Senha" />
    <PasswordField layoutX="76.0" layoutY="277.0" styleClass="field" />
 
-   <Button layoutX="76.0" layoutY="338.0" mnemonicParsing="false" prefWidth="71.0" styleClass="button, button-blue" text="Entrar" />
+   <Button onAction="#Entrar" layoutX="76.0" layoutY="338.0" mnemonicParsing="false" prefWidth="71.0" styleClass="button, button-blue" text="Entrar" />
 </AnchorPane>
