@@ -5,7 +5,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ManagerNotFoundController extends ApplicationController {
+public class MonthlyNotFoundController extends ApplicationController {
 
     @FXML
     private Button btnNewCadaster;

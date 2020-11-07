@@ -15,6 +15,7 @@
 
 .label-field-blue {
     -fx-text-fill: #2689d0;
+    -fx-font-size: 18px;
 }
 
 .label-form {

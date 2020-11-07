@@ -19,14 +19,15 @@
     -fx-font-size: 14px;
     -fx-text-fill: white;
     -fx-background-color: #11C543;
-    -fx-background-image: url("../images/colorBlindSymbols/blue.png");
+    -fx-background-image: url("../images/colorBlindSymbols/green.png");
 }
 
 .button-back {
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-background-color: white;
     -fx-text-fill: #2689D0;
     -fx-border-color: #2689D0;
     -fx-border-radius: 4px;
-    -fx-pref-width: 100px;
+    -fx-pref-width: 110px;
 }
