@@ -34,11 +34,17 @@ public class Router {
         SceneRouteMap.put(label, new SceneRoute(path, title));
     }
 
-    public static void show(String label) throws IOException {
+    public static void show(String label) {
         SceneRoute sceneRoute = SceneRouteMap.get(label);
-        stage.setScene(loadScene(sceneRoute));
-        stage.setTitle(sceneRoute.title + " - " + sufTitle);
-        stage.show();
+        try {
+            Scene scene = loadScene(sceneRoute);
+            stage.setScene(scene);
+            stage.setTitle(sceneRoute.title + " - " + sufTitle);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Error when trying to load fxml");
+            e.printStackTrace();
+        }
     }
 
     private static Scene loadScene(SceneRoute sceneRoute) throws IOException {
