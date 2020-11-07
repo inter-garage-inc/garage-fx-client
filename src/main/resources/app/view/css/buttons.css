@@ -22,10 +22,11 @@
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
 }
 
-.button-white {
+.button-back {
     -fx-font-weight: bold;
     -fx-background-color: white;
     -fx-text-fill: #2689D0;
     -fx-border-color: #2689D0;
     -fx-border-radius: 4px;
+    -fx-pref-width: 100px;
 }

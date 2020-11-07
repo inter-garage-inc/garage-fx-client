@@ -4,21 +4,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ManagerNotFoundController">
     <stylesheets>
         <URL value="@css/styles.css" />
     </stylesheets>
-    <Button fx:id="btnChekin" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkin" styleClass="button-blue-menu" text="Chekin" />
-    <Button fx:id="btnCheckout" layoutX="158.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkout" styleClass="button-blue-menu" text="Checkout" />
-    <Button fx:id="btnMonthly" layoutX="301.0" layoutY="14.0" mnemonicParsing="false" onAction="#monthly" styleClass="button-blue-menu" text="Mensalistas" />
-    <Button fx:id="btnOpenAccounts" layoutX="444.0" layoutY="14.0" mnemonicParsing="false" onAction="#openAccounts" styleClass="button-blue-menu" text="Contas Abertas" />
-    <Button fx:id="btnVanacyMap" layoutX="587.0" layoutY="14.0" mnemonicParsing="false" onAction="#vanacyMap" styleClass="button-blue-menu" text="Mapa de Vagas" />
+    <Button fx:id="btnChekin" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkin" styleClass="button-menu, button-blue-menu" text="Chekin" />
+    <Button fx:id="btnCheckout" layoutX="158.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkout" styleClass="button-menu, button-blue-menu" text="Checkout" />
+    <Button fx:id="btnMonthly" layoutX="301.0" layoutY="14.0" mnemonicParsing="false" onAction="#monthly" styleClass="button-menu, button-selected" text="Mensalistas" />
+    <Button fx:id="btnOpenAccounts" layoutX="444.0" layoutY="14.0" mnemonicParsing="false" onAction="#openAccounts" styleClass="button-menu, button-blue-menu" text="Contas Abertas" />
+    <Button fx:id="btnVanacyMap" layoutX="587.0" layoutY="14.0" mnemonicParsing="false" onAction="#vanacyMap" styleClass="button-menu, button-blue-menu" text="Mapa de Vagas" />
 
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="37.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/imagotypeBlue.png" />
     </ImageView>
-   <Label layoutX="88.0" layoutY="338.0" styleClass="label" text="O veículo XXX-0000 não está cadastrado. Deseja fazer um cadastro ?" />
+   <Label layoutX="59.0" layoutY="338.0" styleClass="label" text="O veículo XXX-0000 não está cadastrado. Deseja fazer um cadastro ?" />
    <Button fx:id="btnNewCadaster" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#newCadaster" prefWidth="136.0" styleClass="button, button-blue" text="Novo Cadastro" />
-   <Button fx:id="btnBack" layoutX="46.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-white" text="Voltar" />
+   <Button fx:id="btnBack" layoutX="46.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
+   <Line endX="15.0" layoutX="412.0" layoutY="50.0" scaleY="3.0" startX="-102.0" stroke="#2689d0" />
 </AnchorPane>
