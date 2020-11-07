@@ -1,7 +1,19 @@
-.button-blue-menu {
-    -fx-pref-width: 136px;
-    -fx-background-color: #2689D0;
-    -fx-text-fill: white;
+.button-menu {
+    -fx-pref-width: 137px;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
+}
+
+.button-selected {
+    -fx-background-color: white;
+    -fx-text-fill: #2689D0;
+    -fx-pref-height: 42px;
+    -fx-border-color: #2689D0;
+    -fx-border-radius: 3px;
+}
+
+.button-blue-menu {
+    -fx-background-color: #2689D0;
+    -fx-text-fill: white;
+    -fx-pref-height: 40px;
 }
