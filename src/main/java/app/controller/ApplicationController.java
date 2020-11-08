@@ -30,6 +30,9 @@ public abstract class ApplicationController {
     @FXML
     protected Button btnClose;
 
+    @FXML
+    protected Button btnOk;
+
     /**
      * método para abrir a tela de checkin
      * @param e
@@ -56,7 +59,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void monthly(Event e) {
-        Router.show("montlhynf");
+        Router.show("searchmc");
     }
 
     /**
