@@ -26,4 +26,5 @@ public class UserService implements Serializable {
         var response= GarageClient.get("/users/");
         return mapper.readValue((String) response.body(), new TypeReference<List<User>>(){});
     }
+
 }

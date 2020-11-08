@@ -17,9 +17,9 @@
   <Button layoutX="444.0" layoutY="14.0" styleClass="button-menu, button-selected" text="Contas Abertas" />
   <Button layoutX="256.0" layoutY="407.0" mnemonicParsing="false" prefWidth="212.0" styleClass="button, button-green" text="Clientes Mensalistas" />
   <Button layoutX="597.0" layoutY="407.0" mnemonicParsing="false" prefWidth="212.0" styleClass="button, button-blue" text="Clientes Avulsos" />
-  <Button fx:id="btnBack" layoutX="29.0" layoutY="651.0" mnemonicParsing="false" onAction="#back" styleClass="button-back" text="Voltar" />
 
-  <Label layoutX="320.0" layoutY="338.0" styleClass="label" text="Ordens de serviço em aberto" />
+  <Button layoutX="29.0" layoutY="651.0" mnemonicParsing="false" styleClass="button-back" text="Voltar" fx:id="btnBack" onAction="#back"/>
+  <Label layoutX="320.0" layoutY="338.0" styleClass="message, normal" text="Ordens de serviço em aberto" />
 
   <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#handleHome" layoutX="35.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/imagotypeBlue.png" />

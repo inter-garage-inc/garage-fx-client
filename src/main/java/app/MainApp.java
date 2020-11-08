@@ -25,7 +25,7 @@ public class MainApp extends Application {
         //Definindo o que seriam "rotas"
         Router.mapping("home", "EmployeeHome.fxml", "Funcionário");
 
-        Router.mapping("login", "login.fxml", "Login");
+        Router.mapping("login", "Login.fxml", "Login");
 
         Router.mapping("ordersopen", "OrdersOpen.fxml", "Contas abertas");
 

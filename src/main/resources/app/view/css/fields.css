@@ -1,21 +1,36 @@
-.field {
-    -fx-pref-width: 450px;
+/*Definição de campos de texto e label que os acompanham*/
+
+.field { //Altura de 40px, largura variável
     -fx-pref-height: 40px;
+    -fx-font-size: 14px;
 }
 
-.label {
+.field.label {
+    -fx-font-size: 18px;
+    -fx-font-weight: 600;
+}
+
+.field.label.blue {
+    -fx-text-fill: #2689d0;
+}
+
+.label.warning {
+    -fx-font-size: 8px;
+    -fx-color: #ff4f68;
+}
+
+.message {
     -fx-font-weight: bold;
+}
+
+.message.normal {
     -fx-font-size: 30px;
     -fx-text-fill: black;
 }
 
-.label-field {
-    -fx-font-weight: 600;
-}
-
-.label-field-blue {
-    -fx-text-fill: #2689d0;
-    -fx-font-size: 18px;
+.message.warning {
+    -fx-font-size: 14px;
+    -fx-text-fill: red;
 }
 
 .label-form {

@@ -7,7 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class GarageClient {
-    public final static String HOST = "http://localhost:8080/";
+    public final static String HOST = "http://localhost:8080";
 
     public static HttpResponse<?> get(String resource) throws IOException, InterruptedException {
         var httpClient = HttpClient.newBuilder()
@@ -33,7 +33,7 @@ public class GarageClient {
         return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public static HttpResponse<?> create(String resource, Object payload) throws IOException, InterruptedException {
+    public static HttpResponse<?> post(String resource, Object payload) throws IOException, InterruptedException {
         var httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .build();
@@ -45,7 +45,7 @@ public class GarageClient {
         return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public static HttpResponse<?> update(String resource, Object payload) throws IOException, InterruptedException {
+    public static HttpResponse<?> put(String resource, Object payload) throws IOException, InterruptedException {
         var httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .build();
