@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.Router;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -33,6 +34,11 @@ public abstract class ApplicationController {
      * método para abrir a tela de checkin
      * @param e
      */
+
+    public void handleHome(Event e) {
+        Router.show("home");
+    }
+
     public void checkin(Event e) {
 
     }
@@ -50,7 +56,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void monthly(Event e) {
-
+        Router.show("montlhynf");
     }
 
     /**
@@ -58,7 +64,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void openAccounts(Event e) {
-
+        Router.show("ordersopen");
     }
 
     /**

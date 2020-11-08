@@ -10,11 +10,7 @@
    <stylesheets>
       <URL value="@css/styles.css" />
    </stylesheets>
-   <Button fx:id="btnChekin" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkin" styleClass="button-menu, button-blue-menu" text="Chekin" />
-   <Button fx:id="btnCheckout" layoutX="158.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkout" styleClass="button-menu, button-blue-menu" text="Checkout" />
-   <Button fx:id="btnMonthly" layoutX="301.0" layoutY="14.0" mnemonicParsing="false" onAction="#monthly" styleClass="button-menu, button-blue-menu" text="Mensalistas" />
-   <Button fx:id="btnOpenAccounts" layoutX="444.0" layoutY="14.0" mnemonicParsing="false" onAction="#openAccounts" styleClass="button-menu, button-blue-menu" text="Contas Abertas" />
-   <Button fx:id="btnVanacyMap" layoutX="587.0" layoutY="14.0" mnemonicParsing="false" onAction="#vanacyMap" styleClass="button-menu, button-blue-menu" text="Mapa de Vagas" />
+   <fx:include source="PageMenu.fxml"/>
    <Label layoutX="287.0" layoutY="254.0" styleClass="label-welcome" text="Bem-vindo Funcionário" />
 
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="440.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">

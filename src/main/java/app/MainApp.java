@@ -27,8 +27,11 @@ public class MainApp extends Application {
 
         Router.mapping("login", "Login.fxml", "Login");
 
+        Router.mapping("ordersopen", "OrdersOpen.fxml", "Contas abertas");
+
+        Router.mapping("montlhynf", "MontlhyNotFound.fxml", "Mensalista nao encontrado");
         //Chamando uma rota
-        Router.show("login");
+        Router.show("ordersopen");
 
 
     }
