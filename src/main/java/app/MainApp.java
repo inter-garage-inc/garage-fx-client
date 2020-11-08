@@ -17,6 +17,7 @@ public class MainApp extends Application {
         //Definindo ícone do app
         Image image = new Image(getClass().getResourceAsStream("view/images/isotypeBlue.png"));
         stage.getIcons().add(image);
+        stage.setResizable(false);
 
         //Definindo configurações padão do "Roteador"
         Router.bind(stage, "/app/view/", "Garage Inc.");
@@ -24,7 +25,7 @@ public class MainApp extends Application {
         //Definindo o que seriam "rotas"
         Router.mapping("home", "EmployeeHome.fxml", "Funcionário");
 
-        Router.mapping("login", "login.fxml", "Login");
+        Router.mapping("login", "Login.fxml", "Login");
 
         //Chamando uma rota
         Router.show("login");
