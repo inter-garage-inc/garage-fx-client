@@ -8,7 +8,7 @@
 
 .button-blue {
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
     -fx-text-fill: white;
     -fx-background-color: #2689D0;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");

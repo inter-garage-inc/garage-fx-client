@@ -30,9 +30,12 @@ public class MainApp extends Application {
         Router.mapping("ordersopen", "OrdersOpen.fxml", "Contas abertas");
 
         Router.mapping("montlhynf", "MontlhyNotFound.fxml", "Mensalista nao encontrado");
+
+        Router.mapping("monthlycustomer", "MonthlyCustomerController.fxml", "Buscar cliente mensalista");
         //Chamando uma rota
-        Router.show("ordersopen");
+        Router.show("login");
 
 
     }
 }
+
