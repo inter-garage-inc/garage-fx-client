@@ -59,7 +59,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void monthly(Event e) {
-        Router.show("searchmc");
+        Router.show("monthlycustomer");
     }
 
     /**
