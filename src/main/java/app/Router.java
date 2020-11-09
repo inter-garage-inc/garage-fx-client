@@ -59,6 +59,9 @@ public class Router {
             sceneStack.push(currentSceneRoute);
         } else {
             sceneStack.clear();
+            if(currentSceneRoute != null) {
+                currentSceneRoute.scene = null; // Allows garbage to do its job
+            }
         }
         currentSceneRoute = sceneRoute;
         setStage(sceneRoute.scene, sceneRoute.title);
