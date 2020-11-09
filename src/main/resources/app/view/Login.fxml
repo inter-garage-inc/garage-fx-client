@@ -20,7 +20,7 @@
    <Label layoutX="76.0" layoutY="243.0" styleClass="field, label, blue" text="Senha" />
    <PasswordField fx:id="fieldPassword" layoutX="76.0" layoutY="277.0" prefWidth="450.0" styleClass="field" />
 
-   <Button layoutX="76.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefWidth="94.0" styleClass="button, button-blue" text="Entrar" />
+   <Button layoutX="76.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefWidth="130.0" styleClass="button, button-blue" text="Entrar" />
 
    <Label fx:id="labelMessage" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="340.0" prefHeight="36.0" prefWidth="338.0" styleClass="message, warning" text="Usuário ou senha incorretos" visible="false" />
 </AnchorPane>

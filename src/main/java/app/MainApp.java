@@ -19,6 +19,7 @@ public class MainApp extends Application {
         stage.getIcons().add(image);
         stage.setResizable(false);
 
+
         //Definindo configurações padão do "Roteador"
         Router.bind(stage, "/app/view/", "Garage Inc.");
 
@@ -32,6 +33,7 @@ public class MainApp extends Application {
         Router.mapping("montlhynf", "MontlhyNotFound.fxml", "Mensalista nao encontrado");
 
         Router.mapping("monthlycustomer", "MonthlyCustomerController.fxml", "Buscar cliente mensalista");
+        
         //Chamando uma rota
         Router.show("login");
 

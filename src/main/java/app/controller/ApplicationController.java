@@ -67,7 +67,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void openAccounts(Event e) {
-        Router.show("ordersopen");
+        Router.show("ordersopen", true);
     }
 
     /**
@@ -83,7 +83,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void back(Event e){
-
+        Router.back();
     }
 
     /**
