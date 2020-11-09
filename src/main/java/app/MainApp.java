@@ -32,7 +32,7 @@ public class MainApp extends Application {
 
         Router.mapping("montlhynf", "MontlhyNotFound.fxml", "Mensalista nao encontrado");
         //Chamando uma rota
-        Router.show("login");
+        Router.show("home");
 
 
     }

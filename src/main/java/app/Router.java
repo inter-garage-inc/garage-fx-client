@@ -1,22 +1,29 @@
 package app;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 public class Router {
     private static Stage stage;
     private static String sufTitle;
     private static String fxmlSource;
-    private static HashMap<String, SceneRoute> SceneRouteMap = new HashMap<>();
+    private static final HashMap<String, SceneRoute> sceneRouteMap = new HashMap<>();
+    private static final Stack<SceneRoute> sceneStack = new Stack<>();
+    private static SceneRoute currentSceneRoute;
 
     private static class SceneRoute {
-        private String path;
-        private String title;
+        private final String path;
+        private final String title;
+        private Scene scene;
 
         private SceneRoute(String path, String title) {
             this.path = path;
@@ -31,24 +38,52 @@ public class Router {
     }
 
     public static void mapping(String label, String path, String title) {
-        SceneRouteMap.put(label, new SceneRoute(path, title));
+        sceneRouteMap.put(label, new SceneRoute(path, title));
     }
 
     public static void show(String label) {
-        SceneRoute sceneRoute = SceneRouteMap.get(label);
+        show(label, false);
+    }
+
+    public static void show(String label, Boolean stackUp) {
+        var sceneRoute = sceneRouteMap.get(label);
+
         try {
-            Scene scene = loadScene(sceneRoute);
-            stage.setScene(scene);
-            stage.setTitle(sceneRoute.title + " - " + sufTitle);
-            stage.show();
+            sceneRoute.scene = loadScene(sceneRoute);
         } catch (IOException e) {
             System.err.println("Error when trying to load fxml");
+            e.printStackTrace();
+        }
+
+        if (stackUp){
+            sceneStack.push(currentSceneRoute);
+        } else {
+            sceneStack.clear();
+        }
+        currentSceneRoute = sceneRoute;
+        setStage(sceneRoute.scene, sceneRoute.title);
+    }
+
+    public static void back() {
+        try {
+            SceneRoute sceneRoute =  sceneStack.pop();
+            currentSceneRoute = sceneRoute;
+            setStage(sceneRoute.scene, sceneRoute.title);
+        } catch (IndexOutOfBoundsException  e) {
+            System.err.println("There's no history to get back. Maybe `stackUp` should be `true` for the last call to the `show` method.");
             e.printStackTrace();
         }
     }
 
     private static Scene loadScene(SceneRoute sceneRoute) throws IOException {
-        Parent node = FXMLLoader.load(new Object() {}.getClass().getResource(fxmlSource + sceneRoute.path));
-        return new Scene(node);
+        var pane = FXMLLoader.load(new Object() {}.getClass().getResource(fxmlSource + sceneRoute.path));
+        return new Scene((Pane) pane);
     }
+
+    private static void setStage(Scene scene, String title) {
+        stage.setScene(scene);
+        stage.setTitle(title + " — " + sufTitle);
+        stage.show();
+    }
+
 }

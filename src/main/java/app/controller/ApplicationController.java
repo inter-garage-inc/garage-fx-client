@@ -56,7 +56,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void monthly(Event e) {
-        Router.show("montlhynf");
+        Router.show("montlhynf", true);
     }
 
     /**
@@ -64,7 +64,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void openAccounts(Event e) {
-        Router.show("ordersopen");
+        Router.show("ordersopen", true);
     }
 
     /**
@@ -80,7 +80,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void back(Event e){
-
+        Router.back();
     }
 
     /**
