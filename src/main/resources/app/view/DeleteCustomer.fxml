@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.DeleteCustomerController">
+  <stylesheets><URL value="@css/styles.css" /></stylesheets>
+   <children>
+      <Button layoutX="307.0" layoutY="127.0" mnemonicParsing="false" prefWidth="130.0" styleClass="button, button-red" text="Excluir" />
+      <Button layoutX="68.0" layoutY="127.0" mnemonicParsing="false" prefWidth="130.0" styleClass="button, button-blue" text="Fechar" />
+      <Label layoutX="80.0" layoutY="52.0" styleClass="label,field" text="Tem certeza que deseja excluir o cliente?" />
+   </children>
+</AnchorPane>

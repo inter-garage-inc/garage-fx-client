@@ -7,7 +7,7 @@
 
 .field.label {
     -fx-font-size: 18px;
-    -fx-font-weight: 600;
+    -fx-font-weight: bold;
 }
 
 .field.label.blue {
