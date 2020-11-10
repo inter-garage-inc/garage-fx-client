@@ -35,7 +35,7 @@ public class MainApp extends Application {
         Router.mapping("monthlycustomer", "MonthlyCustomerController.fxml", "Buscar cliente mensalista");
 
 
-        Router.mapping("orderopenmonthly", "OrdersOpenMonthly.fxml", "Ordens abertas de mensalistas");
+        Router.mapping("orderopenmonthly", "MonthlyOrdersOpen.fxml", "Ordens abertas de mensalistas");
         
         Router.mapping( "deletecustomer", "DeleteCustomer.fxml", "Exclusão de cliente");
         //Chamando uma rota

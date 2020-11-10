@@ -10,7 +10,7 @@ import app.data.order.PaymentMethod;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class OrdersOpenMonthlyController extends ApplicationController {
+public class MonthlyOrdersOpenController extends ApplicationController {
 
     @FXML
     private TableView tbView;
