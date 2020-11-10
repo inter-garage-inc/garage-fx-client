@@ -1,27 +1,27 @@
 .button {
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
     -fx-pref-height: 40px;
     -fx-background-position: left 5px;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 15px 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .button-blue {
-    -fx-font-weight: bold;
-    -fx-font-size: 18px;
-    -fx-text-fill: white;
     -fx-background-color: #2689D0;
     -fx-background-image: url("../images/colorBlindSymbols/blue.png");
 }
 
 .button-green {
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-text-fill: white;
     -fx-background-color: #11C543;
     -fx-background-image: url("../images/colorBlindSymbols/green.png");
 }
 
+.button-red {
+    -fx-background-color: #ed0b0b;
+    -fx-background-image: url("../images/colorBlindSymbols/red.png");
+}
 .button-back {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
