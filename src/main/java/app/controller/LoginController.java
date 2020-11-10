@@ -32,13 +32,7 @@ public class LoginController {
         labelMessage.setText(message);
     }
 
-    private void hideMessage() {
-        labelMessage.setText(" f");
-    }
-
     public void handleButtonLogin() {
-        hideMessage();
-
         var authRequest = AuthRequest.builder()
                 .username(fieldUsername.getText())
                 .password(fieldPassword.getText())
@@ -48,7 +42,7 @@ public class LoginController {
 
         if(authResponse == Boolean.TRUE) {
             showMessage("Logado com sucesso");
-            Router.show("home");
+            Router.goTo("home");
         } else if(authResponse == Boolean.FALSE) {
             showMessage("Login ou senha inválidos");
         } else {

@@ -1,89 +1,107 @@
 package app;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class Router {
-    private static Stage stage;
-    private static String sufTitle;
-    private static String fxmlSource;
-    private static final HashMap<String, SceneRoute> sceneRouteMap = new HashMap<>();
+public class Router extends Application {
+    private static Stage primaryStage;
+    private static String sufTitle = " — Garage Inc.";
+    private static String fxmlSource = "/app/view/";
+    private static HashMap<String, SceneRoute> sceneRouteMap;
     private static final Stack<SceneRoute> sceneStack = new Stack<>();
     private static SceneRoute currentSceneRoute;
 
-    private static class SceneRoute {
-        private final String path;
-        private final String title;
-        private Scene scene;
+    @Override
+    public void start(Stage primaryStage) {
+        Router.primaryStage = primaryStage;
 
-        private SceneRoute(String path, String title) {
-            this.path = path;
-            this.title = title;
-        }
+        Image image = new Image(getClass().getResourceAsStream("view/images/isotypeBlue.png"));
+        primaryStage.getIcons().add(image);
+        primaryStage.setResizable(false);
+
+        performMapping();
+        
+        Router.goTo("login");
     }
 
-    public static void bind(Stage stage, String fxmlSource, String sufTitle) {
-        Router.stage = stage;
-        Router.sufTitle = sufTitle;
-        Router.fxmlSource = fxmlSource;
-    }
-
-    public static void mapping(String label, String path, String title) {
-        sceneRouteMap.put(label, new SceneRoute(path, title));
-    }
-
-    public static void show(String label) {
-        show(label, false);
-    }
-
-    public static void show(String label, Boolean stackUp) {
-        var sceneRoute = sceneRouteMap.get(label);
-
+    public static void performMapping() {
+        var file = new File(new Object() {}.getClass().getResource("/sceneRouteMap.json").getFile());
+        var mapper = new ObjectMapper();
         try {
-            sceneRoute.scene = loadScene(sceneRoute);
+            sceneRouteMap = mapper.readValue(file, new TypeReference<HashMap<String, SceneRoute>>() {});
         } catch (IOException e) {
-            System.err.println("Error when trying to load fxml");
-            e.printStackTrace();
+            System.err.println("Error trying to map");
         }
+    }
 
+    public static void goTo(String label) {
+        goTo(label, false);
+    }
+
+    public static void goTo(String label, Boolean stackUp) {
         if (stackUp){
             sceneStack.push(currentSceneRoute);
         } else {
             sceneStack.clear();
             if(currentSceneRoute != null) {
-                currentSceneRoute.scene = null; // Allows garbage to do its job
+                currentSceneRoute.setScene(null); // Allows garbage to do its job
             }
         }
+
+        var sceneRoute = sceneRouteMap.get(label);
+        loadScene(sceneRoute);
         currentSceneRoute = sceneRoute;
-        setStage(sceneRoute.scene, sceneRoute.title);
+        showStage(sceneRoute);
     }
 
     public static void back() {
         try {
-            SceneRoute sceneRoute =  sceneStack.pop();
+            var sceneRoute =  sceneStack.pop();
             currentSceneRoute = sceneRoute;
-            setStage(sceneRoute.scene, sceneRoute.title);
+            showStage(sceneRoute);
         } catch (IndexOutOfBoundsException  e) {
             System.err.println("There's no history to get back. Maybe `stackUp` should be `true` for the last call to the `show` method.");
-            e.printStackTrace();
         }
     }
 
-    private static Scene loadScene(SceneRoute sceneRoute) throws IOException {
-        var pane = FXMLLoader.load(new Object() {}.getClass().getResource(fxmlSource + sceneRoute.path));
-        return new Scene((Pane) pane);
+    private static void loadScene(SceneRoute sceneRoute) {
+        try {
+            var node = FXMLLoader.load(new Object() {}.getClass().getResource(fxmlSource + sceneRoute.getPath()));
+            var scene = new Scene((Pane) node);
+            sceneRoute.setScene(scene);
+        } catch (IOException e) {
+            System.err.println("Error trying to load fxml");
+        }
     }
 
-    private static void setStage(Scene scene, String title) {
-        stage.setScene(scene);
-        stage.setTitle(title + " — " + sufTitle);
-        stage.show();
+    private static void showStage(SceneRoute sceneRoute) {
+        primaryStage.setScene(sceneRoute.getScene());
+        primaryStage.setTitle(sceneRoute.getTitle() + sufTitle);
+        primaryStage.show();
     }
 
+
+}
+
+@Data
+@NoArgsConstructor
+class SceneRoute {
+    private String path;
+    private String title;
+    @JsonIgnore
+    private Scene scene;
 }
