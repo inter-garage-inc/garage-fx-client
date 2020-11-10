@@ -25,9 +25,6 @@ public class Router extends Application {
     private static final Stack<SceneRoute> sceneStack = new Stack<>();
     private static SceneRoute currentSceneRoute;
 
-    public Router() {
-    }
-
     @Override
     public void start(Stage primaryStage) {
         Router.primaryStage = primaryStage;
@@ -37,6 +34,7 @@ public class Router extends Application {
         primaryStage.setResizable(false);
 
         performMapping();
+        
         Router.goTo("login");
     }
 
