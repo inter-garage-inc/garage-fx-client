@@ -29,4 +29,5 @@ public class User {
 
     @JsonProperty("status")
     private Status status;
+
 }
