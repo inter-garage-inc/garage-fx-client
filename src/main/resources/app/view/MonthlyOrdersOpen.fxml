@@ -21,10 +21,7 @@
     <fx:include source="PageMenu.fxml" />
 
     <Button fx:id="btnBack" layoutX="27.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
-   <Label layoutX="357.0" layoutY="151.0" text="Contas abertas - Mensalistas">
-      <font>
-         <Font size="29.0" />
-      </font></Label>
+   <Label layoutX="357.0" styleClass="message-normal" layoutY="151.0" text="Contas abertas - Mensalistas"/>
 
     <Button fx:id="btnSrc" layoutX="930.0" layoutY="667.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
    <TableView fx:id="tbView" layoutX="254.0" layoutY="202.0" prefHeight="316.0" prefWidth="573.0" stylesheets="@css/tableview.css">

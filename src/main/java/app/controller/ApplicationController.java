@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public abstract class ApplicationController {
 
     @FXML
-    protected Button btnChekin;
+    protected Button btnCheckIn;
 
     @FXML
     protected Button btnCheckout;
@@ -42,8 +42,8 @@ public abstract class ApplicationController {
         Router.goTo("home");
     }
 
-    public void checkin(Event e) {
-
+    public void checkIn(Event e) {
+        Router.goTo("checkin", true);
     }
 
     /**

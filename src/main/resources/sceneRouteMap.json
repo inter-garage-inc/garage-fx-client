@@ -8,13 +8,22 @@
   "ordersopen": {
     "path": "OrdersOpen.fxml", "title": "Contas abertas"
   },
-  "montlhynf": {
-    "path": "MontlhyNotFound.fxml", "title": "Mensalista nao encontrado"
+  "monthlynf": {
+    "path": "MonthlyNotFound.fxml", "title": "Mensalista nao encontrado"
   },
   "monthlycustomer": {
-    "path": "MonthlyCustomerController.fxml", "title": "Buscar cliente mensalista"
+    "path": "MonthlyCustomer.fxml", "title": "Buscar cliente mensalista"
   },
   "deletecustomer": {
     "path": "DeleteCustomer.fxml", "title": "Exclusão de cliente"
+  },
+  "platenf": {
+    "path": "PlateNotFound.fxml", "title": "Placa não encontrada"
+  },
+  "monthlyordersopen": {
+    "path": "MonthlyOrdersOpen.fxml", "title": "Contas abertas Mensalistas"
+  },
+  "checkin": {
+    "path": "CheckIn.fxml", "title": "Check in"
   }
 }
