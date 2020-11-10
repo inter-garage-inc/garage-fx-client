@@ -39,7 +39,7 @@ public class MainApp extends Application {
         
         Router.mapping( "deletecustomer", "DeleteCustomer.fxml", "Exclusão de cliente");
         //Chamando uma rota
-        Router.show("deletecustomer");
+        Router.show("login");
 
 
     }
