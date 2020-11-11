@@ -19,7 +19,7 @@ import java.util.Stack;
 
 public class Router extends Application {
     private static Stage primaryStage;
-    private static String sufTitle = " — Garage Inc.";
+    private static String sufTitle = " | Garage Inc.";
     private static String fxmlSource = "/app/view/";
     private static HashMap<String, SceneRoute> sceneRouteMap;
     private static final Stack<SceneRoute> sceneStack = new Stack<>();

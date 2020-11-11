@@ -10,6 +10,6 @@ public class OrdersOpenController extends ApplicationController {
     private Button customerMonthly;
 
     public void ordersOpenMonthly() {
-        Router.show("orderopenmonthly", true);
+        Router.goTo("monthlyordersopen", true);
     }
 }
