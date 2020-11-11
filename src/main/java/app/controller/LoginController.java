@@ -42,6 +42,7 @@ public class LoginController {
         if(authResponse == Boolean.TRUE) {
             showMessage("Logado com sucesso");
             Router.goTo("home");
+            Router.reOpenEffect();
         } else if(authResponse == Boolean.FALSE) {
             showMessage("Login ou senha inválidos");
         } else {
