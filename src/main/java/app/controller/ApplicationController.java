@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public abstract class ApplicationController {
 
     @FXML
-    protected Button btnChekin;
+    protected Button btnCheckIn;
 
     @FXML
     protected Button btnCheckout;
@@ -31,7 +31,7 @@ public abstract class ApplicationController {
     protected Button btnClose;
 
     @FXML
-    protected Button btnOk;
+    protected Button btnSrc;
 
     /**
      * método para abrir a tela de checkin
@@ -42,8 +42,8 @@ public abstract class ApplicationController {
         Router.goTo("home");
     }
 
-    public void checkin(Event e) {
-
+    public void checkIn(Event e) {
+        Router.goTo("checkin", true);
     }
 
     /**
@@ -59,7 +59,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void monthly(Event e) {
-        Router.goTo("monthlycustomer");
+        Router.goTo("monthlycustomer", true);
     }
 
     /**

@@ -12,11 +12,13 @@
     </stylesheets>
     <fx:include source="PageMenu.fxml" />
 
+    <Button layoutX="301.0" layoutY="14.0" styleClass="button-menu, button-selected" text="Mensalistas" />
+    <Line endX="15.0" layoutX="413.0" layoutY="52.0" scaleY="3.0" startX="-102.0" stroke="#2689d0" />
+
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="92.0" onMouseClicked="#handleHome" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/imagotypeBlue.png" />
     </ImageView>
 
-    <Button layoutX="301.0" layoutY="14.0" styleClass="button-menu, button-selected" text="Mensalistas" />
     <Label layoutX="956.0" layoutY="92.0" styleClass="label, field, blue" text="Funcionário" />
 
     <Label layoutX="304.0" layoutY="322.0" styleClass="label, field, blue" text="Cliente" />
@@ -24,6 +26,4 @@
 
     <Button fx:id="btnBack" layoutX="27.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
     <Button fx:id="btnOk" layoutX="945.0" layoutY="667.0" mnemonicParsing="false" onAction="#back" prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
-   <Line endX="15.0" layoutX="413.0" layoutY="52.0" startX="-102.0" stroke="#2789cf" />
-
 </AnchorPane>
