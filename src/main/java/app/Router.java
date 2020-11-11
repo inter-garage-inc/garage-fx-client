@@ -3,19 +3,15 @@ package app;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Duration;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.SneakyThrows;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,13 +30,12 @@ public class Router extends Application {
     public void start(Stage primaryStage) {
         Router.primaryStage = primaryStage;
 
-        Image image = new Image(getClass().getResourceAsStream("view/images/isotypeBlue.png"));
-        primaryStage.getIcons().add(image);
         primaryStage.setResizable(false);
 
-        performMapping();
+        var image = new Image(getClass().getResourceAsStream("view/images/isotypeBlue.png"));
+        primaryStage.getIcons().add(image);
 
-        printSceneRouteMap(); // for dev debugging only
+        performMapping();
 
         Router.goTo("login");
     }
@@ -70,6 +65,18 @@ public class Router extends Application {
         primaryStage.setScene(sceneRoute.getScene());
         primaryStage.setTitle(sceneRoute.getTitle() + sufTitle);
         primaryStage.show();
+    }
+
+    public static void showPopUp(String label) {
+        var sceneRoute = sceneRouteMap.get(label);
+        loadScene(sceneRoute);
+        var stage = new Stage();
+        stage.setScene(sceneRoute.getScene());
+        stage.setTitle(sceneRoute.getTitle());
+        stage.setResizable(false);
+        stage.initOwner(primaryStage);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.show();
     }
 
     public static void goTo(String label) {
@@ -107,18 +114,15 @@ public class Router extends Application {
         primaryStage.centerOnScreen();
         primaryStage.show();
     }
-
-    public static void printSceneRouteMap() {
-        sceneRouteMap.forEach((key, value) -> System.out.println(key + " " + value));
-    }
-
 }
 
 @Data
 @NoArgsConstructor
 class SceneRoute {
     private String path;
+
     private String title;
+
     @JsonIgnore
     private Scene scene;
 }
