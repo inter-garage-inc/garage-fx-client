@@ -1,30 +1,28 @@
 package app.service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import app.client.GarageClient;
 import app.data.User;
-import org.springframework.stereotype.Service;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 
-@Service
-public class UserService implements Serializable {
+public class UserService {
 
     private ObjectMapper mapper;
 
-    public User findBy(Long id) throws IOException, InterruptedException {
+    public UserService() {
         mapper = new ObjectMapper();
-        var response= GarageClient.get("/users/" + id);
+    }
+
+    public User findByToken(String token) throws IOException, InterruptedException {
+        var response= GarageClient.get("/users/" + token);
         return mapper.readValue((String) response.body(), new TypeReference<User>(){});
     }
 
     public List<User> findAll() throws IOException, InterruptedException {
-        mapper = new ObjectMapper();
         var response= GarageClient.get("/users/");
         return mapper.readValue((String) response.body(), new TypeReference<List<User>>(){});
     }
-
 }

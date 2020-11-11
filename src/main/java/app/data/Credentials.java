@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class AuthResponse {
+@NoArgsConstructor
+public class Credentials {
+    @JsonProperty("username")
+    private String username;
 
-    @JsonProperty("token")
-    private String token;
-
+    @JsonProperty("password")
+    private String password;
 }

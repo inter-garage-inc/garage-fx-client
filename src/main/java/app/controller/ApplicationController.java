@@ -39,7 +39,7 @@ public abstract class ApplicationController {
      */
 
     public void handleHome(Event e) {
-        Router.show("home");
+        Router.goTo("home");
     }
 
     public void checkin(Event e) {
@@ -59,7 +59,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void monthly(Event e) {
-        Router.show("monthlycustomer");
+        Router.goTo("monthlycustomer");
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void openAccounts(Event e) {
-        Router.show("ordersopen", true);
+        Router.goTo("ordersopen", true);
     }
 
     /**

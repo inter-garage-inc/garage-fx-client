@@ -1,21 +1,13 @@
 package app.controller;
 
 import app.Router;
-import app.data.AuthRequest;
-import app.data.AuthResponse;
+import app.data.Credentials;
 import app.service.AuthenticationService;
-import app.service.UserService;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import javax.swing.*;
-import java.io.IOException;
 
 public class LoginController {
 
@@ -30,7 +22,7 @@ public class LoginController {
 
     private AuthenticationService authenticationService;
 
-    public void initialize() {
+    public void initialize() throws JsonProcessingException {
         authenticationService = new AuthenticationService();
     }
 
@@ -40,22 +32,20 @@ public class LoginController {
     }
 
     public void handleButtonLogin() {
-        var authRequest = AuthRequest.builder()
+        var authRequest = Credentials.builder()
                 .username(fieldUsername.getText())
                 .password(fieldPassword.getText())
                 .build();
-        try {
-            var authResponse = authenticationService.login(authRequest);
-            //TODO implement real flow
-            if(authResponse == null) {
-                showMessage("Usuário ou senha inválidos");
-            } else {
-                showMessage("Logado com sucesso");
-                System.out.println("Token de acesso: " + authResponse.getToken());
-            }
-        } catch (IOException | InterruptedException e) {
-            showMessage("Ocorreu um erro inesperado!");
-            e.printStackTrace();
+
+        var authResponse = authenticationService.login(authRequest);
+
+        if(authResponse == Boolean.TRUE) {
+            showMessage("Logado com sucesso");
+            Router.goTo("home");
+        } else if(authResponse == Boolean.FALSE) {
+            showMessage("Login ou senha inválidos");
+        } else {
+            showMessage("Incapaz de contatar o servidor");
         }
     }
 

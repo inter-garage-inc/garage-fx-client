@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.EmployeeHomeController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeController">
    <stylesheets>
       <URL value="@css/styles.css" />
    </stylesheets>
    <fx:include source="PageMenu.fxml"/>
-   <Label layoutX="287.0" layoutY="254.0" styleClass="label-welcome" text="Bem-vindo Funcionário" />
+   <Label fx:id="labelWelcomeMessage" layoutX="287.0" layoutY="254.0" styleClass="label-welcome" text="" />
 
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="440.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/imagotypeBlue.png" />

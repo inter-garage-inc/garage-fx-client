@@ -1,28 +1,57 @@
 package app.service;
 
 import app.client.GarageClient;
-import app.data.AuthRequest;
-import app.data.AuthResponse;
+import app.data.Credentials;
+import app.data.Jwt;
+import app.data.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Service;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
-import java.net.http.HttpClient;
-import java.net.http.HttpResponse;
 
-@Service
 public class AuthenticationService {
 
     private ObjectMapper mapper;
 
-    public AuthResponse login(AuthRequest authRequest) throws IOException, InterruptedException {
+    private static Jwt jwt;
+
+    public AuthenticationService() {
         mapper = new ObjectMapper();
-        var payload = mapper.writeValueAsString(authRequest);
-        var response= GarageClient.post("/authentication",  payload);
-        if(response.statusCode() == 200)
-            return mapper.readValue((String) response.body(), new TypeReference<AuthResponse>(){});
-        else
+    }
+
+    public Boolean login(Credentials authRequest) {
+        try {
+            var payload = mapper.writeValueAsString(authRequest);
+            var response = GarageClient.post("/authentication", payload);
+            if(response.statusCode() == 200) {
+                jwt = mapper.readValue((String) response.body(), new TypeReference<Jwt>(){});
+                return Boolean.TRUE;
+            } else {
+        return Boolean.FALSE;
+            }
+        } catch (IOException | InterruptedException exception) {
             return null;
+        }
+    }
+
+    @SneakyThrows
+    public User claimUser() {
+        var claims = getJwtClaims();
+        var userJson = claims.get("user", String.class);
+        return mapper.readValue(userJson, User.class);
+    }
+
+    private String getJwtWithoutSignature() {
+        var i = jwt.getToken().lastIndexOf('.');
+        return jwt.getToken().substring(0, i + 1);
+    }
+
+    private Claims getJwtClaims() {
+        return Jwts.parser()
+                .parseClaimsJwt(getJwtWithoutSignature())
+                .getBody();
     }
 }

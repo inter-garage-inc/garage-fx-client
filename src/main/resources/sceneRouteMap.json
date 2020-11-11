@@ -1,0 +1,20 @@
+{
+  "login": {
+    "path": "login.fxml", "title": "Entre"
+  },
+  "home": {
+    "path": "home.fxml", "title": "Página inicial"
+  },
+  "ordersopen": {
+    "path": "OrdersOpen.fxml", "title": "Contas abertas"
+  },
+  "montlhynf": {
+    "path": "MontlhyNotFound.fxml", "title": "Mensalista nao encontrado"
+  },
+  "monthlycustomer": {
+    "path": "MonthlyCustomerController.fxml", "title": "Buscar cliente mensalista"
+  },
+  "deletecustomer": {
+    "path": "DeleteCustomer.fxml", "title": "Exclusão de cliente"
+  }
+}

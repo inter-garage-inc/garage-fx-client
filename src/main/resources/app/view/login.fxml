@@ -22,5 +22,5 @@
 
    <Button layoutX="76.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefWidth="130.0" styleClass="button, button-blue" text="Entrar" />
 
-   <Label fx:id="labelMessage" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="340.0" prefHeight="36.0" prefWidth="338.0" styleClass="message, warning" text="Usuário ou senha incorretos" visible="false" />
+   <Label fx:id="labelMessage" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="340.0" prefHeight="36.0" prefWidth="338.0" styleClass="message, warning" visible="false" />
 </AnchorPane>
