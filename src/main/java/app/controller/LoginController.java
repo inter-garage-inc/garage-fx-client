@@ -1,14 +1,13 @@
 package app.controller;
 
 import app.Router;
-import app.data.AuthRequest;
+import app.data.Credentials;
 import app.service.AuthenticationService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
 
 public class LoginController {
 
@@ -23,7 +22,7 @@ public class LoginController {
 
     private AuthenticationService authenticationService;
 
-    public void initialize() {
+    public void initialize() throws JsonProcessingException {
         authenticationService = new AuthenticationService();
     }
 
@@ -33,7 +32,7 @@ public class LoginController {
     }
 
     public void handleButtonLogin() {
-        var authRequest = AuthRequest.builder()
+        var authRequest = Credentials.builder()
                 .username(fieldUsername.getText())
                 .password(fieldPassword.getText())
                 .build();

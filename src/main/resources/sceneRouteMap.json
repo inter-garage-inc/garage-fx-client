@@ -1,9 +1,9 @@
 {
   "login": {
-    "path": "Login.fxml", "title": "Entre"
+    "path": "login.fxml", "title": "Entre"
   },
   "home": {
-    "path": "EmployeeHome.fxml", "title": "Página inicial"
+    "path": "home.fxml", "title": "Página inicial"
   },
   "ordersopen": {
     "path": "OrdersOpen.fxml", "title": "Contas abertas"

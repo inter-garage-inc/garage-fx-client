@@ -34,7 +34,9 @@ public class Router extends Application {
         primaryStage.setResizable(false);
 
         performMapping();
-        
+
+        printSceneRouteMap(); // for dev debugging only
+
         Router.goTo("login");
     }
 
@@ -78,6 +80,10 @@ public class Router extends Application {
         }
     }
 
+    public static void printSceneRouteMap() {
+        sceneRouteMap.forEach((key, value) -> System.out.println(key + " " + value));
+    }
+
     private static void loadScene(SceneRoute sceneRoute) {
         try {
             var node = FXMLLoader.load(new Object() {}.getClass().getResource(fxmlSource + sceneRoute.getPath()));
@@ -85,6 +91,7 @@ public class Router extends Application {
             sceneRoute.setScene(scene);
         } catch (IOException e) {
             System.err.println("Error trying to load fxml");
+            e.printStackTrace();
         }
     }
 

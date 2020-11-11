@@ -7,13 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class AuthRequest {
-    @JsonProperty("username")
-    private String username;
-
-    @JsonProperty("password")
-    private String password;
+public class Jwt {
+    @JsonProperty("token")
+    private String token;
 }

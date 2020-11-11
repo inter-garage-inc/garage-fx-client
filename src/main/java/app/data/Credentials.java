@@ -7,8 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
-public class AuthResponse {
-    @JsonProperty("token")
-    private String token;
+public class Credentials {
+    @JsonProperty("username")
+    private String username;
+
+    @JsonProperty("password")
+    private String password;
 }

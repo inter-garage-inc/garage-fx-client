@@ -16,9 +16,8 @@ public class UserService {
         mapper = new ObjectMapper();
     }
 
-
-    public User findBy(Long id) throws IOException, InterruptedException {
-        var response= GarageClient.get("/users/" + id);
+    public User findByToken(String token) throws IOException, InterruptedException {
+        var response= GarageClient.get("/users/" + token);
         return mapper.readValue((String) response.body(), new TypeReference<User>(){});
     }
 
@@ -26,5 +25,4 @@ public class UserService {
         var response= GarageClient.get("/users/");
         return mapper.readValue((String) response.body(), new TypeReference<List<User>>(){});
     }
-
 }
