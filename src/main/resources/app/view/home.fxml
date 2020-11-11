@@ -11,7 +11,7 @@
       <URL value="@css/styles.css" />
    </stylesheets>
    <fx:include source="PageMenu.fxml"/>
-   <Label fx:id="labelWelcomeMessage" layoutX="287.0" layoutY="254.0" styleClass="label-welcome" text="" />
+   <Label fx:id="labelWelcomeMessage" layoutX="287.0" layoutY="254.0" styleClass="label-welcome"/>
 
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="440.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/imagotypeBlue.png" />
