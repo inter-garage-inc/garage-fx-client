@@ -5,7 +5,7 @@ import app.router.Router;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-@RouteMapping
+@RouteMapping(title = "Contas abertas")
 public class OrdersOpenController extends ApplicationController {
 
     @FXML

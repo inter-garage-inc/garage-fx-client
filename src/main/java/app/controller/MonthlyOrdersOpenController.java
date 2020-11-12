@@ -11,7 +11,7 @@ import app.data.order.PaymentMethod;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@RouteMapping
+@RouteMapping( title = "Contas abertas Mensalistas")
 public class MonthlyOrdersOpenController extends ApplicationController {
 
     @FXML
