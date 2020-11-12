@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MonthlyOrdersOpenController">
+
+    <stylesheets>
+        <URL value="@css/styles.css" />
+    </stylesheets>
+
+    <fx:include source="PageMenu.fxml" />
+
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="92.0" onMouseClicked="#handleHome" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/imagotypeBlue.png" />
+    </ImageView>
+    <Label layoutX="956.0" layoutY="92.0" styleClass="field, label, blue" text="Funcionário" />
+
+
+    <Label layoutX="82.0" layoutY="148.0" styleClass="label, field, blue" text="Nome" />
+    <TextField layoutX="82.0" layoutY="188.0" prefWidth="959.0" styleClass="field" />
+
+    <Label layoutX="82.0" layoutY="238.0" styleClass="label, field, blue" text="Logradouro" />
+    <TextField layoutX="82.0" layoutY="278.0" prefWidth="959.0" styleClass="field" />
+
+    <Label layoutX="82.0" layoutY="326.0" styleClass="label, field, blue" text="Complemento" />
+    <TextField layoutX="82.0" layoutY="366.0" prefWidth="450.0" styleClass="field" />
+
+    <Label layoutX="590.0" layoutY="326.0" styleClass="label, field, blue" text="CEP" />
+    <TextField layoutX="590.0" layoutY="366.0" prefWidth="450.0" styleClass="field" />
+
+
+    <Label layoutX="82.0" layoutY="498.0" styleClass="label, field, blue" text="CPF/CNPJ" />
+    <TextField layoutX="82.0" layoutY="538.0" prefWidth="450.0" styleClass="field" />
+
+    <Label layoutX="82.0" layoutY="586.0" styleClass="label, field, blue" text="Telefone 1" />
+    <TextField layoutX="82.0" layoutY="626.0" prefWidth="450.0" styleClass="field" />
+
+    <Label layoutX="590.0" layoutY="586.0" styleClass="label, field, blue" text="Telefone 2" />
+    <TextField layoutX="590.0" layoutY="626.0" prefWidth="450.0" styleClass="field" />
+
+    <Label layoutX="82.0" layoutY="406.0" styleClass="label, field, blue" text="País" />
+    <ComboBox layoutX="82.0" layoutY="446.0" prefWidth="218.0" styleClass="field" />
+
+    <Label layoutX="590.0" layoutY="406.0" styleClass="label, field, blue" text="Estado" />
+    <ComboBox layoutX="590.0" layoutY="446.0" prefWidth="218.0" styleClass="field" />
+
+    <Button fx:id="btnBack" layoutX="27.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
+    <Button fx:id="btnSrc" layoutX="930.0" layoutY="667.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
+
+
+</AnchorPane>
