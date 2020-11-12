@@ -1,12 +1,14 @@
 package app.controller;
 
-import app.Router;
+import app.router.Router;
+import app.router.RouteMapping;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+@RouteMapping
 public abstract class ApplicationController {
 
     @FXML
@@ -39,11 +41,11 @@ public abstract class ApplicationController {
      */
 
     public void handleHome(Event e) {
-        Router.goTo("home");
+        Router.goTo(HomeController.class);
     }
 
     public void checkIn(Event e) {
-        Router.goTo("checkin", true);
+        Router.goTo(CheckInController.class, true);
     }
 
     /**
@@ -59,7 +61,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void monthly(Event e) {
-        Router.goTo("monthlycustomer", true);
+        Router.goTo(MonthlyCustomerController.class, true);
     }
 
     /**
@@ -67,7 +69,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void openAccounts(Event e) {
-        Router.goTo("ordersopen", true);
+        Router.goTo(OrdersOpenController.class, true);
     }
 
     /**
@@ -75,7 +77,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void vanacyMap(Event e) {
-
+        Router.showPopUp(PlateNotFoundController.class);
     }
 
     /**
