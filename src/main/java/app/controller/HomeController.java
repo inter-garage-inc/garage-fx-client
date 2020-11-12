@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-@RouteMapping
+@RouteMapping(title = "Página inicial")
 public class HomeController extends ApplicationController {
 
     @FXML
