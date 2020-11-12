@@ -1,7 +1,8 @@
 package app.controller;
 
-import app.Router;
+import app.router.Router;
 import app.data.Credentials;
+import app.router.RouteMapping;
 import app.service.AuthenticationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+@RouteMapping(title = "Identifique-se")
 public class LoginController {
 
     @FXML
@@ -41,7 +43,7 @@ public class LoginController {
 
         if(authResponse == Boolean.TRUE) {
             showMessage("Logado com sucesso");
-            Router.goTo("home");
+            Router.goTo(HomeController.class);
             Router.reOpenEffect();
         } else if(authResponse == Boolean.FALSE) {
             showMessage("Login ou senha inválidos");

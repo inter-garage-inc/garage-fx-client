@@ -1,10 +1,12 @@
 package app.controller;
 
 
+import app.router.RouteMapping;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+@RouteMapping(title = "Mensalista nao encontrado")
 public class MonthlyNotFoundController extends ApplicationController {
 
     @FXML
