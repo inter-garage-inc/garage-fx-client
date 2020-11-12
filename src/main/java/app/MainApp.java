@@ -12,4 +12,3 @@ public class MainApp {
         Application.launch(Router.class, args);
     }
 }
-
