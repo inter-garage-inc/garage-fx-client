@@ -50,6 +50,6 @@
     <Label layoutX="560.0" layoutY="559.0" styleClass="label, field, blue" text="País" />
     <ComboBox layoutX="560.0" layoutY="594.0" prefWidth="250" promptText="Selecione" styleClass="field" />
 
-    <Button fx:id="btnSrc" onAction="#register" layoutX="930.0" layoutY="667.0" mnemonicParsing="false" styleClass="button, button-blue" text="Registrar" />
-    <Button fx:id="btnBack" layoutX="27.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
+    <Button fx:id="btnSrc" onAction="#register" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Registrar" />
+    <Button fx:id="btnBack" layoutX="28.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
 </AnchorPane>

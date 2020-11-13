@@ -24,8 +24,8 @@
             <Font name="Montserrat Regular" size="18.0" />
          </font></TextField>
 
-      <Button fx:id="btnBack" layoutX="27.0" layoutY="666.0" mnemonicParsing="false" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
-      <Button fx:id="btnOk" layoutX="945.0" layoutY="667.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
+      <Button fx:id="btnBack" layoutX="28.0" layoutY="666.0" mnemonicParsing="false" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
+      <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
        <Line endX="15.0" layoutX="413.0" layoutY="52.0" startX="-102.0" stroke="#2789cf" />
 
    </children>
