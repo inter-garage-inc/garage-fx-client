@@ -1,5 +1,7 @@
 package app.client;
 
+import app.service.AuthenticationService;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -40,6 +42,7 @@ public class GarageClient {
         var request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString((String) payload))
                 .header("Content-Type", "application/json")
+                .setHeader("Authorization", "Bearer " + AuthenticationService.getToken())
                 .uri(URI.create(HOST + resource))
                 .build();
         return httpClient.send(request, HttpResponse.BodyHandlers.ofString());

@@ -54,4 +54,8 @@ public class AuthenticationService {
                 .parseClaimsJwt(getJwtWithoutSignature())
                 .getBody();
     }
+
+    public static String getToken() {
+        return (jwt != null) ? jwt.getToken() : "";
+    }
 }

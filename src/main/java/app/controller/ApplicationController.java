@@ -77,7 +77,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void vanacyMap(Event e) {
-
+        Router.goTo(RegisterCustomerController.class);
     }
 
     /**
