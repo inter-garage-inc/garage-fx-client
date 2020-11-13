@@ -25,9 +25,9 @@ public class Router extends Application {
 
     private static Stage primaryStage;
 
-    private static Class c;
+    private static Class<?> c;
 
-    private static Stack<StageData> stageDataStack = new Stack<>();;
+    private static final Stack<StageData> stageDataStack = new Stack<>();;
 
     private static StageData lastStageData;
 
