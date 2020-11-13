@@ -9,3 +9,8 @@
      font-weight: 600;
      src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
  }
+
+
+* {
+    -fx-font-family: Montserrat;
+}
