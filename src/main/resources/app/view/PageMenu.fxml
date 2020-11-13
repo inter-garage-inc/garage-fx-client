@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PageMenuController">
+<AnchorPane prefHeight="68.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PageMenuController">
 
     <stylesheets>
         <URL value="@css/styles.css" />

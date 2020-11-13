@@ -1,11 +1,12 @@
 .button {
     -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
     -fx-pref-height: 40px;
+    -fx-min-width: 130px;
     -fx-background-position: left 5px;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 15px 30px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
 }
 
 .button-blue {
