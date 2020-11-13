@@ -35,6 +35,10 @@ public abstract class ApplicationController {
     @FXML
     protected Button btnSrc;
 
+    @FXML
+    protected Button btnOk;
+
+
     /**
      * método para abrir a tela de checkin
      * @param e

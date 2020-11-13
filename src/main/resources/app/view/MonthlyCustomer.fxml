@@ -25,5 +25,5 @@
     <TextField layoutX="304.0" layoutY="360.0" prefWidth="450.0" styleClass="field" />
 
     <Button fx:id="btnBack" layoutX="27.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
-    <Button fx:id="btnOk" layoutX="945.0" layoutY="667.0" mnemonicParsing="false" onAction="#back" prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
+    <Button fx:id="btnSrc" layoutX="945.0" layoutY="667.0" mnemonicParsing="false"  prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
 </AnchorPane>
