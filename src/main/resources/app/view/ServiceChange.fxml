@@ -35,7 +35,7 @@
     <CheckBox layoutX="76.0" layoutY="493.0" mnemonicParsing="false" text="CheckBox" />
     <CheckBox layoutX="76.0" layoutY="533.0" mnemonicParsing="false" text="CheckBox" />
 
-    <Button layoutX="29.0" layoutY="651.0" mnemonicParsing="false" styleClass="button-back" text="Voltar" fx:id="btnBack" onAction="#back"/>
-    <Button layoutX="945.0" layoutY="667.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Salvar" />
+    <Button layoutX="28.0" layoutY="666.0" mnemonicParsing="false" styleClass="button-back" text="Voltar" fx:id="btnBack" onAction="#back"/>
+    <Button layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Salvar" />
 </AnchorPane>
 

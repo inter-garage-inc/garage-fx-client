@@ -24,5 +24,5 @@
     <Label layoutX="149.0" layoutY="331.0" prefHeight="58.0" prefWidth="782.0" styleClass="message-normal" text="O veículo XXX-0000 não está cadastrado. Deseja cadastrá-lo?" wrapText="true" />
 
     <Button fx:id="btnNewCadaster" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#newCadaster" prefHeight="45.0" prefWidth="136.0" styleClass="button-blue" text="Cadastrar" />
-    <Button fx:id="btnBack" layoutX="27.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
+    <Button fx:id="btnBack" layoutX="28.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
 </AnchorPane>

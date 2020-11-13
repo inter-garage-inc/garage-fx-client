@@ -32,6 +32,6 @@
     <CheckBox layoutX="76.0" layoutY="493.0" mnemonicParsing="false" text="CheckBox" />
     <CheckBox layoutX="76.0" layoutY="533.0" mnemonicParsing="false" text="CheckBox" />
 
-    <Button fx:id="btnBack" layoutX="29.0" layoutY="651.0" mnemonicParsing="false" onAction="#back" styleClass="button-back" text="Voltar" />
-    <Button fx:id="btnOk" layoutX="945.0" layoutY="667.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
+    <Button fx:id="btnBack" layoutX="28.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" styleClass="button-back" text="Voltar" />
+    <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
 </AnchorPane>
