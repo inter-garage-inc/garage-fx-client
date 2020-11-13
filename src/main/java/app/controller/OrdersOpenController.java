@@ -19,6 +19,6 @@ public class OrdersOpenController extends ApplicationController {
     }
 
     public void ordersOpenSingle() {
-        Router.goTo("singleordersopen", true);
+        Router.goTo(SingleOrdersOpenController.class, true);
     }
 }

@@ -1,6 +1,7 @@
 package app.router;
 
 import app.controller.LoginController;
+import app.controller.RegisterCustomerController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -35,6 +36,7 @@ public class Router extends Application {
         Router.primaryStage = primaryStage;
         primaryStage.getIcons().add(loadIcon());
         primaryStage.setResizable(false);
+
         goTo(LoginController.class);
     }
 
