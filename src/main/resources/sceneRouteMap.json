@@ -23,6 +23,9 @@
   "monthlyordersopen": {
     "path": "MonthlyOrdersOpen.fxml", "title": "Contas abertas Mensalistas"
   },
+  "singleordersopen": {
+    "path": "SingleOrdersOpen.fxml", "title": "Contas abertas avulsas"
+  },
   "checkin": {
     "path": "CheckIn.fxml", "title": "Check in"
   },
