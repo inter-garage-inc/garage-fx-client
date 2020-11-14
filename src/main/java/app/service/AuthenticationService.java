@@ -4,10 +4,8 @@ import app.client.GarageClient;
 import app.data.Credentials;
 import app.data.Jwt;
 import app.data.User;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.SneakyThrows;
 
@@ -37,7 +35,19 @@ public class AuthenticationService {
         }
     }
 
-    public static Jwt getJwt() {
-        return jwt;
+    public static String getAuthorization() {
+        return (jwt != null) ? "Bearer " + jwt.getToken() : "";
+    }
+
+    private static String getUnsignedToken() {
+        var token = jwt.getToken();
+        return token.substring(0, token.lastIndexOf('.') + 1);
+    }
+
+    @SneakyThrows
+    public static User claimUser() {
+        var claims = Jwts.parser().parseClaimsJwt(getUnsignedToken()).getBody();
+        var mapper = new ObjectMapper();
+        return mapper.readValue(claims.get("user", String.class), User.class);
     }
 }

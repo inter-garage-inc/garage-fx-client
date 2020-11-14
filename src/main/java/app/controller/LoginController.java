@@ -4,6 +4,7 @@ import app.router.Router;
 import app.data.Credentials;
 import app.router.RouteMapping;
 import app.service.AuthenticationService;
+import app.service.ConnectionFailureException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -38,16 +39,16 @@ public class LoginController {
                 .username(fieldUsername.getText())
                 .password(fieldPassword.getText())
                 .build();
-
-        var authResponse = authenticationService.login(authRequest);
-
-        if(authResponse == Boolean.TRUE) {
-            showMessage("Logado com sucesso");
-            Router.goTo(HomeController.class);
-            Router.reOpenEffect();
-        } else if(authResponse == Boolean.FALSE) {
-            showMessage("Login ou senha inválidos");
-        } else {
+        try {
+            var response = authenticationService.login(authRequest);
+            if(response) {
+                showMessage("Logado com sucesso");
+                Router.goTo(HomeController.class);
+                Router.reOpenEffect();
+            } else {
+                showMessage("Login ou senha inválidos");
+            }
+        } catch (ConnectionFailureException e) {
             showMessage("Incapaz de contatar o servidor");
         }
     }

@@ -18,6 +18,7 @@ public class GarageClient {
         var request = HttpRequest.newBuilder()
                 .GET()
                 .header("Content-Type", "application/json")
+                .header("Authorization", AuthenticationService.getAuthorization())
                 .uri(URI.create(HOST + resource))
                 .build();
         return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -30,6 +31,7 @@ public class GarageClient {
         var request = HttpRequest.newBuilder()
                 .DELETE()
                 .header("Content-Type", "application/json")
+                .header("Authorization", AuthenticationService.getAuthorization())
                 .uri(URI.create(HOST + resource))
                 .build();
         return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -42,7 +44,7 @@ public class GarageClient {
         var request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString((String) payload))
                 .header("Content-Type", "application/json")
-                .setHeader("Authorization", "Bearer " + AuthenticationService.getToken())
+                .header("Authorization", AuthenticationService.getAuthorization())
                 .uri(URI.create(HOST + resource))
                 .build();
         return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -55,6 +57,7 @@ public class GarageClient {
         var request = HttpRequest.newBuilder()
                 .PUT(HttpRequest.BodyPublishers.ofString((String) payload))
                 .header("Content-Type", "application/json")
+                .header("Authorization", AuthenticationService.getAuthorization())
                 .uri(URI.create(HOST + resource))
                 .build();
         return httpClient.send(request, HttpResponse.BodyHandlers.ofString());

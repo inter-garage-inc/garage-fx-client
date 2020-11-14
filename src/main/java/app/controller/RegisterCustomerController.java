@@ -2,11 +2,10 @@ package app.controller;
 
 import app.data.Customer;
 import app.router.RouteMapping;
+import app.service.ConnectionFailureException;
 import app.service.CustomerService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-
-import java.lang.reflect.Field;
 
 @RouteMapping(title = "Novo Cliente")
 public class RegisterCustomerController extends ApplicationController {
@@ -28,14 +27,15 @@ public class RegisterCustomerController extends ApplicationController {
                 .cpfCnpj(Integer.parseInt(fieldCpfCnpj.getText()))
                 .phone(Integer.parseInt(fieldPhone.getText()))
                 .build();
-
         var service = new CustomerService();
-        var response = service.register(customer);
-        if (response == Boolean.TRUE) {
-            System.out.println("Sucesso");
-        } else if(response == Boolean.FALSE) {
-            System.out.println("Não foi possivel cadastrar");
-        } else {
+        try {
+            var response = service.save(customer);
+            if (response) {
+                System.out.println("Sucesso");
+            } else {
+                System.out.println("Não foi possivel cadastrar");
+            }
+        } catch (ConnectionFailureException e) {
             System.out.println("Não foi possivel comunicar com o back-end ");
         }
     }
