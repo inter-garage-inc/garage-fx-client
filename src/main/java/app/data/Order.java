@@ -1,7 +1,7 @@
 package app.data;
 
-import app.data.order.Status;
 import app.data.order.PaymentMethod;
+import app.data.order.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
