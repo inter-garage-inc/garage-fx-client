@@ -1,16 +1,13 @@
 package app.router;
 
 import app.controller.LoginController;
-import app.controller.RegisterCustomerController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.util.Stack;
