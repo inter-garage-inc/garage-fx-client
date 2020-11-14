@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.AdminAlterDeletUserController">
+    <stylesheets>
+        <URL value="@css/styles.css" />
+    </stylesheets>
+
+    <fx:include source="PageMenu.fxml" />
+
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="92.0" onMouseClicked="#handleHome" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/imagotypeBlue.png" />
+    </ImageView>
+    <Label layoutX="956.0" layoutY="92.0" styleClass="field, label, blue" text="Funcionário" />
+
+    <Label layoutX="290.0" layoutY="150.0" styleClass="label, field, blue" text="Nome completo" />
+    <TextField fx:id="fieldName" layoutX="290.0" layoutY="185.0" prefWidth="520.0" promptText="Digite o nome completo do usuário" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="233.0" styleClass="label, field, blue" text="Nome de Usuário" />
+    <TextField fx:id="fieldUsername" layoutX="290.0" layoutY="268.0" prefWidth="520.0" promptText="Digite o nome de usuário do sistema" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="318.0" styleClass="label, field, blue" text="Senha" />
+    <PasswordField fx:id="fieldPassword" layoutX="290.0" layoutY="352.0" prefWidth="287.0" promptText="Digite uma senha" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="403.0" styleClass="label, field, blue" text="Confirmar Senha" />
+    <PasswordField fx:id="fieldConfPassword" layoutX="290.0" layoutY="438.0" prefWidth="287.0" promptText="Confirme a senha" styleClass="field" />
+
+    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Salvar" />
+    <Button fx:id="btnBack" layoutX="28.0" layoutY="666.0" mnemonicParsing="false" onAction="#back" prefWidth="73.0" styleClass="button, button-back" text="Voltar" />
+    <AnchorPane layoutX="634.0" layoutY="352.0" prefHeight="125.0" prefWidth="200.0" style="-fx-background-color: #d3d3d3; -fx-border-radius: 8px;">
+        <children>
+            <RadioButton layoutX="29.0" layoutY="22.0" mnemonicParsing="false" text="Admin" />
+            <RadioButton layoutX="29.0" layoutY="55.0" mnemonicParsing="false" text="Gerente" />
+            <RadioButton layoutX="29.0" layoutY="87.0" mnemonicParsing="false" text="Funcionário" />
+        </children>
+    </AnchorPane>
+    <Button layoutX="775.0" layoutY="666.0" mnemonicParsing="false" prefWidth="130.0" styleClass="button, button-red" text="Excluir" />
+</AnchorPane>
