@@ -14,12 +14,7 @@ public class HomeController extends ApplicationController {
     private Label labelWelcomeMessage;
 
     public void initialize() {
-        var authenticationService = new AuthenticationService();
-        var user = authenticationService.claimUser();
-        setWelcomeMessage("Bem-vindo " + user.getName());
-    }
-
-    private void setWelcomeMessage(String message) {
-        labelWelcomeMessage.setText(message);
+        var user = AuthenticationService.claimUser();
+        labelWelcomeMessage.setText("Bem-vindo " + user.getName());
     }
 }
