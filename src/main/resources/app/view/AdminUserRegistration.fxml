@@ -7,7 +7,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.AdminUserRegistrationController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml" />
-
     <fx:include source="component/LogoTopLeft.fxml" />
 
     <Label layoutX="956.0" layoutY="92.0" styleClass="field, label, blue" text="Funcionário" />

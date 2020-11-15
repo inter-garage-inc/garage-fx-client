@@ -8,12 +8,7 @@
 <?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckoutController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml" />
-
     <fx:include source="component/LogoTopLeft.fxml" />
-
-        <ImageView fitHeight="52.0" fitWidth="243.0" layoutX="22.0" layoutY="91.0">
-            <Image url="@images/imagotypeBlue.png" />
-        </ImageView>
 
         <Label layoutX="956.0" layoutY="92.0" styleClass="label, field, blue" text="Funcionário" />
 
