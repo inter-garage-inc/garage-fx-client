@@ -9,14 +9,12 @@
     <fx:include source="component/LogoTopLeft.fxml" />
 
 
-   <Label layoutX="395.0" layoutY="274.0" styleClass="field, label" text="Veículo" />
-   <Label layoutX="514.0" layoutY="287.0" text="XXX-000" />
-   <Label layoutX="395.0" layoutY="404.0" styleClass="field, label" text="Serviços" />
+    <Label layoutX="368.0" layoutY="190.0" styleClass="field, label" text="Veículo" />
+    <Label layoutX="510.0" layoutY="201.0" styleClass="label-form" text="XXX-000" />
+    <Label layoutX="368.0" layoutY="320.0" styleClass="field, label" text="Serviços" />
 
     <Button layoutX="28.0" layoutY="666.0" styleClass="button, button-back" text="Alterar" />
-
     <Button layoutX="762.0" layoutY="666.0" styleClass="button-blue" text="Salvar" />
-
     <Button layoutX="921.0" layoutY="666.0" styleClass="button-green" text="Pagar" />
 
 </AnchorPane>
