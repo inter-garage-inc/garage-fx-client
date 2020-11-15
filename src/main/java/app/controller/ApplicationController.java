@@ -57,7 +57,7 @@ public abstract class ApplicationController {
      * @param e
      */
     public void checkout(Event e) {
-
+        Router.goTo(CheckoutController.class, true);
     }
 
     /**
