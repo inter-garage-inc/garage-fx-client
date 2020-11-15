@@ -1,27 +1,26 @@
 package app.router;
 
 import app.controller.LoginController;
-import app.controller.RegisterCustomerController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.util.Stack;
 
 
 public class Router extends Application {
-    private static final String sufTitle = "Garage Inc.";
+    private static final String SUF_TITLE = "Garage Inc.";
 
-    private static final String iconPath = "/app/view/images/isotypeBlue.png";
+    private static final String ICON_PATH = "/app/view/images/isotypeBlue.png";
 
-    private static final String fxmlSource = "/app/view/";
+    private static final String FXML_SOURCE = "/app/view/";
+
+    private static final String POPUP_SUB = "popup/";
 
     private static Stage primaryStage;
 
@@ -42,9 +41,11 @@ public class Router extends Application {
 
     private static String getFxmlPath () {
         var annotation = (RouteMapping) c.getAnnotation(RouteMapping.class);
-        return fxmlSource + (annotation.fxml().equals("") ?
+        var fxml = (annotation.fxml().equals("") ?
                 c.getSimpleName().replaceFirst( "Controller$", "") + ".fxml" :
                 annotation.fxml());
+
+        return FXML_SOURCE + (annotation.popup() ? POPUP_SUB: "" ) + fxml;
     }
 
     private static String getTitle() {
@@ -52,11 +53,11 @@ public class Router extends Application {
         return (annotation.title().equals("") ?
                 "" :
                 annotation.title() + "  |  ")
-                + sufTitle;
+                + SUF_TITLE;
     }
 
     public static Image loadIcon() {
-        return new Image(new Object() {}.getClass().getResourceAsStream(iconPath));
+        return new Image(new Object() {}.getClass().getResourceAsStream(ICON_PATH));
     }
 
     public static Scene loadScene() {

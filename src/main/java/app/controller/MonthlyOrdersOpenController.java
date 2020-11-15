@@ -1,18 +1,11 @@
 package app.controller;
 
-import app.data.Order;
-import app.data.User;
-import app.data.order.Status;
 import app.router.RouteMapping;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-import app.data.order.PaymentMethod;
-
-import java.math.BigDecimal;
-import java.util.Date;
 
 @RouteMapping( title = "Contas abertas Mensalistas")
-public class MonthlyOrdersOpenController extends ApplicationController {
+public class MonthlyOrdersOpenController {
 
     @FXML
     private TableView tbView;

@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 @RouteMapping(title = "Mensalista nao encontrado")
-public class MonthlyNotFoundController extends ApplicationController {
+public class MonthlyNotFoundController {
 
     @FXML
     private Button btnNewCadaster;

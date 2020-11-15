@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 @RouteMapping(title = "Contas abertas")
-public class OrdersOpenController extends ApplicationController {
+public class OrdersOpenController {
 
     @FXML
     private Button customerMonthly;
