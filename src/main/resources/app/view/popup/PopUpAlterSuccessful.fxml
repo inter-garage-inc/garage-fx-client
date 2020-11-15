@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpAlterSuccessfulController" stylesheets="@../css/styles.css">
+    <Label layoutX="91.0" layoutY="32.0" styleClass="field-label-form" text="Alteração efetuada com sucesso!!" />
+    <Button fx:id="btnSrc" layoutX="185.0" layoutY="112.0" mnemonicParsing="false" styleClass="button, button-blue" text="Ok" />
+</AnchorPane>

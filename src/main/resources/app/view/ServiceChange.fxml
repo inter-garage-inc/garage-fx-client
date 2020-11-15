@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.net.URL?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckInController">
-    <stylesheets>
-        <URL value="@css/styles.css" />
-    </stylesheets>
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckInController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml"/>
 
     <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-menu, button-selected" text="Check In" />
@@ -31,7 +21,8 @@
     <CheckBox layoutX="76.0" layoutY="493.0" mnemonicParsing="false" text="CheckBox" />
     <CheckBox layoutX="76.0" layoutY="533.0" mnemonicParsing="false" text="CheckBox" />
 
-    <Button layoutX="29.0" layoutY="651.0" mnemonicParsing="false" styleClass="button-back" text="Voltar" fx:id="btnBack"/>
+    <fx:include source="component/ButtonBack.fxml" />
     <Button layoutX="945.0" layoutY="667.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Salvar" />
+
 </AnchorPane>
 

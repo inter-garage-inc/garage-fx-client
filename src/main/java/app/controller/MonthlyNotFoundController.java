@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 public class MonthlyNotFoundController {
 
     @FXML
-    private Button btnNewCadaster;
+    private Button btnNewRegister;
 
     /**
      * Método para abrir a tela de cadastro

@@ -4,4 +4,5 @@ import app.router.RouteMapping;
 
 @RouteMapping
 public class SingleOrdersOpenController {
+
 }

@@ -8,6 +8,8 @@ import app.service.AuthenticationService;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
+import java.sql.Struct;
+
 public class MainMenuController {
     public Button buttonCheckIn;
     public Button buttonCheckout;
@@ -28,19 +30,19 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonCheckIn(ActionEvent actionEvent) {
-        Router.goTo(CheckInController.class);
+        Router.goTo(CheckInController.class, true);
     }
 
     public void handleOnActionButtonCheckout(ActionEvent actionEvent) {
-        Router.goTo(CheckoutController.class);
+        Router.goTo(CheckoutController.class, true);
     }
 
     public void handleOnActionButtonMonthly(ActionEvent actionEvent) {
-        Router.goTo(MonthlyCustomerController.class);
+        Router.goTo(MonthlyCustomerController.class, true);
     }
 
     public void handleOnActionButtonOrdersOpen(ActionEvent actionEvent) {
-        Router.goTo(SingleOrdersOpenController.class, true); // TODO Test Only
+        Router.goTo(OrdersOpenController.class, true); // TODO Test Only
     }
 
     public void handleOnActionButtonVacancyMap(ActionEvent actionEvent) {

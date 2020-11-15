@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.net.URL?>
+<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoginController" stylesheets="@css/styles.css">
 
-<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoginController">
-   <stylesheets>
-      <URL value="@css/styles.css" />
-   </stylesheets>
-
+   <!--Different position -->
    <ImageView fitHeight="97.0" fitWidth="265.0" layoutX="168.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/imagotypeBlue.png" />
    </ImageView>
