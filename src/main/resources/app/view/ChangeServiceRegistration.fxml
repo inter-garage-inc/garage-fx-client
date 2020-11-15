@@ -20,7 +20,7 @@
     <Label layoutX="390.0" layoutY="403.0" styleClass="label, field, blue" text="Status" />
     <ComboBox layoutX="390.0" layoutY="438.0" prefWidth="287.0" promptText="Selecione" styleClass="field" />
 
-    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Salvar" />
     <fx:include source="component/ButtonBack.fxml" />
     <Button layoutX="762.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-red" text="Excluir" />
+    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Salvar" />
 </AnchorPane>
