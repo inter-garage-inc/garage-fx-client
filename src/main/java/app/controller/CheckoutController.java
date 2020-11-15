@@ -1,4 +1,7 @@
 package app.controller;
 
-public class CheckoutController {
+import app.router.RouteMapping;
+
+@RouteMapping
+public class CheckoutController extends ApplicationController {
 }
