@@ -12,4 +12,5 @@
     <Button fx:id="buttonMonthly" onAction="#handleOnActionButtonMonthly" layoutX="301.0" layoutY="14.0" mnemonicParsing="false"  styleClass="button-menu, button-blue-menu" text="Mensalistas" />
     <Button fx:id="buttonOpenAccounts" onAction="#handleOnActionButtonOrdersOpen" layoutX="444.0" layoutY="14.0" mnemonicParsing="false"  styleClass="button-menu, button-blue-menu" text="Contas Abertas" />
     <Button fx:id="buttonVacancyMap" onAction="#handleOnActionButtonVacancyMap" layoutX="587.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-menu, button-blue-menu" text="Mapa de Vagas" />
+
 </AnchorPane>

@@ -1,9 +1,6 @@
 package app.controller.component;
 
-import app.controller.CheckInController;
-import app.controller.CheckoutController;
-import app.controller.MonthlyCustomerController;
-import app.controller.OrdersOpenController;
+import app.controller.*;
 import app.controller.popup.PlateNotFoundController;
 import app.data.user.Role;
 import app.router.Router;
@@ -43,7 +40,7 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonOrdersOpen(ActionEvent actionEvent) {
-        Router.goTo(OrdersOpenController.class);
+        Router.goTo(SingleOrdersOpenController.class, true); // TODO Test Only
     }
 
     public void handleOnActionButtonVacancyMap(ActionEvent actionEvent) {
