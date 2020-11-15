@@ -3,6 +3,6 @@ package app.controller;
 import app.router.RouteMapping;
 
 @RouteMapping(title = "Check in")
-public class CheckInController extends ApplicationController {
+public class CheckInController {
 
 }

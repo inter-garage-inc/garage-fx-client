@@ -8,6 +8,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface RouteMapping {
-    public String fxml() default "";
-    public String title() default "";
+    String fxml() default "";
+    String title() default "";
+    boolean popup() default false;
 }

@@ -1,4 +1,7 @@
 package app.controller;
 
-public class AdminUserRegistrationController extends ApplicationController {
+import app.router.RouteMapping;
+
+@RouteMapping
+public class AdminUserRegistrationController {
 }

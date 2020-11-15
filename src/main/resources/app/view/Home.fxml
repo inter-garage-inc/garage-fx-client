@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import java.net.URL?>
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeController">
-   <stylesheets>
-      <URL value="@css/styles.css" />
-   </stylesheets>
-   <fx:include source="PageMenu.fxml"/>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="app.controller.HomeController"
+            prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css">
+
+   <!--//TODO Different position -->
+   <fx:include source="component/MainMenu.fxml"/>
+
+   <fx:include source="component/LogoTopLeft.fxml"/>
+
    <Label fx:id="labelWelcomeMessage" layoutX="287.0" layoutY="254.0" styleClass="label-welcome"/>
 
-   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="440.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@images/imagotypeBlue.png" />
-   </ImageView>
 </AnchorPane>

@@ -1,4 +1,7 @@
 package app.controller;
 
-public class AlterDeletUserController extends ApplicationController {
+import app.router.RouteMapping;
+
+@RouteMapping
+public class AlterDeletUserController {
 }

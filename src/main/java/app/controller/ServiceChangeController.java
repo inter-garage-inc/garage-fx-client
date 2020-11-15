@@ -1,5 +1,8 @@
 package app.controller;
 
-public class ServiceChangeController extends ApplicationController {
+import app.router.RouteMapping;
+
+@RouteMapping
+public class ServiceChangeController  {
 
 }

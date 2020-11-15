@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
 @RouteMapping( title = "Contas abertas Mensalistas")
-public class MonthlyOrdersOpenController extends ApplicationController {
+public class MonthlyOrdersOpenController {
 
     @FXML
     private TableView tbView;
