@@ -6,6 +6,7 @@ public enum PaymentMethod {
     CASH("cash");
 
     private String value;
+
     PaymentMethod(final String value) {
         this.value = value;
     }
