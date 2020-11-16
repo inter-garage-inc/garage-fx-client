@@ -13,12 +13,13 @@
 
     <Label layoutX="956.0" layoutY="92.0" styleClass="label, field, blue" text="Funcionário" />
 
-    <Label layoutX="290.0" layoutY="189.0" styleClass="label, field, blue" text="Veículo" />
-    <TextField layoutX="290.0" layoutY="229.0" prefWidth="450.0" styleClass="field" />
+    <Label layoutX="324.0" layoutY="180.0" styleClass="message-normal" text="Check in | Alteração de dados" />
 
-    <Label layoutX="290.0" layoutY="282.0" styleClass="label, field, blue" text="Serviços" />
+    <Label layoutX="315.0" layoutY="265.0" styleClass="label, field, blue" text="Veículo" />
+    <TextField layoutX="315.0" layoutY="300.0" prefWidth="450.0" styleClass="field" />
 
-    <ScrollPane layoutX="290.0" layoutY="321.0" prefHeight="152.0" prefWidth="450.0">
+    <Label layoutX="315.0" layoutY="365.0" styleClass="label, field, blue" text="Serviços" />
+    <ScrollPane layoutX="315.0" layoutY="400.0" prefHeight="152.0" prefWidth="450.0">
         <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="422.0">
                 <children>
