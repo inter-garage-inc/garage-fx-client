@@ -7,22 +7,26 @@
     <fx:include source="component/LogoTopLeft.fxml" />
 
     <Label layoutX="956.0" layoutY="92.0" styleClass="field, label, blue" text="Funcionário" />
-   <ScrollPane layoutX="390.0" layoutY="176.0" prefHeight="166.0" prefWidth="287.0">
+
+    <Label layoutX="330.0" layoutY="142.0" styleClass="message-normal" text="Cadastro de Planos Mensais" />
+    <Label layoutX="390.0" layoutY="200.0" styleClass="label, field, blue" text="Serviços" />
+
+    <ScrollPane layoutX="390.0" layoutY="236.0" prefHeight="166.0" prefWidth="287.0">
      <content>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
      </content>
    </ScrollPane>
 
-    <CheckBox layoutX="410.0" layoutY="233.0" mnemonicParsing="false" text="CheckBox" />
-    <CheckBox layoutX="410.0" layoutY="268.0" mnemonicParsing="false" text="CheckBox" />
-    <CheckBox layoutX="410.0" layoutY="304.0" mnemonicParsing="false" text="CheckBox" />
-    <CheckBox layoutX="410.0" layoutY="198.0" mnemonicParsing="false" text="CheckBox" />
+    <CheckBox layoutX="410.0" layoutY="293.0" mnemonicParsing="false" text="CheckBox" />
+    <CheckBox layoutX="410.0" layoutY="328.0" mnemonicParsing="false" text="CheckBox" />
+    <CheckBox layoutX="410.0" layoutY="364.0" mnemonicParsing="false" text="CheckBox" />
+    <CheckBox layoutX="410.0" layoutY="258.0" mnemonicParsing="false" text="CheckBox" />
 
-    <Label layoutX="390.0" layoutY="358.0" styleClass="label, field, blue" text="Preço" />
-    <TextField fx:id="fieldPrice" layoutX="390.0" layoutY="392.0" prefWidth="287.0" promptText="Digite o Preço" styleClass="field" />
+    <Label layoutX="390.0" layoutY="418.0" styleClass="label, field, blue" text="Preço" />
+    <TextField fx:id="fieldPrice" layoutX="390.0" layoutY="452.0" prefWidth="287.0" promptText="Digite o Preço" styleClass="field" />
 
-    <Label layoutX="390.0" layoutY="443.0" styleClass="label, field, blue" text="Status" />
-    <ComboBox layoutX="390.0" layoutY="478.0" prefWidth="287.0" promptText="Selecione" styleClass="field" />
+    <Label layoutX="390.0" layoutY="513.0" styleClass="label, field, blue" text="Status" />
+    <ComboBox layoutX="390.0" layoutY="548.0" prefWidth="287.0" promptText="Selecione" styleClass="field" />
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Salvar" />
