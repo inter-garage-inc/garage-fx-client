@@ -13,5 +13,6 @@
    <fx:include source="component/LogoTopLeft.fxml"/>
 
    <Label fx:id="labelWelcomeMessage" layoutX="287.0" layoutY="254.0" styleClass="label-welcome"/>
+   <Label fx:id="labelLocalDateTime" layoutX="287.0" layoutY="300.0"/>
 
 </AnchorPane>
