@@ -1,25 +1,26 @@
 package app.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Customer {
-    @JsonProperty("id")
-    private Integer id;
-
-    @JsonProperty("name")
+@EqualsAndHashCode(callSuper = false)
+public class Customer extends DataBase {
     private String name;
 
     @JsonProperty("cpf_cnpj")
-    private Integer cpfCnpj;
+    private String cpfCnpj;
 
-    @JsonProperty("phone")
-    private Integer phone;
+    private String phone;
+
+    private List<Vehicle> vehicles;
+
+    private List<Order> orders;
+
+    private Address address;
 }

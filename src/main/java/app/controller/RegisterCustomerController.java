@@ -24,8 +24,8 @@ public class RegisterCustomerController {
         var customer = Customer
                 .builder()
                 .name(fieldName.getText())
-                .cpfCnpj(Integer.parseInt(fieldCpfCnpj.getText()))
-                .phone(Integer.parseInt(fieldPhone.getText()))
+                .cpfCnpj(fieldCpfCnpj.getText())
+                .phone(fieldPhone.getText())
                 .build();
         var service = new CustomerService();
         try {
