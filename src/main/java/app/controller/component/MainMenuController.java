@@ -18,37 +18,12 @@ public class MainMenuController {
     public Button btnVacancyMap;
     public MenuButton btnServicePlans;
     public Button btnUsers;
-    public Button btnSelected;
     public MenuItem btnPlansManagement;
     public MenuItem btnCatalogManagement;
     public double y;
     public double x;
     public String text;
-
-    public void setBtnSelected(double x, double y, String text) {
-        try {
-            btnSelected.setLayoutX(x);
-            btnSelected.setLayoutY(y);
-            btnSelected.setText(text);
-        } catch(Exception e) {
-            System.out.println("\nDeu ruim");
-        }
-    }
-
-    private void processButtonSelected(ActionEvent actionEvent) {
-        var nome = (Button) actionEvent.getSource();
-        if(btnSelected != null) {
-            btnSelected.getStyleClass().removeIf(style -> style.equals("button-selected"));
-        }
-        btnSelected = nome;
-        btnSelected.getStyleClass().add("button-selected");
-    }
-
-    public void getSelected(Button button) {
-        x = button.getLayoutX();
-        y = button.getLayoutY();
-        text = button.getText();
-    }
+    public Button btnSelected;
 
     public void initialize() {
         var user = AuthenticationService.claimUser();
@@ -65,9 +40,6 @@ public class MainMenuController {
 
     public void handleOnActionButtonCheckIn(ActionEvent actionEvent) {
         Router.goTo(CheckInController.class, true);
-        getSelected(btnCheckIn);
-        System.out.printf("%f %f %s", x, y, text);
-        setBtnSelected(btnCheckIn.getLayoutX(), btnCheckIn.getLayoutY(), btnCheckIn.getText());
     }
 
     public void handleOnActionButtonCheckout(ActionEvent actionEvent) {
@@ -87,7 +59,6 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonPlansManagement(ActionEvent actionEvent) {
-
     }
 
     public void handleOnActionButtonCatalog(ActionEvent actionEvent) {

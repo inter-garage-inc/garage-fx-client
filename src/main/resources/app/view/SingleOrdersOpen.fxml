@@ -7,8 +7,6 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SingleOrdersOpenController">
     <fx:include source="component/MainMenu.fxml" />
-    <Button layoutX="444.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-menu, button-selected" text="Contas Abertas" />
-    <Line endX="-35.0" layoutX="500.0" layoutY="50.0" scaleX="1.3" scaleY="3.0" scaleZ="0.0" startX="60.0" stroke="#2689d0" styleClass="button-selected" />
 
     <fx:include source="component/LogoTopLeft.fxml" />
 

@@ -3,11 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MonthlyNotFoundController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml"/>
-    <Button layoutX="301.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-menu, button-selected" text="Mensalistas" />
-    <Line endX="15.0" layoutX="413.0" layoutY="52.0" scaleY="3.0" startX="-102.0" stroke="#2689d0" />
 
     <fx:include source="component/LogoTopLeft.fxml" />
 

@@ -2,11 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MonthlyCustomerController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml"/>
-    <Button layoutX="301.0" layoutY="14.0" styleClass="button-menu, button-selected" text="Mensalistas" />
-    <Line endX="-35.0" layoutX="357.0" layoutY="50.0" scaleX="1.3" scaleY="3.0" scaleZ="0.0" startX="60.0" stroke="#2689d0" styleClass="button-selected" />
 
     <fx:include source="component/LogoTopLeft.fxml" />
 

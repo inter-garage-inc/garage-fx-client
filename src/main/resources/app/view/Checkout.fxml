@@ -2,10 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckoutController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml" />
-    <Button layoutX="158.0" layoutY="14.0" styleClass="button-menu, button-selected" text="Checkout" />
     <Label layoutX="304.0" layoutY="322.0" styleClass="label, field, blue" text="Veículo" />
 
     <fx:include source="component/LogoTopLeft.fxml"/>
@@ -16,7 +14,6 @@
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
-    <Line endX="15.0" layoutX="270.0" layoutY="52.0" startX="-102.0" stroke="#2789cf" />
 
 
 </AnchorPane>
