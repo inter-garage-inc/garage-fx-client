@@ -4,7 +4,7 @@ import app.router.RouteMapping;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
-@RouteMapping( title = "Contas abertas Mensalistas")
+@RouteMapping( title = "Contas abertas | Mensalistas")
 public class MonthlyOrdersOpenController {
 
     @FXML

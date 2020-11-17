@@ -3,7 +3,7 @@ package app.controller;
 
 import app.router.RouteMapping;
 
-@RouteMapping(title = "Check in")
+@RouteMapping(title = "Alteração no Check in")
 public class ChangeCheckInController {
 
 }
