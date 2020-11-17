@@ -12,8 +12,8 @@ public class ChangeCheckInController {
     public Button btnSave;
 
     public void handleOnActionButtonSave() throws InterruptedException {
-        Router.goTo(PopUpAlterSuccessfulController.class);
-        Thread.sleep(1500);
+        Router.showPopUp(PopUpAlterSuccessfulController.class);
+        Router.closePopUp(2);
         Router.goTo(CheckInConfirmationController.class);
     }
 }

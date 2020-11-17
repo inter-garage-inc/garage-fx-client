@@ -10,7 +10,7 @@
     -fx-scale-y: 1;
 }
 
-.button-selected:hover {
+.button-hover:hover {
     -fx-background-color: white;
     -fx-text-fill: #2689D0;
     -fx-pref-height: 42px;
@@ -20,8 +20,14 @@
     -fx-scale-y: 1.2;
 }
 
-
-
+.button-selected {
+    -fx-background-color: white;
+    -fx-text-fill: #2689D0;
+    -fx-pref-height: 42px;
+    -fx-border-color: #2689D0;
+    -fx-border-radius: 3px;
+    -fx-border-width: 1px 1px 3px 1px;
+}
 
 .button-menu-button {
     -fx-background-color: #2689D0;

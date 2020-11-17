@@ -3,14 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="raiz" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.component.MainMenuController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.component.MainMenuController">
 
-    <Button fx:id="btnCheckIn" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonCheckIn" styleClass="button-menu, button-blue-menu, button-selected" text="Check In" />
-    <Button fx:id="btnCheckout" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonCheckout" styleClass="button-menu, button-blue-menu, button-selected" text="Checkout" />
-    <Button fx:id="btnMonthly" layoutX="317.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonMonthly" styleClass="button-menu, button-blue-menu, button-selected" text="Mensalistas" />
-    <Button fx:id="btnOpenAccounts" layoutX="467.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonOrdersOpen" styleClass="button-menu, button-blue-menu, button-selected" text="Contas Abertas" />
-    <Button fx:id="btnVacancyMap" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu, button-blue-menu, button-selected" text="Mapa de Vagas" />
-    <MenuButton fx:id="btnServicePlans" layoutX="767.0" layoutY="14.0" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu, button-blue-menu, button-selected" text="Planos e serviços">
+    <Button fx:id="btnCheckIn" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonCheckIn" styleClass="button-menu, button-blue-menu, button-hv" text="Check In" />
+    <Button fx:id="btnCheckout" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonCheckout" styleClass="button-menu, button-blue-menu, button-hv" text="Checkout" />
+    <Button fx:id="btnMonthly" layoutX="317.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonMonthly" styleClass="button-menu, button-blue-menu, button-hv" text="Mensalistas" />
+    <Button fx:id="btnOpenAccounts" layoutX="467.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonOrdersOpen" styleClass="button-menu, button-blue-menu, button-hv" text="Contas Abertas" />
+    <Button fx:id="btnVacancyMap" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu, button-blue-menu, button-hv" text="Mapa de Vagas" />
+    <MenuButton fx:id="btnServicePlans" layoutX="767.0" layoutY="14.0" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu, button-blue-menu, button-hv" text="Planos e serviços">
         <items>
             <MenuItem fx:id="btnPlansManagement" mnemonicParsing="false" onAction="#handleOnActionButtonPlansManagement" text="Gestão de Planos" />
             <MenuItem fx:id="btnCatalogManagement" mnemonicParsing="false" onAction="#handleOnActionButtonCatalog" text="Gestão de serviços" />

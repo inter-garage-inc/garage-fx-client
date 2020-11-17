@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MonthlyOrdersOpenController" stylesheets="@css/styles.css">
-    <fx:include source="component/MainMenu.fxml"/>
 
+    <fx:include source="component/MainMenu.fxml"/>
     <fx:include source="component/LogoTopLeft.fxml" />
 
     <Label layoutX="956.0" layoutY="92.0" styleClass="field, label, blue" text="Funcionário" />
@@ -13,7 +12,7 @@
     <fx:include source="component/ButtonBack.fxml" />
     <Label layoutX="334.0" layoutY="152.0" styleClass="message-normal" text="Contas abertas - Mensalistas" />
 
-    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
+    <Button fx:id="btnSelect" onAction="#handleOnActionButtonBtnSelect" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
    <TableView fx:id="tbView" layoutX="254.0" layoutY="202.0" prefHeight="316.0" prefWidth="573.0" stylesheets="@css/tableview.css">
      <columns>
          <TableColumn prefWidth="75.0" text="Cliente">

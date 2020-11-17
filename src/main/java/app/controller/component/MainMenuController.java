@@ -1,7 +1,6 @@
 package app.controller.component;
 
 import app.controller.*;
-import app.controller.popup.PlateNotFoundController;
 import app.data.user.Role;
 import app.router.Router;
 import app.service.AuthenticationService;
@@ -59,6 +58,7 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonPlansManagement(ActionEvent actionEvent) {
+
     }
 
     public void handleOnActionButtonCatalog(ActionEvent actionEvent) {
