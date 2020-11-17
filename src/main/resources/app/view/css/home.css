@@ -2,10 +2,12 @@
     -fx-text-fill: #999999;
     -fx-font-size: 40px;
     -fx-alignment: center;
+    -fx-text-alignment: center;
 }
 
 .label-clock {
     -fx-text-fill: #999999;
     -fx-font-size: 24px;
+    -fx-alignment: center;
     -fx-text-alignment: center;
 }

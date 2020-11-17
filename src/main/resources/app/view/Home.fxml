@@ -9,13 +9,13 @@
    
    <fx:include source="component/MainMenu.fxml" />
 
-   <Label fx:id="labelWelcomeMessage" layoutX="190.0" layoutY="220.0" prefHeight="150.0" prefWidth="700.0" styleClass="label-welcome" />
+   <Label fx:id="labelWelcome" layoutX="190.0" layoutY="220.0" prefHeight="150.0" prefWidth="700.0" styleClass="label-welcome" />
 
    <!--Different position -->
    <ImageView fitHeight="85.0" fitWidth="370.0" layoutX="355.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/imagotypeBlue.png" />
    </ImageView>
 
-   <Label fx:id="labelClock" alignment="CENTER" layoutX="190.0" layoutY="575.0" prefHeight="75.0" prefWidth="700.0" styleClass="label-clock" />
+   <Label fx:id="labelClock" layoutX="190.0" layoutY="575.0" prefHeight="75.0" prefWidth="700.0" styleClass="label-clock" />
 
 </AnchorPane>

@@ -18,7 +18,7 @@ import java.util.Locale;
 public class HomeController {
 
     @FXML
-    private Label labelWelcomeMessage;
+    private Label labelWelcome;
 
     @FXML
     private Label labelClock;
@@ -31,7 +31,7 @@ public class HomeController {
     private void initClock() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             var locale = new Locale("pt", "BR");
-            var formatter = DateTimeFormatter.ofPattern("EEEE, dd 'de' MMMM 'de' yyyy \n HH:mm:ss").localizedBy(locale);
+            var formatter = DateTimeFormatter.ofPattern("EEEE, dd 'de' MMMM 'de' yyyy\nHH:mm:ss").localizedBy(locale);
             labelClock.setText(LocalDateTime.now().format(formatter));
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
@@ -40,6 +40,6 @@ public class HomeController {
 
     private void initWelcome() {
         var user = AuthenticationService.claimUser();
-        labelWelcomeMessage.setText("Bem-vindo " + user.getName());
+        labelWelcome.setText("Bem-vindo " + user.getName());
     }
 }
