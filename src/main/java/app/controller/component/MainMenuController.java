@@ -1,11 +1,9 @@
 package app.controller.component;
 
-import app.controller.CheckInController;
-import app.controller.CheckoutController;
-import app.controller.MonthlyCustomerController;
-import app.controller.OrdersOpenController;
+import app.controller.*;
 import app.controller.popup.PlateNotFoundController;
 import app.data.user.Role;
+import app.router.RouteMapping;
 import app.router.Router;
 import app.service.AuthenticationService;
 import javafx.event.ActionEvent;
@@ -39,7 +37,8 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonMonthly(ActionEvent actionEvent) {
-        Router.goTo(MonthlyCustomerController.class, true);
+//        Router.goTo(MonthlyCustomerController.class, true);
+        Router.goTo(CustomerRegisterController.class, true);
     }
 
     public void handleOnActionButtonOrdersOpen(ActionEvent actionEvent) {

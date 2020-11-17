@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 @RouteMapping(title = "Novo Cliente")
-public class RegisterCustomerController {
+public class CustomerRegisterController {
 
     @FXML
     private TextField fieldName;
