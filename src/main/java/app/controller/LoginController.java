@@ -1,6 +1,6 @@
 package app.controller;
 
-import app.data.Credentials;
+import app.data.authentication.Credentials;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.AuthenticationService;
