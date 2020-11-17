@@ -16,7 +16,7 @@
 
     <Label layoutX="300.0" layoutY="150.0" styleClass="message-normal" text="Contas abertas - Clientes avulsos" />
 
-    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Selecionar" />
+    <Button fx:id="btnSrc" onAction="#handleOnActionButtonBtnSelect" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Selecionar" />
     <TableView fx:id="tbView" layoutX="254.0" layoutY="202.0" prefHeight="316.0" prefWidth="573.0" stylesheets="@css/tableview.css">
         <columns>
             <TableColumn prefWidth="75.0" text="Cliente">

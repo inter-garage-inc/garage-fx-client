@@ -7,8 +7,8 @@
 
     <fx:include source="component/LogoTopLeft.fxml" />
 
-    <Button fx:id="customerMonthly" layoutX="256.0" layoutY="407.0" mnemonicParsing="false" onAction="#ordersOpenMonthly" prefWidth="212.0" styleClass="button, button-green" text="Clientes Mensalistas" />
-    <Button layoutX="597.0" layoutY="407.0" mnemonicParsing="false" prefWidth="212.0" onAction="#ordersOpenSingle" styleClass="button, button-blue" text="Clientes Avulsos" />
+    <Button fx:id="btnCustomerMonthly" layoutX="256.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnCustomerMonthly" prefWidth="212.0" styleClass="button, button-green" text="Clientes Mensalistas" />
+    <Button fx:id="btnCustomerSingle" layoutX="597.0" layoutY="407.0" mnemonicParsing="false" prefWidth="212.0" onAction="#handleOnActionButtonBtnCustomerSingle" styleClass="button, button-blue" text="Clientes Avulsos" />
     <fx:include source="component/ButtonBack.fxml" />
     
     <Label layoutX="355.0" layoutY="338.0" styleClass="message-normal" text="Ordens de serviço em aberto" textAlignment="CENTER" />

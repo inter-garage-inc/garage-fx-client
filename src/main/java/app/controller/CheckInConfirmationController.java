@@ -12,7 +12,7 @@ public class CheckInConfirmationController {
     public Button btnPay;
 
     public void handleOnActionButtonBtnAlter() {
-        Router.goTo(ServiceChangeController.class, true);
+        Router.goTo(ChangeCheckInController.class, true);
     }
 
     public void handleOnActionButtonBtnSave() throws InterruptedException {

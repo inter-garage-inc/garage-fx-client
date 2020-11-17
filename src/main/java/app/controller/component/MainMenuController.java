@@ -55,7 +55,7 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonVacancyMap(ActionEvent actionEvent) {
-        Router.showPopUp(PlateNotFoundController.class); //TODO Test Only
+        //TODO
     }
 
     public void handleOnActionButtonPlansManagement(ActionEvent actionEvent) {

@@ -2,23 +2,19 @@ package app.controller;
 
 import app.router.RouteMapping;
 import app.router.Router;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 @RouteMapping(title = "Contas abertas")
 public class OrdersOpenController {
 
-    @FXML
-    private Button customerMonthly;
+    public Button btnCustomerMonthly;
+    public Button btnCustomerSingle;
 
-    @FXML
-    private Button customerSingle;
-
-    public void ordersOpenMonthly() {
+    public void handleOnActionButtonBtnCustomerMonthly() {
         Router.goTo(MonthlyOrdersOpenController.class, true);
     }
 
-    public void ordersOpenSingle() {
+    public void handleOnActionButtonBtnCustomerSingle() {
         Router.goTo(SingleOrdersOpenController.class, true);
     }
 }

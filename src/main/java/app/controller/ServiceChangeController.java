@@ -11,8 +11,6 @@ public class ServiceChangeController  {
     public Button btnSave;
 
     public void handleOnActionButtonSave() throws InterruptedException {
-        Router.goTo(PopUpAlterSuccessfulController.class);
-        Thread.sleep(1500);
-        Router.goTo(CheckInConfirmationController.class);
+
     }
 }
