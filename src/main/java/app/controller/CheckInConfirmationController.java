@@ -18,7 +18,7 @@ public class CheckInConfirmationController {
     public void handleOnActionButtonBtnSave() throws InterruptedException {
         System.out.println("Check In realizado com sucesso");//TODO Criar pop up
         Thread.sleep(1000);
-        Router.goTo(HomeController.class, true);
+        Router.goTo(HomeController.class);
     }
 
     public void handleOnActionButtonBtnPay() throws InterruptedException {

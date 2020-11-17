@@ -14,6 +14,6 @@
     <Label layoutX="580.0" layoutY="450.0" prefHeight="15.0" prefWidth="79.0" styleClass="field, label" />
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button layoutX="921.0" layoutY="666.0" styleClass="button-green" text="Pagar" />
+    <Button layoutX="921.0" layoutY="666.0" styleClass="button-green" text="Pagar" fx:id="btnPay" onAction="#handleOnActionButtonBtnPay" />
 
 </AnchorPane>
