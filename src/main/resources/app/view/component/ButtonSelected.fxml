@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<Button xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        layoutY="10.0"
+        layoutX="10.0"
+        stylesheets="@../css/styles.css"
+        styleClass="button-blue"
+        fx:controller="app.controller.component.MainMenuController"
+        fx:id="btnSelected"
+/>

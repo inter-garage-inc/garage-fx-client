@@ -1,19 +1,27 @@
 .button-menu {
-    -fx-pref-width: 137px;
+    -fx-pref-width: 145px;
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
+    -fx-font-size: 13px;
+    -fx-padding: -5px;
 }
 
-.button-selected {
+.button-selected:hover, .button-selected {
     -fx-background-color: white;
     -fx-text-fill: #2689D0;
     -fx-pref-height: 42px;
     -fx-border-color: #2689D0;
     -fx-border-radius: 3px;
+    -fx-border-width: 1px 1px 3px 1px;
+}
+
+.button-menu-button {
+    -fx-background-color: #2689D0;
+    -fx-text-fill: ffffff;
+    -fx-pref-height: 40px;
 }
 
 .button-blue-menu {
     -fx-background-color: #2689D0;
-    -fx-text-fill: white;
+    -fx-text-fill: ffffff;
     -fx-pref-height: 40px;
 }
