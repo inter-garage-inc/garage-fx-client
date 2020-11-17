@@ -6,7 +6,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-@RouteMapping(title = "Mensalista nao encontrado")
+@RouteMapping(title = "Mensalista não encontrado")
 public class MonthlyNotFoundController {
 
     @FXML
