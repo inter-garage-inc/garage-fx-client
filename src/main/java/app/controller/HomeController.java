@@ -21,7 +21,7 @@ public class HomeController {
     private Label labelWelcomeMessage;
 
     @FXML
-    private Label labelLocalDateTime;
+    private Label labelClock;
 
     public void initialize() {
         initClock();
@@ -32,7 +32,7 @@ public class HomeController {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             var locale = new Locale("pt", "BR");
             var formatter = DateTimeFormatter.ofPattern("EEEE, dd 'de' MMMM 'de' yyyy \n HH:mm:ss").localizedBy(locale);
-            labelLocalDateTime.setText(LocalDateTime.now().format(formatter));
+            labelClock.setText(LocalDateTime.now().format(formatter));
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();

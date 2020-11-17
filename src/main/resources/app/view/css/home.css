@@ -1,4 +1,11 @@
 .label-welcome {
     -fx-text-fill: #999999;
-    -fx-font-size: 46px;
+    -fx-font-size: 40px;
+    -fx-alignment: center;
+}
+
+.label-clock {
+    -fx-text-fill: #999999;
+    -fx-font-size: 24px;
+    -fx-text-alignment: center;
 }
