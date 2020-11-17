@@ -2,7 +2,7 @@ package app.controller;
 
 import app.router.RouteMapping;
 
-@RouteMapping
-public class PlanRegisterController{
+@RouteMapping(title = "Cadastro de Planos")
+public class PlanRegisterController {
 
 }

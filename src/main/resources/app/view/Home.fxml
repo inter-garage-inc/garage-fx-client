@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="app.controller.HomeController"
-            prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-   <!--//TODO Different position -->
-   <fx:include source="component/MainMenu.fxml"/>
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeController">
+   
+   <fx:include source="component/MainMenu.fxml" />
 
-   <fx:include source="component/LogoTopLeft.fxml"/>
+   <Label fx:id="labelWelcome" layoutX="190.0" layoutY="220.0" prefHeight="150.0" prefWidth="700.0" styleClass="label-welcome" />
 
-   <Label fx:id="labelWelcomeMessage" layoutX="287.0" layoutY="254.0" styleClass="label-welcome"/>
+   <!--Different position -->
+   <ImageView fitHeight="85.0" fitWidth="370.0" layoutX="355.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/imagotypeBlue.png" />
+   </ImageView>
+
+   <Label fx:id="labelClock" layoutX="190.0" layoutY="575.0" prefHeight="75.0" prefWidth="700.0" styleClass="label-clock" />
 
 </AnchorPane>

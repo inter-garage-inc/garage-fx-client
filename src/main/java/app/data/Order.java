@@ -1,37 +1,31 @@
 package app.data;
 
+import app.data.order.Item;
 import app.data.order.PaymentMethod;
 import app.data.order.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
-
+import java.util.List;
 
 @Data
-public class Order {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+public class Order extends DataBase {
+    private List<Item> items;
 
-    @JsonProperty("id")
-    private Long id;
+    private Customer customer;
 
-    @JsonProperty("createdat")
-    private Date createdat;
-
-    @JsonProperty("status")
-    private Status status;
-    
-    @JsonProperty("totalamount")
-    private BigDecimal totalamount;
-
-    @JsonProperty("user")
     private User user;
 
-    @JsonProperty("paymentmethod")
+    @JsonProperty("total_amount")
+    private BigDecimal totalAmount;
+
+    @JsonProperty("payment_method")
     private PaymentMethod paymentMethod;
 
-    // TODO Terminar classe de items
-//    @JsonProperty("items")
-//    private List<item>;
-
+    private Status status;
 }

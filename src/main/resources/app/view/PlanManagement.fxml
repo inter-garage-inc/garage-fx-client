@@ -11,13 +11,13 @@
 
     <Label layoutX="956.0" layoutY="92.0" styleClass="field, label, blue" text="Funcionário" />
 
-    <Label layoutX="404.0" layoutY="152.0" styleClass="message-normal" text="Gestão de Serviços" />
+    <Label layoutX="404.0" layoutY="152.0" styleClass="message-normal" text="Gestão de Planos" />
 
     <TableView fx:id="tbView" layoutX="254.0" layoutY="202.0" prefHeight="316.0" prefWidth="573.0" stylesheets="@css/tableview.css">
         <columns>
-            <TableColumn prefWidth="99.20001220703125" text="Serviço">
+            <TableColumn prefWidth="99.20001220703125" text="Plano">
                 <cellValueFactory>
-                    <PropertyValueFactory property="service" />
+                    <PropertyValueFactory property="plan" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn prefWidth="90.80001831054688" text="Preço">
@@ -37,3 +37,4 @@
     <Button layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
     <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
 </AnchorPane>
+
