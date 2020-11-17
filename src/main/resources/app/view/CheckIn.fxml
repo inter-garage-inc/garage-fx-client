@@ -28,5 +28,5 @@
     </ScrollPane>
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
+    <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" onAction="#handleOnActionButtonOk" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
 </AnchorPane>
