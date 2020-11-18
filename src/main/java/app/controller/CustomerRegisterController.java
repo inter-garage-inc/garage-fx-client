@@ -136,6 +136,8 @@ public class CustomerRegisterController {
             if (response) {
                 Router.showPopUp(PopUpRegisterSuccessfulController.class); //TODO set time to close
 //                Router.goTo(); TODO set destination go to after
+                Router.closePopUp(1);
+                Router.goTo(HomeController.class);
             } else {
                 System.out.println("Não foi possivel cadastrar"); //TODO create a pop-up
             }
