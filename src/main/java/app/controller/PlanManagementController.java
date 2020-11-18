@@ -1,13 +1,11 @@
-
 package app.controller;
 
 import app.controller.component.MainMenuController;
 import app.router.RouteMapping;
 import javafx.fxml.FXML;
 
-@RouteMapping(title = "Gestão de Serviços")
-public class ServiceManagementController {
-
+@RouteMapping
+public class PlanManagementController {
     @FXML
     private MainMenuController menuController;
     public void initialize() {

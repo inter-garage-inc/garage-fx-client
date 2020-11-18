@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.RegisterCustomerController" stylesheets="@css/styles.css">
+    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
+    <fx:include source="component/LogoTopLeft.fxml" />
+
+    <Label layoutX="956.0" layoutY="92.0" styleClass="field, label, blue" text="Funcionário" />
+
+    <Label layoutX="290.0" layoutY="150.0" styleClass="label, field, blue" text="Nome completo" />
+    <TextField fx:id="fieldName" layoutX="290.0" layoutY="185.0" prefWidth="520.0" promptText="Digite o nome completo" styleClass="field" />
+
+    <Label  layoutX="290.0" layoutY="233.0" styleClass="label, field, blue" text="CPF/CNPJ" />
+    <TextField fx:id="fieldCpfCnpj" layoutX="290.0" layoutY="268.0" prefWidth="250.0" promptText="000.000.000-00" styleClass="field" />
+
+    <Label layoutX="560.0" layoutY="233.0" styleClass="label, field, blue" text="Telefone" />
+    <TextField fx:id="fieldPhone" layoutX="560.0" layoutY="268.0" prefWidth="250.0" promptText="+00 00 00000-0000" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="328.0" styleClass="label, field, blue" text="Endereço" />
+    <TextField layoutX="290.0" layoutY="362.0" prefWidth="520.0" promptText="Rua, Avenida, Travessa, etc." styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="403.0" styleClass="label, field, blue" text="Número" />
+    <TextField layoutX="290.0" layoutY="438.0" prefWidth="90.0" promptText="0" styleClass="field" />
+
+    <Label layoutX="390.0" layoutY="402.0" styleClass="label, field, blue" text="Complemento" />
+    <TextField layoutX="390.0" layoutY="437.0" prefWidth="150.0" promptText="Casa, Apto" styleClass="field" />
+
+    <Label layoutX="560.0" layoutY="402.0" styleClass="label, field, blue" text="CEP" />
+    <TextField layoutX="560.0" layoutY="437.0" prefWidth="250.0" promptText="00000-000" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="481.0" styleClass="label, field, blue" text="Bairro" />
+    <TextField layoutX="290.0" layoutY="516.0" prefWidth="250.0" promptText="Digite o bairro" styleClass="field" />
+
+    <Label layoutX="560.0" layoutY="481.0" styleClass="label, field, blue" text="Cidade" />
+    <TextField layoutX="560.0" layoutY="516.0" prefWidth="250.0" promptText="Digite a cidade" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="560.0" styleClass="label, field, blue" text="Estado" />
+    <ComboBox layoutX="290.0" layoutY="595.0" prefWidth="250" promptText="Selecione" styleClass="field" />
+
+    <Label layoutX="560.0" layoutY="559.0" styleClass="label, field, blue" text="País" />
+    <ComboBox layoutX="560.0" layoutY="594.0" prefWidth="250" promptText="Selecione" styleClass="field" />
+
+
+    <Button fx:id="btnSrc" onAction="#register" layoutX="930.0" layoutY="667.0" mnemonicParsing="false" styleClass="button, button-blue" text="Registrar" />
+    <fx:include source="component/ButtonBack.fxml" />
+
+</AnchorPane>

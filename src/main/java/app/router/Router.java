@@ -1,6 +1,7 @@
 package app.router;
 
 import app.controller.LoginController;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import javax.swing.text.TableView;
 import java.io.IOException;
 import java.util.Stack;
 
@@ -29,6 +32,8 @@ public class Router extends Application {
     private static final Stack<StageData> stageDataStack = new Stack<>();;
 
     private static StageData lastStageData;
+
+    private static Stage lastPopUp;
 
     @Override
     public void start(Stage primaryStage) {
@@ -115,12 +120,19 @@ public class Router extends Application {
     public static void showPopUp(Class<?> c) {
         Router.c = c;
         var stage = new Stage();
+        lastPopUp = stage;
         stage.setScene(loadScene());
         stage.setTitle(getTitle());
         stage.setResizable(false);
         stage.initOwner(primaryStage);
         stage.initModality(Modality.WINDOW_MODAL);
         stage.show();
+    }
+
+    public static void closePopUp(Integer time) {
+        PauseTransition delay = new PauseTransition(Duration.seconds(time));
+        delay.setOnFinished( event -> lastPopUp.close() );
+        delay.play();
     }
 
     public static void reOpenEffect() {

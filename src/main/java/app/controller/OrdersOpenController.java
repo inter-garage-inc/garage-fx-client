@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.controller.component.MainMenuController;
 import app.router.RouteMapping;
 import app.router.Router;
 import javafx.fxml.FXML;
@@ -9,16 +10,8 @@ import javafx.scene.control.Button;
 public class OrdersOpenController {
 
     @FXML
-    private Button customerMonthly;
-
-    @FXML
-    private Button customerSingle;
-
-    public void ordersOpenMonthly() {
-        Router.goTo(MonthlyOrdersOpenController.class, true);
-    }
-
-    public void ordersOpenSingle() {
-        Router.goTo(SingleOrdersOpenController.class, true);
+    private MainMenuController menuController;
+    public void initialize() {
+        menuController.btnOpenAccounts.getStyleClass().add("button-menu-selected");
     }
 }
