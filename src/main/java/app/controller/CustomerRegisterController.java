@@ -1,11 +1,26 @@
 package app.controller;
 
+import app.controller.popup.PopUpRegisterSuccessfulController;
+import app.data.Address;
 import app.data.Customer;
+import app.data.address.Country;
+import app.data.address.State;
+import app.data.address.state.Brazil;
 import app.router.RouteMapping;
+import app.router.Router;
 import app.service.ConnectionFailureException;
 import app.service.CustomerService;
+import app.service.PostalCodeService;
+import app.util.MaskedTextField.MaskedTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
+
+import java.util.Arrays;
 
 @RouteMapping(title = "Novo Cliente")
 public class CustomerRegisterController {
@@ -14,30 +29,118 @@ public class CustomerRegisterController {
     private TextField fieldName;
 
     @FXML
-    private TextField fieldCpfCnpj;
+    private MaskedTextField fieldCpfCnpj;
 
     @FXML
-    private TextField fieldPhone;
+    private MaskedTextField fieldPhone;
 
     @FXML
-    public void register() {
-        var customer = Customer
-                .builder()
-                .name(fieldName.getText())
-                .cpfCnpj(fieldCpfCnpj.getText())
-                .phone(fieldPhone.getText())
-                .build();
-        var service = new CustomerService();
-        try {
-            var response = service.save(customer);
-            if (response) {
-                System.out.println("Sucesso");
-            } else {
-                System.out.println("Não foi possivel cadastrar");
-            }
-        } catch (ConnectionFailureException e) {
-            System.out.println("Não foi possivel comunicar com o back-end ");
+    private TextField fieldAddress;
+
+    @FXML
+    private TextField fieldNumber;
+
+    @FXML
+    private TextField fieldComplement;
+
+    @FXML
+    private MaskedTextField fieldPostalCode;
+
+    @FXML
+    private TextField fieldNeighborhood;
+
+    @FXML
+    private TextField fieldCity;
+
+    @FXML
+    private ComboBox<State> comboBoxState;
+
+    @FXML
+    private ComboBox<Country> comboBoxCountry;
+
+    private CustomerService customerService;
+
+    private PostalCodeService postalCodeService;
+
+    @FXML
+    public void initialize() {
+        customerService = new CustomerService();
+        postalCodeService = new PostalCodeService();
+        initComboBoxes();
+    }
+
+    private void initComboBoxes() {
+        comboBoxCountry.getItems().addAll(Country.values());
+    }
+
+    @FXML
+    private void handleOnActionComboBoxCountry(ActionEvent actionEvent) {
+        comboBoxState.getItems().clear();
+        var states = comboBoxCountry.getValue().getStates();
+        if(states == null) {
+            comboBoxState.setDisable(true);
+        } else {
+            comboBoxState.setDisable(false);
+            comboBoxState.getItems().addAll(states);
         }
     }
 
+    @FXML
+    private void handleOnActionRadioButtonCpf(ActionEvent actionEvent) {
+        fieldCpfCnpj.setMask("###.###.###-##");
+    }
+
+    @FXML
+    private void handleOnActionRadioButtonCnpj(ActionEvent actionEvent) {
+        fieldCpfCnpj.setMask("##.###.###/####-##");
+    }
+
+    @FXML
+    private void handleOnKeyReleasedFieldPostalCode(KeyEvent keyEvent) {
+        if(fieldPostalCode.getPlainText().length() >= 8) {
+            try {
+                var address = postalCodeService.search(fieldPostalCode.getText());
+                if(address != null) {
+                    fieldCity.setText(address.getCity());
+                    fieldNeighborhood.setText(address.getNeighborhood());
+                    comboBoxState.setValue(address.getState());
+                    comboBoxCountry.setValue(Country.BRAZIL);
+                }
+            } catch (ConnectionFailureException e) {
+                System.err.println("Error using postal code service");
+            }
+        }
+    }
+
+    @FXML
+    private void handleOnActionButtonRegister() {
+        var address = Address.builder()
+                .street(fieldAddress.getText())
+                .number(fieldNumber.getText())
+                .complement(fieldComplement.getText())
+                .postalCode(fieldPostalCode.getPlainText())
+                .neighborhood(fieldNeighborhood.getText())
+                .city(fieldCity.getText())
+                .state(comboBoxState.getValue())
+                .country(comboBoxCountry.getValue())
+                .build();
+        var customer = Customer
+                .builder()
+                .name(fieldName.getText())
+                .cpfCnpj(fieldCpfCnpj.getPlainText())
+                .phone(fieldPhone.getPlainText())
+                .address(address)
+                .build();
+        try {
+            var response = customerService.save(customer);
+            if (response) {
+                Router.showPopUp(PopUpRegisterSuccessfulController.class); //TODO set time to close
+//                Router.goTo(); TODO set destination go to after
+            } else {
+                System.out.println("Não foi possivel cadastrar"); //TODO create a pop-up
+            }
+        } catch (ConnectionFailureException e) {
+            System.err.println("Error using customer service");
+        }
+    }
 }
