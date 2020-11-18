@@ -18,7 +18,8 @@ public class UserDetailsController {
         labelName.setText(user.getName());
     }
 
-    public void handleOnActionButtonLogout(ActionEvent actionEvent) {
+    @FXML
+    private void handleOnActionButtonLogout(ActionEvent actionEvent) {
         AuthenticationService.logout();
         Router.goTo(LoginController.class);
         Router.reOpenEffect();
