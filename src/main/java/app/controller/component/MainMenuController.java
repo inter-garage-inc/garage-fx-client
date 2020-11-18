@@ -1,12 +1,7 @@
 package app.controller.component;
 
 import app.controller.*;
-<<<<<<< HEAD
-import app.controller.popup.PlateNotFoundController;
-=======
->>>>>>> main
 import app.data.user.Role;
-import app.router.RouteMapping;
 import app.router.Router;
 import app.service.AuthenticationService;
 import javafx.event.ActionEvent;
@@ -50,8 +45,7 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonMonthly(ActionEvent actionEvent) {
-//        Router.goTo(MonthlyCustomerController.class, true);
-        Router.goTo(CustomerRegisterController.class, true);
+        Router.goTo(MonthlyCustomerController.class, true);
     }
 
     public void handleOnActionButtonBtnCustomerMonthly() {
