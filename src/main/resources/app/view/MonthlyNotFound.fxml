@@ -8,6 +8,7 @@
 
     <fx:include source="component/LogoTopLeft.fxml" />
 
+    
     <fx:include source="component/UserDetails.fxml" />
 
     <Label layoutX="149.0" layoutY="331.0" prefHeight="58.0" prefWidth="782.0" styleClass="message-normal" text="O veículo XXX-0000 não está cadastrado. Deseja cadastrá-lo?" wrapText="true" />
