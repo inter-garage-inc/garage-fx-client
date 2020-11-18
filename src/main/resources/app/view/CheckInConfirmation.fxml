@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckInConfirmationcontroller">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckInConfirmationController">
 
-    <fx:include source="component/MainMenu.fxml" />
+    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
     <fx:include source="component/LogoTopLeft.fxml" />
 
 
@@ -12,8 +12,8 @@
     <Label layoutX="510.0" layoutY="201.0" styleClass="label-form" text="XXX-000" />
     <Label layoutX="368.0" layoutY="320.0" styleClass="field, label" text="Serviços" />
 
-    <Button layoutX="28.0" layoutY="666.0" styleClass="button, button-back" text="Alterar" />
-    <Button layoutX="762.0" layoutY="666.0" styleClass="button-blue" text="Salvar" />
-    <Button layoutX="921.0" layoutY="666.0" styleClass="button-green" text="Pagar" />
+    <Button layoutX="28.0" layoutY="666.0" styleClass="button, button-back" text="Alterar" fx:id="btnAlter" onAction="#handleOnActionButtonBtnAlter"/>
+    <Button layoutX="762.0" layoutY="666.0" styleClass="button-blue" text="Salvar" fx:id="btnSave" onAction="#handleOnActionButtonBtnSave"/>
+    <Button layoutX="921.0" layoutY="666.0" styleClass="button-green" text="Pagar" fx:id="btnPay" onAction="#handleOnActionButtonBtnPay"/>
 
 </AnchorPane>

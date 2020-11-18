@@ -1,27 +1,24 @@
 package app.controller;
 
+import app.controller.component.MainMenuController;
 import app.router.RouteMapping;
+import app.router.Router;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
 @RouteMapping( title = "Contas abertas | Mensalistas")
 public class MonthlyOrdersOpenController {
 
-    @FXML
-    private TableView tbView;
+    public Button btnSelect;
 
-//    public void initialize() {
-//        //System.out.println(tbView.getItems().addAll());
-//        Order order = new Order();
-//        User user = new User();
-//        user.setUsername("José");
-//        order.setId(1L);
-//        order.setCreatedat(new Date());
-//        order.setStatus(Status.PAID);
-//        order.setTotalamount(new BigDecimal(140.312034123));
-//        order.setUser(user);
-//        order.setPaymentMethod(PaymentMethod.CARD);
-//
-//        tbView.getItems().add(order);
-//    }
+    public void handleOnActionButtonBtnSelect() {
+        Router.goTo(CheckOutConfirmationController.class, true);
+    }
+
+    @FXML
+    private MainMenuController menuController;
+    public void initialize() {
+        menuController.btnOpenAccounts.getStyleClass().add("button-menu-selected");
+    }
 }

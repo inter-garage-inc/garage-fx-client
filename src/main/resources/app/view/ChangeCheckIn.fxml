@@ -2,12 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckInController">
-    <fx:include source="component/MainMenu.fxml" />
-    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-menu, button-selected" text="Check In" />
-    <Line endX="15.0" layoutX="413.0" layoutY="52.0" scaleY="3.0" startX="-102.0" stroke="#2689d0" />
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ChangeCheckInController">
+    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
 
     <fx:include source="component/LogoTopLeft.fxml" />
 
@@ -33,5 +30,5 @@
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button layoutX="762.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-red" text="Excluir" />
-    <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
+    <Button fx:id="btnSave" onAction="#handleOnActionButtonSave" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Salvar" />
 </AnchorPane>

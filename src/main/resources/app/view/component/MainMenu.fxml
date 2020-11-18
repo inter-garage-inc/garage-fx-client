@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="app.controller.component.MainMenuController">
+<?import javafx.scene.layout.*?>
 
-    <Button fx:id="buttonCheckIn" onAction="#handleOnActionButtonCheckIn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"  styleClass="button-menu, button-blue-menu" text="Check In" />
-    <Button fx:id="buttonCheckout" onAction="#handleOnActionButtonCheckout" layoutX="158.0" layoutY="14.0" mnemonicParsing="false"  styleClass="button-menu, button-blue-menu" text="Checkout" />
-    <Button fx:id="buttonMonthly" onAction="#handleOnActionButtonMonthly" layoutX="301.0" layoutY="14.0" mnemonicParsing="false"  styleClass="button-menu, button-blue-menu" text="Mensalistas" />
-    <Button fx:id="buttonOpenAccounts" onAction="#handleOnActionButtonOrdersOpen" layoutX="444.0" layoutY="14.0" mnemonicParsing="false"  styleClass="button-menu, button-blue-menu" text="Contas Abertas" />
-    <Button fx:id="buttonVacancyMap" onAction="#handleOnActionButtonVacancyMap" layoutX="587.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-menu, button-blue-menu" text="Mapa de Vagas" />
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.component.MainMenuController">
 
+    <Button fx:id="btnCheckIn" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonCheckIn" styleClass="button-menu" text="Check In" />
+    <Button fx:id="btnCheckout" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonCheckout" styleClass="button-menu" text="Checkout" />
+    <Button fx:id="btnMonthly" layoutX="317.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonMonthly" styleClass="button-menu" text="Mensalistas" />
+    <MenuButton fx:id="btnOpenAccounts" layoutX="467.0" layoutY="14.0" mnemonicParsing="false" styleClass="button-menu" text="Contas Abertas" >
+        <items>
+            <MenuItem fx:id="btnCustomerMonthly" mnemonicParsing="false" onAction="#handleOnActionButtonBtnCustomerMonthly" text="Mensalistas" styleClass="button-menu-item"/>
+            <MenuItem fx:id="btnCustomerSingle" mnemonicParsing="false" onAction="#handleOnActionButtonBtnCustomerSingle" text="Avulsos" styleClass="button-menu-item"/>
+        </items>
+    </MenuButton>
+    <Button fx:id="btnVacancyMap" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu" text="Mapa de Vagas" />
+    <MenuButton fx:id="btnServicePlans" layoutX="767.0" layoutY="14.0" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu" text="Planos e serviços" >
+        <items>
+            <MenuItem fx:id="btnPlansManagement" mnemonicParsing="false" onAction="#handleOnActionButtonPlansManagement" text="Gestão de Planos" styleClass="button-menu-item"/>
+            <MenuItem fx:id="btnCatalogManagement" mnemonicParsing="false" onAction="#handleOnActionButtonCatalog" text="Gestão de serviços" styleClass="button-menu-item"/>
+        </items>
+    </MenuButton>
+    <Button fx:id="btnUsers" layoutX="917.0" layoutY="14.0" onAction="#handleOnActionButtonUsers" styleClass="button-menu" text="Gestão de pessoal" />
 </AnchorPane>
