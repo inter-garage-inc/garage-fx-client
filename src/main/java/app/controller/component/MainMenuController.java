@@ -13,16 +13,14 @@ public class MainMenuController {
     public Button btnCheckIn;
     public Button btnCheckout;
     public Button btnMonthly;
-    public Button btnOpenAccounts;
+    public MenuButton btnOpenAccounts;
+    public MenuItem btnCustomerMonthly;
+    public MenuItem btnCustomerSingle;
     public Button btnVacancyMap;
     public MenuButton btnServicePlans;
     public Button btnUsers;
     public MenuItem btnPlansManagement;
     public MenuItem btnCatalogManagement;
-    public double y;
-    public double x;
-    public String text;
-    public Button btnSelected;
 
     public void initialize() {
         var user = AuthenticationService.claimUser();
@@ -37,20 +35,25 @@ public class MainMenuController {
         }
     }
 
-    public void handleOnActionButtonCheckIn(ActionEvent actionEvent) {
+    public void handleOnActionButtonCheckIn(ActionEvent actionEvent) throws InterruptedException {
         Router.goTo(CheckInController.class, true);
     }
 
     public void handleOnActionButtonCheckout(ActionEvent actionEvent) {
         Router.goTo(CheckoutController.class, true);
+
     }
 
     public void handleOnActionButtonMonthly(ActionEvent actionEvent) {
         Router.goTo(MonthlyCustomerController.class, true);
     }
 
-    public void handleOnActionButtonOrdersOpen(ActionEvent actionEvent) {
-        Router.goTo(OrdersOpenController.class, true); // TODO Test Only
+    public void handleOnActionButtonBtnCustomerMonthly() {
+        Router.goTo(MonthlyOrdersOpenController.class, true);
+    }
+
+    public void handleOnActionButtonBtnCustomerSingle() {
+        Router.goTo(SingleOrdersOpenController.class, true);
     }
 
     public void handleOnActionButtonVacancyMap(ActionEvent actionEvent) {
@@ -58,7 +61,7 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonPlansManagement(ActionEvent actionEvent) {
-
+        Router.goTo(PlanManagementController.class, true);
     }
 
     public void handleOnActionButtonCatalog(ActionEvent actionEvent) {

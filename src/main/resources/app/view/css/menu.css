@@ -3,40 +3,45 @@
     -fx-font-weight: bold;
     -fx-font-size: 13px;
     -fx-padding: -5px;
-}
-
-.button-selected {
-    -fx-scale-x: 1;
+    -fx-background-color: #2689D0;
+    -fx-text-fill: #ffffff;
+    -fx-pref-height: 40px;
     -fx-scale-y: 1;
+    -fx-background-image: url("../images/MenuLine.png");
+    -fx-background-position: 5px 33px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 135px 3px;
 }
 
-.button-hover:hover {
+.button-menu .label {
+    -fx-text-fill: #ffffff;
+}
+
+.button-menu:hover .label{
+    -fx-text-fill: #2689D0;
+}
+
+.button-menu-selected .label {
+    -fx-text-fill: #2689D0;
+}
+
+.button-menu:hover {
     -fx-background-color: white;
     -fx-text-fill: #2689D0;
     -fx-pref-height: 42px;
     -fx-border-color: #2689D0;
     -fx-border-radius: 3px;
-    -fx-border-width: 1px 1px 3px 1px;
     -fx-scale-y: 1.2;
 }
 
-.button-selected {
+.button-menu-selected {
     -fx-background-color: white;
     -fx-text-fill: #2689D0;
     -fx-pref-height: 42px;
     -fx-border-color: #2689D0;
     -fx-border-radius: 3px;
-    -fx-border-width: 1px 1px 3px 1px;
 }
 
-.button-menu-button {
-    -fx-background-color: #2689D0;
-    -fx-text-fill: ffffff;
-    -fx-pref-height: 40px;
-}
-
-.button-blue-menu {
-    -fx-background-color: #2689D0;
-    -fx-text-fill: ffffff;
-    -fx-pref-height: 40px;
+.button-menu-item .label {
+    -fx-text-fill: #ffffff;
 }

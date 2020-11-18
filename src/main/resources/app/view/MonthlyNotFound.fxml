@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MonthlyNotFoundController" stylesheets="@css/styles.css">
-    <fx:include source="component/MainMenu.fxml"/>
+    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
 
     <fx:include source="component/LogoTopLeft.fxml" />
 

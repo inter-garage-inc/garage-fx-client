@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.controller.component.MainMenuController;
 import app.router.RouteMapping;
 import app.router.Router;
 import javafx.fxml.FXML;
@@ -13,5 +14,11 @@ public class MonthlyOrdersOpenController {
 
     public void handleOnActionButtonBtnSelect() {
         Router.goTo(CheckOutConfirmationController.class, true);
+    }
+
+    @FXML
+    private MainMenuController menuController;
+    public void initialize() {
+        menuController.btnOpenAccounts.getStyleClass().add("button-menu-selected");
     }
 }

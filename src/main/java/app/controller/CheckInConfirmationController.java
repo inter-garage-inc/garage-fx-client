@@ -1,7 +1,9 @@
 package app.controller;
 
+import app.controller.component.MainMenuController;
 import app.router.RouteMapping;
 import app.router.Router;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 @RouteMapping
@@ -25,6 +27,12 @@ public class CheckInConfirmationController {
         System.out.println("Carregando tela de Check Out"); //TODO criar um pop up para carregar a tela de check out
         Thread.sleep(1000);
         Router.goTo(CheckOutConfirmationController.class, true);
+    }
+
+    @FXML
+    private MainMenuController menuController;
+    public void initialize() {
+        menuController.btnCheckIn.getStyleClass().add("button-menu-selected");
     }
 
 }
