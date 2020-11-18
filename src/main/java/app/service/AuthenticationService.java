@@ -1,9 +1,9 @@
 package app.service;
 
 import app.client.GarageClient;
+import app.data.User;
 import app.data.authentication.Credentials;
 import app.data.authentication.Jwt;
-import app.data.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
