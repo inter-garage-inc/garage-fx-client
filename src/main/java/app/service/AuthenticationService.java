@@ -50,4 +50,8 @@ public class AuthenticationService {
         var mapper = new ObjectMapper();
         return mapper.readValue(claims.get("user", String.class), User.class);
     }
+
+    public static void logout() {
+        jwt = null;
+    }
 }

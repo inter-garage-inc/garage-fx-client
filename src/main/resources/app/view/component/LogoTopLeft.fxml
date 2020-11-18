@@ -5,7 +5,7 @@
 <ImageView xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="app.controller.component.LogoTopLeft"
-           fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+           onMouseClicked="#handleOnMouseClickedLogoImage" fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
     <Image url="@../images/imagotypeBlue.png" />
 </ImageView>
 

@@ -1,0 +1,20 @@
+ .labelName {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2689d0;
+ }
+
+ .buttonLogout {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #999999;
+    -fx-max-height: 30px;
+    -fx-max-width: 50px;
+    -fx-min-height: 30px;
+    -fx-min-width: 50px;
+ }
+
+ .buttonLogout:hover {
+    -fx-background-color: red;
+ }

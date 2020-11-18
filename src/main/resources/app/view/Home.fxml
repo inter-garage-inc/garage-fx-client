@@ -9,6 +9,9 @@
 
    <fx:include source="component/MainMenu.fxml" fx:id="menuController" />
 
+   <fx:include source="component/UserDetails.fxml" />
+
+
    <Label fx:id="labelWelcome" layoutX="190.0" layoutY="220.0" prefHeight="150.0" prefWidth="700.0" styleClass="label-welcome" />
 
    <!--Different position -->
