@@ -35,6 +35,8 @@ public class Router extends Application {
 
     private static Stage lastPopUp;
 
+    private static Object userData;
+
     @Override
     public void start(Stage primaryStage) {
         Router.primaryStage = primaryStage;
@@ -73,6 +75,11 @@ public class Router extends Application {
             System.err.println("Unable to load fxml");
         }
         return null;
+    }
+
+    public static void goTo(Class<?> c, Object userData) {
+        setUserData(userData);
+        goTo(c, false);
     }
 
     public static void goTo(Class<?> c) {
@@ -140,4 +147,13 @@ public class Router extends Application {
         primaryStage.centerOnScreen();
         primaryStage.show();
     }
+
+    public static void setUserData(Object userData) {
+        Router.userData = userData;
+    }
+
+    public static Object getUserData() {
+        return userData;
+    }
+
 }
