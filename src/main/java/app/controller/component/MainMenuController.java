@@ -45,8 +45,8 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonMonthly(ActionEvent actionEvent) {
-        //Router.goTo(MonthlyCustomerController.class, true);
-        Router.goTo(CustomerRegisterController.class, true);
+        Router.goTo(MonthlyCustomerController.class, true);
+        //Router.goTo(CustomerRegisterController.class, true);
         //Router.goTo(MonthlyFoundController.class, true);
     }
 
