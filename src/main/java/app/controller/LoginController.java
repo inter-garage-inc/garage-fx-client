@@ -35,12 +35,12 @@ public class LoginController {
     }
 
     public void handleButtonLogin() {
-        var authRequest = Credentials.builder()
+        var credentials = Credentials.builder()
                 .username(fieldUsername.getText())
                 .password(fieldPassword.getText())
                 .build();
         try {
-            var response = authenticationService.login(authRequest);
+            var response = authenticationService.login(credentials);
             if(response) {
                 showMessage("Logado com sucesso");
                 Router.goTo(HomeController.class);
