@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpRegisterSuccessfulController;
 import app.data.Address;
 import app.data.Customer;
@@ -63,10 +64,12 @@ public class CustomerRegisterController {
     private PostalCodeService postalCodeService;
 
     @FXML
+    private MainMenuController menuController;
     public void initialize() {
         customerService = new CustomerService();
         postalCodeService = new PostalCodeService();
         initComboBoxes();
+        menuController.btnMonthly.getStyleClass().add("button-menu-selected");
     }
 
     private void initComboBoxes() {
@@ -138,6 +141,7 @@ public class CustomerRegisterController {
 //                Router.goTo(); TODO set destination go to after
                 Router.closePopUp(1);
                 Router.goTo(HomeController.class);
+                Router.goTo(MonthlyFoundController.class, true);
             } else {
                 System.out.println("Não foi possivel cadastrar"); //TODO create a pop-up
             }
