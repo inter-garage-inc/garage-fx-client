@@ -132,14 +132,12 @@ public class CustomerRegisterController {
                 .address(address)
                 .build();
         try {
-            var response = customerService.save(customer);
-            if (response) {
-                Router.showPopUp(PopUpRegisterSuccessfulController.class); //TODO set time to close
-//                Router.goTo(); TODO set destination go to after
-                Router.closePopUp(1);
-                Router.goTo(HomeController.class);
+            var c = customerService.save(customer);
+            if (c != null) {
+                Router.showPopUp(PopUpRegisterSuccessfulController.class, 2);
+                Router.goTo(HomeController.class, c); //TODO create destine page
             } else {
-                System.out.println("Não foi possivel cadastrar"); //TODO create a pop-up
+                System.out.println("Não foi possivel cadastrar. Verificar dados. Talvez CPF/CNPJ já cadastrados"); //TODO create a pop-up
             }
         } catch (ConnectionFailureException e) {
             System.err.println("Error using customer service");
