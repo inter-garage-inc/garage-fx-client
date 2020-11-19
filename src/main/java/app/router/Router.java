@@ -11,7 +11,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.swing.text.TableView;
 import java.io.IOException;
 import java.util.Stack;
 
@@ -124,6 +123,11 @@ public class Router extends Application {
         }
     }
 
+    public static void showPopUp(Class<?> clazz, Integer time) {
+        showPopUp(clazz);
+        closePopUp(time);
+    }
+
     public static void showPopUp(Class<?> c) {
         Router.c = c;
         var stage = new Stage();
@@ -138,7 +142,7 @@ public class Router extends Application {
 
     public static void closePopUp(Integer time) {
         PauseTransition delay = new PauseTransition(Duration.seconds(time));
-        delay.setOnFinished( event -> lastPopUp.close() );
+        delay.setOnFinished(event -> lastPopUp.close());
         delay.play();
     }
 
