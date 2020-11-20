@@ -11,7 +11,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.swing.text.TableView;
 import java.io.IOException;
 import java.util.Stack;
 
@@ -34,6 +33,8 @@ public class Router extends Application {
     private static StageData lastStageData;
 
     private static Stage lastPopUp;
+
+    private static Object userData;
 
     @Override
     public void start(Stage primaryStage) {
@@ -73,6 +74,11 @@ public class Router extends Application {
             System.err.println("Unable to load fxml");
         }
         return null;
+    }
+
+    public static void goTo(Class<?> c, Object userData) {
+        setUserData(userData);
+        goTo(c, false);
     }
 
     public static void goTo(Class<?> c) {
@@ -117,6 +123,11 @@ public class Router extends Application {
         }
     }
 
+    public static void showPopUp(Class<?> clazz, Integer time) {
+        showPopUp(clazz);
+        closePopUp(time);
+    }
+
     public static void showPopUp(Class<?> c) {
         Router.c = c;
         var stage = new Stage();
@@ -131,7 +142,7 @@ public class Router extends Application {
 
     public static void closePopUp(Integer time) {
         PauseTransition delay = new PauseTransition(Duration.seconds(time));
-        delay.setOnFinished( event -> lastPopUp.close() );
+        delay.setOnFinished(event -> lastPopUp.close());
         delay.play();
     }
 
@@ -140,4 +151,13 @@ public class Router extends Application {
         primaryStage.centerOnScreen();
         primaryStage.show();
     }
+
+    public static void setUserData(Object userData) {
+        Router.userData = userData;
+    }
+
+    public static Object getUserData() {
+        return userData;
+    }
+
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 
+
 public class MainMenuController {
     public Button btnCheckIn;
     public Button btnCheckout;
