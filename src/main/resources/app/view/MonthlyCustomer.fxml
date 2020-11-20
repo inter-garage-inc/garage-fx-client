@@ -13,6 +13,6 @@
     <TextField layoutX="304.0" layoutY="360.0" prefWidth="450.0" styleClass="field" />
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false"  prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
+    <Button fx:id="btnSrc" onAction="#handleOnActionButtonBtnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false"  prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
 
 </AnchorPane>
