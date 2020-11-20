@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 @RouteMapping(title = "Exclusão de Cliente")
-public class DeleteCustomerController {
+public class CustomerDeleteController {
     @FXML
     private TextField labeltext;
 }

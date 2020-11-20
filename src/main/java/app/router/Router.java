@@ -51,7 +51,7 @@ public class Router extends Application {
                 c.getSimpleName().replaceFirst( "Controller$", "") + ".fxml" :
                 annotation.fxml());
 
-        return FXML_SOURCE + (annotation.popup() ? POPUP_SUB: "" ) + fxml;
+        return FXML_SOURCE + (annotation.popup() ? POPUP_SUB : "") + fxml;
     }
 
     private static String getTitle() {

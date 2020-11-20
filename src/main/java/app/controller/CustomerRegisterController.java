@@ -5,22 +5,20 @@ import app.data.Address;
 import app.data.Customer;
 import app.data.address.Country;
 import app.data.address.State;
-import app.data.address.state.Brazil;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.ConnectionFailureException;
 import app.service.CustomerService;
 import app.service.PostalCodeService;
 import app.util.MaskedTextField.MaskedTextField;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-
-import java.util.Arrays;
 
 @RouteMapping(title = "Novo Cliente")
 public class CustomerRegisterController {
@@ -45,6 +43,9 @@ public class CustomerRegisterController {
 
     @FXML
     private MaskedTextField fieldPostalCode;
+
+    @FXML
+    private ImageView imagePostalCodeLoading;
 
     @FXML
     private TextField fieldNeighborhood;
@@ -98,17 +99,28 @@ public class CustomerRegisterController {
     @FXML
     private void handleOnKeyReleasedFieldPostalCode(KeyEvent keyEvent) {
         if(fieldPostalCode.getPlainText().length() >= 8) {
-            try {
-                var address = postalCodeService.search(fieldPostalCode.getText());
-                if(address != null) {
-                    fieldCity.setText(address.getCity());
-                    fieldNeighborhood.setText(address.getNeighborhood());
-                    comboBoxState.setValue(address.getState());
-                    comboBoxCountry.setValue(Country.BRAZIL);
+            imagePostalCodeLoading.setVisible(true);
+            var taskPostalCode = new Task<Void>() {
+                @Override
+                public Void call() {
+                    try {
+                        var address = postalCodeService.search(fieldPostalCode.getText());
+                        if(address != null) {
+                            Platform.runLater(() -> {
+                                fieldCity.setText(address.getCity());
+                                fieldNeighborhood.setText(address.getNeighborhood());
+                                comboBoxState.setValue(address.getState());
+                                comboBoxCountry.setValue(Country.BRAZIL);
+                            });
+                        }
+                    } catch (ConnectionFailureException e) {
+                        System.err.println("Error using postal code service");
+                    }
+                    return null;
                 }
-            } catch (ConnectionFailureException e) {
-                System.err.println("Error using postal code service");
-            }
+            };
+            taskPostalCode.setOnSucceeded(taskFinishEvent -> imagePostalCodeLoading.setVisible(false));
+            new Thread(taskPostalCode).start();
         }
     }
 

@@ -5,7 +5,7 @@ import app.router.RouteMapping;
 import javafx.fxml.FXML;
 
 @RouteMapping(title = "Buscar Cliente Mensalista")
-public class MonthlyCustomerController {
+public class CustomerFindController {
 
     @FXML
     private MainMenuController menuController;

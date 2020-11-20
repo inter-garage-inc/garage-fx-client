@@ -51,7 +51,7 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonBtnCustomerMonthly() {
-        Router.goTo(MonthlyOrdersOpenController.class, true);
+        Router.goTo(CustomerOrdersOpenController.class, true);
     }
 
     public void handleOnActionButtonBtnCustomerSingle() {
