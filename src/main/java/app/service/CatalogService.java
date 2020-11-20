@@ -2,15 +2,17 @@ package app.service;
 
 import app.client.GarageClient;
 import app.data.Catalog;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CatalogService {
 
     private final ObjectMapper mapper;
 
-    public CatalogService() throws ConnectionFailureException {
+    public CatalogService() {
         mapper = new ObjectMapper();
     }
 
@@ -24,21 +26,30 @@ public class CatalogService {
         }
     }
 
-    public Boolean CatalogUpdate(Catalog catalog) throws ConnectionFailureException {
+    public Boolean CatalogUpdate(Catalog catalog, Long id) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(catalog);
-            var response = GarageClient.put("/catalogs", payload);
+            var response = GarageClient.put("/catalogs/"+id, payload);
             return response.statusCode() == 201;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException();
         }
     }
 
-    public Boolean CatalogDelete(Catalog catalog) throws ConnectionFailureException {
+    public Boolean CatalogDelete(Long id) throws ConnectionFailureException {
         try {
-            var payload = mapper.writeValueAsString(catalog);
-            var response = GarageClient.delete(payload);
+            var response = GarageClient.delete("/catalogs/"+id);
+            System.out.println(response.body());
             return response.statusCode() == 201;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
+
+    public List<Catalog> CatalogFindAll() throws ConnectionFailureException {
+        try {
+            var response = GarageClient.get("/catalogs");
+            return mapper.readValue( (String) response.body(), new TypeReference<List<Catalog>> () {});
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException();
         }

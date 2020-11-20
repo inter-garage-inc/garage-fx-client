@@ -1,8 +1,10 @@
 package app.controller;
 
+import app.controller.popup.PopUpRegisterSuccessfulController;
 import app.data.Catalog;
 import app.data.catalog.Status;
 import app.router.RouteMapping;
+import app.router.Router;
 import app.service.CatalogService;
 import app.service.ConnectionFailureException;
 import javafx.scene.control.Button;
@@ -34,10 +36,11 @@ public class ServiceRegistrationController {
             CatalogService service = new CatalogService();
             var response = service.CatalogSave(catalog);
             if(response){
-                System.out.println("Cadastrado com sucesso!!");
+                Router.showPopUp(PopUpRegisterSuccessfulController.class, 1);
             } else {
                 System.out.println("Não foi possível realizar o cadastro!!");
             }
+            Router.goTo(ServiceManagementController.class);
         } catch (ConnectionFailureException e) {
             e.printStackTrace();
         }
