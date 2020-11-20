@@ -34,6 +34,6 @@
     </TableView>
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
+    <Button fx:id="btnRegistration" onAction="#handleOnActionButtonBtnRegistration" layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
     <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
 </AnchorPane>
