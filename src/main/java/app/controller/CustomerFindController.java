@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 @RouteMapping(title = "Buscar Cliente Mensalista")
-public class MonthlyCustomerController {
+public class CustomerFindController {
 
     @FXML
     private MainMenuController menuController;

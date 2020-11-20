@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
 @RouteMapping( title = "Contas abertas | Mensalistas")
-public class MonthlyOrdersOpenController {
+public class CustomerOrdersOpenController {
 
     public Button btnSelect;
 
