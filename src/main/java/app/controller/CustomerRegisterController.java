@@ -45,19 +45,31 @@ public class CustomerRegisterController {
     private MaskedTextField fieldPostalCode;
 
     @FXML
-    private ImageView imagePostalCodeLoading;
+    private ImageView postalCodeLoading;
 
     @FXML
     private TextField fieldNeighborhood;
 
     @FXML
+    public ImageView neighborhoodLoading;
+
+    @FXML
     private TextField fieldCity;
+
+    @FXML
+    public ImageView cityLoading;
 
     @FXML
     private ComboBox<State> comboBoxState;
 
     @FXML
+    public ImageView stateLoading;
+
+    @FXML
     private ComboBox<Country> comboBoxCountry;
+
+    @FXML
+    public ImageView countryLoading;
 
     private CustomerService customerService;
 
@@ -99,7 +111,7 @@ public class CustomerRegisterController {
     @FXML
     private void handleOnKeyReleasedFieldPostalCode(KeyEvent keyEvent) {
         if(fieldPostalCode.getPlainText().length() >= 8) {
-            imagePostalCodeLoading.setVisible(true);
+            showLoading();
             var taskPostalCode = new Task<Void>() {
                 @Override
                 public Void call() {
@@ -119,7 +131,7 @@ public class CustomerRegisterController {
                     return null;
                 }
             };
-            taskPostalCode.setOnSucceeded(taskFinishEvent -> imagePostalCodeLoading.setVisible(false));
+            taskPostalCode.setOnSucceeded(taskFinishEvent -> hideLoading());
             new Thread(taskPostalCode).start();
         }
     }
@@ -154,5 +166,21 @@ public class CustomerRegisterController {
         } catch (ConnectionFailureException e) {
             System.err.println("Error using customer service");
         }
+    }
+
+    public void showLoading() {
+        //postalCodeLoading.setVisible(true);
+        neighborhoodLoading.setVisible(true);
+        cityLoading .setVisible(true);
+        stateLoading.setVisible(true);
+        countryLoading.setVisible(true);
+    }
+
+    public void hideLoading() {
+        postalCodeLoading.setVisible(false);
+        neighborhoodLoading.setVisible(false);
+        cityLoading .setVisible(false);
+        stateLoading.setVisible(false);
+        countryLoading.setVisible(false);
     }
 }
