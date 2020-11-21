@@ -172,7 +172,7 @@ public class CustomerRegisterController {
     }
 
     public void showLoading() {
-        //postalCodeLoading.setVisible(true);
+        postalCodeLoading.setVisible(true);
         neighborhoodLoading.setVisible(true);
         cityLoading .setVisible(true);
         stateLoading.setVisible(true);
