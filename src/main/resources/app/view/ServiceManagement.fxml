@@ -14,26 +14,10 @@
     <Label layoutX="404.0" layoutY="152.0" styleClass="message-normal" text="Gestão de Serviços" />
 
     <TableView fx:id="tbView" layoutX="254.0" layoutY="202.0" prefHeight="316.0" prefWidth="573.0" stylesheets="@css/tableview.css">
-        <columns>
-            <TableColumn prefWidth="99.20001220703125" text="Serviço">
-                <cellValueFactory>
-                    <PropertyValueFactory property="service" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn prefWidth="90.80001831054688" text="Preço">
-                <cellValueFactory>
-                    <PropertyValueFactory property="price" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn prefWidth="82.800048828125" text="Status">
-                <cellValueFactory>
-                    <PropertyValueFactory property="status" />
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
+
     </TableView>
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
-    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
+    <Button fx:id="btnRegistration" onAction="#handleOnActionButtonBtnRegistration" layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
+    <Button fx:id="btnSelect" onAction="#handleOnActionButtonBtnSelect" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
 </AnchorPane>

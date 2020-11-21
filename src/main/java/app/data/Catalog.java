@@ -1,6 +1,7 @@
 package app.data;
 
 import app.data.catalog.Status;
+import javafx.scene.chart.PieChart;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -10,7 +11,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Catalog {
+public class Catalog extends DataBase {
+
     private String description;
 
     private BigDecimal price;

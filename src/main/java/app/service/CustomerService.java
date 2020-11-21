@@ -24,7 +24,8 @@ public class CustomerService {
             }
             return null;
         } catch (IOException | InterruptedException exception) {
-           throw new ConnectionFailureException();
+            throw new ConnectionFailureException();
         }
     }
+
 }

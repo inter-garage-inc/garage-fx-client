@@ -4,6 +4,8 @@ plugins {
     id "org.openjfx.javafxplugin" version "0.0.9"
 }
 
+compileJava.options.encoding = 'UTF-8'
+
 group 'garage'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 11

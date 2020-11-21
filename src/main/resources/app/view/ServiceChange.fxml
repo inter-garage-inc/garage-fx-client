@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ServiceChangeController">
-    <fx:include source="component/MainMenu.fxml" fx:id="menu" />
-
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
-
     <fx:include source="component/UserDetails.fxml" />
 
-    <Label layoutX="295.0" layoutY="188.0" styleClass="label, field, blue" text="Veículo - XXX-0000    |    Qual serviço deseja alterar?" />
+    <Label layoutX="433.0" layoutY="142.0" styleClass="field, blue" text="Alteração de serviços" />
 
-    <Label layoutX="295.0" layoutY="263.0" styleClass="label, field, blue" text="Serviços" />
+    <Label layoutX="390.0" layoutY="233.0" styleClass="label, field, blue" text="Tipo de Serviço" />
+    <TextField fx:id="fieldService" layoutX="390.0" layoutY="268.0" prefWidth="287.0" promptText="Digite o tipo de serviço" styleClass="field" />
 
-    <ScrollPane layoutX="295.0" layoutY="310.0" prefHeight="200.0" prefWidth="355.0">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="201.0" prefWidth="326.0">
-             <children>
-                <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="CheckBox" />
-                <CheckBox layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="CheckBox" />
-                <CheckBox layoutX="14.0" layoutY="86.0" mnemonicParsing="false" text="CheckBox" />
-                <CheckBox layoutX="14.0" layoutY="122.0" mnemonicParsing="false" text="CheckBox" />
-                <CheckBox layoutX="14.0" layoutY="158.0" mnemonicParsing="false" text="CheckBox" />
-             </children></AnchorPane>
-      </content>
-    </ScrollPane>
+    <Label layoutX="390.0" layoutY="318.0" styleClass="label, field, blue" text="Preço" />
+    <TextField fx:id="fieldPrice" layoutX="390.0" layoutY="352.0" prefWidth="287.0" promptText="Digite o Preço" styleClass="field" />
+
+    <Label layoutX="390.0" layoutY="403.0" styleClass="label, field, blue" text="Status" />
+    <ComboBox fx:id="cbStatus" layoutX="390.0" layoutY="438.0" prefWidth="287.0" promptText="Selecione" styleClass="field" />
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button layoutX="945.0" layoutY="667.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Salvar" fx:id="btnSave" onAction="#handleOnActionButtonSave"/>
+    <Button fx:id="btnDelete" onAction="#handleOnActionButtonBtnDelete" layoutX="762.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-red" text="Excluir" />
+    <Button fx:id="btnAlter" onAction="#handleOnActionButtonBtnAlter" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Alterar" />
+
 </AnchorPane>

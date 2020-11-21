@@ -12,7 +12,7 @@
     <Label layoutX="240.0" layoutY="180.0" styleClass="message-normal" text="Check in | Registro de entrada de Veículo" />
 
     <Label layoutX="315.0" layoutY="265.0" styleClass="label, field, blue" text="Veículo" />
-    <TextField layoutX="315.0" layoutY="300.0" prefWidth="450.0" styleClass="field" />
+    <TextField layoutX="315.0" layoutY="300.0" prefWidth="450.0" promptText="Digite a placa do veículo" styleClass="field" />
 
     <Label layoutX="315.0" layoutY="365.0" styleClass="label, field, blue" text="Serviços" />
     <ScrollPane layoutX="315.0" layoutY="400.0" prefHeight="152.0" prefWidth="450.0">

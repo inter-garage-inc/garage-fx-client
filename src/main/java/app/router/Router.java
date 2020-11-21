@@ -72,6 +72,7 @@ public class Router extends Application {
             return new Scene(parent);
         } catch (IOException exception) {
             System.err.println("Unable to load fxml");
+            exception.printStackTrace();
         }
         return null;
     }
