@@ -70,6 +70,6 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonUsers(ActionEvent actionEvent) {
-
+        Router.goTo(PeopleManagementController.class, true);
     }
 }

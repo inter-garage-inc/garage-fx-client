@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.AlterDeletUserController" stylesheets="@css/styles.css">
-    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.AlterDeletUserController">
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
 
     <fx:include source="component/UserDetails.fxml" />
@@ -20,6 +21,9 @@
     <Label layoutX="290.0" layoutY="403.0" styleClass="label, field, blue" text="Confirmar Senha" />
     <PasswordField fx:id="fieldConfPassword" layoutX="290.0" layoutY="438.0" prefWidth="287.0" promptText="Confirme a senha" styleClass="field" />
 
-    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Salvar" />
+    <Button fx:id="btnAlter" onAction="#handleOnActionButtonBtnAlter" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Alterar" />
+    <Button fx:id="btnDelete" onAction="#handleOnActionButtonBtnDelete" layoutX="775.0" layoutY="666.0" mnemonicParsing="false" prefWidth="130.0" styleClass="button, button-red" text="Excluir" />
     <fx:include source="component/ButtonBack.fxml" />
+
+    <Label layoutX="286.0" layoutY="566.0" prefHeight="15.0" prefWidth="529.0" fx:id="lblMessage" styleClass="message, warning"/>
 </AnchorPane>
