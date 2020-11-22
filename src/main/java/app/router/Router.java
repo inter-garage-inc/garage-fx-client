@@ -77,6 +77,11 @@ public class Router extends Application {
         return null;
     }
 
+    public static void goTo(Class<?> c, Object userData, Boolean stackUpHistory) {
+        setUserData(userData);
+        goTo(c, stackUpHistory);
+    }
+
     public static void goTo(Class<?> c, Object userData) {
         setUserData(userData);
         goTo(c, false);
@@ -124,6 +129,17 @@ public class Router extends Application {
         }
     }
 
+    public static void showPopUp(Class<?> clazz, Object userData, Integer time) {
+        showPopUp(clazz);
+        setUserData(userData);
+        closePopUp(time);
+    }
+
+    public static void showPopUp(Class<?> clazz, Object userData) {
+        showPopUp(clazz);
+        setUserData(userData);
+    }
+
     public static void showPopUp(Class<?> clazz, Integer time) {
         showPopUp(clazz);
         closePopUp(time);
@@ -131,14 +147,20 @@ public class Router extends Application {
 
     public static void showPopUp(Class<?> c) {
         Router.c = c;
-        var stage = new Stage();
-        lastPopUp = stage;
-        stage.setScene(loadScene());
-        stage.setTitle(getTitle());
-        stage.setResizable(false);
-        stage.initOwner(primaryStage);
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.show();
+        if(lastPopUp != null) {
+            closePopUp();
+        }
+        lastPopUp = new Stage();
+        lastPopUp.setScene(loadScene());
+        lastPopUp.setTitle(getTitle());
+        lastPopUp.setResizable(false);
+        lastPopUp.initOwner(primaryStage);
+        lastPopUp.initModality(Modality.WINDOW_MODAL);
+        lastPopUp.show();
+    }
+
+    public static void closePopUp() {
+        closePopUp(0);
     }
 
     public static void closePopUp(Integer time) {

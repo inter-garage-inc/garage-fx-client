@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CustomerFindController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
 
@@ -11,8 +13,11 @@
 
     <Label layoutX="304.0" layoutY="322.0" styleClass="label, field, blue" text="Cliente" />
     <TextField layoutX="304.0" layoutY="360.0" prefWidth="450.0" promptText="CPF/CNPJ ou Placa do veículo" styleClass="field" />
+    <ImageView fx:id="findLoading" layoutX="713" layoutY="360" fitWidth="40.0" preserveRatio="true" visible="false">
+        <Image url="@images/loader-blue.gif"/>
+    </ImageView>
+    
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button fx:id="btnSrc" onAction="#handleOnActionButtonBtnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false"  prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
-
 </AnchorPane>
