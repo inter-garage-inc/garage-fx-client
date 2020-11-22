@@ -9,8 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-@RouteMapping(title = "Cliente")
-public class CustomerFoundController {
+@RouteMapping(title = "Detalhes do Cliente")
+public class CustomerDetailsController {
     @FXML
     private MainMenuController menuController;
 
@@ -49,7 +49,7 @@ public class CustomerFoundController {
 
     private Customer customer;
 
-    public CustomerFoundController () {
+    public CustomerDetailsController() {
         customer = (Customer) Router.getUserData();
     }
 
@@ -71,7 +71,18 @@ public class CustomerFoundController {
     }
 
     @FXML
-    private void handleOnActionDelete(ActionEvent actionEvent) {
+    private void handleDeleteCustomer(ActionEvent actionEvent) {
         Router.showPopUp(CustomerDeleteController.class, customer);
+    }
+
+    @FXML
+    private void handleChangeCustomer(ActionEvent actionEvent) {
+//        Router.goTo(CustomerRegisterController.class, customer);
+//        TODO
+    }
+
+    @FXML
+    private void handleNewVehicle(ActionEvent actionEvent) {
+//        TODO
     }
 }

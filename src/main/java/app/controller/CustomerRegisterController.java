@@ -8,7 +8,7 @@ import app.data.address.Country;
 import app.data.address.State;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.ConnectionFailureException;
+import app.client.ConnectionFailureException;
 import app.service.CustomerService;
 import app.service.PostalCodeService;
 import app.util.MaskedTextField.MaskedTextField;
@@ -21,9 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
-@RouteMapping(title = "Novo Cliente")
+@RouteMapping(title = "Cadastrar Novo Cliente")
 public class CustomerRegisterController {
-
     @FXML
     private TextField fieldName;
 
@@ -78,27 +77,15 @@ public class CustomerRegisterController {
 
     @FXML
     private MainMenuController menuController;
-    public void initialize() {
+
+    public CustomerRegisterController() {
         customerService = new CustomerService();
         postalCodeService = new PostalCodeService();
-        initComboBoxes();
+    }
+
+    public void initialize() {
         menuController.btnMonthly.getStyleClass().add("button-menu-selected");
-    }
-
-    private void initComboBoxes() {
         comboBoxCountry.getItems().addAll(Country.values());
-    }
-
-    @FXML
-    private void handleOnActionComboBoxCountry(ActionEvent actionEvent) {
-        comboBoxState.getItems().clear();
-        var states = comboBoxCountry.getValue().getStates();
-        if(states == null) {
-            comboBoxState.setDisable(true);
-        } else {
-            comboBoxState.setDisable(false);
-            comboBoxState.getItems().addAll(states);
-        }
     }
 
     @FXML
@@ -112,12 +99,25 @@ public class CustomerRegisterController {
     }
 
     @FXML
+    private void handleOnActionComboBoxCountry(ActionEvent actionEvent) {
+        comboBoxState.getItems().clear();
+        var states = comboBoxCountry.getValue().getStates();
+        if(states == null) {
+            comboBoxState.setValue(null);
+            comboBoxState.setDisable(true);
+        } else {
+            comboBoxState.getItems().addAll(states);
+            comboBoxState.setDisable(false);
+        }
+    }
+
+    @FXML
     private void handleOnKeyReleasedFieldPostalCode(KeyEvent keyEvent) {
         if(fieldPostalCode.getPlainText().length() >= 8) {
             showLoading();
-            var taskPostalCode = new Task<Void>() {
+            var task = new Task<Void>() {
                 @Override
-                public Void call() {
+                protected Void call() {
                     try {
                         var address = postalCodeService.search(fieldPostalCode.getText());
                         if(address != null) {
@@ -133,9 +133,14 @@ public class CustomerRegisterController {
                     }
                     return null;
                 }
+
+                @Override
+                protected void succeeded() {
+                    super.succeeded();
+                    hideLoading();
+                }
             };
-            taskPostalCode.setOnSucceeded(taskFinishEvent -> hideLoading());
-            new Thread(taskPostalCode).start();
+            new Thread(task).start();
         }
     }
 
@@ -159,10 +164,10 @@ public class CustomerRegisterController {
                 .address(address)
                 .build();
         try {
-            var c = customerService.save(customer);
+            var c = customerService.register(customer);
             if (c != null) {
-                Router.showPopUp(PopUpRegisterSuccessfulController.class, 2);
-                Router.goTo(HomeController.class, c); //TODO create destine page
+                Router.showPopUp(PopUpRegisterSuccessfulController.class, 3);
+                Router.goTo(CustomerDetailsController.class, c); //TODO create destine page
             } else {
                 System.out.println("Não foi possivel cadastrar. Verificar dados. Talvez CPF/CNPJ já cadastrados"); //TODO create a pop-up
             }
@@ -171,7 +176,7 @@ public class CustomerRegisterController {
         }
     }
 
-    public void showLoading() {
+    private void showLoading() {
         postalCodeLoading.setVisible(true);
         neighborhoodLoading.setVisible(true);
         cityLoading .setVisible(true);
@@ -179,7 +184,7 @@ public class CustomerRegisterController {
         countryLoading.setVisible(true);
     }
 
-    public void hideLoading() {
+    private void hideLoading() {
         postalCodeLoading.setVisible(false);
         neighborhoodLoading.setVisible(false);
         cityLoading .setVisible(false);

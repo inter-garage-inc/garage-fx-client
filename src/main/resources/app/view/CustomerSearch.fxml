@@ -4,20 +4,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CustomerFindController" stylesheets="@css/styles.css">
+<?import app.util.MaskedTextField.* ?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CustomerSearchController" stylesheets="@css/styles.css">
     <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
-
     <fx:include source="component/LogoTopLeft.fxml" />
-
     <fx:include source="component/UserDetails.fxml" />
 
-    <Label layoutX="304.0" layoutY="322.0" styleClass="label, field, blue" text="Cliente" />
-    <TextField layoutX="304.0" layoutY="360.0" prefWidth="450.0" promptText="CPF/CNPJ ou Placa do veículo" styleClass="field" />
+    <Label layoutX="425.0" layoutY="180.0" styleClass="message-normal" text="Buscar cliente" />
+
+    <fx:define>
+        <ToggleGroup fx:id="toggleGroupCpfCnpj"/>
+    </fx:define>
+    <RadioButton onAction="#handleOnActionRadioButtonCpf" toggleGroup="$toggleGroupCpfCnpj" selected="true" layoutX="315.0" layoutY="322.0" text="CPF" styleClass="field, label, blue"/>
+    <RadioButton onAction="#handleOnActionRadioButtonCnpj" toggleGroup="$toggleGroupCpfCnpj" layoutX="395.0" layoutY="322.0" text="CNPJ" styleClass="field, label, blue"/>
+    <MaskedTextField fx:id="fieldCpfCnpj" onAction="#handleOnActionSearch" layoutX="315.0" layoutY="360.0" prefWidth="450.0" mask="###.###.###-##" styleClass="field" />
     <ImageView fx:id="findLoading" layoutX="713" layoutY="360" fitWidth="40.0" preserveRatio="true" visible="false">
         <Image url="@images/loader-blue.gif"/>
     </ImageView>
-    
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button fx:id="btnSrc" onAction="#handleOnActionButtonBtnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false"  prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
+    <Button onAction="#handleOnActionButtonRegister" layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
+    <Button onAction="#handleOnActionSearch" layoutX="921.0" layoutY="666.0" mnemonicParsing="false"  prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
 </AnchorPane>

@@ -1,11 +1,11 @@
 package app.service;
 
+import app.client.ConnectionFailureException;
 import app.client.ViaCepClient;
 import app.data.Address;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.ReferenceType;
 
 import java.io.IOException;
 

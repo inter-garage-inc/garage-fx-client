@@ -1,5 +1,6 @@
 package app.service;
 
+import app.client.ConnectionFailureException;
 import app.client.GarageClient;
 import app.data.Catalog;
 import com.fasterxml.jackson.core.type.TypeReference;

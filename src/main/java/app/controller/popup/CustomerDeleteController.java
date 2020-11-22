@@ -1,14 +1,15 @@
-package app.controller;
+package app.controller.popup;
 
+import app.controller.CustomerSearchController;
 import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
+import app.client.ConnectionFailureException;
 import app.service.CustomerService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 
-@RouteMapping(title = "Exclusão de Cliente")
+@RouteMapping(title = "Exclusão de Cliente", popup = true)
 public class CustomerDeleteController {
     private Customer customer;
 
@@ -21,6 +22,18 @@ public class CustomerDeleteController {
 
     @FXML
     private void handleOnActionDelete(ActionEvent actionEvent) {
-        // TODO create delete method in customer service
+        try {
+            var response = service.delete(customer.getId());
+            if(response) {
+                Router.showPopUp(PopUpDeleteSuccessController.class, 3);
+                Router.goTo(CustomerSearchController.class);
+            } else {
+//                Router.showPopUp(); TODO popup error trying to delete customer
+                System.out.println("Erro ao deletar cliente");
+            }
+        } catch (ConnectionFailureException exception) {
+//                Router.showPopUp(); TODO popup error trying call server
+            System.out.println("Erro ao contatar servidor para deletar cliente");
+        }
     }
 }
