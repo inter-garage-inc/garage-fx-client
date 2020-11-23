@@ -6,7 +6,6 @@ import app.controller.popup.PopUpServerCloseController;
 import app.data.user.Role;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.AuthenticationService;
 import app.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,13 +37,7 @@ public class PeopleManagementController {
                 return;
             }
 
-            var logado = AuthenticationService.claimUser();
-            Boolean permission = (
-                    logado.getRole().equals(Role.MANAGER))
-                    && (user.getRole().equals(Role.ADMIN) || user.getRole().equals(Role.MANAGER)
-            );
-
-            if(permission) {
+            if(user.getRole() != Role.EMPLOYEE) {
                 lblMessage.setText("Permissão negada");
             } else {
                 Router.goTo(AlterDeletUserController.class, user);
