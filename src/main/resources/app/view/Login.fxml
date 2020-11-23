@@ -4,20 +4,20 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoginController" stylesheets="@css/styles.css">
 
+<AnchorPane prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoginController" stylesheets="@css/styles.css">
    <!--Different position -->
    <ImageView fitHeight="97.0" fitWidth="265.0" layoutX="168.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/imagotypeBlue.png" />
    </ImageView>
 
    <Label layoutX="76.0" layoutY="147.0" styleClass="field, label, blue" text="Usuário" />
-   <TextField fx:id="fieldUsername" layoutX="76.0" layoutY="180.0" prefWidth="450.0" styleClass="field" />
+   <TextField fx:id="fieldUsername" onAction="#handleLogin" layoutX="76.0" layoutY="180.0" prefWidth="450.0" styleClass="field" />
 
    <Label layoutX="76.0" layoutY="243.0" styleClass="field, label, blue" text="Senha" />
-   <PasswordField fx:id="fieldPassword" layoutX="76.0" layoutY="277.0" prefWidth="450.0" styleClass="field" />
+   <PasswordField fx:id="fieldPassword" onAction="#handleLogin" layoutX="76.0" layoutY="277.0" prefWidth="450.0" styleClass="field" />
 
-   <Button layoutX="76.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefWidth="130.0" styleClass="button, button-blue" text="Entrar" />
+   <Button onAction="#handleLogin" layoutX="76.0" layoutY="338.0" styleClass="button, button-blue" text="Entrar" />
 
-   <Label fx:id="labelMessage" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="340.0" prefHeight="36.0" prefWidth="338.0" styleClass="message, warning" visible="false" />
+   <Label fx:id="labelMessage" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="340.0" prefHeight="36.0" prefWidth="338.0" styleClass="message, warning" />
 </AnchorPane>
