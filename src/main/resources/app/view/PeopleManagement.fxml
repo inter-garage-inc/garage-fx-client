@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PeopleManagementController" stylesheets="@css/styles.css">
-    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PeopleManagementController">
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
 
     <fx:include source="component/UserDetails.fxml" />
@@ -16,6 +17,8 @@
             </font></TextField>
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button fx:id="btnRegistration" onAction="#handleOnActionButtonBtnRegistration" layoutX="762.0"  layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-green" text="Cadastrar" />
-    <Button fx:id="btnSrc" onAction="#handleOnActionButtonBtnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
+    <Button fx:id="btnRegistration" layoutX="762.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnRegistration" prefWidth="110.0" styleClass="button, button-green" text="Cadastrar" />
+    <Button fx:id="btnSrc" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnSrc" prefWidth="110.0" styleClass="button, button-blue" text="Buscar" />
+
+    <Label fx:id="lblMessage" layoutX="304.0" layoutY="423.0" prefHeight="18.0" prefWidth="242.0" styleClass="message, warning" />
 </AnchorPane>

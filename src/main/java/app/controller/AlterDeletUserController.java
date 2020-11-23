@@ -3,15 +3,11 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpChangeSuccessfulController;
 import app.data.User;
-import app.data.user.Role;
 import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.UserService;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 @RouteMapping
 public class AlterDeletUserController {
@@ -23,6 +19,7 @@ public class AlterDeletUserController {
     public Button btnAlter;
     public Label lblMessage;
     public Button btnDelete;
+    public ComboBox<Status> cbStatus;
     User user;
     UserService service;
     
@@ -34,25 +31,47 @@ public class AlterDeletUserController {
         user = (User) Router.getUserData();
         fieldName.setText(user.getName());
         fieldUsername.setText(user.getUsername());
-        System.out.println(user.getId());
+        cbStatus.getItems().addAll(Status.values());
+        cbStatus.setValue(user.getStatus());
     }
 
     public void handleOnActionButtonBtnAlter() {
-        var user2 = User.builder()
+        Boolean confirmPassword = fieldPassword.getText().equals(fieldConfPassword.getText());
+        Boolean nullName = fieldName.getText() == null || fieldName.getText().trim().isEmpty();
+        Boolean nullUsername = fieldUsername.getText() == null || fieldUsername.getText().trim().isEmpty();
+        Boolean nullPassword = fieldPassword.getText() == null || fieldPassword.getText().trim().isEmpty();
+        Boolean nullConfirmPassword = fieldConfPassword.getText() == null || fieldConfPassword.getText().trim().isEmpty();
+
+        if(nullName || nullUsername || nullPassword || nullConfirmPassword) {
+            lblMessage.setText("Os campos não podem ser vazios");
+            return;
+        }
+
+
+        var userAlter = User.builder()
                 .name(fieldName.getText())
                 .username(fieldUsername.getText())
                 .password(fieldPassword.getText())
-                .role(Role.ADMIN)
-                .status(Status.ACTIVE)
+                .role(user.getRole())
+                .status(cbStatus.getValue())
                 .build();
 
+
+        if (!confirmPassword) {
+            lblMessage.setText("Senhas não são iguais");
+            fieldPassword.setText("");
+            fieldConfPassword.setText("");
+            return;
+        }
+
         try {
-            if (fieldPassword.getText().equals(fieldConfPassword.getText()) && service.userUpdate(user.getId(), user2)) {
+            if(service.userUpdate(user.getId(), userAlter)) {
                 Router.showPopUp(PopUpChangeSuccessfulController.class, 1);
                 Router.goTo(PeopleManagementController.class);
             } else {
-                lblMessage.setText("Senhas são divergentes");
+                lblMessage.setText("Sem acesso ao servidor");
             }
+
         } catch (ConnectionFailureException e) {
             //TODO Criar pop up
         }

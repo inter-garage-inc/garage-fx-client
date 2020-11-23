@@ -56,7 +56,7 @@ public class UserService {
     public Boolean userDelete(Long id) throws ConnectionFailureException {
         try {
             var response = GarageClient.delete("/users/"+id);
-            return response.statusCode() == 201;
+            return response.statusCode() == 200;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException();
         }

@@ -28,6 +28,7 @@ public class AuthenticationService {
             var response = GarageClient.post("/authentication", payload);
             if(response.statusCode() == 200) {
                 jwt = mapper.readValue((String) response.body(), new TypeReference<Jwt>() {});
+                System.out.println(jwt.getToken());
                 return true;
             }
             return false;

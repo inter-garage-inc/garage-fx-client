@@ -2,11 +2,13 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
+import app.data.user.Role;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 @RouteMapping(title = "Gestão de Pessoal")
@@ -15,6 +17,7 @@ public class PeopleManagementController {
     public Button btnRegistration;
     public Button btnSrc;
     public TextField txtUsername;
+    public Label lblMessage;
 
     @FXML
     private MainMenuController menuController;
@@ -27,13 +30,19 @@ public class PeopleManagementController {
 
         try {
             var user = service.findByUsername(txtUsername.getText());
-            System.out.println(user);
 
-            if (user != null) {
-                Router.goTo(AlterDeletUserController.class, user);
-            } else {
-                System.out.println("Usuário não encontrado");
+            if (user == null) {
+                lblMessage.setText("Usuário não encontrado");
+                return;
             }
+
+            if(user.getRole() != Role.EMPLOYEE) {
+                lblMessage.setText("Permissão negada");
+            } else {
+                Router.goTo(AlterDeletUserController.class, user);
+            }
+
+
         } catch (ConnectionFailureException e) {
             //TODO Criar pop up
         }

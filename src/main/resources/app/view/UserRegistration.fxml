@@ -24,5 +24,10 @@
     <Button fx:id="btnSave" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnSave" styleClass="button, button-blue" text="Cadastrar" />
     <fx:include source="component/ButtonBack.fxml" />
 
-    <Label fx:id="lblError" layoutX="288.0" layoutY="582.0" prefHeight="15.0" prefWidth="520.0" styleClass="message, warning"/>
+    <Label layoutX="451.0" layoutY="163.0" text="*" styleClass="message, warning"/>
+    <Label layoutX="462.0" layoutY="246.0" text="*" styleClass="message, warning"/>
+    <Label layoutX="361.0" layoutY="331.0" text="*" styleClass="message, warning"/>
+    <Label layoutX="459.0" layoutY="416.0" text="*" styleClass="message, warning"/>
+
+    <Label fx:id="lblMessage" layoutX="288.0" layoutY="582.0" prefHeight="15.0" prefWidth="520.0" styleClass="message, warning"/>
 </AnchorPane>

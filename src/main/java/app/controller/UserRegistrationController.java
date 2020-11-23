@@ -23,8 +23,12 @@ public class UserRegistrationController {
     public PasswordField fieldPassword;
     public PasswordField fieldConfPassword;
     public Button btnSave;
-    public Label lblError;
+    public Label lblMessage;
+    UserService service;
 
+    public UserRegistrationController() {
+        service = new UserService();
+    }
     @FXML
     private MainMenuController menuController;
     public void initialize() {
@@ -33,6 +37,16 @@ public class UserRegistrationController {
 
     public void handleOnActionButtonBtnSave() {
         Boolean confirmPassword = fieldPassword.getText().equals(fieldConfPassword.getText());
+        Boolean nullName = fieldName.getText() == null || fieldName.getText().trim().isEmpty();
+        Boolean nullUsername = fieldUsername.getText() == null || fieldUsername.getText().trim().isEmpty();
+        Boolean nullPassword = fieldPassword.getText() == null || fieldPassword.getText().trim().isEmpty();
+        Boolean nullConfirmPassword = fieldConfPassword.getText() == null || fieldConfPassword.getText().trim().isEmpty();
+
+        if(nullName || nullUsername || nullPassword || nullConfirmPassword) {
+            lblMessage.setText("Os campos não podem ser vazios");
+            return;
+        }
+
         var user = User.builder()
                 .name(fieldName.getText())
                 .username(fieldUsername.getText())
@@ -40,22 +54,26 @@ public class UserRegistrationController {
                 .role(Role.EMPLOYEE)
                 .status(Status.ACTIVE)
                 .build();
+
+        if(!confirmPassword) {
+            lblMessage.setText("Senhas não são iguais");
+            fieldPassword.setText("");
+            fieldConfPassword.setText("");
+            return;
+        }
+
         try {
-        if(confirmPassword) {
-            UserService service = new UserService();
             if(service.userSave(user)) {
                 Router.showPopUp(PopUpRegisterSuccessfulController.class, 1);
-                lblError.setVisible(false);
+                Router.goTo(PeopleManagementController.class);
+                lblMessage.setVisible(false);
             } else {
-                lblError.setText("Username ja existente");
+                lblMessage.setText("Username ja existente");
                 fieldUsername.setText("");
             }
 
-            } else {
-                lblError.setText("Senhas não coincidem");
-            }
         } catch (ConnectionFailureException e) {
-            //TODO criar pop up
+            lblMessage.setText("Sem acesso ao servidor");
         }
     }
 }
