@@ -25,4 +25,49 @@ public class UserService {
         var response= GarageClient.get("/users/");
         return mapper.readValue((String) response.body(), new TypeReference<List<User>>(){});
     }
+
+    public User findByUsername(String username) throws ConnectionFailureException {
+        try {
+            var response = GarageClient.get("/users/find_by/" + username);
+            if(response.statusCode() == 200) {
+                return mapper.readValue((String) response.body(), new TypeReference<User>() {
+                });
+            } else {
+                return null;
+            }
+
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
+
+
+    public Boolean userSave(User user) throws ConnectionFailureException {
+        try {
+            var payload = mapper.writeValueAsString(user);
+            var response = GarageClient.post("/users", payload);
+            return response.statusCode() == 201;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
+
+    public Boolean userDelete(Long id) throws ConnectionFailureException {
+        try {
+            var response = GarageClient.delete("/users/"+id);
+            return response.statusCode() == 201;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
+
+    public Boolean userUpdate(Long id, User user) throws  ConnectionFailureException {
+        try {
+            var payload = mapper.writeValueAsString(user);
+            var response = GarageClient.put("/users/"+id, payload);
+            return response.statusCode() == 200;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
 }
