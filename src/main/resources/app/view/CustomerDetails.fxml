@@ -2,45 +2,47 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CustomerDetailsController">
     <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
     <fx:include source="component/UserDetails.fxml" />
 
-    <Label layoutX="330.0" layoutY="140.0" styleClass="label, field, blue" text="Nome completo" />
-    <Label fx:id="labelName" layoutX="330.0" layoutY="163.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="321.0" layoutY="128.0" styleClass="label, field, blue" text="Nome completo" />
+    <Text fx:id="textName" layoutX="321.0" layoutY="181.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="330.0" layoutY="200.0" styleClass="field, label, blue" text="CPF/CNPJ" />
-    <Label fx:id="labelCpfCnpj" layoutX="330.0" layoutY="224.0" styleClass="field, label" text="aabbccdd" />
+    <Label layoutX="321.0" layoutY="188.0" styleClass="field, label, blue" text="CPF/CNPJ" />
+    <Text fx:id="textCpfCnpj" layoutX="321.0" layoutY="242.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="624.0" layoutY="200.0" styleClass="label, field, blue" text="Telefone" />
-    <Label fx:id="fieldPhone" layoutX="625.0" layoutY="224.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="635.0" layoutY="188.0" styleClass="label, field, blue" text="Telefone" />
+    <Text fx:id="textPhone" layoutX="636.0" layoutY="242.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="330.0" layoutY="260.0" styleClass="label, field, blue" text="Endereço" />
-    <Label fx:id="labelAddress" layoutX="330.0" layoutY="283.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="321.0" layoutY="248.0" styleClass="label, field, blue" text="Endereço" />
+    <Text fx:id="textAddress" layoutX="321.0" layoutY="301.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="330.0" layoutY="320.0" styleClass="label, field, blue" text="Número" />
-    <Label fx:id="labelNumber" layoutX="330.0" layoutY="344.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="321.0" layoutY="308.0" styleClass="label, field, blue" text="Número" />
+    <Text fx:id="textNumber" layoutX="321.0" layoutY="362.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="441.0" layoutY="320.0" styleClass="label, field, blue" text="Complemento" />
-    <Label fx:id="labelComplement" layoutX="441.0" layoutY="344.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="432.0" layoutY="308.0" styleClass="label, field, blue" text="Complemento" />
+    <Text fx:id="textComplement" layoutX="432.0" layoutY="362.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="626.0" layoutY="320.0" styleClass="label, field, blue" text="CEP" />
-    <Label fx:id="labelPostalCode" layoutX="625.0" layoutY="344.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="637.0" layoutY="308.0" styleClass="label, field, blue" text="CEP" />
+    <Text fx:id="textPostalCode" layoutX="636.0" layoutY="362.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="330.0" layoutY="377.0" styleClass="label, field, blue" text="Bairro" />
-    <Label fx:id="labelNeighborhood" layoutX="330.0" layoutY="401.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="321.0" layoutY="365.0" styleClass="label, field, blue" text="Bairro" />
+    <Text fx:id="textNeighborhood" layoutX="321.0" layoutY="419.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="625.0" layoutY="377.0" styleClass="label, field, blue" text="Cidade" />
-    <Label fx:id="labelCity" layoutX="625.0" layoutY="401.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="636.0" layoutY="365.0" styleClass="label, field, blue" text="Cidade" />
+    <Text fx:id="textCity" layoutX="636.0" layoutY="419.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="330.0" layoutY="433.0" styleClass="label, field, blue" text="Estado" />
-    <Label fx:id="labelState" layoutX="330.0" layoutY="455.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="321.0" layoutY="421.0" styleClass="label, field, blue" text="Estado" />
+    <Text fx:id="textState" layoutX="321.0" layoutY="473.0" styleClass="field" text="aabbccdd" />
 
-    <Label layoutX="625.0" layoutY="433.0" styleClass="label, field, blue" text="País" />
-    <Label fx:id="labelCountry" layoutX="625.0" layoutY="455.0" styleClass="label, field" text="aabbccdd" />
+    <Label layoutX="636.0" layoutY="421.0" styleClass="label, field, blue" text="País" />
+    <Text fx:id="textCountry" layoutX="636.0" layoutY="473.0" styleClass="field" text="aabbccdd" />
 
+    <Label layoutX="482.0" layoutY="472.0" styleClass="field, label, blue" text="Veículos" />
     <TableView layoutX="280.0" layoutY="506.0" prefHeight="125.0" prefWidth="500.0">
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -54,7 +56,7 @@
     </TableView>
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button onAction="#handleNewVehicle" layoutX="177.0" layoutY="666.0" prefWidth="162.0" styleClass="button, button-green" text="Novo veículo" />
-    <Button onAction="#handleChangeCustomer" layoutX="773.0" layoutY="666.0" styleClass="button, button-blue" text="Alterar" />
-    <Button onAction="#handleDeleteCustomer" layoutX="921.0" layoutY="666.0" styleClass="button, button-red" text="Excluir" />
+    <Button layoutX="177.0" layoutY="666.0" onAction="#handleNewVehicle" prefWidth="162.0" styleClass="button, button-green" text="Novo veículo" />
+    <Button layoutX="773.0" layoutY="666.0" onAction="#handleChangeCustomer" styleClass="button, button-blue" text="Alterar" />
+    <Button layoutX="921.0" layoutY="666.0" onAction="#handleDeleteCustomer" styleClass="button, button-red" text="Excluir" />
 </AnchorPane>

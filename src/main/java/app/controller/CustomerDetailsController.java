@@ -8,6 +8,7 @@ import app.router.Router;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 @RouteMapping(title = "Detalhes do Cliente")
 public class CustomerDetailsController {
@@ -15,37 +16,37 @@ public class CustomerDetailsController {
     private MainMenuController menuController;
 
     @FXML
-    private Label labelName;
+    private Text textName;
 
     @FXML
-    private Label labelCpfCnpj;
+    private Text textCpfCnpj;
 
     @FXML
-    private Label fieldPhone;
+    private Text textPhone;
 
     @FXML
-    private Label labelAddress;
+    private Text textAddress;
 
     @FXML
-    private Label labelNumber;
+    private Text textNumber;
 
     @FXML
-    private Label labelComplement;
+    private Text textComplement;
 
     @FXML
-    private Label labelPostalCode;
+    private Text textPostalCode;
 
     @FXML
-    private Label labelNeighborhood;
+    private Text textNeighborhood;
 
     @FXML
-    private Label labelCity;
+    private Text textCity;
 
     @FXML
-    private Label labelState;
+    private Text textState;
 
     @FXML
-    private Label labelCountry;
+    private Text textCountry;
 
     private Customer customer;
 
@@ -57,17 +58,17 @@ public class CustomerDetailsController {
         menuController.btnMonthly.getStyleClass().add("button-menu-selected");
 
         var address = customer.getAddress();
-        labelName.setText(customer.getName());
-        labelCpfCnpj.setText(customer.getCpfCnpj());
-        fieldPhone.setText(customer.getPhone());
-        labelAddress.setText(address.getStreet());
-        labelNumber.setText(address.getNumber());
-        labelComplement.setText(address.getComplement());
-        labelPostalCode.setText(address.getPostalCode());
-        labelNeighborhood.setText(address.getNeighborhood());
-        labelCity.setText(address.getCity());
-        labelState.setText(address.getState().getValue());
-        labelCountry.setText(address.getCountry().getValue());
+        textName.setText(customer.getName());
+        textCpfCnpj.setText(customer.getCpfCnpj());
+        textPhone.setText(customer.getPhone());
+        textAddress.setText(address.getStreet());
+        textNumber.setText(address.getNumber());
+        textComplement.setText(address.getComplement());
+        textPostalCode.setText(address.getPostalCode());
+        textNeighborhood.setText(address.getNeighborhood());
+        textCity.setText(address.getCity());
+        textState.setText(address.getState().getValue());
+        textCountry.setText(address.getCountry().getValue());
     }
 
     @FXML
@@ -83,6 +84,6 @@ public class CustomerDetailsController {
 
     @FXML
     private void handleNewVehicle(ActionEvent actionEvent) {
-//        TODO
+        Router.goTo(VehicleRegisterController.class);
     }
 }
