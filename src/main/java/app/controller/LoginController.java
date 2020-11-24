@@ -23,10 +23,10 @@ public class LoginController {
     @FXML
     private Label labelMessage;
 
-    private AuthenticationService authenticationService;
+    private AuthenticationService service;
 
-    public void initialize() throws JsonProcessingException {
-        authenticationService = new AuthenticationService();
+    public LoginController() {
+        service = new AuthenticationService();
     }
 
     private void showMessage(String message) {
@@ -34,13 +34,13 @@ public class LoginController {
         labelMessage.setText(message);
     }
 
-    public void handleButtonLogin() {
+    public void handleLogin() {
         var credentials = Credentials.builder()
                 .username(fieldUsername.getText())
                 .password(fieldPassword.getText())
                 .build();
         try {
-            var response = authenticationService.login(credentials);
+            var response = service.login(credentials);
             if(response) {
                 showMessage("Logado com sucesso");
                 Router.goTo(HomeController.class);
@@ -52,5 +52,4 @@ public class LoginController {
             showMessage("Incapaz de contatar o servidor");
         }
     }
-
 }

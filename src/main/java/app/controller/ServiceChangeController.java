@@ -32,31 +32,33 @@ public class ServiceChangeController  {
         cbStatus.setValue(catalog.getStatus());
     }
 
-    public void handleOnActionButtonBtnAlter() throws ConnectionFailureException {
-        var catalog2 = Catalog.builder()
-                .description(fieldService.getText())
-                .price(new BigDecimal(fieldPrice.getText()))
-                .status(cbStatus.getValue())
-                .build();
+    public void handleOnActionButtonBtnAlter() {
+        try {
+            var catalog2 = Catalog.builder()
+                    .description(fieldService.getText())
+                    .price(new BigDecimal(fieldPrice.getText()))
+                    .status(cbStatus.getValue())
+                    .build();
 
-        CatalogService service = new CatalogService();
-        service.CatalogUpdate(catalog2, catalog.getId());
+            CatalogService service = new CatalogService();
+            service.CatalogUpdate(catalog2, catalog.getId());
 
-        Router.goTo(ServiceManagementController.class);
+            Router.goTo(ServiceManagementController.class);
+        } catch (ConnectionFailureException e) {
+            //TODO Criar pop up
+        }
     }
 
-    public void handleOnActionButtonBtnDelete() throws ConnectionFailureException { // TODO Verificar se o serviço esta cadastrado a um plano
-        var catalog2 = Catalog.builder()
-                .description(fieldService.getText())
-                .price(new BigDecimal(fieldPrice.getText()))
-                .status(cbStatus.getValue())
-                .build();
+    public void handleOnActionButtonBtnDelete() { // TODO Verificar se o serviço esta cadastrado a um plano
+        try {
+            CatalogService service = new CatalogService();
+            service.CatalogDelete(catalog.getId());
 
-        CatalogService service = new CatalogService();
-        service.CatalogDelete(catalog.getId());
-
-        Router.showPopUp(PopUpDeleteSuccessController.class, 1);
-        Router.goTo(ServiceManagementController.class);
+            Router.showPopUp(PopUpDeleteSuccessController.class, 1);
+            Router.goTo(ServiceManagementController.class);
+        } catch (ConnectionFailureException e) {
+            //TODO Criar pop up
+        }
 
     }
 

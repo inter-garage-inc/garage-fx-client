@@ -31,7 +31,7 @@ public class CatalogService {
         try {
             var payload = mapper.writeValueAsString(catalog);
             var response = GarageClient.put("/catalogs/"+id, payload);
-            return response.statusCode() == 201;
+            return response.statusCode() == 200;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException();
         }
@@ -40,8 +40,7 @@ public class CatalogService {
     public Boolean CatalogDelete(Long id) throws ConnectionFailureException {
         try {
             var response = GarageClient.delete("/catalogs/"+id);
-            System.out.println(response.body());
-            return response.statusCode() == 201;
+            return response.statusCode() == 200;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException();
         }
