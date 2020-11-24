@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpChangeSuccessfulController;
+import app.controller.popup.PopUpConfirmDeleteUserController;
 import app.data.User;
 import app.data.user.Status;
 import app.router.RouteMapping;
@@ -78,6 +79,7 @@ public class AlterDeletUserController {
     }
     
     public void handleOnActionButtonBtnDelete() {
+        Router.showPopUp(PopUpConfirmDeleteUserController.class);
         try {
             if(service.userDelete(user.getId())) {
                 System.out.println("Tudo ok");
