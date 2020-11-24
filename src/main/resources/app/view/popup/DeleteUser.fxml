@@ -9,4 +9,5 @@
 
     <Button fx:id="btnDelete" onAction="#handleOnActionButtonBtnDelete" layoutX="307.0" layoutY="127.0" mnemonicParsing="false" prefWidth="130.0" styleClass="button, button-red" text="Sim" />
     <Button fx:id="btnClose" onAction="#handleOnActionButtonBtnClose" layoutX="68.0" layoutY="127.0" mnemonicParsing="false" prefWidth="130.0" styleClass="button-blue" text="Não" />
+
 </AnchorPane>
