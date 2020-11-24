@@ -94,12 +94,14 @@ public class Router extends Application {
     public static void goTo(Class<?> c, Boolean stackUpHistory) {
         Router.c = c;
 
-        if(stackUpHistory) {
-            stageDataStack.push(lastStageData);
-        } else {
-            stageDataStack.clear();
-            if(lastStageData != null) {
-                lastStageData.setScene(null); // Allows garbage to do its job
+        if(stackUpHistory != null) {
+            if(stackUpHistory) {
+                stageDataStack.push(lastStageData);
+            } else {
+                stageDataStack.clear();
+                if (lastStageData != null) {
+                    lastStageData.setScene(null); // Allows garbage to do its job
+                }
             }
         }
 
@@ -127,6 +129,10 @@ public class Router extends Application {
             System.err.println("There's no stage data stacked up to get back.");
             throw exception;
         }
+    }
+
+    public static Boolean hasHistory() {
+        return !stageDataStack.isEmpty();
     }
 
     public static void showPopUp(Class<?> clazz, Object userData, Integer time) {
