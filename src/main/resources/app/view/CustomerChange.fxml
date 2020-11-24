@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import app.util.MaskedTextField.* ?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CustomerChangeController" stylesheets="@css/styles.css">
+    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
+    <fx:include source="component/LogoTopLeft.fxml" />
+    <fx:include source="component/UserDetails.fxml" />
+
+    <Label layoutX="290.0" layoutY="150.0" styleClass="label, field, blue" text="Nome completo" />
+    <TextField fx:id="fieldName" layoutX="290.0" layoutY="185.0" prefWidth="520.0" promptText="Digite o nome completo" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="233.0"  styleClass="label, field, blue" text="CPF/CNPJ" />
+    <Text fx:id="textCpfCnpj" layoutX="290.0" layoutY="290.0" styleClass="field" text="lorem ipsum dolor sit amet"/>
+
+    <Label layoutX="560.0" layoutY="233.0" styleClass="label, field, blue" text="Telefone" />
+    <MaskedTextField fx:id="fieldPhone" layoutX="560.0" layoutY="268.0" prefWidth="250.0" mask="+## (##) #####-####" plainText="55" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="328.0" styleClass="label, field, blue" text="Endereço" />
+    <TextField fx:id="fieldAddress" layoutX="290.0" layoutY="362.0" prefWidth="520.0" promptText="Rua, Avenida, Travessa, etc." styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="403.0" styleClass="label, field, blue" text="Número" />
+    <TextField fx:id="fieldNumber" layoutX="290.0" layoutY="438.0" prefWidth="90.0" promptText="0" styleClass="field" />
+
+    <Label layoutX="390.0" layoutY="402.0" styleClass="label, field, blue" text="Complemento" />
+    <TextField fx:id="fieldComplement" layoutX="390.0" layoutY="437.0" prefWidth="150.0" promptText="Casa, Apto" styleClass="field" />
+
+    <Label layoutX="560.0" layoutY="402.0" styleClass="label, field, blue" text="CEP" />
+    <MaskedTextField fx:id="fieldPostalCode" onKeyReleased="#handleTypedPostalCode" layoutX="560.0" layoutY="437.0" prefWidth="250.0" mask="#####-###" promptText="00000-000" styleClass="field" />
+    <ImageView fx:id="postalCodeLoading" layoutX="770.0" layoutY="437.0" fitWidth="40.0" preserveRatio="true" visible="false">
+        <Image url="@images/loader-blue.gif"/>
+    </ImageView>
+
+    <Label layoutX="290.0" layoutY="481.0" styleClass="label, field, blue" text="Bairro" />
+    <TextField fx:id="fieldNeighborhood" layoutX="290.0" layoutY="516.0" prefWidth="250.0" promptText="Digite o bairro" styleClass="field" />
+
+    <Label layoutX="560.0" layoutY="481.0" styleClass="label, field, blue" text="Cidade" />
+    <TextField fx:id="fieldCity" layoutX="560.0" layoutY="516.0" prefWidth="250.0" promptText="Digite a cidade" styleClass="field" />
+
+    <Label layoutX="290.0" layoutY="560.0" styleClass="label, field, blue" text="Estado" />
+    <ComboBox fx:id="comboBoxState" layoutX="290.0" layoutY="595.0" prefWidth="250" promptText="Selecione" styleClass="field" />
+
+    <Label layoutX="560.0" layoutY="559.0" styleClass="label, field, blue" text="País" />
+    <ComboBox fx:id="comboBoxCountry" onAction="#handleSelectedCountry" layoutX="560.0" layoutY="594.0" prefWidth="250" promptText="Selecione" styleClass="field" />
+
+    <fx:include source="component/ButtonBack.fxml" />
+    <Button onAction="#handleUpdate" layoutX="930.0" layoutY="667.0" styleClass="button, button-blue" text="Salvar" />
+</AnchorPane>
+
