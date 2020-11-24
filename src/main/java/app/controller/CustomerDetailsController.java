@@ -78,12 +78,11 @@ public class CustomerDetailsController {
 
     @FXML
     private void handleChangeCustomer(ActionEvent actionEvent) {
-//        Router.goTo(CustomerRegisterController.class, customer);
-//        TODO
+        Router.goTo(CustomerChangeController.class, customer, true);
     }
 
     @FXML
     private void handleNewVehicle(ActionEvent actionEvent) {
-        Router.goTo(VehicleRegisterController.class);
+        Router.goTo(VehicleRegisterController.class, customer, true);
     }
 }

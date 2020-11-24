@@ -51,32 +51,20 @@ public class CustomerRegisterController {
     private TextField fieldNeighborhood;
 
     @FXML
-    public ImageView neighborhoodLoading;
-
-    @FXML
     private TextField fieldCity;
-
-    @FXML
-    public ImageView cityLoading;
 
     @FXML
     private ComboBox<State> comboBoxState;
 
     @FXML
-    public ImageView stateLoading;
-
-    @FXML
     private ComboBox<Country> comboBoxCountry;
 
     @FXML
-    public ImageView countryLoading;
+    private MainMenuController menuController;
 
     private CustomerService customerService;
 
     private PostalCodeService postalCodeService;
-
-    @FXML
-    private MainMenuController menuController;
 
     public CustomerRegisterController() {
         customerService = new CustomerService();
@@ -102,24 +90,24 @@ public class CustomerRegisterController {
     private void handleOnActionComboBoxCountry(ActionEvent actionEvent) {
         comboBoxState.getItems().clear();
         var states = comboBoxCountry.getValue().getStates();
-        if(states == null) {
-            comboBoxState.setValue(null);
-            comboBoxState.setDisable(true);
-        } else {
+        if(states != null) {
             comboBoxState.getItems().addAll(states);
             comboBoxState.setDisable(false);
+        } else {
+            comboBoxState.setValue(null);
+            comboBoxState.setDisable(true);
         }
     }
 
     @FXML
     private void handleOnKeyReleasedFieldPostalCode(KeyEvent keyEvent) {
         if(fieldPostalCode.getPlainText().length() >= 8) {
-            showLoading();
+            postalCodeLoading.setVisible(true);
             var task = new Task<Void>() {
                 @Override
                 protected Void call() {
                     try {
-                        var address = postalCodeService.search(fieldPostalCode.getText());
+                        var address = postalCodeService.search(fieldPostalCode.getPlainText());
                         if(address != null) {
                             Platform.runLater(() -> {
                                 fieldCity.setText(address.getCity());
@@ -137,7 +125,7 @@ public class CustomerRegisterController {
                 @Override
                 protected void succeeded() {
                     super.succeeded();
-                    hideLoading();
+                    postalCodeLoading.setVisible(false);
                 }
             };
             new Thread(task).start();
@@ -174,21 +162,5 @@ public class CustomerRegisterController {
         } catch (ConnectionFailureException e) {
             System.err.println("Error using customer service");
         }
-    }
-
-    private void showLoading() {
-        postalCodeLoading.setVisible(true);
-        neighborhoodLoading.setVisible(true);
-        cityLoading .setVisible(true);
-        stateLoading.setVisible(true);
-        countryLoading.setVisible(true);
-    }
-
-    private void hideLoading() {
-        postalCodeLoading.setVisible(false);
-        neighborhoodLoading.setVisible(false);
-        cityLoading .setVisible(false);
-        stateLoading.setVisible(false);
-        countryLoading.setVisible(false);
     }
 }

@@ -2,7 +2,7 @@
 package app.controller;
 
 import app.controller.component.MainMenuController;
-import app.controller.popup.PopUpAlterSuccessfulController;
+import app.controller.popup.PopUpChangeSuccessfulController;
 import app.router.RouteMapping;
 import app.router.Router;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ public class ChangeCheckInController {
     public Button btnSave;
 
     public void handleOnActionButtonSave() throws InterruptedException {
-        Router.showPopUp(PopUpAlterSuccessfulController.class);
+        Router.showPopUp(PopUpChangeSuccessfulController.class);
         Router.closePopUp(2);
         Router.goTo(CheckInConfirmationController.class);
     }

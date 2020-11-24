@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.controller.popup.PopUpAlterSuccessfulController;
 import app.controller.popup.PopUpDeleteSuccessController;
 import app.data.Catalog;
 import app.data.catalog.Status;
