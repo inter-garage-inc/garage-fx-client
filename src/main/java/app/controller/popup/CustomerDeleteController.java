@@ -1,10 +1,10 @@
 package app.controller.popup;
 
+import app.client.ConnectionFailureException;
 import app.controller.CustomerSearchController;
 import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.client.ConnectionFailureException;
 import app.service.CustomerService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

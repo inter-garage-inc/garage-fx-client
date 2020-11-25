@@ -2,7 +2,6 @@ package app.service;
 
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
-import app.data.Customer;
 import app.data.Vehicle;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

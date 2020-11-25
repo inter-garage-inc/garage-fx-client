@@ -7,7 +7,7 @@ import app.data.user.Role;
 import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.ConnectionFailureException;
+import app.client.ConnectionFailureException;
 import app.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

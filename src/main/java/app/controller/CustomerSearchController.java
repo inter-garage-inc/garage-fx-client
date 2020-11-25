@@ -1,10 +1,10 @@
 package app.controller;
 
+import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.CustomerNotFoundController;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.client.ConnectionFailureException;
 import app.service.CustomerService;
 import app.util.MaskedTextField.MaskedTextField;
 import javafx.event.ActionEvent;

@@ -1,12 +1,12 @@
 package app.controller;
 
+import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpRegisterSuccessfulController;
 import app.data.Catalog;
 import app.data.catalog.Status;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CatalogService;
-import app.client.ConnectionFailureException;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;

@@ -1,14 +1,14 @@
 package app.util.MaskedTextField;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.IndexRange;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * This component receives a mask that dictate the valid input for this field.
