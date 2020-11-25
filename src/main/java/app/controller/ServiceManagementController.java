@@ -6,7 +6,7 @@ import app.data.Catalog;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CatalogService;
-import app.service.ConnectionFailureException;
+import app.client.ConnectionFailureException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;

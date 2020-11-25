@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.VehicleChangeController">
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
+    <fx:include source="component/LogoTopLeft.fxml" />
+    <fx:include source="component/UserDetails.fxml" />
+
+    <Label layoutX="368.0" layoutY="159.0" styleClass="field, label, blue" text="Veículo" />
+    <Text layoutX="368.0" layoutY="216.0" styleClass="field" text="Lorem ipsum dolor sit amet" />
+
+    <Label layoutX="368.0" layoutY="253.0" styleClass="field, label, blue" text="Plano" />
+    <ScrollPane layoutX="368.0" layoutY="288.0" prefHeight="200" prefWidth="400">
+        <VBox fx:id="vboxPlans" layoutX="381.0" layoutY="237.0" spacing="5" />
+        <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+        </padding>
+    </ScrollPane>
+
+    <Label layoutX="368.0" layoutY="509.0" styleClass="field, label, blue" text="Vencimento (dia do mês)" />
+    <Spinner initialValue="5" layoutX="368.0" layoutY="545.0" promptText="Escolha uma data de vencimento" max="30" min="1" prefWidth="116.0"  styleClass="field" />
+
+    <fx:include source="component/ButtonBack.fxml" />
+    <Button layoutX="187.0" layoutY="666.0" styleClass="button, button-green" text="Pagar" />
+    <Button layoutX="762.0" layoutY="666.0" styleClass="button, button-red" text="Excluir" />
+    <Button layoutX="921.0" layoutY="666.0" styleClass="button, button-blue" text="Salvar" />
+</AnchorPane>

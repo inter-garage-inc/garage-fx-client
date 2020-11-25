@@ -1,5 +1,6 @@
 package app.service;
 
+import app.client.ConnectionFailureException;
 import app.client.GarageClient;
 import app.data.User;
 import app.data.authentication.Credentials;

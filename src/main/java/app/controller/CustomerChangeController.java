@@ -1,14 +1,14 @@
 package app.controller;
 
+import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.controller.popup.PopUpRegisterSuccessfulController;
+import app.controller.popup.PopUpChangeSuccessfulController;
 import app.data.Address;
 import app.data.Customer;
 import app.data.address.Country;
 import app.data.address.State;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.client.ConnectionFailureException;
 import app.service.CustomerService;
 import app.service.PostalCodeService;
 import app.util.MaskedTextField.MaskedTextField;
@@ -20,14 +20,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 
-@RouteMapping(title = "Cadastrar Novo Cliente")
-public class CustomerRegisterController {
+@RouteMapping(title = "Alterar customer")
+public class CustomerChangeController {
     @FXML
     private TextField fieldName;
 
     @FXML
-    private MaskedTextField fieldCpfCnpj;
+    private Text textCpfCnpj;
 
     @FXML
     private MaskedTextField fieldPhone;
@@ -62,11 +63,14 @@ public class CustomerRegisterController {
     @FXML
     private MainMenuController menuController;
 
-    private CustomerService customerService;
+    private final Customer customer;
 
-    private PostalCodeService postalCodeService;
+    private final CustomerService customerService;
 
-    public CustomerRegisterController() {
+    private final PostalCodeService postalCodeService;
+
+    public CustomerChangeController() {
+        customer = (Customer) Router.getUserData();
         customerService = new CustomerService();
         postalCodeService = new PostalCodeService();
     }
@@ -74,33 +78,22 @@ public class CustomerRegisterController {
     public void initialize() {
         menuController.btnMonthly.getStyleClass().add("button-menu-selected");
         comboBoxCountry.getItems().addAll(Country.values());
+
+        var address = customer.getAddress();
+        fieldName.setText(customer.getName());
+        textCpfCnpj.setText(customer.getCpfCnpj());
+        fieldPhone.setPlainText(customer.getPhone());
+        fieldAddress.setText(address.getStreet());
+        fieldNumber.setText(address.getNumber());
+        fieldComplement.setText(address.getComplement());
+        fieldPostalCode.setPlainText(address.getPostalCode());
+        fieldNeighborhood.setText(address.getNeighborhood());
+        fieldCity.setText(address.getCity());
+        comboBoxState.setValue(address.getState());
+        comboBoxCountry.setValue(address.getCountry());
     }
 
-    @FXML
-    private void handleOnActionRadioButtonCpf(ActionEvent actionEvent) {
-        fieldCpfCnpj.setMask("###.###.###-##");
-    }
-
-    @FXML
-    private void handleOnActionRadioButtonCnpj(ActionEvent actionEvent) {
-        fieldCpfCnpj.setMask("##.###.###/####-##");
-    }
-
-    @FXML
-    private void handleOnActionComboBoxCountry(ActionEvent actionEvent) {
-        comboBoxState.getItems().clear();
-        var states = comboBoxCountry.getValue().getStates();
-        if(states != null) {
-            comboBoxState.getItems().addAll(states);
-            comboBoxState.setDisable(false);
-        } else {
-            comboBoxState.setValue(null);
-            comboBoxState.setDisable(true);
-        }
-    }
-
-    @FXML
-    private void handleOnKeyReleasedFieldPostalCode(KeyEvent keyEvent) {
+    public void handleTypedPostalCode(KeyEvent keyEvent) {
         if(fieldPostalCode.getPlainText().length() >= 8) {
             postalCodeLoading.setVisible(true);
             var task = new Task<Void>() {
@@ -132,8 +125,19 @@ public class CustomerRegisterController {
         }
     }
 
-    @FXML
-    private void handleOnActionButtonRegister() {
+    public void handleSelectedCountry(ActionEvent actionEvent) {
+        comboBoxState.getItems().clear();
+        var states = comboBoxCountry.getValue().getStates();
+        if(states != null) {
+            comboBoxState.getItems().addAll(states);
+            comboBoxState.setDisable(false);
+        } else {
+            comboBoxState.setValue(null);
+            comboBoxState.setDisable(true);
+        }
+    }
+
+    public void handleUpdate(ActionEvent actionEvent) {
         var address = Address.builder()
                 .street(fieldAddress.getText())
                 .number(fieldNumber.getText())
@@ -144,20 +148,23 @@ public class CustomerRegisterController {
                 .state(comboBoxState.getValue())
                 .country(comboBoxCountry.getValue())
                 .build();
-        var customer = Customer
+        var customerUpdated = Customer
                 .builder()
                 .name(fieldName.getText())
-                .cpfCnpj(fieldCpfCnpj.getPlainText())
+                .cpfCnpj(customer.getCpfCnpj())
                 .phone(fieldPhone.getPlainText())
                 .address(address)
                 .build();
         try {
-            var c = customerService.register(customer);
+            var c = customerService.update(customer.getId(), customerUpdated);
             if (c != null) {
-                Router.showPopUp(PopUpRegisterSuccessfulController.class, 3);
-                Router.goTo(CustomerDetailsController.class, c); //TODO create destine page
+                System.out.println(customer);
+                System.out.println(customerUpdated);
+                System.out.println(c);
+                Router.showPopUp(PopUpChangeSuccessfulController.class, 3);
+                Router.goTo(CustomerDetailsController.class, c, null); //TODO create destine page
             } else {
-                System.out.println("Não foi possivel cadastrar. Verificar dados. Talvez CPF/CNPJ já cadastrados"); //TODO create a pop-up
+                System.out.println("Não foi possivel atualizar"); //TODO create a pop-up
             }
         } catch (ConnectionFailureException e) {
             System.err.println("Error using customer service");

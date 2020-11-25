@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.VehicleDetailsController">
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
+    <fx:include source="component/LogoTopLeft.fxml" />
+    <fx:include source="component/UserDetails.fxml" />
+
+    <Label layoutX="365.0" layoutY="150.0" styleClass="field, label, blue" text="Veículo" />
+    <Text fx:id="textLicensePlate" layoutX="365.0" layoutY="203.0" styleClass="field" text="Lorem ipsum dolor sit amet" />
+
+    <Label layoutX="365.0" layoutY="228.0" styleClass="field, label, blue" text="Plano" />
+    <Text fx:id="textCurrentPlan" layoutX="365.0" layoutY="282.0" styleClass="field" text="Lorem ipsum dolor sit amet" />
+
+    <Label layoutX="365.0" layoutY="308.0" styleClass="field, label, blue" text="Vencimento" />
+    <Text fx:id="textOrderDue" layoutX="365.0" layoutY="362.0" styleClass="field" text="Lorem ipsum dolor sit amet" />
+
+    <Label layoutX="365.0" layoutY="380.0" styleClass="field, label, blue" text="Status no estacionamento" />
+    <Text fx:id="textVehicleParkingStatus" layoutX="365.0" layoutY="433.0" styleClass="field" text="Lorem ipsum dolor sit amet" />
+
+    <Label layoutX="437.0" layoutY="461.0" styleClass="field, label, blue" text="Histórico de faturas" />
+    <TableView layoutX="280.0" layoutY="495.0" prefHeight="136.0" prefWidth="500.0">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+        <columns>
+            <TableColumn maxWidth="125.0" minWidth="125.0" text="Plano" />
+            <TableColumn maxWidth="125.0" minWidth="125.0" text="Vencimento" />
+            <TableColumn maxWidth="125.0" minWidth="125.0" text="Valor" />
+            <TableColumn maxWidth="125.0" minWidth="125.0" text="Status" />
+        </columns>
+    </TableView>
+
+    <fx:include source="component/ButtonBack.fxml" />
+    <Button layoutX="187.0" layoutY="666.0" styleClass="button, button-green" text="Pagar" />
+    <Button layoutX="921.0" layoutY="666.0" styleClass="button, button-red" text="Excluir" />
+</AnchorPane>
