@@ -1,11 +1,10 @@
 package app.controller;
 
+import app.client.ConnectionFailureException;
 import app.data.authentication.Credentials;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.AuthenticationService;
-import app.client.ConnectionFailureException;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;

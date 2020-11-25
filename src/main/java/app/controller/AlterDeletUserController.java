@@ -1,12 +1,12 @@
 package app.controller;
 
-import app.controller.popup.PopUpAlterSuccessfulController;
+import app.client.ConnectionFailureException;
+import app.controller.popup.PopUpChangeSuccessfulController;
 import app.data.User;
 import app.data.user.Role;
 import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.ConnectionFailureException;
 import app.service.UserService;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -48,7 +48,7 @@ public class AlterDeletUserController {
 
         try {
             if (fieldPassword.getText().equals(fieldConfPassword.getText()) && service.userUpdate(user.getId(), user2)) {
-                Router.showPopUp(PopUpAlterSuccessfulController.class, 1);
+                Router.showPopUp(PopUpChangeSuccessfulController.class, 1);
                 Router.goTo(PeopleManagementController.class);
             } else {
                 lblMessage.setText("Senhas são divergentes");

@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpRegisterSuccessfulController;
 import app.data.Address;
@@ -8,7 +9,6 @@ import app.data.address.Country;
 import app.data.address.State;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.client.ConnectionFailureException;
 import app.service.CustomerService;
 import app.service.PostalCodeService;
 import app.util.MaskedTextField.MaskedTextField;

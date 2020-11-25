@@ -1,15 +1,13 @@
 package app.controller;
 
+import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.data.User;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.ConnectionFailureException;
 import app.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import java.io.IOException;
 
 @RouteMapping(title = "Gestão de Pessoal")
 public class PeopleManagementController {
