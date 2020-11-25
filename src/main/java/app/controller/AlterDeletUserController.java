@@ -3,6 +3,7 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpChangeSuccessfulController;
 import app.controller.popup.PopUpConfirmDeleteUserController;
+import app.controller.popup.PopUpDeleteSuccessController;
 import app.data.User;
 import app.data.user.Status;
 import app.router.RouteMapping;
@@ -80,14 +81,16 @@ public class AlterDeletUserController {
     
     public void handleOnActionButtonBtnDelete() {
         Router.showPopUp(PopUpConfirmDeleteUserController.class);
+        var response = Router.getUserData();
         try {
-            if(service.userDelete(user.getId())) {
-                System.out.println("Tudo ok");
-            } else {
-                System.out.println("Deu ruim");
+            if(response.equals(1)) {
+                service.userDelete(user.getId());
+                Router.showPopUp(PopUpDeleteSuccessController.class, 1);
+            } else if (response.equals(0)) {
+                lblMessage.setText("Exclusão cancelada");
             }
         } catch (ConnectionFailureException e) {
-            //TODO Criar pop up
+            lblMessage.setText("Falha ao se comunicar com o servidor");
         }
     }
 
