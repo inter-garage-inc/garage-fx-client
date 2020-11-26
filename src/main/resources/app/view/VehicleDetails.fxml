@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="label" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.VehicleDetailsController">
     <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />

@@ -1,13 +1,14 @@
 package app.controller;
 
+import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpRegisterSuccessfulController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.User;
 import app.data.user.Role;
 import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.client.ConnectionFailureException;
 import app.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -73,7 +74,7 @@ public class UserRegistrationController {
             }
 
         } catch (ConnectionFailureException e) {
-            lblMessage.setText("Sem acesso ao servidor");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

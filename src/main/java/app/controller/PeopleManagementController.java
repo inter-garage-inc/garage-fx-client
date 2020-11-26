@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.user.Role;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -50,7 +51,7 @@ public class PeopleManagementController {
             }
 
         } catch (ConnectionFailureException e) {
-            lblMessage.setText("Não foi possível se conectar com o servidor");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 

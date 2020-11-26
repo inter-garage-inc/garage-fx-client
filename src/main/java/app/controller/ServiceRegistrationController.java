@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpRegisterSuccessfulController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
 import app.data.catalog.Status;
 import app.router.RouteMapping;
@@ -42,7 +43,7 @@ public class ServiceRegistrationController {
             }
             Router.goTo(ServiceManagementController.class);
         } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpDeleteSuccessController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
 import app.data.catalog.Status;
 import app.router.RouteMapping;
@@ -45,7 +46,7 @@ public class ServiceChangeController  {
 
             Router.goTo(ServiceManagementController.class);
         } catch (ConnectionFailureException e) {
-            //TODO Criar pop up
+            Router.showPopUp(PopUpServerCloseController.class, true);
         }
     }
 
@@ -57,7 +58,7 @@ public class ServiceChangeController  {
             Router.showPopUp(PopUpDeleteSuccessController.class, 1);
             Router.goTo(ServiceManagementController.class);
         } catch (ConnectionFailureException e) {
-            //TODO Criar pop up
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
 
     }

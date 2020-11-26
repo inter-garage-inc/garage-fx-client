@@ -3,7 +3,7 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpChangeSuccessfulController;
 import app.controller.popup.PopUpConfirmDeleteUserController;
-import app.controller.popup.PopUpDeleteSuccessController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.User;
 import app.data.user.Status;
 import app.router.RouteMapping;
@@ -69,25 +69,16 @@ public class AlterDeletUserController {
                 Router.showPopUp(PopUpChangeSuccessfulController.class, 1);
                 Router.goTo(PeopleManagementController.class);
             } else {
-                lblMessage.setText("Sem acesso ao servidor");
+                lblMessage.setText("Não foi possível realizar a alteração");
             }
 
         } catch (ConnectionFailureException e) {
-            //TODO Criar pop up
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
     
     public void handleOnActionButtonBtnDelete() {
         Router.showPopUp(PopUpConfirmDeleteUserController.class, user);
-        try {
-            if(service.userDelete(user.getId())) {
-                Router.showPopUp(PopUpDeleteSuccessController.class, 1);
-            } else {
-                lblMessage.setText("Não foi possível fazer a exclusão");
-            }
-        } catch (ConnectionFailureException e) {
-            lblMessage.setText("Falha ao se comunicar com o servidor");
-        }
     }
 
 }

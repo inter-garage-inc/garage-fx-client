@@ -3,6 +3,7 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpRegisterSuccessfulController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Address;
 import app.data.Customer;
 import app.data.address.Country;
@@ -160,7 +161,7 @@ public class CustomerRegisterController {
                 System.out.println("Não foi possivel cadastrar. Verificar dados. Talvez CPF/CNPJ já cadastrados"); //TODO create a pop-up
             }
         } catch (ConnectionFailureException e) {
-            System.err.println("Error using customer service");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

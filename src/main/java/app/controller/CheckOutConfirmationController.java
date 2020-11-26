@@ -13,7 +13,6 @@ public class CheckOutConfirmationController {
 
     public void handleOnActionButtonBtnPay() throws InterruptedException {
         System.out.println("PAGO"); //TODO Pago ??
-        Thread.sleep(1000); //TODO Sleep
         Router.goTo(HomeController.class);
     }
 
