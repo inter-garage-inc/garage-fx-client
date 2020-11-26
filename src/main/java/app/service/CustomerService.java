@@ -26,7 +26,7 @@ public class CustomerService {
                 mapper.readValue((String) response.body(), new TypeReference<Customer>(){}) :
                 null;
         } catch (IOException | InterruptedException exception) {
-            throw new ConnectionFailureException();
+            throw new ConnectionFailureException(exception);
         }
     }
 
@@ -37,7 +37,7 @@ public class CustomerService {
                 mapper.readValue((String) response.body(), new TypeReference<Customer>() {}) :
                 null;
         } catch (IOException | InterruptedException exception) {
-            throw new ConnectionFailureException();
+            throw new ConnectionFailureException(exception);
         }
     }
 

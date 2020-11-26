@@ -17,7 +17,7 @@ public class MainMenuController {
     public MenuButton btnOpenAccounts;
     public MenuItem btnCustomerMonthly;
     public MenuItem btnCustomerSingle;
-    public Button btnVacancyMap;
+    public Button btnParkingSpacesMap;
     public MenuButton btnServicePlans;
     public Button btnUsers;
     public MenuItem btnPlansManagement;
@@ -36,7 +36,7 @@ public class MainMenuController {
         }
     }
 
-    public void handleOnActionButtonCheckIn(ActionEvent actionEvent) throws InterruptedException {
+    public void handleOnActionButtonCheckIn(ActionEvent actionEvent) {
         Router.goTo(CheckInController.class, true);
     }
 
@@ -57,8 +57,8 @@ public class MainMenuController {
         Router.goTo(SingleOrdersOpenController.class, true);
     }
 
-    public void handleOnActionButtonVacancyMap(ActionEvent actionEvent) {
-        //TODO
+    public void handleOnActionButtonParkingSpacesMap(ActionEvent actionEvent) {
+        Router.goTo(ParkingSpacesMapController.class, true);
     }
 
     public void handleOnActionButtonPlansManagement(ActionEvent actionEvent) {

@@ -1,0 +1,17 @@
+.parkingSpace {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-alignment: center;
+}
+
+.parkingSpace.OCCUPIED {
+    -fx-background-color: LightCoral;
+}
+
+.parkingSpace.VACANT {
+    -fx-background-color: LightGreen;
+}
+
+.parkingSpace.DISABLED {
+    -fx-background-color: LightGray;
+}
