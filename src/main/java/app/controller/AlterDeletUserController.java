@@ -49,7 +49,6 @@ public class AlterDeletUserController {
             return;
         }
 
-
         var userAlter = User.builder()
                 .name(fieldName.getText())
                 .username(fieldUsername.getText())
@@ -57,7 +56,6 @@ public class AlterDeletUserController {
                 .role(user.getRole())
                 .status(cbStatus.getValue())
                 .build();
-
 
         if (!confirmPassword) {
             lblMessage.setText("Senhas não são iguais");
@@ -80,14 +78,12 @@ public class AlterDeletUserController {
     }
     
     public void handleOnActionButtonBtnDelete() {
-        Router.showPopUp(PopUpConfirmDeleteUserController.class);
-        var response = Router.getUserData();
+        Router.showPopUp(PopUpConfirmDeleteUserController.class, user);
         try {
-            if(response.equals(1)) {
-                service.userDelete(user.getId());
+            if(service.userDelete(user.getId())) {
                 Router.showPopUp(PopUpDeleteSuccessController.class, 1);
-            } else if (response.equals(0)) {
-                lblMessage.setText("Exclusão cancelada");
+            } else {
+                lblMessage.setText("Não foi possível fazer a exclusão");
             }
         } catch (ConnectionFailureException e) {
             lblMessage.setText("Falha ao se comunicar com o servidor");

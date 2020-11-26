@@ -5,6 +5,7 @@ import app.controller.component.MainMenuController;
 import app.data.user.Role;
 import app.router.RouteMapping;
 import app.router.Router;
+import app.service.AuthenticationService;
 import app.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,15 +37,20 @@ public class PeopleManagementController {
                 return;
             }
 
-            if(user.getRole() != Role.EMPLOYEE) {
+            var logado = AuthenticationService.claimUser();
+            Boolean permission = (
+                    logado.getRole().equals(Role.MANAGER))
+                    && (user.getRole().equals(Role.ADMIN) || user.getRole().equals(Role.MANAGER)
+            );
+
+            if(permission) {
                 lblMessage.setText("Permissão negada");
             } else {
                 Router.goTo(AlterDeletUserController.class, user);
             }
 
-
         } catch (ConnectionFailureException e) {
-            //TODO Criar pop up
+            lblMessage.setText("Não foi possível se conectar com o servidor");
         }
     }
 
