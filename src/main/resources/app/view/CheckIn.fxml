@@ -6,7 +6,6 @@
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckInController">
     <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
-
     <fx:include source="component/UserDetails.fxml" />
 
     <Label layoutX="240.0" layoutY="180.0" styleClass="message-normal" text="Check in | Registro de entrada de Veículo" />

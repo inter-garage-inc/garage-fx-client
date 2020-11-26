@@ -51,18 +51,11 @@ public class PeopleManagementController {
             }
 
         } catch (ConnectionFailureException e) {
-<<<<<<< HEAD
             Router.showPopUp(PopUpServerCloseController.class, 2);
-=======
-            lblMessage.setText("Não foi possível se conectar com o servidor");
->>>>>>> 2f6338e... feature/users
         }
     }
 
     public void handleOnActionButtonBtnRegistration() {
         Router.goTo(UserRegistrationController.class, true);
     }
-
-
-
 }

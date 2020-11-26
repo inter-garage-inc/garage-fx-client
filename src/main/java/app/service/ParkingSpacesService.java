@@ -2,7 +2,10 @@ package app.service;
 
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
+<<<<<<< HEAD
 import app.data.Parking;
+=======
+>>>>>>> 90830fd... pin
 import app.data.parking.ParkingSpace;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

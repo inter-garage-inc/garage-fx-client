@@ -7,6 +7,7 @@ import app.router.Router;
 import app.service.UserService;
 import javafx.scene.control.Button;
 
+
 @RouteMapping(title = "Confirmação de exclusão", popup = true)
 public class PopUpConfirmDeleteUserController {
     public Button btnDelete;
@@ -22,7 +23,7 @@ public class PopUpConfirmDeleteUserController {
         try {
             user = (User) Router.getUserData();
 
-            if(service.userDelete(user.getId())) {
+            if (service.userDelete(user.getId())) {
                 Router.showPopUp(PopUpDeleteSuccessController.class, 2);
                 Router.goTo(PeopleManagementController.class);
             } else {
@@ -33,7 +34,6 @@ public class PopUpConfirmDeleteUserController {
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
-
 
     public void handleOnActionButtonBtnClose() {
         Router.closePopUp();
