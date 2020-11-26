@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ParkingSpacesMapController">
+   <Button layoutX="495.0" layoutY="88.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="204.0" text="Button" />
+
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
+    <fx:include source="component/LogoTopLeft.fxml" />
+    <fx:include source="component/UserDetails.fxml" />
+
+    <fx:include source="component/ButtonBack.fxml" />
+
+    <ScrollPane fx:id="scrollPaneMap" layoutX="90.0" layoutY="177.0" prefHeight="435.0" prefWidth="900.0" stylesheets="@css/parkingSpacesMap.css">
+        <HBox alignment="CENTER" minWidth="${scrollPaneMap.viewportBounds.width}">
+            <VBox alignment="CENTER">
+                <GridPane fx:id="gridPaneMap" alignment="CENTER" hgap="10.0" vgap="10.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </GridPane>
+            </VBox>
+        </HBox>
+    </ScrollPane>
+
+</AnchorPane>

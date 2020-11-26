@@ -14,8 +14,8 @@
             <MenuItem fx:id="btnCustomerSingle" mnemonicParsing="false" onAction="#handleOnActionButtonBtnCustomerSingle" text="Avulsos" styleClass="button-menu-item"/>
         </items>
     </MenuButton>
-    <Button fx:id="btnVacancyMap" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu" text="Mapa de Vagas" />
-    <MenuButton fx:id="btnServicePlans" layoutX="767.0" layoutY="14.0" onAction="#handleOnActionButtonVacancyMap" styleClass="button-menu" text="Planos e serviços" >
+    <Button fx:id="btnParkingSpacesMap" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionButtonParkingSpacesMap" styleClass="button-menu" text="Mapa de Vagas" />
+    <MenuButton fx:id="btnServicePlans" layoutX="767.0" layoutY="14.0" onAction="#handleOnActionButtonParkingSpacesMap" styleClass="button-menu" text="Planos e serviços" >
         <items>
             <MenuItem fx:id="btnPlansManagement" mnemonicParsing="false" onAction="#handleOnActionButtonPlansManagement" text="Gestão de Planos" styleClass="button-menu-item"/>
             <MenuItem fx:id="btnCatalogManagement" mnemonicParsing="false" onAction="#handleOnActionButtonCatalog" text="Gestão de serviços" styleClass="button-menu-item"/>

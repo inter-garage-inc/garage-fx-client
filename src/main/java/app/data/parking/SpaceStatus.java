@@ -1,9 +1,9 @@
 package app.data.parking;
 
 public enum SpaceStatus {
-    OCCUPIED("AVAILABLE"),
-    VACANT("UNAVAILABLE"),
-    RESERVED("RESERVED");
+    OCCUPIED("Ocupada"),
+    VACANT("Livre"),
+    DISABLED("Desativada");
 
     private final String value;
 
