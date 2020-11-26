@@ -24,12 +24,24 @@ public class ParkingSpacesMapController {
     @FXML
     private GridPane gridPaneMap;
 
+    private ParkingSpacesService service;
+
     private List<ParkingSpace> parkingSpaces;
 
-    private ParkingSpacesService parkingSpacesService;
-
     public ParkingSpacesMapController() {
-        parkingSpacesService = new ParkingSpacesService();
+        service = new ParkingSpacesService();
+
+        /* insert parking spaces
+        for(int c = 0; c <= 5; c++) {
+            for(int r = 0; r <= 10; r++) {
+                try {
+                    service.save(ParkingSpace.builder().code(Alphabetic.parseInt(c) + r).status(SpaceStatus.VACANT).build());
+                } catch (ConnectionFailureException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        */
     }
 
     @SneakyThrows
@@ -41,47 +53,31 @@ public class ParkingSpacesMapController {
 
     private void loadMap() {
         try {
-            parkingSpaces = parkingSpacesService.index();
+            parkingSpaces = service.index();
         } catch (ConnectionFailureException e) {
             e.printStackTrace();
         }
 
-        var maxColumn = parkingSpaces.stream().map(ParkingSpace::getColumnPosition).max(Integer::compareTo).orElse(0);
-        var maxRow = parkingSpaces.stream().map(ParkingSpace::getRowPosition).max(Integer::compareTo).orElse(0);
+        parkingSpaces.forEach(ps -> {
+            var labelCode = new Label(ps.getCode());
+            labelCode.getStyleClass().addAll("parkingSpace", ps.getStatus().name());
 
-        if(gridPaneMap.getColumnCount() < maxColumn) {
-            gridPaneMap.getColumnConstraints().removeAll();
-            for (int i = 0; i < maxColumn; i++) {
-                gridPaneMap.getColumnConstraints().add(new ColumnConstraints(50.0));
-            }
-        }
-
-        if(gridPaneMap.getRowCount() < maxRow) {
-            gridPaneMap.getRowConstraints().removeAll();
-            for (int i = 0; i < maxRow; i++) {
-                gridPaneMap.getRowConstraints().add(new RowConstraints(50.0));
-            }
-        }
-
-        gridPaneMap.getChildren().clear();
-
-        parkingSpaces.forEach(parkingSpace -> {
-            var label = new Label(parkingSpace.getCode());
-            label.getStyleClass().addAll("parkingSpace", parkingSpace.getStatus().name());
-            if(parkingSpace.getStatus() != SpaceStatus.OCCUPIED) {
-                MenuItem menuItemEnableDisable;
-                if(parkingSpace.getStatus() == SpaceStatus.DISABLED) {
-                    menuItemEnableDisable = new MenuItem("Ativar");
-                    menuItemEnableDisable.setOnAction(event -> this.handleSetEnable(parkingSpace));
-                } else {
-                    menuItemEnableDisable = new MenuItem("Desativar");
-                    menuItemEnableDisable.setOnAction(event -> this.handleSetDisable(parkingSpace));
-                }
+            if(ps.getStatus() != SpaceStatus.OCCUPIED) {
+                var menuItemEnableDisable = new MenuItem(
+                        ps.getStatus() == SpaceStatus.DISABLED
+                            ? "Ativar"
+                            : "Desativar"
+                );
+                menuItemEnableDisable.setOnAction(
+                        ps.getStatus() == SpaceStatus.DISABLED
+                            ? event -> this.handleSetEnable(ps)
+                            : event -> this.handleSetDisable(ps)
+                );
                 var menuItemDelete = new MenuItem("Remover");
-                menuItemDelete.setOnAction(event -> this.handleDelete(parkingSpace));
-                label.setContextMenu(new ContextMenu(menuItemEnableDisable, menuItemDelete));
+                menuItemDelete.setOnAction(event -> this.handleDelete(ps));
+                labelCode.setContextMenu(new ContextMenu(menuItemEnableDisable, menuItemDelete));
             }
-            gridPaneMap.add(label, parkingSpace.getColumnPosition(), parkingSpace.getRowPosition());
+            gridPaneMap.add(labelCode, ps.getColumnPosition(), ps.getRowPosition());
         });
     }
 
@@ -92,7 +88,7 @@ public class ParkingSpacesMapController {
                 .status(SpaceStatus.DISABLED)
                 .build();
         try {
-            parkingSpacesService.update(parkingSpace.getId(), ps);
+            service.update(parkingSpace.getId(), ps);
             loadMap();
         } catch (ConnectionFailureException e) {
             e.printStackTrace();
@@ -106,7 +102,7 @@ public class ParkingSpacesMapController {
                 .status(SpaceStatus.VACANT)
                 .build();
         try {
-            parkingSpacesService.update(parkingSpace.getId(), ps);
+            service.update(parkingSpace.getId(), ps);
             loadMap();
         } catch (ConnectionFailureException e) {
             e.printStackTrace();
@@ -115,7 +111,7 @@ public class ParkingSpacesMapController {
 
     public void handleDelete(ParkingSpace parkingSpace) {
         try {
-            parkingSpacesService.delete(parkingSpace.getId());
+            service.delete(parkingSpace.getId());
             loadMap();
         } catch (ConnectionFailureException e) {
             e.printStackTrace();
