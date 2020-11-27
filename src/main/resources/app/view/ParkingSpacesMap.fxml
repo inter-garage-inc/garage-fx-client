@@ -21,10 +21,10 @@
         </HBox>
     </ScrollPane>
     <Pane layoutX="356.0" layoutY="619.0" prefHeight="20.0" prefWidth="369.0" styleClass="parking-space-map-legend">
-        <Label layoutX="0.0" styleClass="symbol, OCCUPIED"/>
+        <Label layoutX="0.0" styleClass="symbol, VACANT"/>
         <Label layoutX="30.0" text="Vaga livre" styleClass="description"/>
 
-        <Label layoutX="110.0"  styleClass="symbol, VACANT"/>
+        <Label layoutX="110.0"  styleClass="symbol, OCCUPIED"/>
         <Label layoutX="140.0" text="Vaga ocupada" styleClass="description"/>
 
         <Label layoutX="250.0" styleClass="symbol, DISABLED" />
