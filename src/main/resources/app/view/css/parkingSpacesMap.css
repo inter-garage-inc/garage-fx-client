@@ -15,3 +15,28 @@
 .parkingSpace.DISABLED {
     -fx-background-color: LightGray;
 }
+
+.parking-space-map-legend {
+    -fx-pref-height: 20px;
+}
+
+.parking-space-map-legend .symbol {
+    -fx-pref-height: 20px;
+    -fx-pref-width: 20px;
+}
+
+.parking-space-map-legend .symbol.OCCUPIED {
+    -fx-background-color: LightCoral;
+}
+
+.parking-space-map-legend .symbol.VACANT {
+     -fx-background-color: LightGreen;
+ }
+
+.parking-space-map-legend .symbol.DISABLED {
+    -fx-background-color: LightGray;
+}
+
+.parking-space-map-legend .description {
+    -fx-font-size: 14px;
+}

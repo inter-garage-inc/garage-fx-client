@@ -32,17 +32,17 @@ public class ParkingSpace extends DataBase {
     @Setter(value=AccessLevel.PRIVATE)
     private Integer rowPosition;
 
-    private static final Pattern PATTERN = Pattern.compile("^([A-Z]+)([0-9]+)$");
+    public static final Pattern CODE_PATTERN = Pattern.compile("^([A-Z]+)([0-9]+)$");
 
     public void setCode(String code) {
-        var matcher = PATTERN.matcher(code);
+        var matcher = CODE_PATTERN.matcher(code);
         if(!matcher.find()) {
             throw new IllegalArgumentException("Invalid parking space code");
         }
         this.code = code;
         columnName = matcher.group(1);
         rowName = matcher.group(2);
-        columnPosition = Alphabetic.parseString(columnName);
+        columnPosition = Alphabetic.toDigit(columnName);
         rowPosition = Integer.parseInt(rowName);
     }
 
