@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -44,7 +45,7 @@ public class VehicleRegisterController {
                 vboxPlans.getChildren().add(button);
             });
         } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }
