@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CheckInController">
-    <fx:include fx:id="menu" source="component/MainMenu.fxml"/>
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
 
     <fx:include source="component/UserDetails.fxml" />
@@ -14,18 +15,12 @@
     <TextField layoutX="315.0" layoutY="300.0" prefWidth="450.0" promptText="Digite a placa do veículo" styleClass="field" />
 
     <Label layoutX="315.0" layoutY="365.0" styleClass="label, field, blue" text="Serviços" />
-    <ScrollPane layoutX="315.0" layoutY="400.0" prefHeight="152.0" prefWidth="450.0">
-        <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="422.0">
-                <children>
-                    <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="CheckBox" />
-                    <CheckBox layoutX="14.0" layoutY="49.0" mnemonicParsing="false" text="CheckBox" />
-                    <CheckBox layoutX="14.0" layoutY="83.0" mnemonicParsing="false" text="CheckBox" />
-                    <CheckBox layoutX="14.0" layoutY="116.0" mnemonicParsing="false" text="CheckBox" />
-                </children></AnchorPane>
-        </content>
+    <ScrollPane layoutX="315.0" layoutY="400.0" prefHeight="110.0" prefWidth="450.0">
+      <content>
+         <AnchorPane fx:id="anchorPane" prefHeight="106.0" prefWidth="434.0" />
+      </content>
     </ScrollPane>
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" onAction="#handleOnActionButtonOk" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
+    <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonOk" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
 </AnchorPane>
