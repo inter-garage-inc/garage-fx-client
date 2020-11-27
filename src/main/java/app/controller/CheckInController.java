@@ -6,7 +6,6 @@ import app.data.Catalog;
 import app.data.Order;
 import app.data.Parking;
 import app.data.order.Item;
-import app.data.order.PaymentMethod;
 import app.data.order.Status;
 import app.data.parking.SpaceStatus;
 import app.router.RouteMapping;

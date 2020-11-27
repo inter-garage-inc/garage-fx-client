@@ -26,5 +26,4 @@
     <Label layoutX="391.0" layoutY="276.0" styleClass="message, warning" text="*" />
     <Label layoutX="398.0" layoutY="376.0" styleClass="message, warning" text="*" />
     <Label fx:id="lblMessage" layoutX="315.0" layoutY="562.0" prefHeight="18.0" prefWidth="410.0" styleClass="message, warning" />
-
 </AnchorPane>
