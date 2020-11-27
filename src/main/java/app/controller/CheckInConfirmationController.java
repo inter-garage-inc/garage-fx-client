@@ -4,7 +4,6 @@ import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.CheckInConfirmController;
 import app.controller.popup.PopUpServerCloseController;
-import app.data.Catalog;
 import app.data.Order;
 import app.data.order.Item;
 import app.data.parking.ParkingSpace;
@@ -42,8 +41,6 @@ public class CheckInConfirmationController {
 
     public void handleOnActionButtonBtnSave() throws ConnectionFailureException {
         Order order = (Order) Router.getUserData();
-
-
 
         try {
             var response = service.ordersSave(order);
@@ -86,8 +83,8 @@ public class CheckInConfirmationController {
             layoutY += 20;
             anchorPane.getChildren().addAll(label);
         }
-        lblParkingSpace.setText(parkingSpace.getCode().toString());
 
+        lblParkingSpace.setText(parkingSpace.getCode().toString());
 
         menuController.btnCheckIn.getStyleClass().add("button-menu-selected");
     }
