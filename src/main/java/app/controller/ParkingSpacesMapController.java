@@ -2,17 +2,23 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
+import app.controller.popup.ParkingSpaceRegistration;
+import app.data.User;
 import app.data.parking.ParkingSpace;
 import app.data.parking.SpaceStatus;
+import app.data.user.Role;
 import app.router.RouteMapping;
+import app.router.Router;
+import app.service.AuthenticationService;
 import app.service.ParkingSpacesService;
 import app.util.Alphabetic;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
-import lombok.SneakyThrows;
 
 import java.util.*;
 
@@ -24,101 +30,100 @@ public class ParkingSpacesMapController {
     @FXML
     private GridPane gridPaneMap;
 
+    @FXML
+    private Button buttonRegistration;
+
+    private User user;
+
+    private ParkingSpacesService service;
+
     private List<ParkingSpace> parkingSpaces;
 
-    private ParkingSpacesService parkingSpacesService;
-
     public ParkingSpacesMapController() {
-        parkingSpacesService = new ParkingSpacesService();
+        user = AuthenticationService.claimUser();
+        service = new ParkingSpacesService();
     }
 
-    @SneakyThrows
-    public void initialize() {
+    @FXML
+    private void initialize() {
         menuController.btnParkingSpacesMap.getStyleClass().add("button-menu-selected");
-
+        if(user.getRole() == Role.EMPLOYEE) {
+            buttonRegistration.setVisible(false);
+        }
         loadMap();
     }
 
     private void loadMap() {
         try {
-            parkingSpaces = parkingSpacesService.index();
-        } catch (ConnectionFailureException e) {
-            e.printStackTrace();
-        }
-
-        var maxColumn = parkingSpaces.stream().map(ParkingSpace::getColumnPosition).max(Integer::compareTo).orElse(0);
-        var maxRow = parkingSpaces.stream().map(ParkingSpace::getRowPosition).max(Integer::compareTo).orElse(0);
-
-        if(gridPaneMap.getColumnCount() < maxColumn) {
-            gridPaneMap.getColumnConstraints().removeAll();
-            for (int i = 0; i < maxColumn; i++) {
-                gridPaneMap.getColumnConstraints().add(new ColumnConstraints(50.0));
-            }
-        }
-
-        if(gridPaneMap.getRowCount() < maxRow) {
-            gridPaneMap.getRowConstraints().removeAll();
-            for (int i = 0; i < maxRow; i++) {
-                gridPaneMap.getRowConstraints().add(new RowConstraints(50.0));
-            }
+            parkingSpaces = service.index();
+        } catch (ConnectionFailureException exception) {
+            exception.printStackTrace();
         }
 
         gridPaneMap.getChildren().clear();
+        parkingSpaces.forEach(ps -> {
+            var labelCode = new Label(ps.getCode());
+            labelCode.getStyleClass().addAll("parkingSpace", ps.getStatus().name());
 
-        parkingSpaces.forEach(parkingSpace -> {
-            var label = new Label(parkingSpace.getCode());
-            label.getStyleClass().addAll("parkingSpace", parkingSpace.getStatus().name());
-            if(parkingSpace.getStatus() != SpaceStatus.OCCUPIED) {
-                MenuItem menuItemEnableDisable;
-                if(parkingSpace.getStatus() == SpaceStatus.DISABLED) {
-                    menuItemEnableDisable = new MenuItem("Ativar");
-                    menuItemEnableDisable.setOnAction(event -> this.handleSetEnable(parkingSpace));
-                } else {
-                    menuItemEnableDisable = new MenuItem("Desativar");
-                    menuItemEnableDisable.setOnAction(event -> this.handleSetDisable(parkingSpace));
-                }
-                var menuItemDelete = new MenuItem("Remover");
-                menuItemDelete.setOnAction(event -> this.handleDelete(parkingSpace));
-                label.setContextMenu(new ContextMenu(menuItemEnableDisable, menuItemDelete));
+            if(user.getRole() != Role.EMPLOYEE && ps.getStatus() != SpaceStatus.OCCUPIED) {
+                var menuItemEnableDisable = new MenuItem(
+                        ps.getStatus() == SpaceStatus.DISABLED
+                            ? "Tornar Ativa"
+                            : "Tornar Inativa"
+                );
+                menuItemEnableDisable.setOnAction(
+                        ps.getStatus() == SpaceStatus.DISABLED
+                            ? event -> this.handleActivation(ps)
+                            : event -> this.handleDeactivation(ps)
+                );
+                var menuItemDelete = new MenuItem("Excluir vaga");
+                menuItemDelete.setOnAction(event -> this.handleDeletion(ps));
+                labelCode.setContextMenu(new ContextMenu(menuItemEnableDisable, menuItemDelete));
             }
-            gridPaneMap.add(label, parkingSpace.getColumnPosition(), parkingSpace.getRowPosition());
+            gridPaneMap.add(labelCode, ps.getColumnPosition(), ps.getRowPosition());
         });
     }
 
-    public void handleSetDisable(ParkingSpace parkingSpace) {
-        var ps = ParkingSpace
-                .builder()
+    @FXML
+    private void handleDeactivation(ParkingSpace parkingSpace) {
+        var ps = ParkingSpace.builder()
                 .code(parkingSpace.getCode())
                 .status(SpaceStatus.DISABLED)
                 .build();
         try {
-            parkingSpacesService.update(parkingSpace.getId(), ps);
+            service.update(parkingSpace.getId(), ps);
             loadMap();
-        } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+        } catch (ConnectionFailureException exception) {
+            exception.printStackTrace();
         }
     }
 
-    public void handleSetEnable(ParkingSpace parkingSpace) {
-        var ps = ParkingSpace
-                .builder()
+    @FXML
+    private void handleActivation(ParkingSpace parkingSpace) {
+        var ps = ParkingSpace.builder()
                 .code(parkingSpace.getCode())
                 .status(SpaceStatus.VACANT)
                 .build();
         try {
-            parkingSpacesService.update(parkingSpace.getId(), ps);
+            service.update(parkingSpace.getId(), ps);
             loadMap();
-        } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+        } catch (ConnectionFailureException exception) {
+            exception.printStackTrace();
         }
     }
 
-    public void handleDelete(ParkingSpace parkingSpace) {
+    @FXML
+    private void handleDeletion(ParkingSpace parkingSpace) {
         try {
-            parkingSpacesService.delete(parkingSpace.getId());
+            service.delete(parkingSpace.getId());
             loadMap();
-        } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+        } catch (ConnectionFailureException exception) {
+            exception.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleRegistration(ActionEvent actionEvent) {
+        Router.showPopUp(ParkingSpaceRegistration.class);
     }
 }

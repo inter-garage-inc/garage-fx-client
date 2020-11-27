@@ -5,12 +5,10 @@ import app.util.Alphabetic;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class ParkingSpace extends DataBase {
@@ -18,41 +16,41 @@ public class ParkingSpace extends DataBase {
 
     private SpaceStatus status;
 
-    private static final Pattern PATTERN = Pattern.compile("^([A-Z]+)([0-9]+)$");
+    @JsonIgnore
+    @Setter(value=AccessLevel.PRIVATE)
+    private String columnName;
 
     @JsonIgnore
-    @Getter(value=AccessLevel.PRIVATE)
     @Setter(value=AccessLevel.PRIVATE)
-    private Matcher matcher;
+    private String rowName;
+
+    @JsonIgnore
+    @Setter(value=AccessLevel.PRIVATE)
+    private Integer columnPosition;
+
+    @JsonIgnore
+    @Setter(value=AccessLevel.PRIVATE)
+    private Integer rowPosition;
+
+    public static final Pattern CODE_PATTERN = Pattern.compile("^([A-Z]+)([0-9]+)$");
 
     public void setCode(String code) {
-        this.code = code;
-        matcher = PATTERN.matcher(code);
-        matcher.find();
-    }
-
-    public static class ParkingSpaceBuilder {
-        public ParkingSpaceBuilder code(String code) {
-            this.code = code;
-            matcher = PATTERN.matcher(code);
-            matcher.find();
-            return this;
+        var matcher = CODE_PATTERN.matcher(code);
+        if(!matcher.find()) {
+            throw new IllegalArgumentException("Invalid parking space code");
         }
+        this.code = code;
+        columnName = matcher.group(1);
+        rowName = matcher.group(2);
+        columnPosition = Alphabetic.toDigit(columnName);
+        rowPosition = Integer.parseInt(rowName);
     }
 
-    public String getColumnName() {
-            return matcher.group(1);
-    }
-
-    public String getRowName() {
-        return matcher.group(2);
-    }
-
-    public Integer getColumnPosition() {
-       return Alphabetic.parseString(getColumnName());
-    }
-
-    public Integer getRowPosition() {
-        return Integer.parseInt(getRowName());
+    @Builder
+    private static ParkingSpace of(String code, SpaceStatus status) {
+        var ps = new ParkingSpace();
+        ps.setCode(code);
+        ps.setStatus(status);
+        return ps;
     }
 }
