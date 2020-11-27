@@ -20,4 +20,7 @@ public class Parking extends DataBase {
 
     @JsonProperty("parking_space")
     private ParkingSpace parkingSpace;
+
+    @JsonProperty("license_plate")
+    private String licensePlate;
 }

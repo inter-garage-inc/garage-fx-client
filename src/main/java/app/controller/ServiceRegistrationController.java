@@ -4,6 +4,7 @@ import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpRegisterSuccessfulController;
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
+import app.data.catalog.CatalogType;
 import app.data.catalog.Status;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -32,6 +33,7 @@ public class ServiceRegistrationController {
                 .description(fieldService.getText())
                 .price(new BigDecimal(fieldPrice.getText()))
                 .status(cbStatus.getValue())
+                .type(CatalogType.OTHER)
                 .build();
         try {
             CatalogService service = new CatalogService();

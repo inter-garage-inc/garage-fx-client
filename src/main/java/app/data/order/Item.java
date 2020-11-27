@@ -3,6 +3,7 @@ package app.data.order;
 import app.data.Catalog;
 import app.data.DataBase;
 import app.data.Order;
+import app.data.Parking;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -17,11 +18,7 @@ public class Item extends DataBase {
 
     private String description;
 
-    private Integer quantity;
-
-    private BigDecimal amount;
-
-    private Order order;
-
     private Catalog catalog;
+
+    private Parking parking;
 }

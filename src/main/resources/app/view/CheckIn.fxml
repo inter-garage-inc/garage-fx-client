@@ -12,7 +12,7 @@
     <Label layoutX="240.0" layoutY="180.0" styleClass="message-normal" text="Check in | Registro de entrada de Veículo" />
 
     <Label layoutX="315.0" layoutY="265.0" styleClass="label, field, blue" text="Veículo" />
-    <TextField layoutX="315.0" layoutY="300.0" prefWidth="450.0" promptText="Digite a placa do veículo" styleClass="field" />
+    <TextField fx:id="txtLicensePlate" layoutX="315.0" layoutY="300.0" prefWidth="450.0" promptText="Digite a placa do veículo" styleClass="field" />
 
     <Label layoutX="315.0" layoutY="365.0" styleClass="label, field, blue" text="Serviços" />
     <ScrollPane layoutX="315.0" layoutY="400.0" prefHeight="110.0" prefWidth="450.0">
@@ -23,4 +23,9 @@
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button fx:id="btnOk" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonOk" prefWidth="110.0" styleClass="button, button-blue" text="Ok" />
+
+    <Label layoutX="391.0" layoutY="276.0" styleClass="message, warning" text="*" />
+    <Label layoutX="398.0" layoutY="376.0" styleClass="message, warning" text="*" />
+    <Label fx:id="lblMessage" layoutX="315.0" layoutY="562.0" prefHeight="18.0" prefWidth="410.0" styleClass="message, warning" />
+
 </AnchorPane>

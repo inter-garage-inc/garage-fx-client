@@ -51,6 +51,7 @@ public class CatalogService {
             var response = GarageClient.get("/catalogs");
             return mapper.readValue( (String) response.body(), new TypeReference<List<Catalog>> () {});
         } catch (IOException | InterruptedException exception) {
+            exception.printStackTrace();
             throw new ConnectionFailureException();
         }
     }
