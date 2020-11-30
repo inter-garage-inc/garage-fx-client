@@ -64,6 +64,19 @@ public class CheckInController {
             lblMessage.setText("Não há vagas no momento");
             return;
         }
+        
+        var response = orderService.ordersFindByLicensePlate(txtLicensePlate.getText());
+        var response1 = parkingSpacesService.findAvailable();
+
+        if(response) {
+           lblMessage.setText("Placa com check in em aberto");
+           return;
+        }
+
+        if(parkingSpacesService == null) {
+            lblMessage.setText("Não há vagas no momento");
+            return;
+        }
 
         if(!nullLicensePlate && !nullServices) {
             parkingSpace.setStatus(SpaceStatus.OCCUPIED);
