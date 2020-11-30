@@ -3,13 +3,10 @@ package app.service;
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
 import app.data.Order;
-import app.data.order.Item;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 
 public class OrderService {
 
