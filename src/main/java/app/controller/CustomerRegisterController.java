@@ -3,14 +3,15 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpRegisterSuccessfulController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Address;
 import app.data.Customer;
 import app.data.address.Country;
 import app.data.address.State;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomerService;
-import app.service.PostalCodeService;
+import app.service.CustomersService;
+import app.service.PostalCodesService;
 import app.util.MaskedTextField.MaskedTextField;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -62,13 +63,13 @@ public class CustomerRegisterController {
     @FXML
     private MainMenuController menuController;
 
-    private CustomerService customerService;
+    private CustomersService customersService;
 
-    private PostalCodeService postalCodeService;
+    private PostalCodesService postalCodesService;
 
     public CustomerRegisterController() {
-        customerService = new CustomerService();
-        postalCodeService = new PostalCodeService();
+        customersService = new CustomersService();
+        postalCodesService = new PostalCodesService();
     }
 
     public void initialize() {
@@ -107,7 +108,7 @@ public class CustomerRegisterController {
                 @Override
                 protected Void call() {
                     try {
-                        var address = postalCodeService.search(fieldPostalCode.getPlainText());
+                        var address = postalCodesService.search(fieldPostalCode.getPlainText());
                         if(address != null) {
                             Platform.runLater(() -> {
                                 fieldCity.setText(address.getCity());
@@ -117,7 +118,7 @@ public class CustomerRegisterController {
                             });
                         }
                     } catch (ConnectionFailureException e) {
-                        System.err.println("Error using postal code service");
+                        Router.showPopUp(PopUpServerCloseController.class, 2);
                     }
                     return null;
                 }
@@ -152,7 +153,7 @@ public class CustomerRegisterController {
                 .address(address)
                 .build();
         try {
-            var c = customerService.register(customer);
+            var c = customersService.register(customer);
             if (c != null) {
                 Router.showPopUp(PopUpRegisterSuccessfulController.class, 3);
                 Router.goTo(CustomerDetailsController.class, c); //TODO create destine page
@@ -160,7 +161,7 @@ public class CustomerRegisterController {
                 System.out.println("Não foi possivel cadastrar. Verificar dados. Talvez CPF/CNPJ já cadastrados"); //TODO create a pop-up
             }
         } catch (ConnectionFailureException e) {
-            System.err.println("Error using customer service");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

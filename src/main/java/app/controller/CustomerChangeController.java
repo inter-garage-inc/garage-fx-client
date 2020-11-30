@@ -3,14 +3,15 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpChangeSuccessfulController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Address;
 import app.data.Customer;
 import app.data.address.Country;
 import app.data.address.State;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomerService;
-import app.service.PostalCodeService;
+import app.service.CustomersService;
+import app.service.PostalCodesService;
 import app.util.MaskedTextField.MaskedTextField;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -22,7 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
-@RouteMapping(title = "Alterar customer")
+@RouteMapping(title = "Alteração de cliente")
 public class CustomerChangeController {
     @FXML
     private TextField fieldName;
@@ -65,14 +66,14 @@ public class CustomerChangeController {
 
     private final Customer customer;
 
-    private final CustomerService customerService;
+    private final CustomersService customersService;
 
-    private final PostalCodeService postalCodeService;
+    private final PostalCodesService postalCodesService;
 
     public CustomerChangeController() {
         customer = (Customer) Router.getUserData();
-        customerService = new CustomerService();
-        postalCodeService = new PostalCodeService();
+        customersService = new CustomersService();
+        postalCodesService = new PostalCodesService();
     }
 
     public void initialize() {
@@ -100,7 +101,7 @@ public class CustomerChangeController {
                 @Override
                 protected Void call() {
                     try {
-                        var address = postalCodeService.search(fieldPostalCode.getPlainText());
+                        var address = postalCodesService.search(fieldPostalCode.getPlainText());
                         if(address != null) {
                             Platform.runLater(() -> {
                                 fieldCity.setText(address.getCity());
@@ -110,7 +111,7 @@ public class CustomerChangeController {
                             });
                         }
                     } catch (ConnectionFailureException e) {
-                        System.err.println("Error using postal code service");
+                        Router.showPopUp(PopUpServerCloseController.class, 2);
                     }
                     return null;
                 }
@@ -156,7 +157,7 @@ public class CustomerChangeController {
                 .address(address)
                 .build();
         try {
-            var c = customerService.update(customer.getId(), customerUpdated);
+            var c = customersService.update(customer.getId(), customerUpdated);
             if (c != null) {
                 System.out.println(customer);
                 System.out.println(customerUpdated);
@@ -167,7 +168,7 @@ public class CustomerChangeController {
                 System.out.println("Não foi possivel atualizar"); //TODO create a pop-up
             }
         } catch (ConnectionFailureException e) {
-            System.err.println("Error using customer service");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

@@ -8,13 +8,9 @@ import app.router.Router;
 import app.service.PlanService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.awt.*;
-import java.util.List;
 
 @RouteMapping(title = "Gestão de Planos")
 public class PlanManagementController {
@@ -58,6 +54,6 @@ public class PlanManagementController {
 
     public void handleOnActionButtonBtnSelect() {
         var data = tbView.getSelectionModel().getSelectedItem();
-        Router.goTo(PlanChangeController.class, data);
+        Router.goTo(PlanChangeController.class, data, true);
     }
 }

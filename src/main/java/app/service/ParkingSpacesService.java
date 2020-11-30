@@ -2,10 +2,10 @@ package app.service;
 
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
-import app.data.Plan;
 import app.data.parking.ParkingSpace;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,6 +52,17 @@ public class ParkingSpacesService {
         try {
             var response = GarageClient.delete("/parking-spaces/" + id);
             return response.statusCode() == 200;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException(exception);
+        }
+    }
+
+    public List<ParkingSpace> findAllVacant() throws ConnectionFailureException {
+        try {
+            var response = GarageClient.get("/parking-spaces/all-vacant");
+            return response.statusCode() == 200
+                    ? mapper.readValue((String) response.body(), new TypeReference<List<ParkingSpace>>() {})
+                    : null;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException(exception);
         }

@@ -1,11 +1,12 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.PlanService;
-import app.service.VehicleService;
+import app.service.VehiclesService;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
@@ -23,12 +24,12 @@ public class VehicleRegisterController {
 
     private final PlanService planService;
 
-    private final VehicleService vehicleService;
+    private final VehiclesService vehiclesService;
 
     public VehicleRegisterController() {
         customer = (Customer) Router.getUserData();
         planService = new PlanService();
-        vehicleService = new VehicleService();
+        vehiclesService = new VehiclesService();
     }
 
     public void initialize() {
@@ -44,7 +45,7 @@ public class VehicleRegisterController {
                 vboxPlans.getChildren().add(button);
             });
         } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

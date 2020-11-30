@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpCheckInConfirmController">
+    <Label layoutX="97.0" prefWidth="309.0" styleClass="field-label-form" text="Check In realizado com sucesso!" textAlignment="CENTER" wrapText="true" />
+    <Label fx:id="lblParkingSpace" layoutX="203.0" layoutY="40.0" prefWidth="94.0" styleClass="field-label-form" textAlignment="CENTER" />
+    <fx:include source="../component/ButtonOk.fxml" />
+</AnchorPane>

@@ -1,7 +1,7 @@
 package app.controller;
 
 import app.controller.component.MainMenuController;
-import app.controller.popup.CustomerDeleteController;
+import app.controller.popup.PopUpCustomerDeleteController;
 import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -72,7 +72,7 @@ public class CustomerDetailsController {
 
     @FXML
     private void handleDeleteCustomer(ActionEvent actionEvent) {
-        Router.showPopUp(CustomerDeleteController.class, customer);
+        Router.showPopUp(PopUpCustomerDeleteController.class, customer);
     }
 
     @FXML

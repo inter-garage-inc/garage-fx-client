@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class CustomerService {
+public class CustomersService {
 
     private final ObjectMapper mapper;
 
-    public CustomerService() {
+    public CustomersService() {
         mapper = new ObjectMapper();
     }
 

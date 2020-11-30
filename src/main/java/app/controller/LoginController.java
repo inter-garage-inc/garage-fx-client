@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.authentication.Credentials;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -48,7 +49,7 @@ public class LoginController {
                 showMessage("Login ou senha inválidos");
             }
         } catch (ConnectionFailureException e) {
-            showMessage("Incapaz de contatar o servidor");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

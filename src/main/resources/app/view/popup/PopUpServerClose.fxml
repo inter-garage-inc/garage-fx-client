@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpServerCloseController">
+    <Label layoutX="78.0" layoutY="31.0" styleClass="field-label-form" text="Não foi possível contactar o servidor" textFill="RED" />
+    <fx:include source="../component/ButtonOk.fxml" />
+</AnchorPane>

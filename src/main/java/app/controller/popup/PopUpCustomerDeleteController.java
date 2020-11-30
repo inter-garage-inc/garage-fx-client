@@ -5,19 +5,19 @@ import app.controller.CustomerSearchController;
 import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomerService;
+import app.service.CustomersService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 @RouteMapping(title = "Exclusão de Cliente", popup = true)
-public class CustomerDeleteController {
+public class PopUpCustomerDeleteController {
     private Customer customer;
 
-    private CustomerService service;
+    private CustomersService service;
 
-    public CustomerDeleteController() {
+    public PopUpCustomerDeleteController() {
         customer = (Customer) Router.getUserData();
-        service = new CustomerService();
+        service = new CustomersService();
     }
 
     @FXML

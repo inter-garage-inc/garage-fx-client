@@ -6,7 +6,7 @@ import app.controller.component.MainMenuController;
 import app.data.Catalog;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CatalogService;
+import app.service.CatalogsService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -14,7 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 @RouteMapping(title = "Gestão de Serviços")
-public class ServiceManagementController {
+public class CatalogManagementController {
 
     public TableView<Catalog> tbView;
     public Button btnRegistration;
@@ -37,7 +37,7 @@ public class ServiceManagementController {
 
         tbView.getColumns().addAll(column1, column2, column3);
 
-        var service = new CatalogService();
+        var service = new CatalogsService();
         var response = service.CatalogFindAll();
         response.forEach(catalog -> {
             tbView.getItems().add(catalog);
@@ -45,11 +45,11 @@ public class ServiceManagementController {
     }
 
     public void handleOnActionButtonBtnRegistration() {
-        Router.goTo(ServiceRegistrationController.class, true);
+        Router.goTo(CatalogRegistrationController.class, true);
     }
 
     public void handleOnActionButtonBtnSelect() {
-        var teste = tbView.getSelectionModel().getSelectedItem();
-        Router.goTo(ServiceChangeController.class, teste);
+        var catalog = tbView.getSelectionModel().getSelectedItem();
+        Router.goTo(CatalogChangeController.class, catalog, true);
     }
 }

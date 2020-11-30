@@ -66,7 +66,7 @@ public class MainMenuController {
     }
 
     public void handleOnActionButtonCatalog(ActionEvent actionEvent) {
-        Router.goTo(ServiceManagementController.class, true);
+        Router.goTo(CatalogManagementController.class, true);
     }
 
     public void handleOnActionButtonUsers(ActionEvent actionEvent) {

@@ -9,11 +9,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public class PostalCodeService {
+public class PostalCodesService {
 
     private final ObjectMapper mapper;
 
-    public PostalCodeService() {
+    public PostalCodesService() {
         mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }

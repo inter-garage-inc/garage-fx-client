@@ -2,10 +2,11 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.controller.popup.CustomerNotFoundController;
+import app.controller.popup.PopUpCustomerNotFoundController;
+import app.controller.popup.PopUpServerCloseController;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomerService;
+import app.service.CustomersService;
 import app.util.MaskedTextField.MaskedTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,10 +24,10 @@ public class CustomerSearchController {
     @FXML
     private ImageView findLoading;
 
-    private CustomerService service;
+    private CustomersService service;
 
     public CustomerSearchController() {
-        service = new CustomerService();
+        service = new CustomersService();
     }
 
     public void initialize() {
@@ -50,11 +51,10 @@ public class CustomerSearchController {
             if(customer != null) {
                 Router.goTo(CustomerDetailsController.class, customer, true);
             } else {
-                Router.showPopUp(CustomerNotFoundController.class, 3);
+                Router.showPopUp(PopUpCustomerNotFoundController.class, 3);
             }
         } catch (ConnectionFailureException e) {
-//            Router.showPopUp(); TODO popup error trying call server
-            System.out.println("Erro ao contatar servidor para buscar cliente");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 
