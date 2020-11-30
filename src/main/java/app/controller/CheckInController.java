@@ -66,7 +66,7 @@ public class CheckInController {
         }
         
         var response = orderService.ordersFindByLicensePlate(txtLicensePlate.getText());
-        var response1 = parkingSpacesService.findAvailable();
+        var parkingSpace = parkingSpacesService.findAvailable();
 
         if(response) {
            lblMessage.setText("Placa com check in em aberto");
