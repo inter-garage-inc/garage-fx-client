@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
+import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpDeleteSuccessController;
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
@@ -15,7 +16,7 @@ import javafx.scene.control.TextField;
 import java.math.BigDecimal;
 
 @RouteMapping(title = "Alteração de Serviços")
-public class ServiceChangeController  {
+public class CatalogChangeController {
 
     public Button btnAlter;
     public Button btnDelete;
@@ -23,8 +24,10 @@ public class ServiceChangeController  {
     public TextField fieldPrice;
     public ComboBox<Status> cbStatus;
     public Catalog catalog;
+    public MainMenuController menuController;
 
     public void initialize() {
+        menuController.btnCatalogManagement.getStyleClass().add("button-menu-selected");
         catalog = (Catalog) Router.getUserData();
         fieldPrice.setText(catalog.getPrice().toString());
         fieldService.setText(catalog.getDescription());
@@ -44,7 +47,7 @@ public class ServiceChangeController  {
             CatalogService service = new CatalogService();
             service.CatalogUpdate(catalog2, catalog.getId());
 
-            Router.goTo(ServiceManagementController.class);
+            Router.goTo(CatalogManagementController.class);
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, true);
         }
@@ -56,7 +59,7 @@ public class ServiceChangeController  {
             service.CatalogDelete(catalog.getId());
 
             Router.showPopUp(PopUpDeleteSuccessController.class, 1);
-            Router.goTo(ServiceManagementController.class);
+            Router.goTo(CatalogManagementController.class);
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }

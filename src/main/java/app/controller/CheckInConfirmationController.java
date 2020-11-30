@@ -4,19 +4,20 @@ import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.CheckInConfirmController;
 import app.controller.popup.PopUpServerCloseController;
-import app.data.catalog.CatalogType;
+import app.data.Catalog;
+import app.data.Order;
 import app.data.order.Item;
 import app.router.RouteMapping;
 import app.router.Router;
+import app.service.OrderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import app.service.ItemService;
 
-import java.util.ArrayList;
+import java.util.List;
 
-@RouteMapping
+@RouteMapping(title = "Confirmação de Check In")
 public class CheckInConfirmationController {
 
     public Button btnAlter;
@@ -26,10 +27,11 @@ public class CheckInConfirmationController {
     public Label lblLicensePlate;
     public Label lblServices;
     public AnchorPane anchorPane;
-    public ItemService service;
+    public OrderService service;
+    public Label lblMessage;
 
     public CheckInConfirmationController() {
-        service = new ItemService();
+        service = new OrderService();
     }
 
     public void handleOnActionButtonBtnAlter() {
@@ -37,32 +39,21 @@ public class CheckInConfirmationController {
     }
 
     public void handleOnActionButtonBtnSave() throws ConnectionFailureException {
-        ArrayList<Item> response = (ArrayList<Item>) Router.getUserData();
-
-        Item.ItemBuilder items = null;
-        for(Item item : response) {
-            items = Item.builder()
-                    .catalog(item.getCatalog())
-                    .description(item.getDescription())
-                    .parking(item.getParking())
-                    .price(item.getPrice());
-        }
-        var item = items.build();
+        Order order = (Order) Router.getUserData();
+        System.out.println(order);
 
         try {
-            var response2 = service.itemFindByLicensePlate(item);
-            if (response2 != null) {
-                if(service.itemsSave(item)) {
-                    Router.showPopUp(CheckInConfirmController.class, 2);
-                    Router.goTo(HomeController.class);
-                }
+            var response = service.ordersSave(order);
+            if(response) {
+                Router.showPopUp(CheckInConfirmController.class, 2);
+                Router.goTo(HomeController.class);
+            } else {
+                lblMessage.setText("Não foi possível realizar o check in");
             }
 
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }
-
-
     }
 
     public void handleOnActionButtonBtnPay() throws InterruptedException {
@@ -74,17 +65,17 @@ public class CheckInConfirmationController {
     @FXML
     private MainMenuController menuController;
     public void initialize() {
-        ArrayList<Item> response = (ArrayList<Item>) Router.getUserData();
+        Order order = (Order) Router.getUserData();
+        List<Item> response = order.getItems();
 
         Double layoutY = 5.0;
         Double layoutX = 5.0;
 
+
         for (Item item : response) {
-            if (item.getCatalog().getType().equals(CatalogType.PARKING)) {
-                lblLicensePlate.setText(item.getParking().getLicensePlate());
-            }
+            lblLicensePlate.setText(item.getParking().getLicensePlate());
             Label label = new Label();
-            label.setText(" ⌂ "+item.getDescription());
+            label.setText(" ⌂ " + item.getDescription());
             label.getStyleClass().addAll("label");
             label.setLayoutY(layoutY);
             label.setLayoutX(layoutX);

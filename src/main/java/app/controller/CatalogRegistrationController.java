@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import java.math.BigDecimal;
 
 @RouteMapping(title = "Cadastro de Serviços")
-public class ServiceRegistrationController {
+public class CatalogRegistrationController {
 
 
     public TextField fieldService;
@@ -43,7 +43,7 @@ public class ServiceRegistrationController {
             } else {
                 System.out.println("Não foi possível realizar o cadastro!!");
             }
-            Router.goTo(ServiceManagementController.class);
+            Router.goTo(CatalogManagementController.class);
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }

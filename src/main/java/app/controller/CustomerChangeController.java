@@ -23,7 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
-@RouteMapping(title = "Alterar customer")
+@RouteMapping(title = "Alteração de cliente")
 public class CustomerChangeController {
     @FXML
     private TextField fieldName;
@@ -111,7 +111,7 @@ public class CustomerChangeController {
                             });
                         }
                     } catch (ConnectionFailureException e) {
-                        System.err.println("Error using postal code service");
+                        Router.showPopUp(PopUpServerCloseController.class, 2);
                     }
                     return null;
                 }

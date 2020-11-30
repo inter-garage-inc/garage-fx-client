@@ -3,7 +3,8 @@ package app.data.order;
 public enum Status {
 
     PAID("paid"),
-    CANCELED("canceled");
+    CANCELED("canceled"),
+    OPEN("open");
 
     private String value;
 

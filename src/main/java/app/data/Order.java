@@ -3,6 +3,9 @@ package app.data;
 import app.data.order.Item;
 import app.data.order.PaymentMethod;
 import app.data.order.Status;
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

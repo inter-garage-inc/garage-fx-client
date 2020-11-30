@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
+import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpChangeSuccessfulController;
 import app.controller.popup.PopUpConfirmDeleteUserController;
 import app.controller.popup.PopUpServerCloseController;
@@ -9,9 +10,10 @@ import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.UserService;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-@RouteMapping
+@RouteMapping(title = "Alterar/Deletar usuário")
 public class AlterDeletUserController {
 
     public TextField fieldName;
@@ -24,12 +26,15 @@ public class AlterDeletUserController {
     public ComboBox<Status> cbStatus;
     User user;
     UserService service;
+    @FXML
+    private MainMenuController menuController;
     
     public AlterDeletUserController() {
         service = new UserService();
     }
     
     public void initialize() {
+        menuController.btnUsers.getStyleClass().add("button-menu-selected");
         user = (User) Router.getUserData();
         fieldName.setText(user.getName());
         fieldUsername.setText(user.getUsername());

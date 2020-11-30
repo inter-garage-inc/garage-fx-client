@@ -22,4 +22,6 @@
       </content>
     </ScrollPane>
 
+    <Label layoutX="368.0" layoutY="558.0" fx:id="lblMessage" styleClass="message, warning"/>
+
 </AnchorPane>

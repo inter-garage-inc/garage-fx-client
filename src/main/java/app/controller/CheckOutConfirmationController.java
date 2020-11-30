@@ -6,7 +6,7 @@ import app.router.Router;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-@RouteMapping
+@RouteMapping(title = "Confirmação de Checkout")
 public class CheckOutConfirmationController {
 
     public Button btnPay;

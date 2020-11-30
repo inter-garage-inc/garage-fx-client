@@ -14,7 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 @RouteMapping(title = "Gestão de Serviços")
-public class ServiceManagementController {
+public class CatalogManagementController {
 
     public TableView<Catalog> tbView;
     public Button btnRegistration;
@@ -45,11 +45,11 @@ public class ServiceManagementController {
     }
 
     public void handleOnActionButtonBtnRegistration() {
-        Router.goTo(ServiceRegistrationController.class, true);
+        Router.goTo(CatalogRegistrationController.class, true);
     }
 
     public void handleOnActionButtonBtnSelect() {
-        var teste = tbView.getSelectionModel().getSelectedItem();
-        Router.goTo(ServiceChangeController.class, teste);
+        var catalog = tbView.getSelectionModel().getSelectedItem();
+        Router.goTo(CatalogChangeController.class, catalog);
     }
 }

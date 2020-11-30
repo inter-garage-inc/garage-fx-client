@@ -118,7 +118,7 @@ public class CustomerRegisterController {
                             });
                         }
                     } catch (ConnectionFailureException e) {
-                        System.err.println("Error using postal code service");
+                        Router.showPopUp(PopUpServerCloseController.class, 2);
                     }
                     return null;
                 }
