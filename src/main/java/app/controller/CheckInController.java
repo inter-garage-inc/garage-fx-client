@@ -8,6 +8,7 @@ import app.data.Parking;
 import app.data.order.Item;
 import app.data.order.PaymentMethod;
 import app.data.order.Status;
+import app.data.parking.SpaceStatus;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CatalogService;
@@ -56,7 +57,7 @@ public class CheckInController {
 
 
         var response = orderService.ordersFindByLicensePlate(txtLicensePlate.getText());
-        var response1 = parkingSpacesService.findAvailable();
+        var parkingSpace = parkingSpacesService.findAvailable();
 
         if(response) {
            lblMessage.setText("Placa com check in em aberto");
@@ -69,6 +70,7 @@ public class CheckInController {
         }
 
         if(!nullLicensePlate && !nullServices) {
+            parkingSpace.setStatus(SpaceStatus.OCCUPIED);
                 for (Catalog catalog : catalogs) {
                     price = price.add(catalog.getPrice());
                     Item item = Item.builder()
@@ -76,7 +78,7 @@ public class CheckInController {
                             .description(catalog.getDescription())
                             .price(catalog.getPrice())
                             .parking(Parking.builder()
-                                    .parkingSpace(response1)
+                                    .parkingSpace(parkingSpace)
                                     .checkInAt(LocalDateTime.now())
                                     .build())
                             .build();
@@ -84,10 +86,9 @@ public class CheckInController {
                 }
                 Order order = Order.builder()
                         .items(items)
-                        .paymentMethod(PaymentMethod.CASH)
                         .totalAmount(price)
                         .licensePlate(txtLicensePlate.getText())
-                        .status(Status.PAID)
+                        .status(Status.OPEN)
                         .build();
                 Router.goTo(CheckInConfirmationController.class, order);
         } else {

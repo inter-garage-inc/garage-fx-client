@@ -1,6 +1,6 @@
 package app.controller.popup;
 
-import app.controller.OrdersOpenController;
+import app.controller.CustomerOrdersOpenController;
 import app.router.RouteMapping;
 import app.router.Router;
 import javafx.event.ActionEvent;
@@ -15,6 +15,6 @@ public class PlateNotFoundController {
 
     @FXML
     private void handleGoToOrdersOpen(ActionEvent actionEvent) {
-        Router.goTo(OrdersOpenController.class);
+        Router.goTo(CustomerOrdersOpenController.class);
     }
 }
