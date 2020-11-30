@@ -7,6 +7,7 @@ import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
 import app.data.Order;
 import app.data.order.Item;
+import app.data.parking.ParkingSpace;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.OrderService;
@@ -29,6 +30,7 @@ public class CheckInConfirmationController {
     public AnchorPane anchorPane;
     public OrderService service;
     public Label lblMessage;
+    public Label lblParkingSpace;
 
     public CheckInConfirmationController() {
         service = new OrderService();
@@ -40,7 +42,6 @@ public class CheckInConfirmationController {
 
     public void handleOnActionButtonBtnSave() throws ConnectionFailureException {
         Order order = (Order) Router.getUserData();
-        System.out.println(order);
 
         try {
             var response = service.ordersSave(order);
@@ -70,10 +71,11 @@ public class CheckInConfirmationController {
 
         Double layoutY = 5.0;
         Double layoutX = 5.0;
-
+        ParkingSpace parkingSpace = null;
 
         for (Item item : response) {
-            lblLicensePlate.setText(item.getParking().getLicensePlate());
+            parkingSpace = item.getParking().getParkingSpace();
+            lblLicensePlate.setText(order.getLicensePlate());
             Label label = new Label();
             label.setText(" ⌂ " + item.getDescription());
             label.getStyleClass().addAll("label");
@@ -82,6 +84,7 @@ public class CheckInConfirmationController {
             layoutY += 20;
             anchorPane.getChildren().addAll(label);
         }
+        lblParkingSpace.setText(parkingSpace.getCode().toString());
 
 
         menuController.btnCheckIn.getStyleClass().add("button-menu-selected");

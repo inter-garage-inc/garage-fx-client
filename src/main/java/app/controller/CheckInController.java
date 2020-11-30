@@ -10,8 +10,9 @@ import app.data.order.PaymentMethod;
 import app.data.order.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.AuthenticationService;
 import app.service.CatalogService;
+import app.service.OrderService;
+import app.service.ParkingSpacesService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @RouteMapping(title = "Check in")
@@ -32,43 +34,62 @@ public class CheckInController {
     @FXML private MainMenuController menuController;
     public AnchorPane anchorPane;
     public CheckBox catalogCheckBox;
-    public CatalogService service;
+    public CatalogService catalogService;
+    public OrderService orderService;
+    public ParkingSpacesService parkingSpacesService;
     public ArrayList<Catalog> catalogs;
 
     public CheckInController() {
-        service = new CatalogService();
+        catalogService = new CatalogService();
+        orderService = new OrderService();
+        parkingSpacesService = new ParkingSpacesService();
+
         catalogs = new ArrayList<>();
     }
 
-    public void handleOnActionButtonOk(ActionEvent actionEvent) {
+    public void handleOnActionButtonOk(ActionEvent actionEvent) throws ConnectionFailureException {
         ArrayList<Item> items = new ArrayList<>();
 
         Boolean nullLicensePlate = txtLicensePlate.getText() == null || txtLicensePlate.getText().trim().isEmpty();
         Boolean nullServices = catalogs.isEmpty();
         BigDecimal price = BigDecimal.valueOf(0.0);
 
+
+        var response = orderService.ordersFindByLicensePlate(txtLicensePlate.getText());
+        var response1 = parkingSpacesService.findAvailable();
+
+        if(response) {
+           lblMessage.setText("Placa com check in em aberto");
+           return;
+        }
+
+        if(parkingSpacesService == null) {
+            lblMessage.setText("Não há vagas no momento");
+            return;
+        }
+
         if(!nullLicensePlate && !nullServices) {
-            for (Catalog catalog : catalogs) {
-                price = price.add(catalog.getPrice());
-                Item item = Item.builder()
-                        .catalog(catalog)
-                        .description(catalog.getDescription())
-                        .price(catalog.getPrice())
-                        .parking(Parking.builder()
-                                .licensePlate(txtLicensePlate.getText())
-                                .checkInAt(catalog.getCreatedAt())
-                                .build())
+                for (Catalog catalog : catalogs) {
+                    price = price.add(catalog.getPrice());
+                    Item item = Item.builder()
+                            .catalog(catalog)
+                            .description(catalog.getDescription())
+                            .price(catalog.getPrice())
+                            .parking(Parking.builder()
+                                    .parkingSpace(response1)
+                                    .checkInAt(LocalDateTime.now())
+                                    .build())
+                            .build();
+                    items.add(item);
+                }
+                Order order = Order.builder()
+                        .items(items)
+                        .paymentMethod(PaymentMethod.CASH)
+                        .totalAmount(price)
+                        .licensePlate(txtLicensePlate.getText())
+                        .status(Status.PAID)
                         .build();
-                items.add(item);
-            }
-            Order order = Order.builder()
-                    .items(items)
-                    .paymentMethod(PaymentMethod.CARD)
-                    .totalAmount(price)
-                    .status(Status.PAID)
-                    .user(AuthenticationService.claimUser())
-                    .build();
-            Router.goTo(CheckInConfirmationController.class, order);
+                Router.goTo(CheckInConfirmationController.class, order);
         } else {
             lblMessage.setText("Campos vazios");
         }
@@ -78,7 +99,7 @@ public class CheckInController {
         menuController.btnCheckIn.getStyleClass().add("button-menu-selected");
 
         Double layoutY = 10.0;
-        for (Catalog catalog : service.CatalogFindAll()) {
+        for (Catalog catalog : catalogService.CatalogFindAll()) {
             if (!catalog.getStatus().equals(app.data.catalog.Status.UNAVAILABLE)) {
                 var response = catalog.getDescription();
                 catalogCheckBox = new CheckBox();

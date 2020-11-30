@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Item extends DataBase {
+
     private BigDecimal price;
 
     private String description;

@@ -2,6 +2,7 @@ package app.service;
 
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
+import app.data.Parking;
 import app.data.parking.ParkingSpace;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -51,6 +52,15 @@ public class ParkingSpacesService {
         try {
             var response = GarageClient.delete("/parking-spaces/" + id);
             return response.statusCode() == 200;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException(exception);
+        }
+    }
+
+    public ParkingSpace findAvailable() throws ConnectionFailureException {
+        try {
+            var response = GarageClient.get("/parking-spaces/available");
+            return response.statusCode() == 200 ? mapper.readValue((String) response.body(), new TypeReference<ParkingSpace>() {}) : null;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException(exception);
         }

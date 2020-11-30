@@ -17,16 +17,6 @@ public class UserService {
         mapper = new ObjectMapper();
     }
 
-    public User findByToken(String token) throws IOException, InterruptedException {
-        var response= GarageClient.get("/users/" + token);
-        return mapper.readValue((String) response.body(), new TypeReference<User>(){});
-    }
-
-    public List<User> findAll() throws IOException, InterruptedException {
-        var response= GarageClient.get("/users/");
-        return mapper.readValue((String) response.body(), new TypeReference<List<User>>(){});
-    }
-
     public User findByUsername(String username) throws ConnectionFailureException {
         try {
             var response = GarageClient.get("/users/find_by/" + username);
