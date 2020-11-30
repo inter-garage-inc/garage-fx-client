@@ -20,7 +20,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,8 +52,6 @@ public class CheckInController {
         Boolean nullLicensePlate = txtLicensePlate.getText() == null || txtLicensePlate.getText().trim().isEmpty();
         Boolean nullServices = catalogs.isEmpty();
         BigDecimal price = BigDecimal.valueOf(0.0);
-
-
         var response = orderService.ordersFindByLicensePlate(txtLicensePlate.getText());
         var parkingSpace = parkingSpacesService.findAvailable();
 

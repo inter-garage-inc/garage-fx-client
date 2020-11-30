@@ -11,6 +11,7 @@ import java.io.IOException;
 public class ItemService {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     private ObjectMapper mapper;
@@ -38,5 +39,8 @@ public class ItemService {
         }
     }
 >>>>>>> d3e240c... pin
+=======
+
+>>>>>>> 9058e58... pin
 
 }

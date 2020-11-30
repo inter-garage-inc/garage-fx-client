@@ -72,6 +72,7 @@ public class CheckInConfirmationController {
         Double layoutX = 5.0;
         ParkingSpace parkingSpace = null;
 
+
         for (Item item : response) {
             parkingSpace = item.getParking().getParkingSpace();
             lblLicensePlate.setText(order.getLicensePlate());
