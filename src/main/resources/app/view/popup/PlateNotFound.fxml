@@ -9,6 +9,6 @@
       <Label prefWidth="300.0" styleClass="field-label-form" text="Tente novamente ou verifique a aba “Contas Abertas”." textAlignment="CENTER" wrapText="true" />
    </FlowPane>
 
-   <Button fx:id="btnClose" layoutX="64.0" layoutY="144.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="100.0" styleClass="button-blue" text="Fechar" />
-   <Button fx:id="btnOpenAccounts" layoutX="250.0" layoutY="144.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="181.0" styleClass="button, button-green" text="Contas Abertas" />
+   <Button onAction="#handleClose" layoutX="64.0" layoutY="144.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="100.0" styleClass="button-blue" text="Fechar" />
+   <Button onAction="#handleGoToOrdersOpen" layoutX="250.0" layoutY="144.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="181.0" styleClass="button, button-green" text="Contas Abertas" />
 </AnchorPane>
