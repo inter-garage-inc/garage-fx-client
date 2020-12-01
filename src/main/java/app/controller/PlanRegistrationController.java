@@ -31,7 +31,6 @@ public class PlanRegistrationController {
     public Button btnSave;
     public List<CheckBox> cbCatalogs = new ArrayList<>();
     public AnchorPane anchorPane;
-
     private CatalogsService service;
 
     public void initialize() {
