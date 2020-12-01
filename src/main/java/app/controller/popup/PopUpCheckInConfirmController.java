@@ -16,7 +16,6 @@ public class PopUpCheckInConfirmController {
 
     public void initialize(){
         created = (Order) Router.getUserData();
-        System.out.println(created.getItems().get(0).getParking().getParkingSpace().getCode());
         setLblParkingSpace();
     }
 
