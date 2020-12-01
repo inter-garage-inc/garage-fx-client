@@ -6,7 +6,7 @@ import app.controller.popup.CustomerNotFoundController;
 import app.controller.popup.PopUpServerCloseController;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomerService;
+import app.service.CustomersService;
 import app.util.MaskedTextField.MaskedTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,10 +24,10 @@ public class CustomerSearchController {
     @FXML
     private ImageView findLoading;
 
-    private CustomerService service;
+    private CustomersService service;
 
     public CustomerSearchController() {
-        service = new CustomerService();
+        service = new CustomersService();
     }
 
     public void initialize() {

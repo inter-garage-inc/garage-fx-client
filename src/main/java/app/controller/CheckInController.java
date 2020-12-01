@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
 import app.data.Order;
 import app.data.Parking;
@@ -10,9 +11,10 @@ import app.data.order.Status;
 import app.data.parking.SpaceStatus;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CatalogService;
-import app.service.OrderService;
+import app.service.CatalogsService;
+import app.service.OrdersService;
 import app.service.ParkingSpacesService;
+import com.ctc.wstx.util.StringUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,90 +28,45 @@ import java.util.ArrayList;
 
 @RouteMapping(title = "Check in")
 public class CheckInController {
+    @FXML
+    private MainMenuController menuController;
 
-    public Button btnOk;
-    public TextField txtLicensePlate;
-    public Label lblMessage;
-    @FXML private MainMenuController menuController;
-    public AnchorPane anchorPane;
-    public CheckBox catalogCheckBox;
-    public CatalogService catalogService;
-    public OrderService orderService;
-    public ParkingSpacesService parkingSpacesService;
-    public ArrayList<Catalog> catalogs;
+    @FXML
+    private Button btnOk;
+
+    @FXML
+    private TextField txtLicensePlate;
+
+    @FXML
+    private Label lblMessage;
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    @FXML
+    private CheckBox catalogCheckBox;
+
+    private CatalogsService catalogsService;
+
+    private OrdersService ordersService;
+
+    private ParkingSpacesService parkingSpacesService;
+
+    private ArrayList<Catalog> catalogs;
 
     public CheckInController() {
-        catalogService = new CatalogService();
-        orderService = new OrderService();
+        catalogsService = new CatalogsService();
+        ordersService = new OrdersService();
         parkingSpacesService = new ParkingSpacesService();
-
         catalogs = new ArrayList<>();
     }
 
-    public void handleOnActionButtonOk(ActionEvent actionEvent) throws ConnectionFailureException {
-        ArrayList<Item> items = new ArrayList<>();
-
-        Boolean nullLicensePlate = txtLicensePlate.getText() == null || txtLicensePlate.getText().trim().isEmpty();
-        Boolean nullServices = catalogs.isEmpty();
-        BigDecimal price = BigDecimal.valueOf(0.0);
-        var response = orderService.ordersFindByLicensePlate(txtLicensePlate.getText());
-        var parkingSpace = parkingSpacesService.findAvailable();
-
-        if(response) {
-           lblMessage.setText("Placa com check in em aberto");
-           return;
-        }
-
-        if(parkingSpacesService == null) {
-            lblMessage.setText("Não há vagas no momento");
-            return;
-        }
-        
-        var response = orderService.ordersFindByLicensePlate(txtLicensePlate.getText());
-        var parkingSpace = parkingSpacesService.findAvailable();
-
-        if(response) {
-           lblMessage.setText("Placa com check in em aberto");
-           return;
-        }
-
-        if(parkingSpacesService == null) {
-            lblMessage.setText("Não há vagas no momento");
-            return;
-        }
-
-        if(!nullLicensePlate && !nullServices) {
-            parkingSpace.setStatus(SpaceStatus.OCCUPIED);
-                for (Catalog catalog : catalogs) {
-                    price = price.add(catalog.getPrice());
-                    Item item = Item.builder()
-                            .catalog(catalog)
-                            .description(catalog.getDescription())
-                            .price(catalog.getPrice())
-                            .parking(Parking.builder()
-                                    .parkingSpace(parkingSpace)
-                                    .checkInAt(LocalDateTime.now())
-                                    .build())
-                            .build();
-                    items.add(item);
-                }
-                Order order = Order.builder()
-                        .items(items)
-                        .totalAmount(price)
-                        .licensePlate(txtLicensePlate.getText())
-                        .status(Status.OPEN)
-                        .build();
-                Router.goTo(CheckInConfirmationController.class, order);
-        } else {
-            lblMessage.setText("Campos vazios");
-        }
-    }
-
-    public void initialize() throws ConnectionFailureException {
+    @FXML
+    private void initialize() throws ConnectionFailureException {
         menuController.btnCheckIn.getStyleClass().add("button-menu-selected");
 
         Double layoutY = 10.0;
-        for (Catalog catalog : catalogService.CatalogFindAll()) {
+        for (Catalog catalog : catalogsService.CatalogFindAll()) {
             if (!catalog.getStatus().equals(app.data.catalog.Status.UNAVAILABLE)) {
                 var response = catalog.getDescription();
                 catalogCheckBox = new CheckBox();
@@ -127,6 +84,45 @@ public class CheckInController {
                 layoutY+=20;
             }
         }
+    }
+
+    @FXML
+    private void handleOnActionButtonOk(ActionEvent actionEvent) throws ConnectionFailureException {
+        if(txtLicensePlate.getText().isBlank() || catalogs.isEmpty()) {
+            lblMessage.setText("Os campos não podem estar vazios");
+            return;
+        }
+
+        try {
+            if(hasNotOrderOpenForLicensePlate() && hasParkingSpaceVacant()) {
+                var order = Order
+                        .builder()
+                        .items(Item.listOf(catalogs))
+                        .licensePlate(txtLicensePlate.getText())
+                        .build();
+                Router.goTo(CheckInConfirmationController.class, order);
+            }
+        } catch (ConnectionFailureException exception) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
+        }
+    }
+
+    private Boolean hasNotOrderOpenForLicensePlate() throws ConnectionFailureException {
+        var order = ordersService.findByLicensePlate(txtLicensePlate.getText());
+        if(order != null) {
+            lblMessage.setText("Placa com check in em aberto");
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean hasParkingSpaceVacant() throws ConnectionFailureException {
+        var parkingSpace = parkingSpacesService.findAvailable();
+        if(parkingSpacesService == null) {
+            lblMessage.setText("Não há vagas no momento");
+            return false;
+        }
+        return true;
     }
 
 }

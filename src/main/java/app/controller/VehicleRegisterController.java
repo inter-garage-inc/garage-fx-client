@@ -6,7 +6,7 @@ import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.PlanService;
-import app.service.VehicleService;
+import app.service.VehiclesService;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
@@ -24,12 +24,12 @@ public class VehicleRegisterController {
 
     private final PlanService planService;
 
-    private final VehicleService vehicleService;
+    private final VehiclesService vehiclesService;
 
     public VehicleRegisterController() {
         customer = (Customer) Router.getUserData();
         planService = new PlanService();
-        vehicleService = new VehicleService();
+        vehiclesService = new VehiclesService();
     }
 
     public void initialize() {

@@ -7,7 +7,7 @@ import app.data.user.Role;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.AuthenticationService;
-import app.service.UserService;
+import app.service.UsersService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,7 +28,7 @@ public class PeopleManagementController {
     }
 
     public void handleOnActionButtonBtnSrc() {
-        UserService service = new UserService();
+        UsersService service = new UsersService();
 
         try {
             var user = service.findByUsername(txtUsername.getText());

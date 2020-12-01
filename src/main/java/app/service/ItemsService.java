@@ -8,19 +8,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public class ItemService {
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
+public class ItemsService {
     private ObjectMapper mapper;
 
-    public ItemService() {
+    public ItemsService() {
         mapper = new ObjectMapper();
     }
 
-    public Boolean itemsSave(Item item) throws ConnectionFailureException {
+    public Boolean save(Item item) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(item);
             var response = GarageClient.post("/items", payload);
@@ -29,18 +24,4 @@ public class ItemService {
             throw new ConnectionFailureException(exception);
         }
     }
-
-    public Boolean itemFindByLicensePlate(Item item) throws ConnectionFailureException {
-        try {
-            var response = GarageClient.get(item.getParking().getLicensePlate());
-            return response.statusCode() == 200;
-        } catch (IOException | InterruptedException exception) {
-            throw new ConnectionFailureException(exception);
-        }
-    }
->>>>>>> d3e240c... pin
-=======
-
->>>>>>> 9058e58... pin
-
 }

@@ -6,7 +6,7 @@ import app.controller.component.MainMenuController;
 import app.data.Catalog;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CatalogService;
+import app.service.CatalogsService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -37,7 +37,7 @@ public class CatalogManagementController {
 
         tbView.getColumns().addAll(column1, column2, column3);
 
-        var service = new CatalogService();
+        var service = new CatalogsService();
         var response = service.CatalogFindAll();
         response.forEach(catalog -> {
             tbView.getItems().add(catalog);

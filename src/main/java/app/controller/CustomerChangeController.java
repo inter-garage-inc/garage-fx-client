@@ -10,8 +10,8 @@ import app.data.address.Country;
 import app.data.address.State;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomerService;
-import app.service.PostalCodeService;
+import app.service.CustomersService;
+import app.service.PostalCodesService;
 import app.util.MaskedTextField.MaskedTextField;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -66,14 +66,14 @@ public class CustomerChangeController {
 
     private final Customer customer;
 
-    private final CustomerService customerService;
+    private final CustomersService customersService;
 
-    private final PostalCodeService postalCodeService;
+    private final PostalCodesService postalCodesService;
 
     public CustomerChangeController() {
         customer = (Customer) Router.getUserData();
-        customerService = new CustomerService();
-        postalCodeService = new PostalCodeService();
+        customersService = new CustomersService();
+        postalCodesService = new PostalCodesService();
     }
 
     public void initialize() {
@@ -101,7 +101,7 @@ public class CustomerChangeController {
                 @Override
                 protected Void call() {
                     try {
-                        var address = postalCodeService.search(fieldPostalCode.getPlainText());
+                        var address = postalCodesService.search(fieldPostalCode.getPlainText());
                         if(address != null) {
                             Platform.runLater(() -> {
                                 fieldCity.setText(address.getCity());
@@ -157,7 +157,7 @@ public class CustomerChangeController {
                 .address(address)
                 .build();
         try {
-            var c = customerService.update(customer.getId(), customerUpdated);
+            var c = customersService.update(customer.getId(), customerUpdated);
             if (c != null) {
                 System.out.println(customer);
                 System.out.println(customerUpdated);

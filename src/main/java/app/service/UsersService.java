@@ -9,11 +9,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.List;
 
-public class UserService {
+public class UsersService {
 
     private ObjectMapper mapper;
 
-    public UserService() {
+    public UsersService() {
         mapper = new ObjectMapper();
     }
 

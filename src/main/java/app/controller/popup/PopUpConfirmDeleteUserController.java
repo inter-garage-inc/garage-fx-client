@@ -4,7 +4,7 @@ import app.controller.PeopleManagementController;
 import app.data.User;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.UserService;
+import app.service.UsersService;
 import javafx.scene.control.Button;
 
 
@@ -12,11 +12,11 @@ import javafx.scene.control.Button;
 public class PopUpConfirmDeleteUserController {
     public Button btnDelete;
     public Button btnClose;
-    public UserService service;
+    public UsersService service;
     public User user;
 
     public PopUpConfirmDeleteUserController() {
-        service = new UserService();
+        service = new UsersService();
     }
 
     public void handleOnActionButtonBtnDelete() {

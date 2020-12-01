@@ -8,7 +8,7 @@ import app.data.catalog.CatalogType;
 import app.data.catalog.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CatalogService;
+import app.service.CatalogsService;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -36,7 +36,7 @@ public class CatalogRegistrationController {
                 .type(CatalogType.OTHER)
                 .build();
         try {
-            CatalogService service = new CatalogService();
+            CatalogsService service = new CatalogsService();
             var response = service.CatalogSave(catalog);
             if(response){
                 Router.showPopUp(PopUpRegisterSuccessfulController.class, 1);

@@ -8,10 +8,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public class VehicleService {
+public class VehiclesService {
     private ObjectMapper mapper;
 
-    public VehicleService() {
+    public VehiclesService() {
         mapper = new ObjectMapper();
     }
 

@@ -5,7 +5,7 @@ import app.controller.CustomerSearchController;
 import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomerService;
+import app.service.CustomersService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -13,11 +13,11 @@ import javafx.fxml.FXML;
 public class CustomerDeleteController {
     private Customer customer;
 
-    private CustomerService service;
+    private CustomersService service;
 
     public CustomerDeleteController() {
         customer = (Customer) Router.getUserData();
-        service = new CustomerService();
+        service = new CustomersService();
     }
 
     @FXML

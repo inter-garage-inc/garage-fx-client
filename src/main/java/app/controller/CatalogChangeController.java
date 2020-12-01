@@ -8,7 +8,7 @@ import app.data.Catalog;
 import app.data.catalog.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CatalogService;
+import app.service.CatalogsService;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -44,7 +44,7 @@ public class CatalogChangeController {
                     .status(cbStatus.getValue())
                     .build();
 
-            CatalogService service = new CatalogService();
+            CatalogsService service = new CatalogsService();
             service.CatalogUpdate(catalog2, catalog.getId());
 
             Router.goTo(CatalogManagementController.class);
@@ -55,7 +55,7 @@ public class CatalogChangeController {
 
     public void handleOnActionButtonBtnDelete() { // TODO Verificar se o serviço esta cadastrado a um plano
         try {
-            CatalogService service = new CatalogService();
+            CatalogsService service = new CatalogsService();
             service.CatalogDelete(catalog.getId());
 
             Router.showPopUp(PopUpDeleteSuccessController.class, 1);

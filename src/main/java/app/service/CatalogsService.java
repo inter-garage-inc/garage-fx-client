@@ -9,11 +9,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.List;
 
-public class CatalogService {
+public class CatalogsService {
 
     private final ObjectMapper mapper;
 
-    public CatalogService() {
+    public CatalogsService() {
         mapper = new ObjectMapper();
     }
 
@@ -52,18 +52,6 @@ public class CatalogService {
             return mapper.readValue( (String) response.body(), new TypeReference<List<Catalog>> () {});
         } catch (IOException | InterruptedException exception) {
             exception.printStackTrace();
-<<<<<<< HEAD
-            throw new ConnectionFailureException();
-        }
-    }
-
-    public Catalog findBy(Long id) throws ConnectionFailureException {
-        try {
-            var response = GarageClient.get("/catalogs/" + id);
-            return mapper.readValue((String) response.body(), new TypeReference<Catalog>() {});
-        } catch (IOException | InterruptedException exception) {
-=======
->>>>>>> d3e240c... pin
             throw new ConnectionFailureException();
         }
     }

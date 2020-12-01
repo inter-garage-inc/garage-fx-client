@@ -9,7 +9,7 @@ import app.data.user.Role;
 import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.UserService;
+import app.service.UsersService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,10 +25,10 @@ public class UserRegistrationController {
     public PasswordField fieldConfPassword;
     public Button btnSave;
     public Label lblMessage;
-    UserService service;
+    UsersService service;
 
     public UserRegistrationController() {
-        service = new UserService();
+        service = new UsersService();
     }
     @FXML
     private MainMenuController menuController;

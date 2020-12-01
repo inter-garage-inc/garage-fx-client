@@ -9,7 +9,7 @@ import app.data.User;
 import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.UserService;
+import app.service.UsersService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -25,12 +25,12 @@ public class AlterDeletUserController {
     public Button btnDelete;
     public ComboBox<Status> cbStatus;
     User user;
-    UserService service;
+    UsersService service;
     @FXML
     private MainMenuController menuController;
     
     public AlterDeletUserController() {
-        service = new UserService();
+        service = new UsersService();
     }
     
     public void initialize() {
