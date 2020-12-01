@@ -54,4 +54,13 @@ public class CatalogService {
             throw new ConnectionFailureException();
         }
     }
+
+    public Catalog findBy(Long id) throws ConnectionFailureException {
+        try {
+            var response = GarageClient.get("/catalogs/" + id);
+            return mapper.readValue((String) response.body(), new TypeReference<Catalog>() {});
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
 }
