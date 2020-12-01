@@ -12,5 +12,4 @@ public class PlanRegisterController {
     public void initialize() {
         menuController.btnServicePlans.getStyleClass().add("button-menu-selected");
     }
-
 }

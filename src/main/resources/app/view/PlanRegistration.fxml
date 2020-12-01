@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PlanRegistrationController">
+    <fx:include source="component/MainMenu.fxml" />
+    <fx:include source="component/LogoTopLeft.fxml" />
+
+    <fx:include source="component/UserDetails.fxml" />
+
+    <Label layoutX="390.0" layoutY="132.0" styleClass="message-normal" text="Cadastro de Planos" />
+    <Label layoutX="390.0" layoutY="180.0" styleClass="label, field, blue" text="Serviços" />
+
+        <ScrollPane layoutX="390.0" layoutY="216.0" prefHeight="130.0" prefWidth="287.0">
+         <content>
+           <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+            <children />
+           </AnchorPane>
+         </content>
+       </ScrollPane>
+
+    <Label layoutX="390.0" layoutY="352.0" styleClass="label, field, blue" text="Tipo" />
+    <ComboBox fx:id="cbType" layoutX="390.0" layoutY="390.0" prefWidth="287.0" promptText="Selecione" styleClass="field" />
+
+    <Label layoutX="390.0" layoutY="437.0" styleClass="label, field, blue" text="Preço" />
+    <TextField fx:id="fieldPrice" layoutX="390.0" layoutY="475.0" prefWidth="287.0" promptText="Digite o Preço" styleClass="field" />
+
+    <Label layoutX="390.0" layoutY="523.0" styleClass="label, field, blue" text="Status" />
+    <ComboBox fx:id="cbStatus" layoutX="390.0" layoutY="558.0" prefWidth="287.0" promptText="Selecione" styleClass="field" />
+
+    <fx:include source="component/ButtonBack.fxml" />
+    <Button fx:id="btnSave" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnSave" styleClass="button, button-blue" text="Salvar" />
+</AnchorPane>
