@@ -15,6 +15,8 @@ public class AuthenticationService {
 
     private static Jwt jwt;
 
+    private static User user;
+
     private final ObjectMapper mapper;
 
     public AuthenticationService() {
@@ -27,6 +29,7 @@ public class AuthenticationService {
             var response = GarageClient.post("/authentication", payload);
             if(response.statusCode() == 200) {
                 jwt = mapper.readValue((String) response.body(), new TypeReference<Jwt>() {});
+                user = loadUser();
                 return true;
             }
             return false;
@@ -35,20 +38,23 @@ public class AuthenticationService {
         }
     }
 
+    private User loadUser() throws ConnectionFailureException {
+        try {
+            var response = GarageClient.get("/authentication");
+            return response.statusCode() == 200
+                ? user = mapper.readValue((String) response.body(), new TypeReference<User>() {})
+                : null;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
+
+    public static User claimUser() {
+        return user;
+    }
+
     public static String getAuthorization() {
         return (jwt != null) ? "Bearer " + jwt.getToken() : "";
-    }
-
-    private static String getUnsignedToken() {
-        var token = jwt.getToken();
-        return token.substring(0, token.lastIndexOf('.') + 1);
-    }
-
-    @SneakyThrows
-    public static User claimUser() {
-        var claims = Jwts.parser().parseClaimsJwt(getUnsignedToken()).getBody();
-        var mapper = new ObjectMapper();
-        return mapper.readValue(claims.get("user", String.class), User.class);
     }
 
     public static void logout() {
