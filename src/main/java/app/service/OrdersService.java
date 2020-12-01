@@ -20,11 +20,13 @@ public class OrdersService {
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
-    public Boolean create(Order order) throws ConnectionFailureException {
+    public Order create(Order order) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(order);
             var response = GarageClient.post("/orders", payload);
-            return response.statusCode() == 201;
+            return response.statusCode() == 201
+                    ? mapper.readValue((String) response.body(), new TypeReference<Order>() {})
+                    : null;
         } catch (IOException | InterruptedException exception) {
             exception.printStackTrace();
             throw new ConnectionFailureException(exception);

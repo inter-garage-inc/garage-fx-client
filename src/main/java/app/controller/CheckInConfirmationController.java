@@ -79,10 +79,10 @@ public class CheckInConfirmationController {
     @FXML
     private void handleOnActionButtonBtnSave() {
         try {
-            var response = ordersService.create(order);
-            if(response) {
+            var created = ordersService.create(order);
+            if(created != null) {
                // Router.showPopUp(CheckInConfirmController.class, 2);
-                System.out.println("Checkin realizado com sucesso"); //TODO
+                System.out.println("Checkin realizado com sucesso"); //TODO enviar created para o popup que vai mostrar a placa
                 Router.goTo(HomeController.class);
             } else {
                 lblMessage.setText("Não foi possível realizar o check in");
