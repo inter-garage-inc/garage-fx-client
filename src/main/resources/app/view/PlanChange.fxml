@@ -33,5 +33,10 @@
     <Button fx:id="btnDelete" onAction="#handleOnActionButtonBtnDelete" layoutX="762.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-red" text="Excluir" />
     <Button fx:id="btnAlter" onAction="#handleOnActionButtonBtnAlter" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Alterar" />
 
+    <Label layoutX="468.0" layoutY="188.0" styleClass="message, warning" text="*" />
+    <Label layoutX="431.0" layoutY="360.0" styleClass="message, warning" text="*" />
+    <Label layoutX="445.0" layoutY="445.0" styleClass="message, warning" text="*" />
+    <Label layoutX="450.0" layoutY="530.0" styleClass="message, warning" text="*" />
+    <Label fx:id="lblMessage" layoutX="315.0" layoutY="562.0" prefHeight="18.0" prefWidth="410.0" styleClass="message, warning" />
 </AnchorPane>
 

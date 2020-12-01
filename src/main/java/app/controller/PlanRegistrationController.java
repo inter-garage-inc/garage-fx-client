@@ -11,10 +11,7 @@ import app.router.Router;
 import app.service.CatalogsService;
 import app.service.PlanService;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.math.BigDecimal;

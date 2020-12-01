@@ -19,5 +19,4 @@
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button fx:id="btnSave" onAction="#handleOnActionButtonBtnSave" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Salvar" />
-
 </AnchorPane>
