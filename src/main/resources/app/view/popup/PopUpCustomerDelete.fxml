@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpCustomerDeleteController">
+
+  <Label layoutX="55.0" layoutY="53.0" styleClass="label,field" text="Tem certeza que deseja excluir o cliente?" />
+
+  <Button layoutX="307.0" layoutY="127.0" mnemonicParsing="false" onAction="#handleOnActionDelete" prefWidth="130.0" styleClass="button, button-red" text="Excluir" />
+  <Button fx:id="btnClose" layoutX="68.0" layoutY="127.0" mnemonicParsing="false" prefWidth="130.0" styleClass="button-blue" text="Fechar" />
+</AnchorPane>

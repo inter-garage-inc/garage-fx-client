@@ -27,5 +27,8 @@ public class Order extends DataBase {
     @JsonProperty("payment_method")
     private PaymentMethod paymentMethod;
 
+    @JsonProperty("license_plate")
+    private String licensePlate;
+
     private Status status;
 }

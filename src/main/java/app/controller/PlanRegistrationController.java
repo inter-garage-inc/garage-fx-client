@@ -8,7 +8,7 @@ import app.data.plan.Status;
 import app.data.plan.Type;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CatalogService;
+import app.service.CatalogsService;
 import app.service.PlanService;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -32,7 +32,7 @@ public class PlanRegistrationController {
     public List<CheckBox> cbCatalogs = new ArrayList<>();
     public AnchorPane anchorPane;
 
-    private CatalogService service;
+    private CatalogsService service;
 
     public void initialize() {
         fillStatus();
@@ -49,7 +49,7 @@ public class PlanRegistrationController {
     }
 
     private List<Catalog> catalogs() throws ConnectionFailureException {
-        this.service = new CatalogService();
+        this.service = new CatalogsService();
         return service.CatalogFindAll();
     }
 
@@ -76,7 +76,7 @@ public class PlanRegistrationController {
     public void handleOnActionButtonBtnSave() throws ConnectionFailureException {
         var panes = anchorPane.getChildren();
         List<Catalog> catalogs = new ArrayList<>();
-        this.service = new CatalogService();
+        this.service = new CatalogsService();
 
         for(Node node : panes){
             CheckBox checkBox = (CheckBox) node;

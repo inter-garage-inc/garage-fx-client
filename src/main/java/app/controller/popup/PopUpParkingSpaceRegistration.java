@@ -15,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 @RouteMapping(title = "Nova Vaga", popup = true)
-public class ParkingSpaceRegistration {
+public class PopUpParkingSpaceRegistration {
     @FXML
     private TextField fieldCode;
 
@@ -24,7 +24,7 @@ public class ParkingSpaceRegistration {
 
     private ParkingSpacesService service;
 
-    public ParkingSpaceRegistration() {
+    public PopUpParkingSpaceRegistration() {
         service = new ParkingSpacesService();
     }
 

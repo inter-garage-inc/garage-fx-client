@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="200" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.ParkingSpaceRegistration">
+<AnchorPane prefHeight="200" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpParkingSpaceRegistration">
 
     <Label layoutX="69.0" layoutY="30.0" styleClass="field, label, blue" text="Localização da vaga" />
     <TextField fx:id="fieldCode" layoutX="69.0" layoutY="65.0" onAction="#handleSpaceRegistration" prefWidth="369.0" promptText="Código: Letra(s) + Dígito(s)" styleClass="field" />

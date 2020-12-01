@@ -2,11 +2,15 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
+import app.controller.popup.PopUpServerCloseController;
+import app.data.user.Role;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.UserService;
+import app.service.AuthenticationService;
+import app.service.UsersService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 @RouteMapping(title = "Gestão de Pessoal")
@@ -15,6 +19,7 @@ public class PeopleManagementController {
     public Button btnRegistration;
     public Button btnSrc;
     public TextField txtUsername;
+    public Label lblMessage;
 
     @FXML
     private MainMenuController menuController;
@@ -23,26 +28,34 @@ public class PeopleManagementController {
     }
 
     public void handleOnActionButtonBtnSrc() {
-        UserService service = new UserService();
+        UsersService service = new UsersService();
 
         try {
             var user = service.findByUsername(txtUsername.getText());
-            System.out.println(user);
 
-            if (user != null) {
-                Router.goTo(AlterDeletUserController.class, user);
-            } else {
-                System.out.println("Usuário não encontrado");
+            if (user == null) {
+                lblMessage.setText("Usuário não encontrado");
+                return;
             }
+
+            var logado = AuthenticationService.claimUser();
+            Boolean permission = (
+                    logado.getRole().equals(Role.MANAGER))
+                    && (user.getRole().equals(Role.ADMIN) || user.getRole().equals(Role.MANAGER)
+            );
+
+            if(permission) {
+                lblMessage.setText("Permissão negada");
+            } else {
+                Router.goTo(AlterDeletUserController.class, user);
+            }
+
         } catch (ConnectionFailureException e) {
-            //TODO Criar pop up
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 
     public void handleOnActionButtonBtnRegistration() {
         Router.goTo(UserRegistrationController.class, true);
     }
-
-
-
 }

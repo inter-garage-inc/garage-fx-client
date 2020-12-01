@@ -1,5 +1,6 @@
 package app.data;
 
+import app.data.catalog.CatalogType;
 import app.data.catalog.Status;
 import lombok.*;
 
@@ -17,4 +18,6 @@ public class Catalog extends DataBase {
     private BigDecimal price;
 
     private Status status;
+
+    private CatalogType type;
 }
