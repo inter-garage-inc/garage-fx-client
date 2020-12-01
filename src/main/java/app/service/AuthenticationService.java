@@ -59,5 +59,6 @@ public class AuthenticationService {
 
     public static void logout() {
         jwt = null;
+        user = null;
     }
 }
