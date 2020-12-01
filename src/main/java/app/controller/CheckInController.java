@@ -104,7 +104,7 @@ public class CheckInController {
     }
 
     private Boolean hasNotOrderOpenForLicensePlate() throws ConnectionFailureException {
-        var order = ordersService.findByLicensePlate(txtLicensePlate.getText());
+        var order = ordersService.findOpenByLicensePlate(txtLicensePlate.getText());
         if(order != null) {
             lblMessage.setText("Placa com check in em aberto");
             return false;

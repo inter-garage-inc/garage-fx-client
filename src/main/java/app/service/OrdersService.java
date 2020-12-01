@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 public class OrdersService {
     private ObjectMapper mapper;
@@ -30,9 +31,9 @@ public class OrdersService {
         }
     }
 
-    public Order findByLicensePlate(String licensePlate) throws ConnectionFailureException {
+    public Order findOpenByLicensePlate(String licensePlate) throws ConnectionFailureException {
         try {
-            var response = GarageClient.get("/orders/license-plate/" + URLEncoder.encode(licensePlate, StandardCharsets.UTF_8));
+            var response = GarageClient.get("/orders/license-plate/" + URLEncoder.encode(licensePlate, StandardCharsets.UTF_8) + "/open");
             System.out.println("/orders/license-plate/" + URLEncoder.encode(licensePlate, StandardCharsets.UTF_8));
             return response.statusCode() == 200
                     ? mapper.readValue((String) response.body(), new TypeReference<Order>() {})

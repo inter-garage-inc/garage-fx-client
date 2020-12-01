@@ -30,7 +30,7 @@ public class CheckoutController {
 
     public void handleCheckout(ActionEvent actionEvent) {
         try {
-            var order = service.findByLicensePlate(fieldLicensePlate.getText());
+            var order = service.findOpenByLicensePlate(fieldLicensePlate.getText());
             if (order != null) {
                 Router.goTo(CheckOutConfirmationController.class, order, true);
             } else {
