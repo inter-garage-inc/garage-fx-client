@@ -100,7 +100,7 @@ public class CheckInController {
                         .items(Item.listOf(catalogs))
                         .licensePlate(txtLicensePlate.getText())
                         .build();
-                Router.goTo(CheckInConfirmationController.class, order);
+                Router.goTo(CheckInConfirmationController.class, order, true);
             }
         } catch (ConnectionFailureException exception) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
@@ -111,9 +111,9 @@ public class CheckInController {
         var order = ordersService.findByLicensePlate(txtLicensePlate.getText());
         if(order != null) {
             lblMessage.setText("Placa com check in em aberto");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private Boolean hasParkingSpaceVacant() throws ConnectionFailureException {

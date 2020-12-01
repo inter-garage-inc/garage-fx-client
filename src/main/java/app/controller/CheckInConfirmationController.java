@@ -9,6 +9,7 @@ import app.data.order.Item;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.OrdersService;
+import app.service.ParkingSpacesService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -49,8 +50,8 @@ public class CheckInConfirmationController {
     private Order order;
 
     private OrdersService ordersService;
-
-    private CheckInConfirmationController() {
+    
+    public CheckInConfirmationController() {
         order = (Order) Router.getUserData();
         ordersService = new OrdersService();
     }
@@ -66,7 +67,7 @@ public class CheckInConfirmationController {
                 lblParkingSpace.setText(item.getParking().getParkingSpace().getCode());
             }
             var label = new Label();
-            label.setText(" ⌂ " + item.getDescription());
+            label.setText(" ⌂ " + item.getCatalog().getDescription());
             label.getStyleClass().add("label");
             label.setLayoutY(layoutY);
             label.setLayoutX(layoutX);
@@ -87,12 +88,13 @@ public class CheckInConfirmationController {
             } else {
                 lblMessage.setText("Não foi possível realizar o check in");
             }
-        } catch (ConnectionFailureException e) {
+        } catch (ConnectionFailureException exception) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 
-    public void handleOnActionButtonBtnPay() throws InterruptedException {
+    @FXML
+    private void handleOnActionButtonBtnPay() throws InterruptedException {
         System.out.println("Carregando tela de Check Out"); //TODO criar um pop up para carregar a tela de check out
         Thread.sleep(1000);
         Router.goTo(CheckOutConfirmationController.class, true);

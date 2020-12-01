@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 @RouteMapping(title = "Cadastro de Serviços")
 public class CatalogRegistrationController {
 
-
     public TextField fieldService;
     public TextField fieldPrice;
     public ComboBox<Status> cbStatus;
