@@ -19,7 +19,7 @@ public class OrdersService {
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
-    public Boolean save(Order order) throws ConnectionFailureException {
+    public Boolean create(Order order) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(order);
             var response = GarageClient.post("/orders", payload);
@@ -33,6 +33,7 @@ public class OrdersService {
     public Order findByLicensePlate(String licensePlate) throws ConnectionFailureException {
         try {
             var response = GarageClient.get("/orders/license-plate/" + URLEncoder.encode(licensePlate, StandardCharsets.UTF_8));
+            System.out.println("/orders/license-plate/" + URLEncoder.encode(licensePlate, StandardCharsets.UTF_8));
             return response.statusCode() == 200
                     ? mapper.readValue((String) response.body(), new TypeReference<Order>() {})
                     : null;

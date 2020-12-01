@@ -5,16 +5,12 @@ import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
 import app.data.Order;
-import app.data.Parking;
 import app.data.order.Item;
-import app.data.order.Status;
-import app.data.parking.SpaceStatus;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CatalogsService;
 import app.service.OrdersService;
 import app.service.ParkingSpacesService;
-import com.ctc.wstx.util.StringUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,8 +18,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 
 @RouteMapping(title = "Check in")
@@ -65,13 +60,13 @@ public class CheckInController {
     private void initialize() throws ConnectionFailureException {
         menuController.btnCheckIn.getStyleClass().add("button-menu-selected");
 
-        Double layoutY = 10.0;
-        for (Catalog catalog : catalogsService.CatalogFindAll()) {
-            if (!catalog.getStatus().equals(app.data.catalog.Status.UNAVAILABLE)) {
+        var layoutY = 10.0;
+        for (var catalog : catalogsService.CatalogFindAll()) {
+            if (catalog.getStatus() != app.data.catalog.Status.UNAVAILABLE) {
                 var response = catalog.getDescription();
                 catalogCheckBox = new CheckBox();
                 catalogCheckBox.setText(response);
-                catalogCheckBox.selectedProperty().addListener((observable, wasSelected, isSelected) ->{
+                catalogCheckBox.selectedProperty().addListener((observable, wasSelected, isSelected) -> {
                     if(isSelected) {
                         catalogs.add(catalog);
                     } else {
@@ -81,7 +76,7 @@ public class CheckInController {
                 catalogCheckBox.setLayoutY(layoutY);
                 catalogCheckBox.setLayoutX(10.0);
                 anchorPane.getChildren().addAll(catalogCheckBox);
-                layoutY+=20;
+                layoutY += 20;
             }
         }
     }
@@ -103,6 +98,7 @@ public class CheckInController {
                 Router.goTo(CheckInConfirmationController.class, order, true);
             }
         } catch (ConnectionFailureException exception) {
+            exception.printStackTrace();
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
@@ -117,7 +113,7 @@ public class CheckInController {
     }
 
     private Boolean hasParkingSpaceVacant() throws ConnectionFailureException {
-        var parkingSpace = parkingSpacesService.findAvailable();
+        var parkingSpace = parkingSpacesService.findAllVacant();
         if(parkingSpacesService == null) {
             lblMessage.setText("Não há vagas no momento");
             return false;

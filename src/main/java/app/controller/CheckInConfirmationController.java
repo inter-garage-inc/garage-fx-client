@@ -5,11 +5,9 @@ import app.controller.component.MainMenuController;
 import app.controller.popup.CheckInConfirmController;
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Order;
-import app.data.order.Item;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.OrdersService;
-import app.service.ParkingSpacesService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -50,7 +48,7 @@ public class CheckInConfirmationController {
     private Order order;
 
     private OrdersService ordersService;
-    
+
     public CheckInConfirmationController() {
         order = (Order) Router.getUserData();
         ordersService = new OrdersService();
@@ -81,9 +79,10 @@ public class CheckInConfirmationController {
     @FXML
     private void handleOnActionButtonBtnSave() {
         try {
-            var response = ordersService.save(order);
+            var response = ordersService.create(order);
             if(response) {
-                Router.showPopUp(CheckInConfirmController.class, 2);
+               // Router.showPopUp(CheckInConfirmController.class, 2);
+                System.out.println("Checkin realizado com sucesso"); //TODO
                 Router.goTo(HomeController.class);
             } else {
                 lblMessage.setText("Não foi possível realizar o check in");

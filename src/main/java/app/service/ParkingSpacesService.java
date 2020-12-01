@@ -56,10 +56,12 @@ public class ParkingSpacesService {
         }
     }
 
-    public ParkingSpace findAvailable() throws ConnectionFailureException {
+    public List<ParkingSpace> findAllVacant() throws ConnectionFailureException {
         try {
-            var response = GarageClient.get("/parking-spaces/available");
-            return response.statusCode() == 200 ? mapper.readValue((String) response.body(), new TypeReference<ParkingSpace>() {}) : null;
+            var response = GarageClient.get("/parking-spaces/all-vacant");
+            return response.statusCode() == 200
+                    ? mapper.readValue((String) response.body(), new TypeReference<List<ParkingSpace>>() {})
+                    : null;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException(exception);
         }
