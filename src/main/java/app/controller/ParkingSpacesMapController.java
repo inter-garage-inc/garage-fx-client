@@ -18,7 +18,6 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
-
 import java.util.List;
 
 @RouteMapping(title = "Mapa de Vagas")

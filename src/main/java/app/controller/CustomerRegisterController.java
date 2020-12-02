@@ -153,7 +153,7 @@ public class CustomerRegisterController {
                 .address(address)
                 .build();
         try {
-            var c = customersService.register(customer);
+            var c = customersService.save(customer);
             if (c != null) {
                 Router.showPopUp(PopUpRegisterSuccessfulController.class, 3);
                 Router.goTo(CustomerDetailsController.class, c); //TODO create destine page

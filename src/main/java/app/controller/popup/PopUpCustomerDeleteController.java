@@ -13,27 +13,33 @@ import javafx.fxml.FXML;
 public class PopUpCustomerDeleteController {
     private Customer customer;
 
+<<<<<<< HEAD:src/main/java/app/controller/popup/CustomerDeleteController.java
+    private CustomersService customersService;
+=======
     private CustomersService service;
+>>>>>>> main:src/main/java/app/controller/popup/PopUpCustomerDeleteController.java
 
     public PopUpCustomerDeleteController() {
         customer = (Customer) Router.getUserData();
+<<<<<<< HEAD:src/main/java/app/controller/popup/CustomerDeleteController.java
+        customersService = new CustomersService();
+=======
         service = new CustomersService();
+>>>>>>> main:src/main/java/app/controller/popup/PopUpCustomerDeleteController.java
     }
 
     @FXML
     private void handleOnActionDelete(ActionEvent actionEvent) {
         try {
-            var response = service.delete(customer.getId());
+            var response = customersService.delete(customer.getId());
             if(response) {
                 Router.showPopUp(PopUpDeleteSuccessController.class, 3);
                 Router.goTo(CustomerSearchController.class);
             } else {
-//                Router.showPopUp(); TODO popup error trying to delete customer
-                System.out.println("Erro ao deletar cliente");
+                Router.showPopUp(PopUpNotPossibleDeleteController.class, 2);
             }
         } catch (ConnectionFailureException exception) {
-//                Router.showPopUp(); TODO popup error trying call server
-            System.out.println("Erro ao contatar servidor para deletar cliente");
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

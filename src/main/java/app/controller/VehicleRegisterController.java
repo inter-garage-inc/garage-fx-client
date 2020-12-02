@@ -1,51 +1,126 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
+<<<<<<< HEAD
+import app.controller.popup.PopUpRegisterSuccessfulController;
+=======
+>>>>>>> main
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Customer;
+import app.data.Plan;
+import app.data.Vehicle;
 import app.router.RouteMapping;
 import app.router.Router;
+import app.service.CustomersService;
 import app.service.PlanService;
 import app.service.VehiclesService;
+<<<<<<< HEAD
+import javafx.event.ActionEvent;
+=======
+>>>>>>> main
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-@RouteMapping(title = "Editar veículo")
+import java.util.List;
+
+@RouteMapping(title = "Gerenciar Veículo do Customer")
 public class VehicleRegisterController {
+    @FXML
+    private TextField fieldLicensePlate;
+
     @FXML
     private VBox vboxPlans;
 
     @FXML
-    private Text comboBoxCurrentOrderStatus;
+    private Label labelMessage;
 
     private final Customer customer;
 
+    private final CustomersService customersService;
+
     private final PlanService planService;
 
+<<<<<<< HEAD
+    private Plan selectedPlan;
+=======
     private final VehiclesService vehiclesService;
+>>>>>>> main
 
     public VehicleRegisterController() {
         customer = (Customer) Router.getUserData();
+        customersService = new CustomersService();
         planService = new PlanService();
+<<<<<<< HEAD
+=======
         vehiclesService = new VehiclesService();
+>>>>>>> main
     }
 
-    public void initialize() {
+    @FXML
+    private void initialize() {
         initVboxPlans();
     }
 
     private void initVboxPlans() {
         try {
-            var availablePlans = planService.findAll();
-            availablePlans.forEach(plan -> {
-                var button = new RadioButton(plan.getName());
+            var toggleGroupPlan = new ToggleGroup();
+            planService.findAll().forEach(plan -> {
+                var button = new RadioButton(plan.getName() + " (" + plan.getType().getValue() + ") " );
                 button.getStyleClass().addAll("field", "label");
+                button.setToggleGroup(toggleGroupPlan);
+                button.setOnAction(event -> selectedPlan = plan);
                 vboxPlans.getChildren().add(button);
             });
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
+<<<<<<< HEAD
         }
+    }
+
+    @FXML
+    private void handleSave(ActionEvent actionEvent) {
+        if(fieldLicensePlate.getText().isBlank() || selectedPlan == null) {
+            labelMessage.setText("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        try {
+            if(hasNotTheVehicleWithLicensePlate()) {
+                var vehicle = Vehicle
+                        .builder()
+                        .licencePlate(fieldLicensePlate.getText())
+                        .plan(selectedPlan)
+                        .build();
+                var c = Customer
+                        .builder()
+                        .name(customer.getName())
+                        .cpfCnpj(customer.getCpfCnpj())
+                        .phone(customer.getPhone())
+                        .address(customer.getAddress())
+                        .vehicle(vehicle)
+                        .build();
+                var updated = customersService.update(customer.getId(), c);
+                if(updated != null) {
+                    Router.showPopUp(PopUpRegisterSuccessfulController.class, 2);
+                    Router.goTo(CustomerDetailsController.class, updated);
+                } else {
+                    labelMessage.setText("Hmmm... estranho! Não foi possível salvar o veículo");
+                }
+            }
+        } catch (ConnectionFailureException exception) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
+        }
+    }
+
+    private Boolean hasNotTheVehicleWithLicensePlate() throws ConnectionFailureException {
+        if(customersService.findByVehicle(fieldLicensePlate.getText()) != null) {
+            labelMessage.setText("O veículo informado já está associado a um cliente");
+            return false;
+=======
+>>>>>>> main
+        }
+        return true;
     }
 }

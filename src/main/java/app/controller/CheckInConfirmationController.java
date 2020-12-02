@@ -5,7 +5,6 @@ import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpCheckInConfirmController;
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Order;
-import app.data.catalog.CatalogType;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.OrdersService;

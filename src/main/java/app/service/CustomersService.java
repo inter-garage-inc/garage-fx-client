@@ -3,12 +3,14 @@ package app.service;
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
 import app.data.Customer;
+import app.data.Vehicle;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 
 public class CustomersService {
 
@@ -18,7 +20,7 @@ public class CustomersService {
         mapper = new ObjectMapper();
     }
 
-    public Customer register(Customer customer) throws ConnectionFailureException {
+    public Customer save(Customer customer) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(customer);
             var response = GarageClient.post("/customers", payload);
@@ -44,9 +46,9 @@ public class CustomersService {
     public Customer findByVehicle(String licensePlate) throws ConnectionFailureException {
         try {
             var response = GarageClient.get("/customers/license-plate/" + URLEncoder.encode(licensePlate, StandardCharsets.UTF_8));
-            return response.statusCode() == 200 ?
-                mapper.readValue((String) response.body(), new TypeReference<Customer>() {}) :
-                null;
+            return response.statusCode() == 200
+                ? mapper.readValue((String) response.body(), new TypeReference<Customer>() {})
+                : null;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException();
         }

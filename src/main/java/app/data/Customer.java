@@ -3,6 +3,7 @@ package app.data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -18,7 +19,7 @@ public class Customer extends DataBase {
 
     private String phone;
 
-    private List<Vehicle> vehicles;
+    private Vehicle vehicle;
 
     private List<Order> orders;
 

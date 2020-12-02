@@ -9,20 +9,20 @@
     <fx:include source="component/LogoTopLeft.fxml" />
     <fx:include source="component/UserDetails.fxml" />
 
-    <Label layoutX="368.0" layoutY="159.0" styleClass="field, label, blue" text="Veículo" />
-    <TextField layoutX="368.0" layoutY="194.0" promptText="Digite a placa do veículo" styleClass="field" />
+    <Label layoutX="368.0" layoutY="179.0" styleClass="field, label, blue" text="Veículo" />
+    <TextField fx:id="fieldLicensePlate" layoutX="368.0" layoutY="214.0" promptText="Digite a placa do veículo" styleClass="field" />
 
-    <Label layoutX="368.0" layoutY="253.0" styleClass="field, label, blue" text="Plano" />
-    <ScrollPane layoutX="368.0" layoutY="288.0" prefHeight="200" prefWidth="400">
+    <Label layoutX="368.0" layoutY="273.0" styleClass="field, label, blue" text="Plano" />
+    <ScrollPane layoutX="368.0" layoutY="308.0" prefHeight="200" prefWidth="400">
         <VBox fx:id="vboxPlans" layoutX="381.0" layoutY="237.0" spacing="5" />
       <padding>
          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
       </padding>
     </ScrollPane>
-
-    <Label layoutX="368.0" layoutY="509.0" styleClass="field, label, blue" text="Vencimento (dia do mês)" />
-    <Spinner layoutX="368.0" layoutY="545.0" max="30" min="1" initialValue="5" prefWidth="116.0" promptText="Escolha uma data de vencimento" styleClass="field" />
     
+    <Label fx:id="labelMessage" alignment="CENTER" layoutX="371.0" layoutY="613.0" prefHeight="18.0" prefWidth="400.0" styleClass="message, warning" />
+
     <fx:include source="component/ButtonBack.fxml" />
-    <Button layoutX="921.0" layoutY="666.0" styleClass="button, button-blue" text="Salvar" />
+    <Button layoutX="921.0" layoutY="666.0" onAction="#handleSave" styleClass="button, button-blue" text="Salvar" />
+
 </AnchorPane>

@@ -2,6 +2,7 @@ package app.service;
 
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
+import app.data.Customer;
 import app.data.Vehicle;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,6 +22,18 @@ public class VehiclesService {
             return response.statusCode() == 200 ?
                     mapper.readValue((String) response.body(), new TypeReference<Vehicle>() {}) :
                     null;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
+    }
+
+    public Vehicle save(Vehicle vehicle) throws ConnectionFailureException {
+        try {
+            var payload = mapper.writeValueAsString(vehicle);
+            var response = GarageClient.post("/vehicles/", payload);
+            return response.statusCode() == 201
+                    ? mapper.readValue((String) response.body(), new TypeReference<Vehicle>() {})
+                    : null;
         } catch (IOException | InterruptedException exception) {
             throw new ConnectionFailureException();
         }
