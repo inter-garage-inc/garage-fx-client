@@ -19,16 +19,13 @@ import javafx.scene.text.Text;
 
 import java.util.List;
 
-@RouteMapping(title = "Editar veículo")
+@RouteMapping(title = "Gerenciar Veículo do Customer")
 public class VehicleRegisterController {
     @FXML
     private TextField fieldLicensePlate;
 
     @FXML
     private VBox vboxPlans;
-
-    @FXML
-    private Spinner<Integer> spinnerDue;
 
     @FXML
     private Label labelMessage;
@@ -81,10 +78,18 @@ public class VehicleRegisterController {
                         .licencePlate(fieldLicensePlate.getText())
                         .plan(selectedPlan)
                         .build();
-                customer.addVehicle(vehicle);
-                if(customersService.update(customer.getId(), customer) != null) {
+                var c = Customer
+                        .builder()
+                        .name(customer.getName())
+                        .cpfCnpj(customer.getCpfCnpj())
+                        .phone(customer.getPhone())
+                        .address(customer.getAddress())
+                        .vehicle(vehicle)
+                        .build();
+                var updated = customersService.update(customer.getId(), c);
+                if(updated != null) {
                     Router.showPopUp(PopUpRegisterSuccessfulController.class, 2);
-                    Router.goTo(CustomerDetailsController.class, customer);
+                    Router.goTo(CustomerDetailsController.class, updated);
                 } else {
                     labelMessage.setText("Hmmm... estranho! Não foi possível salvar o veículo");
                 }

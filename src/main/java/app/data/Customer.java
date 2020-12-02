@@ -19,19 +19,9 @@ public class Customer extends DataBase {
 
     private String phone;
 
-    private List<Vehicle> vehicles;
+    private Vehicle vehicle;
 
     private List<Order> orders;
 
     private Address address;
-
-    public Customer addVehicle(Vehicle vehicle) {
-        this.vehicles.add(vehicle);
-        return this;
-    }
-
-    public Customer removeVehicle(Vehicle vehicle) {
-        this.vehicles.remove(vehicle);
-        return this;
-    }
 }

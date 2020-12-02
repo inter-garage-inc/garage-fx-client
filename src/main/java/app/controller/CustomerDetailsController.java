@@ -3,12 +3,17 @@ package app.controller;
 import app.controller.component.MainMenuController;
 import app.controller.popup.CustomerDeleteController;
 import app.data.Customer;
+import app.data.Plan;
 import app.data.Vehicle;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CustomersService;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
@@ -51,7 +56,10 @@ public class CustomerDetailsController {
     private Text textCountry;
 
     @FXML
-    private TableView<Vehicle> tableVehicles;
+    public Text textLicensePlate;
+
+    @FXML
+    public Text textCurrentPlan;
 
     private Customer customer;
 
@@ -74,7 +82,11 @@ public class CustomerDetailsController {
         textCity.setText(address.getCity());
         textState.setText(address.getState().getValue());
         textCountry.setText(address.getCountry().getValue());
-        tableVehicles.getItems().addAll(customer.getVehicles());
+        var vehicle = customer.getVehicle();
+        if(vehicle != null) {
+            textCurrentPlan.setText(vehicle.getPlan().getName() + "(" + vehicle.getPlan().getType() +")");
+            textLicensePlate.setText(vehicle.getLicencePlate());
+        }
     }
 
     @FXML
