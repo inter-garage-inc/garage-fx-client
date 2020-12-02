@@ -91,10 +91,8 @@ public class CheckInConfirmationController {
     }
 
     @FXML
-    private void handleOnActionButtonBtnPay() throws InterruptedException {
-        System.out.println("Carregando tela de Check Out"); //TODO criar um pop up para carregar a tela de check out
-        Thread.sleep(1000);
-        Router.goTo(CheckOutConfirmationController.class, true);
+    private void handleOnActionButtonBtnPay() throws InterruptedException {// TODO
+        Router.goTo(CheckOutConfirmationController.class, order, true);
     }
     @FXML
     private void handleOnActionButtonBtnAlter() {

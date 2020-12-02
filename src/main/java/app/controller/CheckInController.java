@@ -82,7 +82,7 @@ public class CheckInController {
     }
 
     @FXML
-    private void handleOnActionButtonOk(ActionEvent actionEvent) throws ConnectionFailureException {
+    private void handleOnActionButtonOk(ActionEvent actionEvent) {
         if(txtLicensePlate.getText().isBlank() || catalogs.isEmpty()) {
             lblMessage.setText("Por favor preencha todos os campos!");
             return;

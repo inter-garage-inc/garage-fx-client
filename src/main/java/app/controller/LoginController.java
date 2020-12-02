@@ -36,8 +36,8 @@ public class LoginController {
 
     public void handleLogin() {
         var credentials = Credentials.builder()
-                .username(fieldUsername.getText())
-                .password(fieldPassword.getText())
+                .username(fieldUsername.getText().trim())
+                .password(fieldPassword.getText().trim())
                 .build();
         try {
             var response = service.login(credentials);

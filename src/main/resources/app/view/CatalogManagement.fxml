@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CatalogManagementController">
-    <fx:include source="component/MainMenu.fxml" fx:id="menu"/>
+    <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
     <fx:include source="component/UserDetails.fxml" />
 
@@ -16,6 +15,7 @@
     </TableView>
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button fx:id="btnRegistration" onAction="#handleOnActionButtonBtnRegistration" layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
-    <Button fx:id="btnSelect" onAction="#handleOnActionButtonBtnSelect" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
+    <Button fx:id="btnRegistration" layoutX="762.0" layoutY="666.0" onAction="#handleOnActionButtonBtnRegistration" styleClass="button-green" text="Cadastrar" />
+    <Button fx:id="btnSelect" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnSelect" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
+    <Label fx:id="lblMessage" styleClass="message, warning" layoutX="253.0" layoutY="592.0" prefHeight="15.0" prefWidth="573.0" />
 </AnchorPane>

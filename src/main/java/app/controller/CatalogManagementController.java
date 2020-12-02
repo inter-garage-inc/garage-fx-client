@@ -9,6 +9,7 @@ import app.router.Router;
 import app.service.CatalogsService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,6 +20,7 @@ public class CatalogManagementController {
     public TableView<Catalog> tbView;
     public Button btnRegistration;
     public Button btnSelect;
+    public Label lblMessage;
 
     @FXML
     private MainMenuController menuController;
@@ -49,7 +51,12 @@ public class CatalogManagementController {
     }
 
     public void handleOnActionButtonBtnSelect() {
-        var catalog = tbView.getSelectionModel().getSelectedItem();
-        Router.goTo(CatalogChangeController.class, catalog, true);
+        Boolean response = tbView.getSelectionModel().getSelectedItem() != null;
+        if(response) {
+            var catalog = tbView.getSelectionModel().getSelectedItem();
+            Router.goTo(CatalogChangeController.class, catalog, true);
+        } else {
+            lblMessage.setText("Por favor, selecione uma opção");
+        }
     }
 }
