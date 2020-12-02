@@ -3,6 +3,7 @@ package app.data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -23,4 +24,14 @@ public class Customer extends DataBase {
     private List<Order> orders;
 
     private Address address;
+
+    public Customer addVehicle(Vehicle vehicle) {
+        this.vehicles.add(vehicle);
+        return this;
+    }
+
+    public Customer removeVehicle(Vehicle vehicle) {
+        this.vehicles.remove(vehicle);
+        return this;
+    }
 }

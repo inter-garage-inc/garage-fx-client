@@ -1,51 +1,104 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
+import app.controller.popup.PopUpRegisterSuccessfulController;
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Customer;
+import app.data.Plan;
+import app.data.Vehicle;
 import app.router.RouteMapping;
 import app.router.Router;
+import app.service.CustomersService;
 import app.service.PlanService;
 import app.service.VehiclesService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+
+import java.util.List;
 
 @RouteMapping(title = "Editar veículo")
 public class VehicleRegisterController {
     @FXML
+    private TextField fieldLicensePlate;
+
+    @FXML
     private VBox vboxPlans;
 
     @FXML
-    private Text comboBoxCurrentOrderStatus;
+    private Spinner<Integer> spinnerDue;
+
+    @FXML
+    private Label labelMessage;
 
     private final Customer customer;
 
+    private final CustomersService customersService;
+
     private final PlanService planService;
 
-    private final VehiclesService vehiclesService;
+    private Plan selectedPlan;
 
     public VehicleRegisterController() {
         customer = (Customer) Router.getUserData();
+        customersService = new CustomersService();
         planService = new PlanService();
-        vehiclesService = new VehiclesService();
     }
 
-    public void initialize() {
+    @FXML
+    private void initialize() {
         initVboxPlans();
     }
 
     private void initVboxPlans() {
         try {
-            var availablePlans = planService.findAll();
-            availablePlans.forEach(plan -> {
-                var button = new RadioButton(plan.getName());
+            var toggleGroupPlan = new ToggleGroup();
+            planService.findAll().forEach(plan -> {
+                var button = new RadioButton(plan.getName() + " (" + plan.getType().getValue() + ") " );
                 button.getStyleClass().addAll("field", "label");
+                button.setToggleGroup(toggleGroupPlan);
+                button.setOnAction(event -> selectedPlan = plan);
                 vboxPlans.getChildren().add(button);
             });
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }
+    }
+
+    @FXML
+    private void handleSave(ActionEvent actionEvent) {
+        if(fieldLicensePlate.getText().isBlank() || selectedPlan == null) {
+            labelMessage.setText("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        try {
+            if(hasNotTheVehicleWithLicensePlate()) {
+                var vehicle = Vehicle
+                        .builder()
+                        .licencePlate(fieldLicensePlate.getText())
+                        .plan(selectedPlan)
+                        .build();
+                customer.addVehicle(vehicle);
+                if(customersService.update(customer.getId(), customer) != null) {
+                    Router.showPopUp(PopUpRegisterSuccessfulController.class, 2);
+                    Router.goTo(CustomerDetailsController.class, customer);
+                } else {
+                    labelMessage.setText("Hmmm... estranho! Não foi possível salvar o veículo");
+                }
+            }
+        } catch (ConnectionFailureException exception) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
+        }
+    }
+
+    private Boolean hasNotTheVehicleWithLicensePlate() throws ConnectionFailureException {
+        if(customersService.findByVehicle(fieldLicensePlate.getText()) != null) {
+            labelMessage.setText("O veículo informado já está associado a um cliente");
+            return false;
+        }
+        return true;
     }
 }

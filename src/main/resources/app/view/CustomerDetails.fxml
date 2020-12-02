@@ -42,7 +42,7 @@
     <Text fx:id="textCountry" layoutX="636.0" layoutY="473.0" styleClass="field" text="aabbccdd" />
 
     <Label layoutX="482.0" layoutY="472.0" styleClass="field, label, blue" text="Veículos" />
-    <TableView layoutX="280.0" layoutY="506.0" prefHeight="125.0" prefWidth="500.0">
+    <TableView fx:id="tableVehicles" layoutX="280.0" layoutY="506.0" prefHeight="125.0" prefWidth="500.0">
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>

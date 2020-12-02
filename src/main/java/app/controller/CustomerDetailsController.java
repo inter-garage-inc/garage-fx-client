@@ -3,10 +3,13 @@ package app.controller;
 import app.controller.component.MainMenuController;
 import app.controller.popup.CustomerDeleteController;
 import app.data.Customer;
+import app.data.Vehicle;
 import app.router.RouteMapping;
 import app.router.Router;
+import app.service.CustomersService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
 @RouteMapping(title = "Detalhes do Cliente")
@@ -47,6 +50,9 @@ public class CustomerDetailsController {
     @FXML
     private Text textCountry;
 
+    @FXML
+    private TableView<Vehicle> tableVehicles;
+
     private Customer customer;
 
     public CustomerDetailsController() {
@@ -68,6 +74,7 @@ public class CustomerDetailsController {
         textCity.setText(address.getCity());
         textState.setText(address.getState().getValue());
         textCountry.setText(address.getCountry().getValue());
+        tableVehicles.getItems().addAll(customer.getVehicles());
     }
 
     @FXML
