@@ -1,8 +1,8 @@
 package app.data.parking;
 
 public enum ParkingStatus {
-    OCCUPIED("occupied"),
-    VACANT("vacant");
+    OCCUPIED("ocupado"),
+    VACANT("vazio");
 
     private final String value;
 
@@ -12,5 +12,10 @@ public enum ParkingStatus {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return getValue();
     }
 }

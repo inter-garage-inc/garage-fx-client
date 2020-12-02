@@ -8,6 +8,7 @@ import app.data.Order;
 import app.data.OrderItem;
 import app.data.Parking;
 import app.data.order.Item;
+import app.data.order.Status;
 import app.data.parking.ParkingSpace;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -21,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RouteMapping(title = "Ordens de Serviço Abertas")
 public class SingleOrdersOpenController {
@@ -50,7 +52,8 @@ public class SingleOrdersOpenController {
 
         tbView.getColumns().addAll(column1, column2);
         try {
-            order = ordersService.findAll();
+            order = ordersService.findAll().stream().filter(order ->
+                    !order.getStatus().equals(Status.PAID)).collect(Collectors.toList());
             order.forEach(order1 -> {
                 order1.getItems().forEach(item -> {
                     var orderItem = OrderItem.builder()
@@ -58,6 +61,7 @@ public class SingleOrdersOpenController {
                             .licensePlate(order1.getLicensePlate())
                             .build();
                     tbView.getItems().add(orderItem);
+
                 });
             });
 

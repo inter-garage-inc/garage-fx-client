@@ -1,8 +1,8 @@
 package app.data.user;
 
 public enum Status {
-    ACTIVE("active"),
-    DISABLE("disable");
+    ACTIVE("ativo"),
+    DISABLE("desativado");
 
     private String value;
 
@@ -12,5 +12,10 @@ public enum Status {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return getValue();
     }
 }

@@ -48,10 +48,11 @@ public class CustomerSearchController {
     private void handleOnActionSearch() {
         try {
             var customer = service.findByCpfCnpj(fieldCpfCnpj.getPlainText());
+
             if(customer != null) {
                 Router.goTo(CustomerDetailsController.class, customer, true);
             } else {
-                Router.showPopUp(PopUpCustomerNotFoundController.class, 3);
+                Router.showPopUp(PopUpCustomerNotFoundController.class);
             }
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);

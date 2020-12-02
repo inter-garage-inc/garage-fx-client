@@ -57,8 +57,8 @@ public class PlanManagementController {
     public void handleOnActionButtonBtnSelect() {
         Boolean response = tbView.getSelectionModel().getSelectedItem() != null;
         if(response) {
-            var catalog = tbView.getSelectionModel().getSelectedItem();
-            Router.goTo(CatalogChangeController.class, catalog, true);
+            var plan = tbView.getSelectionModel().getSelectedItem();
+            Router.goTo(PlanChangeController.class, plan, true);
         } else {
             lblMessage.setText("Por favor, selecione uma opção");
         }

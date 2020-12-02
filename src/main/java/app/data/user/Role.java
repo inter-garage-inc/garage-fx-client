@@ -2,8 +2,8 @@ package app.data.user;
 
 public enum Role {
     ADMIN("admin"),
-    MANAGER("manager"),
-    EMPLOYEE("employee");
+    MANAGER("gerente"),
+    EMPLOYEE("funcionário");
 
     private String value;
 
@@ -13,5 +13,10 @@ public enum Role {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return getValue();
     }
 }

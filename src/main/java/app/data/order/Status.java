@@ -2,9 +2,9 @@ package app.data.order;
 
 public enum Status {
 
-    PAID("paid"),
-    CANCELED("canceled"),
-    OPEN("open");
+    PAID("pago"),
+    CANCELED("cancelado"),
+    OPEN("aberto");
 
     private String value;
 
@@ -14,5 +14,10 @@ public enum Status {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return getValue();
     }
 }
