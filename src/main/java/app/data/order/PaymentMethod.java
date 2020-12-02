@@ -2,8 +2,8 @@ package app.data.order;
 
 public enum PaymentMethod {
 
-    CARD("card"),
-    CASH("cash");
+    CARD("cartão"),
+    CASH("dinheiro");
 
     private String value;
 
@@ -15,4 +15,8 @@ public enum PaymentMethod {
         return value;
     }
 
+    @Override
+    public String toString() {
+        return getValue();
+    }
 }

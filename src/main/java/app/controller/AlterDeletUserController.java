@@ -36,6 +36,7 @@ public class AlterDeletUserController {
     public void initialize() {
         menuController.btnUsers.getStyleClass().add("button-menu-selected");
         user = (User) Router.getUserData();
+
         fieldName.setText(user.getName());
         fieldUsername.setText(user.getUsername());
         cbStatus.getItems().addAll(Status.values());
@@ -82,7 +83,7 @@ public class AlterDeletUserController {
         }
     }
     
-    public void handleOnActionButtonBtnDelete() {
+    public void handleOnActionButtonBtnDelete() { //TODO
         Router.showPopUp(PopUpConfirmDeleteUserController.class, user);
     }
 

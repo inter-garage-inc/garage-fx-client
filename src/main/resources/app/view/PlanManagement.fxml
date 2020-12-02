@@ -17,4 +17,5 @@
     <fx:include source="component/ButtonBack.fxml" />
     <Button fx:id="btnRegistration" onAction="#handleOnActionButtonBtnRegistration" layoutX="762.0" layoutY="666.0" styleClass="button-green" text="Cadastrar" />
     <Button fx:id="btnSelect" onAction="#handleOnActionButtonBtnSelect" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" prefWidth="125.0" styleClass="button, button-blue" text="Selecionar" />
+    <Label fx:id="lblMessage" styleClass="message, warning" layoutX="253.0" layoutY="592.0" prefHeight="15.0" prefWidth="573.0" />
 </AnchorPane>

@@ -8,12 +8,14 @@ import app.router.Router;
 import app.service.PlanService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 @RouteMapping(title = "Gestão de Planos")
 public class PlanManagementController {
+    public Label lblMessage;
     @FXML
     private MainMenuController menuController;
 
@@ -53,7 +55,12 @@ public class PlanManagementController {
     }
 
     public void handleOnActionButtonBtnSelect() {
-        var data = tbView.getSelectionModel().getSelectedItem();
-        Router.goTo(PlanChangeController.class, data, true);
+        Boolean response = tbView.getSelectionModel().getSelectedItem() != null;
+        if(response) {
+            var catalog = tbView.getSelectionModel().getSelectedItem();
+            Router.goTo(CatalogChangeController.class, catalog, true);
+        } else {
+            lblMessage.setText("Por favor, selecione uma opção");
+        }
     }
 }

@@ -9,12 +9,11 @@ import app.data.user.Role;
 import app.data.user.Status;
 import app.router.RouteMapping;
 import app.router.Router;
+import app.service.AuthenticationService;
 import app.service.UsersService;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 @RouteMapping(title = "Cadastro de Usuário")
 public class UserRegistrationController {
@@ -25,15 +24,32 @@ public class UserRegistrationController {
     public PasswordField fieldConfPassword;
     public Button btnSave;
     public Label lblMessage;
-    UsersService service;
+    public AnchorPane anchorPane;
+    public ComboBox<Role> cbStatus;
+    public Label lblTypeUser;
+    private AuthenticationService authenticationService;
+    private Boolean authenticationUser;
+    private UsersService service;
 
     public UserRegistrationController() {
         service = new UsersService();
+        anchorPane = new AnchorPane();
+        authenticationService = new AuthenticationService();
     }
+
     @FXML
     private MainMenuController menuController;
     public void initialize() {
         menuController.btnUsers.getStyleClass().add("button-menu-selected");
+        authenticationUser = authenticationService.claimUser().getRole().equals(Role.ADMIN);
+        if(authenticationUser) {
+            anchorPane.setVisible(true);
+            cbStatus.getItems().addAll(Role.values());
+        } else {
+            anchorPane.setVisible(false);
+            cbStatus.setVisible(false);
+            lblTypeUser.setVisible(false);
+        }
     }
 
     public void handleOnActionButtonBtnSave() {
@@ -47,14 +63,24 @@ public class UserRegistrationController {
             lblMessage.setText("Os campos não podem ser vazios");
             return;
         }
-
-        var user = User.builder()
-                .name(fieldName.getText())
-                .username(fieldUsername.getText())
-                .password(fieldPassword.getText())
-                .role(Role.EMPLOYEE)
-                .status(Status.ACTIVE)
-                .build();
+        User user = null;
+        if(authenticationUser) {
+            user = User.builder()
+                    .name(fieldName.getText())
+                    .username(fieldUsername.getText())
+                    .password(fieldPassword.getText())
+                    .role(cbStatus.getValue())
+                    .status(Status.ACTIVE)
+                    .build();
+        } else {
+            user = User.builder()
+                    .name(fieldName.getText())
+                    .username(fieldUsername.getText())
+                    .password(fieldPassword.getText())
+                    .role(Role.EMPLOYEE)
+                    .status(Status.ACTIVE)
+                    .build();
+        }
 
         if(!confirmPassword) {
             lblMessage.setText("Senhas não são iguais");

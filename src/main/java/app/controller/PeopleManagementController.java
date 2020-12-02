@@ -39,15 +39,22 @@ public class PeopleManagementController {
             }
 
             var logado = AuthenticationService.claimUser();
-            Boolean permission = (
-                    logado.getRole().equals(Role.MANAGER))
-                    && (user.getRole().equals(Role.ADMIN) || user.getRole().equals(Role.MANAGER)
+            Boolean permission = (logado.getRole().equals(Role.MANAGER))
+                    && (user.getRole().equals(Role.ADMIN)
+                    || user.getRole().equals(Role.MANAGER)
             );
+
+            Boolean atual = logado.getId().equals(user.getId());
+
+            if(atual) {
+                lblMessage.setText("Não pode editar o usuário atual");
+                return;
+            }
 
             if(permission) {
                 lblMessage.setText("Permissão negada");
             } else {
-                Router.goTo(AlterDeletUserController.class, user);
+                Router.goTo(AlterDeletUserController.class, user, true);
             }
 
         } catch (ConnectionFailureException e) {

@@ -10,14 +10,10 @@ import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CustomersService;
 import app.service.PlanService;
-import app.service.VehiclesService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-
-import java.util.List;
 
 @RouteMapping(title = "Gerenciar Veículo do Customer")
 public class VehicleRegisterController {

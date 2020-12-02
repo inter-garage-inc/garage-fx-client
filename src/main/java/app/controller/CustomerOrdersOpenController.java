@@ -12,7 +12,11 @@ public class CustomerOrdersOpenController {
     public Button btnSelect;
 
     public void handleOnActionButtonBtnSelect() {
-        Router.goTo(CheckOutConfirmationController.class, true);
+//        Boolean response = tbView.getSelectionModel().getSelectedItem() != null;
+//        if(response) {
+//            var catalog = tbView.getSelectionModel().getSelectedItem();
+//            Router.goTo(CatalogChangeController.class, catalog, true);
+//        }
     }
 
     @FXML

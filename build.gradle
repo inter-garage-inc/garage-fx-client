@@ -2,9 +2,15 @@ plugins {
     id 'java'
     id 'application'
     id "org.openjfx.javafxplugin" version "0.0.9"
+
 }
 
+
+
 compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
 group 'garage'
 version '1.0-SNAPSHOT'
@@ -28,4 +34,6 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
 }
 
+
 mainClassName = "app.MainApp"
+

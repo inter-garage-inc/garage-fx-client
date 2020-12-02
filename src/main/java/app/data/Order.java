@@ -31,4 +31,5 @@ public class Order extends DataBase {
     private String licensePlate;
 
     private Status status;
+
 }
