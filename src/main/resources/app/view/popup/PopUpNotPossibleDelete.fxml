@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpNotPossibleDeleteController">
     <Label layoutX="102.0" layoutY="27.0" styleClass="field-label-form" text="Não foi possível deletar usuário&#10;Tente novamente mais tarde" textAlignment="CENTER" wrapText="true" />
+=======
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpNotPossibleDeleteController">
+    <Label layoutX="91.0" layoutY="32.0" styleClass="field-label-form" text="Não foi possível deletar usuário. Tente novamente mais tarde" textAlignment="CENTER" wrapText="true" />
+>>>>>>> main
     <fx:include source="../component/ButtonOk.fxml" />
 </AnchorPane>

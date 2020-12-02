@@ -31,7 +31,6 @@ public class PlanChangeController {
     public AnchorPane anchorPane;
 
     private CatalogsService catalogsService;
-
     private PlanService service;
 
     public void initialize() throws ConnectionFailureException {

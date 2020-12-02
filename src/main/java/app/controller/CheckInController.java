@@ -84,7 +84,7 @@ public class CheckInController {
     @FXML
     private void handleOnActionButtonOk(ActionEvent actionEvent) throws ConnectionFailureException {
         if(txtLicensePlate.getText().isBlank() || catalogs.isEmpty()) {
-            lblMessage.setText("Os campos não podem estar vazios");
+            lblMessage.setText("Por favor preencha todos os campos!");
             return;
         }
 

@@ -10,14 +10,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 @RouteMapping(title = "Exclusão de Cliente", popup = true)
-public class CustomerDeleteController {
+public class PopUpCustomerDeleteController {
     private Customer customer;
 
+<<<<<<< HEAD:src/main/java/app/controller/popup/CustomerDeleteController.java
     private CustomersService customersService;
+=======
+    private CustomersService service;
+>>>>>>> main:src/main/java/app/controller/popup/PopUpCustomerDeleteController.java
 
-    public CustomerDeleteController() {
+    public PopUpCustomerDeleteController() {
         customer = (Customer) Router.getUserData();
+<<<<<<< HEAD:src/main/java/app/controller/popup/CustomerDeleteController.java
         customersService = new CustomersService();
+=======
+        service = new CustomersService();
+>>>>>>> main:src/main/java/app/controller/popup/PopUpCustomerDeleteController.java
     }
 
     @FXML

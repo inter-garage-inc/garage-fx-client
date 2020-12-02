@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 @RouteMapping(title = "Cliente Não Encontrado", popup = true)
-public class CustomerNotFoundController {
+public class PopUpCustomerNotFoundController {
     @FXML
     private void handleOnActionClose(ActionEvent actionEvent) {
         Router.closePopUp();

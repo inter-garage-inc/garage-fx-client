@@ -11,10 +11,7 @@ import app.router.Router;
 import app.service.CatalogsService;
 import app.service.PlanService;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.math.BigDecimal;
@@ -31,6 +28,7 @@ public class PlanRegistrationController {
     public Button btnSave;
     public List<CheckBox> cbCatalogs = new ArrayList<>();
     public AnchorPane anchorPane;
+
     private CatalogsService service;
 
     public void initialize() {
@@ -107,6 +105,4 @@ public class PlanRegistrationController {
             e.printStackTrace();
         }
     }
-
-
 }

@@ -2,7 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.controller.popup.CheckInConfirmController;
+import app.controller.popup.PopUpCheckInConfirmController;
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Order;
 import app.router.RouteMapping;
@@ -72,7 +72,6 @@ public class CheckInConfirmationController {
             layoutY += 20;
             anchorPane.getChildren().add(label);
         }
-
         lblLicensePlate.setText(order.getLicensePlate());
     }
 
@@ -81,11 +80,10 @@ public class CheckInConfirmationController {
         try {
             var created = ordersService.create(order);
             if(created != null) {
-               // Router.showPopUp(CheckInConfirmController.class, 2);
-                System.out.println("Checkin realizado com sucesso"); //TODO enviar created para o popup que vai mostrar a placa
+                Router.showPopUp(PopUpCheckInConfirmController.class, created);
                 Router.goTo(HomeController.class);
             } else {
-                lblMessage.setText("Não foi possível realizar o check in");
+                lblMessage.setText("Não foi possível realizar o check in\nVerifique o mapa de vagas ou as orderns abertas");
             }
         } catch (ConnectionFailureException exception) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
@@ -98,9 +96,8 @@ public class CheckInConfirmationController {
         Thread.sleep(1000);
         Router.goTo(CheckOutConfirmationController.class, true);
     }
-
     @FXML
     private void handleOnActionButtonBtnAlter() {
-        Router.goTo(ChangeCheckInController.class, true);
+        Router.back();
     }
 }

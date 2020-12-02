@@ -2,7 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.controller.popup.ParkingSpaceRegistration;
+import app.controller.popup.PopUpParkingSpaceRegistration;
 import app.data.User;
 import app.data.parking.ParkingSpace;
 import app.data.parking.SpaceStatus;
@@ -17,10 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-
 import java.util.List;
 
 @RouteMapping(title = "Mapa de Vagas")
@@ -125,6 +122,6 @@ public class ParkingSpacesMapController {
 
     @FXML
     private void handleRegistration(ActionEvent actionEvent) {
-        Router.showPopUp(ParkingSpaceRegistration.class);
+        Router.showPopUp(PopUpParkingSpaceRegistration.class);
     }
 }

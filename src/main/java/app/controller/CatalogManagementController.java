@@ -50,6 +50,6 @@ public class CatalogManagementController {
 
     public void handleOnActionButtonBtnSelect() {
         var catalog = tbView.getSelectionModel().getSelectedItem();
-        Router.goTo(CatalogChangeController.class, catalog);
+        Router.goTo(CatalogChangeController.class, catalog, true);
     }
 }

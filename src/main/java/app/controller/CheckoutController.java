@@ -2,7 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.controller.popup.PlateNotFoundController;
+import app.controller.popup.PopUpPlateNotFoundController;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.OrdersService;
@@ -34,7 +34,7 @@ public class CheckoutController {
             if (order != null) {
                 Router.goTo(CheckOutConfirmationController.class, order, true);
             } else {
-                Router.showPopUp(PlateNotFoundController.class);
+                Router.showPopUp(PopUpPlateNotFoundController.class);
             }
         } catch (ConnectionFailureException exception) {
             exception.printStackTrace();

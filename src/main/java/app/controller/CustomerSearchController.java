@@ -2,7 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.controller.popup.CustomerNotFoundController;
+import app.controller.popup.PopUpCustomerNotFoundController;
 import app.controller.popup.PopUpServerCloseController;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -51,7 +51,7 @@ public class CustomerSearchController {
             if(customer != null) {
                 Router.goTo(CustomerDetailsController.class, customer, true);
             } else {
-                Router.showPopUp(CustomerNotFoundController.class, 3);
+                Router.showPopUp(PopUpCustomerNotFoundController.class, 3);
             }
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);

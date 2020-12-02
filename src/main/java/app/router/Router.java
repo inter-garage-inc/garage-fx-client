@@ -136,14 +136,14 @@ public class Router extends Application {
     }
 
     public static void showPopUp(Class<?> clazz, Object userData, Integer time) {
-        showPopUp(clazz);
         setUserData(userData);
+        showPopUp(clazz);
         closePopUp(time);
     }
 
     public static void showPopUp(Class<?> clazz, Object userData) {
-        showPopUp(clazz);
         setUserData(userData);
+        showPopUp(clazz);
     }
 
     public static void showPopUp(Class<?> clazz, Integer time) {

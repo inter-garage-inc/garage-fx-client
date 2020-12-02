@@ -3,7 +3,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<<<<<<< HEAD:src/main/resources/app/view/popup/CustomerNotFound.fxml
 <AnchorPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.CustomerNotFoundController">
+=======
+<AnchorPane prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpCustomerNotFoundController">
+>>>>>>> main:src/main/resources/app/view/popup/PopUpCustomerNotFound.fxml
     <Label layoutX="129.0" layoutY="39.0" prefHeight="31.0" prefWidth="232.0" styleClass="field, label" text="Cliente não encontrado." />
     <Label layoutX="94.0" layoutY="66.0" prefHeight="24.0" prefWidth="312.0" styleClass="field, label" text="Tente novamente ou cadastre-o." />
 
