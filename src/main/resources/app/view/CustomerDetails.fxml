@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CustomerDetailsController">
     <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
@@ -47,7 +48,7 @@
     <Text fx:id="textLicensePlate" layoutX="321.0" layoutY="595.0" styleClass="field" text="Não cadastrado" textAlignment="CENTER" wrappingWidth="183.27200317382812" />
 
     <Label layoutX="605.0" layoutY="544.0" styleClass="field, label, blue" text="Plano atual" />
-    <Text fx:id="textCurrentPlan" layoutX="557.0" layoutY="596.0" styleClass="field" text="Não cadastrado" textAlignment="CENTER" wrappingWidth="202.27200317382812" />
+    <Text fx:id="textCurrentPlan" layoutX="535.0" layoutY="594.0" styleClass="field" text="Não cadastrado" textAlignment="CENTER" wrappingWidth="247.27200317382812" />
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button layoutX="177.0" layoutY="666.0" onAction="#handleNewVehicle" prefWidth="162.0" styleClass="button, button-green" text="Novo veículo" />

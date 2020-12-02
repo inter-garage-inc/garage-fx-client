@@ -84,7 +84,7 @@ public class CustomerDetailsController {
         textCountry.setText(address.getCountry().getValue());
         var vehicle = customer.getVehicle();
         if(vehicle != null) {
-            textCurrentPlan.setText(vehicle.getPlan().getName() + "(" + vehicle.getPlan().getType() +")");
+            textCurrentPlan.setText(vehicle.getPlan().getName() + "\n(" + vehicle.getPlan().getType() +")");
             textLicensePlate.setText(vehicle.getLicencePlate());
         }
     }

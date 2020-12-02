@@ -1,10 +1,7 @@
 package app.controller;
 
 import app.client.ConnectionFailureException;
-<<<<<<< HEAD
 import app.controller.popup.PopUpRegisterSuccessfulController;
-=======
->>>>>>> main
 import app.controller.popup.PopUpServerCloseController;
 import app.data.Customer;
 import app.data.Plan;
@@ -14,10 +11,7 @@ import app.router.Router;
 import app.service.CustomersService;
 import app.service.PlanService;
 import app.service.VehiclesService;
-<<<<<<< HEAD
 import javafx.event.ActionEvent;
-=======
->>>>>>> main
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -42,20 +36,12 @@ public class VehicleRegisterController {
 
     private final PlanService planService;
 
-<<<<<<< HEAD
     private Plan selectedPlan;
-=======
-    private final VehiclesService vehiclesService;
->>>>>>> main
 
     public VehicleRegisterController() {
         customer = (Customer) Router.getUserData();
         customersService = new CustomersService();
         planService = new PlanService();
-<<<<<<< HEAD
-=======
-        vehiclesService = new VehiclesService();
->>>>>>> main
     }
 
     @FXML
@@ -75,7 +61,6 @@ public class VehicleRegisterController {
             });
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
-<<<<<<< HEAD
         }
     }
 
@@ -118,8 +103,6 @@ public class VehicleRegisterController {
         if(customersService.findByVehicle(fieldLicensePlate.getText()) != null) {
             labelMessage.setText("O veículo informado já está associado a um cliente");
             return false;
-=======
->>>>>>> main
         }
         return true;
     }

@@ -11,14 +11,12 @@ public enum CatalogType {
         this.value = value;
     }
 
-<<<<<<< HEAD
     @Override
     public String toString() {
         return getValue();
     }
 
-=======
->>>>>>> main
+
     public String getValue() {
         return value;
     }

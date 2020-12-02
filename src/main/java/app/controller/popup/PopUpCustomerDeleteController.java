@@ -13,19 +13,11 @@ import javafx.fxml.FXML;
 public class PopUpCustomerDeleteController {
     private Customer customer;
 
-<<<<<<< HEAD:src/main/java/app/controller/popup/CustomerDeleteController.java
     private CustomersService customersService;
-=======
-    private CustomersService service;
->>>>>>> main:src/main/java/app/controller/popup/PopUpCustomerDeleteController.java
 
     public PopUpCustomerDeleteController() {
         customer = (Customer) Router.getUserData();
-<<<<<<< HEAD:src/main/java/app/controller/popup/CustomerDeleteController.java
         customersService = new CustomersService();
-=======
-        service = new CustomersService();
->>>>>>> main:src/main/java/app/controller/popup/PopUpCustomerDeleteController.java
     }
 
     @FXML
