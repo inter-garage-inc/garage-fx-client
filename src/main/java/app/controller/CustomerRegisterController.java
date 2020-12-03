@@ -18,12 +18,17 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
 @RouteMapping(title = "Cadastrar Novo Cliente")
 public class CustomerRegisterController {
+
+    @FXML
+    private Label lblMessage;
+
     @FXML
     private TextField fieldName;
 
@@ -158,7 +163,7 @@ public class CustomerRegisterController {
                 Router.showPopUp(PopUpRegisterSuccessfulController.class, 3);
                 Router.goTo(CustomerDetailsController.class, c); //TODO create destine page
             } else {
-                System.out.println("Não foi possivel cadastrar. Verificar dados. Talvez CPF/CNPJ já cadastrados"); //TODO create a pop-up
+                lblMessage.setText("Preencha todas as colunas.");
             }
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);

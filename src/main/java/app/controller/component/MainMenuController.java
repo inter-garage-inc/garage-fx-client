@@ -26,8 +26,8 @@ public class MainMenuController {
     public void initialize() {
         var user = AuthenticationService.claimUser();
         if(user.getRole() == Role.EMPLOYEE) {
-            btnServicePlans.setVisible(false); //TODO Test Only
-            btnUsers.setVisible(false); //TODO Test Only
+            btnServicePlans.setVisible(false);
+            btnUsers.setVisible(false);
 
         } else if(user.getRole() == Role.MANAGER) {
 

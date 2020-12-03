@@ -11,6 +11,7 @@
     <fx:include source="component/UserDetails.fxml" />
 
     <Label layoutX="290.0" layoutY="150.0" styleClass="label, field, blue" text="Nome completo" />
+    <Label layoutX="446" layoutY="160" text="*" styleClass="message, warning" />
     <TextField fx:id="fieldName" layoutX="290.0" layoutY="185.0" prefWidth="520.0" promptText="Digite o nome completo" styleClass="field" />
 
     <fx:define>
@@ -19,38 +20,56 @@
     <RadioButton onAction="#handleOnActionRadioButtonCpf" toggleGroup="$toggleGroupCpfCnpj" selected="true" layoutX="290.0" layoutY="233.0" text="CPF" styleClass="field, label, blue"/>
     <RadioButton onAction="#handleOnActionRadioButtonCnpj" toggleGroup="$toggleGroupCpfCnpj" layoutX="370.0" layoutY="233.0" text="CNPJ" styleClass="field, label, blue"/>
     <MaskedTextField fx:id="fieldCpfCnpj" layoutX="290.0" layoutY="268.0" prefWidth="250.0" mask="###.###.###-##" styleClass="field" />
+    <Label layoutX="460" layoutY="240" text="*" styleClass="message, warning" />
+
 
     <Label layoutX="560.0" layoutY="233.0" styleClass="label, field, blue" text="Telefone" />
+    <Label layoutX="645" layoutY="240" text="*" styleClass="message, warning" />
     <MaskedTextField fx:id="fieldPhone" layoutX="560.0" layoutY="268.0" prefWidth="250.0" mask="+## (##) #####-####" plainText="55" styleClass="field" />
 
     <Label layoutX="290.0" layoutY="328.0" styleClass="label, field, blue" text="Endereço" />
+    <Label layoutX="385" layoutY="335" text="*" styleClass="message, warning" />
     <TextField fx:id="fieldAddress" layoutX="290.0" layoutY="362.0" prefWidth="520.0" promptText="Rua, Avenida, Travessa, etc." styleClass="field" />
 
     <Label layoutX="290.0" layoutY="403.0" styleClass="label, field, blue" text="Número" />
+    <Label layoutX="370" layoutY="410" text="*" styleClass="message, warning" />
     <TextField fx:id="fieldNumber" layoutX="290.0" layoutY="438.0" prefWidth="90.0" promptText="0" styleClass="field" />
 
-    <Label layoutX="390.0" layoutY="402.0" styleClass="label, field, blue" text="Complemento" />
+    <Label layoutX="390.0" layoutY="403.0" styleClass="label, field, blue" text="Complemento" />
+    <Label layoutX="530" layoutY="410" text="*" styleClass="message, warning" />
+
     <TextField fx:id="fieldComplement" layoutX="390.0" layoutY="437.0" prefWidth="150.0" promptText="Casa, Apto" styleClass="field" />
 
-    <Label layoutX="560.0" layoutY="402.0" styleClass="label, field, blue" text="CEP" />
+    <Label layoutX="560.0" layoutY="403.0" styleClass="label, field, blue" text="CEP" />
+    <Label layoutX="603" layoutY="410" text="*" styleClass="message, warning" />
+
     <MaskedTextField fx:id="fieldPostalCode" onKeyReleased="#handleOnKeyReleasedFieldPostalCode" layoutX="560.0" layoutY="437.0" prefWidth="250.0" mask="#####-###" promptText="00000-000" styleClass="field" />
     <ImageView fx:id="postalCodeLoading" layoutX="770.0" layoutY="437.0" fitWidth="40.0" preserveRatio="true" visible="false">
         <Image url="@images/loader-blue.gif"/>
     </ImageView>
 
     <Label layoutX="290.0" layoutY="481.0" styleClass="label, field, blue" text="Bairro" />
+    <Label layoutX="350" layoutY="490" text="*" styleClass="message, warning" />
+
     <TextField fx:id="fieldNeighborhood" layoutX="290.0" layoutY="516.0" prefWidth="250.0" promptText="Digite o bairro" styleClass="field" />
 
     <Label layoutX="560.0" layoutY="481.0" styleClass="label, field, blue" text="Cidade" />
+    <Label layoutX="630" layoutY="490" text="*" styleClass="message, warning" />
+
     <TextField fx:id="fieldCity" layoutX="560.0" layoutY="516.0" prefWidth="250.0" promptText="Digite a cidade" styleClass="field" />
 
     <Label layoutX="290.0" layoutY="560.0" styleClass="label, field, blue" text="Estado" />
+    <Label layoutX="360" layoutY="570" text="*" styleClass="message, warning" />
+
     <ComboBox fx:id="comboBoxState" layoutX="290.0" layoutY="595.0" prefWidth="250" promptText="Selecione" styleClass="field" />
 
     <Label layoutX="560.0" layoutY="559.0" styleClass="label, field, blue" text="País" />
+    <Label layoutX="605" layoutY="570" text="*" styleClass="message, warning" />
+
     <ComboBox fx:id="comboBoxCountry" onAction="#handleOnActionComboBoxCountry" layoutX="560.0" layoutY="594.0" prefWidth="250" promptText="Selecione" styleClass="field" />
 
     <fx:include source="component/ButtonBack.fxml" />
     <Button onAction="#handleOnActionButtonRegister" layoutX="930.0" layoutY="667.0" styleClass="button, button-blue" text="Registrar" />
+    <Label fx:id="lblMessage" layoutX="320" layoutY="670" prefWidth="300" styleClass="message, warning" />
 </AnchorPane>
 

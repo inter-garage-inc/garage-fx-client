@@ -84,7 +84,7 @@ public class CheckInController {
     @FXML
     private void handleOnActionButtonOk(ActionEvent actionEvent) {
         if(txtLicensePlate.getText().isBlank() || catalogs.isEmpty()) {
-            lblMessage.setText("Por favor preencha todos os campos!");
+            lblMessage.setText("Por favor preencha todos os campos.");
             return;
         }
 
