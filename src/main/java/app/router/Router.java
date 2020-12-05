@@ -14,7 +14,18 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.Stack;
 
-
+/**
+ * The router allows management and switching of the main window of the JavaFX application.
+ * It can load and show different scenes, create popup, show and close them.
+ * Backing previous scenes is supported by history stacking up option.
+ * Data can be sent and claimed between different scenes.
+ *
+ * Inspired by <a href="https://github.com/Marcotrombino/FXRouter">FXRouter by @Marcotrombino</a>
+ *
+ * @author jlucasrods
+ * @version 1.1
+ * @since 2020-11-06
+ */
 public class Router extends Application {
     private static final String SUF_TITLE = "Garage Inc.";
 
@@ -24,9 +35,11 @@ public class Router extends Application {
 
     private static final String POPUP_SUB = "popup/";
 
+    private static final Class<?> START_SCENE = LoginController.class;
+
     private static Stage primaryStage;
 
-    private static Class<?> c;
+    private static Class<?> clazz;
 
     private static final Stack<StageData> stageDataStack = new Stack<>();;
 
@@ -42,30 +55,55 @@ public class Router extends Application {
         primaryStage.getIcons().add(loadIcon());
         primaryStage.setResizable(false);
 
-        goTo(LoginController.class);
+        goTo(START_SCENE);
     }
 
+    /**
+     * Helper method which gets fxml path the according to the current controller in {@link #clazz}
+     *
+     * It is composed by:
+     * default fxml dir {@link #FXML_SOURCE} +
+     * default popup dir inside fxml dir {@link #POPUP_SUB} only if is a popup +
+     * custom fxml path or supposed by controller name
+     *
+     * @return the fxml path
+     */
     private static String getFxmlPath () {
-        var annotation = (RouteMapping) c.getAnnotation(RouteMapping.class);
-        var fxml = (annotation.fxml().equals("") ?
-                c.getSimpleName().replaceFirst( "Controller$", "") + ".fxml" :
-                annotation.fxml());
+        var annotation = (RouteMapping) clazz.getAnnotation(RouteMapping.class);
+        var fxml = (annotation.fxml().equals("")
+                ? clazz.getSimpleName().replaceFirst( "Controller$", ".fxml")
+                : annotation.fxml());
 
         return FXML_SOURCE + (annotation.popup() ? POPUP_SUB : "") + fxml;
     }
 
+    /**
+     * Helper method which gets window title according to the current controller in {@link #clazz}
+     *
+     * @return the window title
+     */
     private static String getTitle() {
-        var annotation = (RouteMapping) c.getAnnotation(RouteMapping.class);
-        return (annotation.title().equals("") ?
-                "" :
-                annotation.title() + "  |  ")
-                + SUF_TITLE;
+        var annotation = (RouteMapping) clazz.getAnnotation(RouteMapping.class);
+        var title = annotation.title().equals("")
+                ? ""
+                : annotation.title() + "  |  ";
+        return title + SUF_TITLE;
     }
 
+    /**
+     * helper method which loads application image icon
+     *
+     * @return the Image icon
+     */
     public static Image loadIcon() {
         return new Image(new Object() {}.getClass().getResourceAsStream(ICON_PATH));
     }
 
+    /**
+     * Helper method which loads scene from fxml path
+     *
+     * @return a new Scene from fxml
+     */
     public static Scene loadScene() {
         try {
             Parent parent = FXMLLoader.load(new Object() {}.getClass().getResource(getFxmlPath()));
@@ -77,22 +115,36 @@ public class Router extends Application {
         return null;
     }
 
-    public static void goTo(Class<?> c, Object userData, Boolean stackUpHistory) {
+    /**
+     *
+     * @param clazz
+     * @param userData
+     * @param stackUpHistory
+     */
+    public static void goTo(Class<?> clazz, Object userData, Boolean stackUpHistory) {
         setUserData(userData);
-        goTo(c, stackUpHistory);
+        goTo(clazz, stackUpHistory);
     }
 
-    public static void goTo(Class<?> c, Object userData) {
+    public static void goTo(Class<?> clazz, Object userData) {
         setUserData(userData);
-        goTo(c, false);
+        goTo(clazz, false);
     }
 
-    public static void goTo(Class<?> c) {
-        goTo(c, false);
+    public static void goTo(Class<?> clazz) {
+        goTo(clazz, false);
     }
 
-    public static void goTo(Class<?> c, Boolean stackUpHistory) {
-        Router.c = c;
+    /**
+     * Switch to a new scene corresponding to controller
+     *
+     * @param clazz controller of scene to switch
+     * @param stackUpHistory true to stack up history and be able to go back to previous scenes with {@link #back()} or
+     *                       false to clear stack and not stack up on switching or
+     *                       null to switching without cleaning stack or stack up the current scene
+     */
+    public static void goTo(Class<?> clazz, Boolean stackUpHistory) {
+        Router.clazz = clazz;
 
         if(stackUpHistory != null) {
             if(stackUpHistory) {
@@ -151,8 +203,8 @@ public class Router extends Application {
         closePopUp(time);
     }
 
-    public static void showPopUp(Class<?> c) {
-        Router.c = c;
+    public static void showPopUp(Class<?> clazz) {
+        Router.clazz = clazz;
         if(lastPopUp != null) {
             closePopUp();
         }
