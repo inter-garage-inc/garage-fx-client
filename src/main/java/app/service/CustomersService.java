@@ -111,7 +111,7 @@ public class CustomersService {
      *
      * @param id Customer id
      * @return true if is successfully deleted of false otherwise
-     * @throws ConnectionFailureException
+     * @throws ConnectionFailureException when request to server fails
      */
     public Boolean delete(Long id) throws ConnectionFailureException {
         try {
