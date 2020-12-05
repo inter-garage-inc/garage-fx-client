@@ -3,6 +3,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.popup.PopUpDeleteSuccessController" stylesheets="@../css/styles.css">
-    <Label layoutX="95.0" layoutY="32.0" styleClass="field-label-form" text="Exclusão realizada com sucesso!!" />
+    <Label layoutX="95.0" layoutY="32.0" styleClass="field-label-form" text="Exclusão realizada com sucesso!" />
     <fx:include source="../component/ButtonOk.fxml"/>
 </AnchorPane>

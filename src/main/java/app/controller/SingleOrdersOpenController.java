@@ -3,17 +3,12 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpServerCloseController;
-import app.data.Catalog;
 import app.data.Order;
 import app.data.OrderItem;
-import app.data.Parking;
-import app.data.order.Item;
 import app.data.order.Status;
-import app.data.parking.ParkingSpace;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.OrdersService;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -61,7 +56,6 @@ public class SingleOrdersOpenController {
                             .licensePlate(order1.getLicensePlate())
                             .build();
                     tbView.getItems().add(orderItem);
-
                 });
             });
 

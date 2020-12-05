@@ -13,6 +13,10 @@ import app.service.UsersService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+/**
+ * @author Felipe Sampaio da Mota
+ */
+
 @RouteMapping(title = "Alterar/Deletar usuário")
 public class AlterDeletUserController {
 
@@ -28,7 +32,9 @@ public class AlterDeletUserController {
     UsersService service;
     @FXML
     private MainMenuController menuController;
-    
+
+
+
     public AlterDeletUserController() {
         service = new UsersService();
     }
@@ -43,6 +49,12 @@ public class AlterDeletUserController {
         cbStatus.setValue(user.getStatus());
     }
 
+    /**
+     * Método que altera o usuário, faz uma verificação entre todos os campos de texto para:
+     * verificar se estão vazios
+     * se as senhas digitadas são exatamente iguais
+     * e por fim salvar as alterações do usuário
+     */
     public void handleOnActionButtonBtnAlter() {
         Boolean confirmPassword = fieldPassword.getText().equals(fieldConfPassword.getText());
         Boolean nullName = fieldName.getText() == null || fieldName.getText().trim().isEmpty();

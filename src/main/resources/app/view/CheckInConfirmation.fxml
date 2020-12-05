@@ -8,15 +8,15 @@
     <fx:include fx:id="menu" source="component/MainMenu.fxml" />
     <fx:include source="component/LogoTopLeft.fxml" />
 
-
-    <Label fx:id="lblVehicle" layoutX="368.0" layoutY="205.0" styleClass="field, label" text="Placa:" />
-    <Label fx:id="lblLicensePlate" layoutX="432.0" layoutY="216.0" styleClass="label-form" />
-    <Label fx:id="lblServices" layoutX="368.0" layoutY="253.0" styleClass="field, label" text="Serviços" />
+    <Label layoutX="240.0" layoutY="180.0" styleClass="message-normal" text="Check in | Confirmação de entrada de Veículo" />
+    <Label fx:id="lblVehicle" layoutX="315.0" layoutY="265.0" styleClass="label, field, blue" text="Veículo" />
+    <Label fx:id="lblLicensePlate" layoutX="326.0" layoutY="305.0" prefHeight="18.0" prefWidth="137.0" styleClass="label-form" />
+    <Label fx:id="lblServices" layoutX="315.0" layoutY="365.0" styleClass="label, field, blue" text="Serviços" />
 
     <Button fx:id="btnAlter" layoutX="28.0" layoutY="666.0" onAction="#handleOnActionButtonBtnAlter" styleClass="button, button-back" text="Alterar" />
     <Button fx:id="btnSave" layoutX="762.0" layoutY="666.0" onAction="#handleOnActionButtonBtnSave" styleClass="button-blue" text="Salvar" />
     <Button fx:id="btnPay" layoutX="921.0" layoutY="666.0" onAction="#handleOnActionButtonBtnPay" styleClass="button-green" text="Pagar" />
-    <ScrollPane layoutX="368.0" layoutY="293.0" prefHeight="113.0" prefWidth="302.0">
+    <ScrollPane layoutX="315.0" layoutY="400.0" prefHeight="110.0" prefWidth="450.0">
       <content>
            <AnchorPane fx:id="anchorPane" />
       </content>

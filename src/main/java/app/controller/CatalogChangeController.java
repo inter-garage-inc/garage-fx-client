@@ -11,6 +11,7 @@ import app.router.Router;
 import app.service.CatalogsService;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
@@ -25,6 +26,7 @@ public class CatalogChangeController {
     public ComboBox<Status> cbStatus;
     public Catalog catalog;
     public MainMenuController menuController;
+    public Label lblMessage;
 
     public void initialize() {
         menuController.btnCatalogManagement.getStyleClass().add("button-menu-selected");
@@ -38,6 +40,16 @@ public class CatalogChangeController {
 
     public void handleOnActionButtonBtnAlter() {
         try {
+            Boolean priceNull = fieldPrice.getText().isBlank();
+            Boolean serviceNull = fieldService.getText().isBlank();
+            Boolean cbStatusNull = cbStatus.getValue() == null;
+
+            if(cbStatusNull || priceNull || serviceNull) {
+                lblMessage.setText("Todos os campos precisam ser preenchidos");
+                return;
+            }
+
+
             var catalog2 = Catalog.builder()
                     .description(fieldService.getText())
                     .price(new BigDecimal(fieldPrice.getText()))
@@ -57,8 +69,7 @@ public class CatalogChangeController {
         try {
             CatalogsService service = new CatalogsService();
             service.CatalogDelete(catalog.getId());
-
-            Router.showPopUp(PopUpDeleteSuccessController.class, 1);
+            Router.showPopUp(PopUpDeleteSuccessController.class);
             Router.goTo(CatalogManagementController.class);
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);

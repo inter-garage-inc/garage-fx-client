@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CatalogChangeController">
     <fx:include fx:id="menu" source="component/MainMenu.fxml" />
@@ -20,7 +20,11 @@
     <ComboBox fx:id="cbStatus" layoutX="390.0" layoutY="438.0" prefWidth="287.0" promptText="Selecione" styleClass="field" />
 
     <fx:include source="component/ButtonBack.fxml" />
-    <Button fx:id="btnDelete" onAction="#handleOnActionButtonBtnDelete" layoutX="762.0" layoutY="666.0" mnemonicParsing="false" prefWidth="110.0" styleClass="button, button-red" text="Excluir" />
-    <Button fx:id="btnAlter" onAction="#handleOnActionButtonBtnAlter" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" styleClass="button, button-blue" text="Alterar" />
+    <Button fx:id="btnDelete" layoutX="762.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnDelete" prefWidth="110.0" styleClass="button, button-red" text="Excluir" />
+    <Button fx:id="btnAlter" layoutX="921.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleOnActionButtonBtnAlter" styleClass="button, button-blue" text="Alterar" />
+    <Label layoutX="539.0" layoutY="245.0" styleClass="message, warning" text="*" />
+    <Label layoutX="454.0" layoutY="415.0" styleClass="message, warning" text="*" />
+    <Label layoutX="450.0" layoutY="330.0" styleClass="message, warning" text="*" />
+    <Label fx:id="lblMessage" layoutX="390.0" layoutY="537.0" prefHeight="18.0" prefWidth="386.0" styleClass="message, warning" />
 
 </AnchorPane>

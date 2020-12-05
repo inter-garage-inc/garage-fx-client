@@ -46,7 +46,7 @@ public class LoginController {
                 Router.goTo(HomeController.class);
                 Router.reOpenEffect();
             } else {
-                showMessage("Login ou senha inválidos");
+                showMessage("Usuário ou senha inválidos");
             }
         } catch (ConnectionFailureException e) {
             Router.showPopUp(PopUpServerCloseController.class, 2);
