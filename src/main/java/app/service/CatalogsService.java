@@ -9,14 +9,32 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class is responsible for Garage Inc. catalog transactions
+ * Can get the catalogs, save a new one, update it or delete it.
+ *
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-11-20
+ */
 public class CatalogsService {
 
+    /**
+     * Helper tool to serialize and deserialize POJO and Json to each other
+     */
     private final ObjectMapper mapper;
 
     public CatalogsService() {
         mapper = new ObjectMapper();
     }
 
+    /**
+     * This method is used to save a new catalog
+     *
+     * @param catalog a POJO
+     * @return true if saving successfully or false otherwise
+     * @throws ConnectionFailureException when request to the server fails
+     */
     public Boolean CatalogSave(Catalog catalog) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(catalog);
