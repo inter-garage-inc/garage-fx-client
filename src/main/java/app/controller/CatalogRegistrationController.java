@@ -9,24 +9,40 @@ import app.data.catalog.Status;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CatalogsService;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
 import java.math.BigDecimal;
+
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-11-20
+ */
 
 @RouteMapping(title = "Cadastro de Serviços")
 public class CatalogRegistrationController {
 
-    public TextField fieldService;
-    public TextField fieldPrice;
-    public ComboBox<Status> cbStatus;
-    public Button btnSave;
+    @FXML
+    private TextField fieldService;
+
+    @FXML
+    private TextField fieldPrice;
+
+    @FXML
+    private ComboBox<Status> cbStatus;
+
+    @FXML
+    private Button btnSave;
 
     public void initialize() {
         cbStatus.getItems().addAll(Status.values());
     }
 
+    /**
+     * This method use the service from class {@link CatalogsService} to save a new {@link Catalog}.
+     */
     public void handleOnActionButtonBtnSave() {
         var catalog = Catalog.builder()
                 .description(fieldService.getText())

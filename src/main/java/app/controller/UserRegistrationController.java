@@ -18,15 +18,32 @@ import javafx.scene.layout.AnchorPane;
 @RouteMapping(title = "Cadastro de Usuário")
 public class UserRegistrationController {
 
-    public TextField fieldName;
-    public TextField fieldUsername;
-    public PasswordField fieldPassword;
-    public PasswordField fieldConfPassword;
-    public Button btnSave;
-    public Label lblMessage;
+    @FXML
+    private TextField fieldName;
+
+    @FXML
+    private TextField fieldUsername;
+
+    @FXML
+    private PasswordField fieldPassword;
+
+    @FXML
+    private PasswordField fieldConfPassword;
+
+    @FXML
+    private Button btnSave;
+
+    @FXML
+    private Label lblMessage;
+
+    @FXML
+    private ComboBox<Role> cbStatus;
+
+    @FXML
+    private Label lblTypeUser;
+
     public AnchorPane anchorPane;
-    public ComboBox<Role> cbStatus;
-    public Label lblTypeUser;
+
     private AuthenticationService authenticationService;
     private Boolean authenticationUser;
     private UsersService service;
@@ -39,6 +56,10 @@ public class UserRegistrationController {
 
     @FXML
     private MainMenuController menuController;
+
+    /**
+     * The initialize method check the {@link User} current using {@link AuthenticationService} to define the visible from the fields
+     */
     public void initialize() {
         menuController.btnUsers.getStyleClass().add("button-menu-selected");
         authenticationUser = authenticationService.claimUser().getRole().equals(Role.ADMIN);
@@ -52,6 +73,9 @@ public class UserRegistrationController {
         }
     }
 
+    /**
+     * This method save the {@link User} using {@link UsersService}
+     */
     public void handleOnActionButtonBtnSave() {
         Boolean confirmPassword = fieldPassword.getText().equals(fieldConfPassword.getText());
         Boolean nullName = fieldName.getText() == null || fieldName.getText().trim().isEmpty();

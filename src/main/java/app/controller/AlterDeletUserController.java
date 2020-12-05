@@ -14,31 +14,52 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 /**
- * @author Felipe Sampaio da Mota
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-11-23
  */
+
 
 @RouteMapping(title = "Alterar/Deletar usuário")
 public class AlterDeletUserController {
 
-    public TextField fieldName;
-    public TextField fieldUsername;
-    public PasswordField fieldPassword;
-    public PasswordField fieldConfPassword;
-    public Button btnAlter;
-    public Label lblMessage;
-    public Button btnDelete;
-    public ComboBox<Status> cbStatus;
-    User user;
-    UsersService service;
     @FXML
+    private TextField fieldName;
+
+    @FXML
+    private TextField fieldUsername;
+
+    @FXML
+    private PasswordField fieldPassword;
+
+    @FXML
+    private PasswordField fieldConfPassword;
+
+    @FXML
+    private Button btnAlter;
+
+    @FXML
+    private Label lblMessage;
+
+    @FXML
+    private Button btnDelete;
+
+    @FXML
+    private ComboBox<Status> cbStatus;
+
     private MainMenuController menuController;
 
+    private User user;
 
+    private UsersService service;
 
     public AlterDeletUserController() {
         service = new UsersService();
     }
-    
+
+    /**
+     * the initialize method use the service to receive user data that were sent by the class {@link PeopleManagementController} and insert in their respectives fields
+     */
     public void initialize() {
         menuController.btnUsers.getStyleClass().add("button-menu-selected");
         user = (User) Router.getUserData();
@@ -50,10 +71,7 @@ public class AlterDeletUserController {
     }
 
     /**
-     * Método que altera o usuário, faz uma verificação entre todos os campos de texto para:
-     * verificar se estão vazios
-     * se as senhas digitadas são exatamente iguais
-     * e por fim salvar as alterações do usuário
+     * This method check if fields is empty, passwords typed are the equals, and save at changes of user using the class {@link UsersService}.
      */
     public void handleOnActionButtonBtnAlter() {
         Boolean confirmPassword = fieldPassword.getText().equals(fieldConfPassword.getText());
@@ -94,8 +112,12 @@ public class AlterDeletUserController {
             Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
-    
-    public void handleOnActionButtonBtnDelete() { //TODO
+
+    /**
+     *
+     * Method that call the exclusion confirmation {@link PeopleManagementController} using {@link Router}.
+     */
+    public void handleOnActionButtonBtnDelete() {
         Router.showPopUp(PopUpConfirmDeleteUserController.class, user);
     }
 

@@ -16,21 +16,44 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import java.math.BigDecimal;
 
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-12-01
+ */
+
 @RouteMapping(title = "Confirmação de Checkout")
 public class CheckOutConfirmationController {
 
-    public Button btnPay;
-    public Label lblLicensePlate;
-    public Label lblTot;
-    public AnchorPane anchorPane;
-    public ComboBox<PaymentMethod> cbStatus;
-    public Label lblMessage;
-    private Order order;
-    private BigDecimal totalAmount;
-    private OrdersService ordersService;
+    @FXML
+    private Button btnPay;
 
     @FXML
+    private Label lblLicensePlate;
+
+    @FXML
+    private Label lblTot;
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    @FXML
+    private ComboBox<PaymentMethod> cbStatus;
+
+    @FXML
+    private Label lblMessage;
+
+    private Order order;
+
+    private BigDecimal totalAmount;
+
+    private OrdersService ordersService;
+
     private MainMenuController menuController;
+
+    /**
+     * The initialize method receive the data from {@link CheckoutController} and insert into respective fields
+     */
     public void initialize() {
         ordersService = new OrdersService();
         cbStatus.getItems().addAll(PaymentMethod.values());
@@ -60,6 +83,9 @@ public class CheckOutConfirmationController {
         totalAmount = new BigDecimal(0);
     }
 
+    /**
+     * This method use the service {@link OrdersService} to close the {@link Order}
+     */
     public void handleOnActionButtonBtnPay() {
         try {
             var orderBuilder = Order.builder()

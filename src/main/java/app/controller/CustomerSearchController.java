@@ -8,9 +8,14 @@ import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CustomersService;
 import app.util.MaskedTextField.MaskedTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
 
 @RouteMapping(title = "Buscar Cliente")
 public class CustomerSearchController {
@@ -34,18 +39,24 @@ public class CustomerSearchController {
         menuController.btnMonthly.getStyleClass().add("button-menu-selected");
     }
 
-    @FXML
-    private void handleOnActionRadioButtonCpf(ActionEvent actionEvent) {
+    /**
+     * This method add mask in the text field from CPF
+     */
+    public void handleOnActionRadioButtonCpf() {
         fieldCpfCnpj.setMask("###.###.###-##");
     }
 
-    @FXML
-    private void handleOnActionRadioButtonCnpj(ActionEvent actionEvent) {
+    /**
+     * This method add mask in the text field from CNPJ
+     */
+    public void handleOnActionRadioButtonCnpj() {
         fieldCpfCnpj.setMask("##.###.###/####-##");
     }
 
-    @FXML
-    private void handleOnActionSearch() {
+    /**
+     * This method use the service {@link CustomersService} to search CPF or CNPJ
+     */
+    public void handleOnActionSearch() {
         try {
             var customer = service.findByCpfCnpj(fieldCpfCnpj.getPlainText());
 
@@ -59,8 +70,10 @@ public class CustomerSearchController {
         }
     }
 
-    @FXML
-    private void handleOnActionButtonRegister(ActionEvent actionEvent) {
+    /**
+     * This method call {@link CustomerRegisterController} using {@link Router}
+     */
+    public void handleOnActionButtonRegister() {
         Router.goTo(CustomerRegisterController.class, true);
     }
 }

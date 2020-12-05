@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Plan;
 import app.router.RouteMapping;
 import app.router.Router;
@@ -13,17 +14,33 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.List;
+
+/**
+ * @author Ttarora
+ * @version 1.0
+ * @since 2020-12-01
+ */
+
 @RouteMapping(title = "Gestão de Planos")
 public class PlanManagementController {
-    public Label lblMessage;
     @FXML
+    private Label lblMessage;
+
+    @FXML
+    private TableView<Plan> tbView;
+
+    @FXML
+    private Button btnRegistration;
+
+    @FXML
+    private Button btnSelect;
+
     private MainMenuController menuController;
-
-    public TableView<Plan> tbView;
-    public Button btnRegistration;
-    public Button btnSelect;
-
-    public void initialize() throws ConnectionFailureException {
+    /**
+     * The initialize method receive the data from {@link PlanService} that find all {@link Plan}, And insert the plan, type, price and status in their respective columns.
+     */
+    public void initialize() {
         menuController.btnServicePlans.getStyleClass().add("button-menu-selected");
 
         var column1 = new TableColumn<Plan, String>("Plano");
@@ -41,11 +58,18 @@ public class PlanManagementController {
         tbView.getColumns().addAll(column1, column2, column3, column4);
 
         var service = new PlanService();
-        var plans = service.findAll();
+        List<Plan> plans = null;
+        try {
+            plans = service.findAll();
+        } catch (ConnectionFailureException e) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
+        }
         tbView.getItems().addAll(plans);
     }
 
-
+    /**
+     * This method call {@link PlanRegistrationController} using {@link Router}
+     */
     public void handleOnActionButtonBtnRegistration() {
         try {
             Router.goTo(PlanRegistrationController.class, true);
@@ -54,6 +78,9 @@ public class PlanManagementController {
         }
     }
 
+    /**
+     * This method select a {@link Plan} and send to {@link PlanChangeController} using {@link Router}
+     */
     public void handleOnActionButtonBtnSelect() {
         Boolean response = tbView.getSelectionModel().getSelectedItem() != null;
         if(response) {

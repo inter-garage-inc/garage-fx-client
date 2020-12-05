@@ -3,6 +3,7 @@ package app.controller;
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpParkingSpaceRegistration;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.User;
 import app.data.parking.ParkingSpace;
 import app.data.parking.SpaceStatus;
@@ -20,16 +21,22 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import java.util.List;
 
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
+
 @RouteMapping(title = "Mapa de Vagas")
 public class ParkingSpacesMapController {
-    @FXML
-    private MainMenuController menuController;
 
     @FXML
     private GridPane gridPaneMap;
 
     @FXML
     private Button buttonRegistration;
+
+    private MainMenuController menuController;
 
     private User user;
 
@@ -42,8 +49,10 @@ public class ParkingSpacesMapController {
         service = new ParkingSpacesService();
     }
 
-    @FXML
-    private void initialize() {
+    /**
+     * The initialize Method cancel the access the {@link app.data.user.Role} EMPLOYEE on change buttons
+     */
+    public void initialize() {
         menuController.btnParkingSpacesMap.getStyleClass().add("button-menu-selected");
         if(user.getRole() == Role.EMPLOYEE) {
             buttonRegistration.setVisible(false);
@@ -51,7 +60,10 @@ public class ParkingSpacesMapController {
         loadMap();
     }
 
-    private void loadMap() {
+    /**
+     * This method show the map using the service {@link ParkingSpacesService}
+     */
+    public void loadMap() {
         try {
             parkingSpaces = service.index();
         } catch (ConnectionFailureException exception) {
@@ -82,8 +94,11 @@ public class ParkingSpacesMapController {
         });
     }
 
-    @FXML
-    private void handleDeactivation(ParkingSpace parkingSpace) {
+    /**
+     * This method disable the parking space from map using {@link ParkingSpacesService}
+     * @param parkingSpace parking space to be disable
+     */
+    public void handleDeactivation(ParkingSpace parkingSpace) {
         var ps = ParkingSpace.builder()
                 .code(parkingSpace.getCode())
                 .status(SpaceStatus.DISABLED)
@@ -96,8 +111,11 @@ public class ParkingSpacesMapController {
         }
     }
 
-    @FXML
-    private void handleActivation(ParkingSpace parkingSpace) {
+    /**
+     * This method active the parking space from map using {@link ParkingSpacesService}
+     * @param parkingSpace parking space to be active
+     */
+    public void handleActivation(ParkingSpace parkingSpace) {
         var ps = ParkingSpace.builder()
                 .code(parkingSpace.getCode())
                 .status(SpaceStatus.VACANT)
@@ -110,18 +128,23 @@ public class ParkingSpacesMapController {
         }
     }
 
-    @FXML
-    private void handleDeletion(ParkingSpace parkingSpace) {
+    /**
+     * This method delete the parking space from map using {@link ParkingSpacesService}
+     * @param parkingSpace parking space to be deleted
+     */
+    public void handleDeletion(ParkingSpace parkingSpace) {
         try {
             service.delete(parkingSpace.getId());
             loadMap();
-        } catch (ConnectionFailureException exception) {
-            exception.printStackTrace();
+        } catch (ConnectionFailureException e) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 
-    @FXML
-    private void handleRegistration(ActionEvent actionEvent) {
+    /**
+     * This method call {@link PopUpParkingSpaceRegistration} using {@link Router}
+     */
+    public void handleRegistration() {
         Router.showPopUp(PopUpParkingSpaceRegistration.class);
     }
 }

@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpDeleteSuccessController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
 import app.data.Plan;
 import app.data.plan.Status;
@@ -15,11 +16,16 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+/**
+ * @author Ttarora
+ * @version 1.0
+ * @since 2020-12-01
+ */
 
 @RouteMapping(title = "Alteração de Planos")
 public class PlanChangeController {
@@ -33,8 +39,12 @@ public class PlanChangeController {
     private CatalogsService catalogsService;
     private PlanService service;
 
+    /**
+     * The initialize method receive the data from {@link PlanManagementController} and insert into respective fields.
+     * @throws ConnectionFailureException when request to the server fails.
+     */
     public void initialize() throws ConnectionFailureException {
-        var data = (Plan)Router.getUserData();
+        var data = (Plan) Router.getUserData();
         this.service = new PlanService();
 
         this.plan  = service.findById(data.getId());
@@ -49,11 +59,14 @@ public class PlanChangeController {
         selectedCatalogs();
     }
 
-    private List<Catalog> catalogs() throws ConnectionFailureException {
+    public List<Catalog> catalogs() throws ConnectionFailureException {
         this.catalogsService = new CatalogsService();
         return catalogsService.CatalogFindAll();
     }
 
+    /**
+     * This method fill all {@link Catalog} that exists
+     */
     protected void fillCatalogs() {
         CheckBox checkBox;
         int y = 10;
@@ -74,6 +87,9 @@ public class PlanChangeController {
         }
     }
 
+    /**
+     * This method select the catalog
+     */
     protected void selectedCatalogs() {
         var panes = anchorPane.getChildren();
         var catalogs = this.plan.getCatalog();
@@ -87,19 +103,26 @@ public class PlanChangeController {
         }
     }
 
-    public void handleOnActionButtonBtnAlter() throws ConnectionFailureException {
+    /**
+     * This method search for id from {@link Plan} to change this {@link Plan} using {@link PlanService}
+     */
+    public void handleOnActionButtonBtnAlter()  {
         var panes = anchorPane.getChildren();
         List<Catalog> catalogs = new ArrayList<>();
         this.catalogsService = new CatalogsService();
 
-        for(Node node : panes){
-            CheckBox checkBox = (CheckBox) node;
-            if(checkBox.isSelected()){
-                Catalog catalog = catalogsService.findBy(Long.valueOf(checkBox.getId()));
-                catalog.setCreatedAt(null);
-                catalog.setUpdatedAt(null);
-                catalogs.add(catalog);
+        try {
+            for (Node node : panes) {
+                CheckBox checkBox = (CheckBox) node;
+                if (checkBox.isSelected()) {
+                    Catalog catalog = catalogsService.findBy(Long.valueOf(checkBox.getId()));
+                    catalog.setCreatedAt(null);
+                    catalog.setUpdatedAt(null);
+                    catalogs.add(catalog);
+                }
             }
+        } catch (ConnectionFailureException e) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
 
         try {
@@ -115,11 +138,14 @@ public class PlanChangeController {
             plan.setId(this.plan.getId());
             service.update(plan, this.plan.getId());
             Router.goTo(PlanManagementController.class);
-        } catch (ConnectionFailureException connectionFailureException) {
-            connectionFailureException.printStackTrace();
+        } catch (ConnectionFailureException e) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 
+    /**
+     * This method delete a {@link Plan} using {@link PlanService}
+     */
     public void handleOnActionButtonBtnDelete() {
         try {
             var service = new PlanService();
@@ -128,6 +154,7 @@ public class PlanChangeController {
             Router.showPopUp(PopUpDeleteSuccessController.class, 1);
             Router.goTo(PlanManagementController.class);
         } catch (ConnectionFailureException e) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }
