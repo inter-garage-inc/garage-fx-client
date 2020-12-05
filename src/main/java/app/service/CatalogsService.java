@@ -31,7 +31,7 @@ public class CatalogsService {
     /**
      * This method is used to save a new Catalog
      *
-     * @param catalog a POJO
+     * @param catalog POJO
      * @return true if successfully saved or false otherwise
      * @throws ConnectionFailureException when request to the server fails
      */
@@ -48,8 +48,8 @@ public class CatalogsService {
     /**
      * This method is used to update a Catalog
      *
-     * @param catalog a POJO
-     * @param id the Catalog id
+     * @param catalog POJO
+     * @param id Catalog id
      * @return true if successfully updated or false otherwise
      * @throws ConnectionFailureException when request to the server fails
      */
@@ -66,7 +66,7 @@ public class CatalogsService {
     /**
      * This method is used to delete a Catalog
      *
-     * @param id the Catalog id
+     * @param id Catalog id
      * @return true if successfully deleted or false otherwise
      * @throws ConnectionFailureException when request to the server fails
      */
@@ -98,7 +98,7 @@ public class CatalogsService {
     /**
      * This method is used to get one Catalog
      *
-     * @param id the Catalog id
+     * @param id Catalog id
      * @return Catalog POJO
      * @throws ConnectionFailureException when request to the server fails
      */
