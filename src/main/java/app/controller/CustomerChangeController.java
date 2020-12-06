@@ -15,13 +15,17 @@ import app.service.PostalCodesService;
 import app.util.MaskedTextField.MaskedTextField;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
+
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
 
 @RouteMapping(title = "Alteração de cliente")
 public class CustomerChangeController {
@@ -61,7 +65,6 @@ public class CustomerChangeController {
     @FXML
     private ComboBox<Country> comboBoxCountry;
 
-    @FXML
     private MainMenuController menuController;
 
     private final Customer customer;
@@ -76,6 +79,9 @@ public class CustomerChangeController {
         postalCodesService = new PostalCodesService();
     }
 
+    /**
+     * The initialize method receive data from {@link CustomerDetailsController} the type {@link Customer} and insert data the {@link Customer} into respective fields.
+     */
     public void initialize() {
         menuController.btnMonthly.getStyleClass().add("button-menu-selected");
         comboBoxCountry.getItems().addAll(Country.values());
@@ -94,7 +100,10 @@ public class CustomerChangeController {
         comboBoxCountry.setValue(address.getCountry());
     }
 
-    public void handleTypedPostalCode(KeyEvent keyEvent) {
+    /**
+     * This method search for a valid postal code using {@link PostalCodesService}.
+     */
+    public void handleTypedPostalCode() {
         if(fieldPostalCode.getPlainText().length() >= 8) {
             postalCodeLoading.setVisible(true);
             var task = new Task<Void>() {
@@ -126,7 +135,10 @@ public class CustomerChangeController {
         }
     }
 
-    public void handleSelectedCountry(ActionEvent actionEvent) {
+    /**
+     * This method make it visible true or false the comboBoxState
+     */
+    public void handleSelectedCountry() {
         comboBoxState.getItems().clear();
         var states = comboBoxCountry.getValue().getStates();
         if(states != null) {
@@ -138,7 +150,10 @@ public class CustomerChangeController {
         }
     }
 
-    public void handleUpdate(ActionEvent actionEvent) {
+    /**
+     * This method use the service {@link CustomersService} to update customer information.
+     */
+    public void handleUpdate() {
         var address = Address.builder()
                 .street(fieldAddress.getText())
                 .number(fieldNumber.getText())
@@ -159,9 +174,6 @@ public class CustomerChangeController {
         try {
             var c = customersService.update(customer.getId(), customerUpdated);
             if (c != null) {
-                System.out.println(customer);
-                System.out.println(customerUpdated);
-                System.out.println(c);
                 Router.showPopUp(PopUpChangeSuccessfulController.class, 3);
                 Router.goTo(CustomerDetailsController.class, c, null); //TODO create destine page
             } else {

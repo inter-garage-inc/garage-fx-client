@@ -11,6 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
+
 @RouteMapping(title = "Identifique-se")
 public class LoginController {
 
@@ -29,11 +35,18 @@ public class LoginController {
         service = new AuthenticationService();
     }
 
+    /**
+     * This method show a message.
+     * @param message Message to be show
+     */
     private void showMessage(String message) {
         labelMessage.setVisible(true);
         labelMessage.setText(message);
     }
 
+    /**
+     * This method use the service {@link AuthenticationService} to connect {@link app.data.User} in system.
+     */
     public void handleLogin() {
         var credentials = Credentials.builder()
                 .username(fieldUsername.getText().trim())

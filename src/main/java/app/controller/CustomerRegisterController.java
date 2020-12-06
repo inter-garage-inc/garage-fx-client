@@ -23,6 +23,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
+
 @RouteMapping(title = "Cadastrar Novo Cliente")
 public class CustomerRegisterController {
 
@@ -65,7 +71,6 @@ public class CustomerRegisterController {
     @FXML
     private ComboBox<Country> comboBoxCountry;
 
-    @FXML
     private MainMenuController menuController;
 
     private CustomersService customersService;
@@ -82,18 +87,24 @@ public class CustomerRegisterController {
         comboBoxCountry.getItems().addAll(Country.values());
     }
 
-    @FXML
-    private void handleOnActionRadioButtonCpf(ActionEvent actionEvent) {
+    /**
+     * This method add mask the characters from CPF
+     */
+    public void handleOnActionRadioButtonCpf() {
         fieldCpfCnpj.setMask("###.###.###-##");
     }
 
-    @FXML
-    private void handleOnActionRadioButtonCnpj(ActionEvent actionEvent) {
+    /**
+     * This method add mask the characters from CNPJ
+     */
+    public void handleOnActionRadioButtonCnpj() {
         fieldCpfCnpj.setMask("##.###.###/####-##");
     }
 
-    @FXML
-    private void handleOnActionComboBoxCountry(ActionEvent actionEvent) {
+    /**
+     * This method make it visible true or false the comboBoxState.
+     */
+    public void handleOnActionComboBoxCountry() {
         comboBoxState.getItems().clear();
         var states = comboBoxCountry.getValue().getStates();
         if(states != null) {
@@ -105,8 +116,10 @@ public class CustomerRegisterController {
         }
     }
 
-    @FXML
-    private void handleOnKeyReleasedFieldPostalCode(KeyEvent keyEvent) {
+    /**
+     * This method use the service {@link PostalCodesService} to search the postal code and insert data into respective fields.
+     */
+    public void handleOnKeyReleasedFieldPostalCode() {
         if(fieldPostalCode.getPlainText().length() >= 8) {
             postalCodeLoading.setVisible(true);
             var task = new Task<Void>() {
@@ -138,8 +151,10 @@ public class CustomerRegisterController {
         }
     }
 
-    @FXML
-    private void handleOnActionButtonRegister() {
+    /**
+     * This method use the service {@link CustomersService} to save a new customer.
+     */
+    public void handleOnActionButtonRegister() {
         var address = Address.builder()
                 .street(fieldAddress.getText())
                 .number(fieldNumber.getText())

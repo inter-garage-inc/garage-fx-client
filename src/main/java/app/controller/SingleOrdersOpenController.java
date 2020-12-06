@@ -15,9 +15,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-11-30
+ */
 
 @RouteMapping(title = "Ordens de Serviço Abertas")
 public class SingleOrdersOpenController {
@@ -36,6 +41,9 @@ public class SingleOrdersOpenController {
         tbView = new TableView();
     }
 
+    /**
+     * The initialize method receive the data from {@link OrdersService} that find all {@link app.data.order.Item}, And insert the services and license plate in their respective columns.
+     */
     public void initialize() {
         menuController.btnOpenAccounts.getStyleClass().add("button-menu-selected");
 
@@ -64,11 +72,14 @@ public class SingleOrdersOpenController {
         }
     }
 
+    /**
+     * This method select a {@link Order} and send to {@link CatalogChangeController} using {@link Router}
+     */
     public void handleOnActionButtonBtnSelect() {
         Boolean response = tbView.getSelectionModel().getSelectedItem() != null;
         if(response) {
-            var catalog = tbView.getSelectionModel().getSelectedItem();
-            Router.goTo(CatalogChangeController.class, catalog, true);
+            var order = tbView.getSelectionModel().getSelectedItem();
+            Router.goTo(CatalogChangeController.class, order, true);
         } else {
             lblMessage.setText("Por favor, selecione uma opção");
         }

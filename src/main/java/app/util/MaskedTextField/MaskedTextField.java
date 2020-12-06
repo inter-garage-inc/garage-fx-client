@@ -113,6 +113,7 @@ public class MaskedTextField extends TextField {
     
     /**
      * Returns the character to use in place of characters that are not present in the value, ie the user must fill them in.
+     * @return char
      */
     public char getPlaceholder() {
         return this.placeholder;
@@ -120,6 +121,7 @@ public class MaskedTextField extends TextField {
     
     /**
      * Set placeholder character.
+     * @param placeholder test plis
      */
     public void setPlaceholder(char placeholder) {
         this.placeholder = placeholder;

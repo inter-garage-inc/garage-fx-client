@@ -2,6 +2,7 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.popup.PopUpRegisterSuccessfulController;
+import app.controller.popup.PopUpServerCloseController;
 import app.data.Catalog;
 import app.data.Plan;
 import app.data.plan.Status;
@@ -13,11 +14,16 @@ import app.service.PlanService;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+/**
+ * @author Ttarora
+ * @version 1.0
+ * @since 2020-12-01
+ */
 
 @RouteMapping(title = "Cadastro de Planos")
 public class PlanRegistrationController {
@@ -50,6 +56,9 @@ public class PlanRegistrationController {
         return service.CatalogFindAll();
     }
 
+    /**
+     * This method fills in the {@link Catalog}
+     */
     protected void fillCatalogs(){
         CheckBox checkBox;
         int y = 10;
@@ -66,23 +75,30 @@ public class PlanRegistrationController {
             }
             anchorPane.getChildren().addAll(cbCatalogs);
         } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 
-    public void handleOnActionButtonBtnSave() throws ConnectionFailureException {
+    /**
+     * This method search the {@link Catalog} using {@link CatalogsService} and after save a {@link Plan} using {@link PlanService}
+     */
+    public void handleOnActionButtonBtnSave() {
         var panes = anchorPane.getChildren();
         List<Catalog> catalogs = new ArrayList<>();
         this.service = new CatalogsService();
 
-        for(Node node : panes){
-            CheckBox checkBox = (CheckBox) node;
-            if(checkBox.isSelected()){
-                Catalog catalog = service.findBy(Long.valueOf(checkBox.getId()));
-                catalog.setCreatedAt(null);
-                catalog.setUpdatedAt(null);
-                catalogs.add(catalog);
+        try {
+            for (Node node : panes) {
+                CheckBox checkBox = (CheckBox) node;
+                if (checkBox.isSelected()) {
+                    Catalog catalog = service.findBy(Long.valueOf(checkBox.getId()));
+                    catalog.setCreatedAt(null);
+                    catalog.setUpdatedAt(null);
+                    catalogs.add(catalog);
+                }
             }
+        } catch (ConnectionFailureException e) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
 
         var plan = Plan.builder()
@@ -102,7 +118,7 @@ public class PlanRegistrationController {
             }
             Router.goTo(PlanManagementController.class);
         } catch (ConnectionFailureException e) {
-            e.printStackTrace();
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
     }
 }

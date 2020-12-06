@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 
 @RouteMapping(title = "Gerenciar Veículo do Customer")
 public class VehicleRegisterController {
+
     @FXML
     private TextField fieldLicensePlate;
 
@@ -40,12 +41,14 @@ public class VehicleRegisterController {
         planService = new PlanService();
     }
 
-    @FXML
-    private void initialize() {
+    public void initialize() {
         initVboxPlans();
     }
 
-    private void initVboxPlans() {
+    /**
+     * This method find {@link Plan} using {@link PlanService}
+     */
+    public void initVboxPlans() {
         try {
             var toggleGroupPlan = new ToggleGroup();
             planService.findAll().forEach(plan -> {
@@ -60,8 +63,10 @@ public class VehicleRegisterController {
         }
     }
 
-    @FXML
-    private void handleSave(ActionEvent actionEvent) {
+    /**
+     * This method save a new {@link Vehicle} on a {@link Customer} using {@link CustomersService}
+     */
+    public void handleSave() {
         if(fieldLicensePlate.getText().isBlank() || selectedPlan == null) {
             labelMessage.setText("Por favor, preencha todos os campos.");
             return;
@@ -95,10 +100,18 @@ public class VehicleRegisterController {
         }
     }
 
-    private Boolean hasNotTheVehicleWithLicensePlate() throws ConnectionFailureException {
-        if(customersService.findByVehicle(fieldLicensePlate.getText()) != null) {
-            labelMessage.setText("O veículo informado já está associado a um cliente");
-            return false;
+    /**
+     * This method find by {@link Vehicle} that has a association with a {@link Customer} using {@link CustomersService}
+     * @return Boolean
+     */
+    public Boolean hasNotTheVehicleWithLicensePlate() {
+        try {
+            if (customersService.findByVehicle(fieldLicensePlate.getText()) != null) {
+                labelMessage.setText("O veículo informado já está associado a um cliente");
+                return false;
+            }
+        } catch (ConnectionFailureException e) {
+            Router.showPopUp(PopUpServerCloseController.class, 2);
         }
         return true;
     }

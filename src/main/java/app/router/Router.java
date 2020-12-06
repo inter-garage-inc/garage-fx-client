@@ -117,9 +117,11 @@ public class Router extends Application {
 
     /**
      *
-     * @param clazz
-     * @param userData
-     * @param stackUpHistory
+     * @param clazz controller of scene to switch
+     * @param userData Data can be sent and claimed between different scenes.
+     * @param stackUpHistory true to stack up history and be able to go back to previous scenes with {@link #back()} or
+     *                       false to clear stack and not stack up on switching or
+     *                       null to switching without cleaning stack or stack up the current scene
      */
     public static void goTo(Class<?> clazz, Object userData, Boolean stackUpHistory) {
         setUserData(userData);

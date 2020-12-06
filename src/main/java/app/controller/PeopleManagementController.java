@@ -13,20 +13,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-11-22
+ */
+
 @RouteMapping(title = "Gestão de Pessoal")
 public class PeopleManagementController {
 
-    public Button btnRegistration;
-    public Button btnSrc;
-    public TextField txtUsername;
-    public Label lblMessage;
+    @FXML
+    private Button btnRegistration;
 
     @FXML
+    private Button btnSrc;
+
+    @FXML
+    private TextField txtUsername;
+
+    @FXML
+    private Label lblMessage;
+
     private MainMenuController menuController;
+
     public void initialize() {
         menuController.btnUsers.getStyleClass().add("button-menu-selected");
     }
 
+    /**
+     * This method search {@link app.data.User} by username using {@link UsersService} to alter or delete {@link app.data.User}
+     */
     public void handleOnActionButtonBtnSrc() {
         UsersService service = new UsersService();
 
@@ -62,6 +78,9 @@ public class PeopleManagementController {
         }
     }
 
+    /**
+     * This method call {@link UserRegistrationController} using {@link Router}
+     */
     public void handleOnActionButtonBtnRegistration() {
         Router.goTo(UserRegistrationController.class, true);
     }

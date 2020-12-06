@@ -3,19 +3,16 @@ package app.controller;
 import app.controller.component.MainMenuController;
 import app.controller.popup.PopUpCustomerDeleteController;
 import app.data.Customer;
-import app.data.Plan;
-import app.data.Vehicle;
 import app.router.RouteMapping;
 import app.router.Router;
-import app.service.CustomersService;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
+
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
 
 @RouteMapping(title = "Detalhes do Cliente")
 public class CustomerDetailsController {
@@ -67,6 +64,9 @@ public class CustomerDetailsController {
         customer = (Customer) Router.getUserData();
     }
 
+    /**
+     * The initialize method receive data the {@link Customer} from {@link CustomerSearchController} and insert the data {@link Customer} into respective fields.
+     */
     public void initialize() {
         menuController.btnMonthly.getStyleClass().add("button-menu-selected");
 
@@ -89,18 +89,24 @@ public class CustomerDetailsController {
         }
     }
 
-    @FXML
-    private void handleDeleteCustomer(ActionEvent actionEvent) {
+    /**
+     * This method call {@link PopUpCustomerDeleteController} using {@link Router}
+     */
+    public void handleDeleteCustomer() {
         Router.showPopUp(PopUpCustomerDeleteController.class, customer);
     }
 
-    @FXML
-    private void handleChangeCustomer(ActionEvent actionEvent) {
+    /**
+     * This method call {@link CustomerChangeController} using {@link Router}
+     */
+    public void handleChangeCustomer() {
         Router.goTo(CustomerChangeController.class, customer, true);
     }
 
-    @FXML
-    private void handleNewVehicle(ActionEvent actionEvent) {
+    /**
+     * this method call {@link VehicleRegisterController} using {@link Router}
+     */
+    public void handleNewVehicle() {
         Router.goTo(VehicleRegisterController.class, customer, true);
     }
 }

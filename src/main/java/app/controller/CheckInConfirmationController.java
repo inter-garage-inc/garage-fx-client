@@ -13,8 +13,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-12-01
+ */
+
 @RouteMapping(title = "Confirmação de Check In")
 public class CheckInConfirmationController {
+
     @FXML
     private MainMenuController menuController;
 
@@ -54,8 +61,10 @@ public class CheckInConfirmationController {
         ordersService = new OrdersService();
     }
 
-    @FXML
-    private void initialize() {
+    /**
+     * The initialize method receive the data from {@link CheckInController} and insert into respective new label.
+     */
+    public void initialize() {
         menuController.btnCheckIn.getStyleClass().add("button-menu-selected");
 
         var layoutY = 5.0;
@@ -75,8 +84,10 @@ public class CheckInConfirmationController {
         lblLicensePlate.setText(order.getLicensePlate());
     }
 
-    @FXML
-    private void handleOnActionButtonBtnSave() {
+    /**
+     * This method use the service from class {@link OrdersService#create(Order)} to save a new {@link Order}.
+     */
+    public void handleOnActionButtonBtnSave() {
         try {
             var created = ordersService.create(order);
             if(created != null) {
@@ -90,12 +101,17 @@ public class CheckInConfirmationController {
         }
     }
 
-    @FXML
-    private void handleOnActionButtonBtnPay() throws InterruptedException {// TODO
+    /**
+     * This method send the {@link Order} to {@link CheckOutConfirmationController} using {@link Router}.
+     */
+    public void handleOnActionButtonBtnPay() {// TODO
         Router.goTo(CheckOutConfirmationController.class, order, true);
     }
-    @FXML
-    private void handleOnActionButtonBtnAlter() {
+
+    /**
+     * This method return to previous page to alter the data from {@link CheckInController} using {@link Router}.
+     */
+    public void handleOnActionButtonBtnAlter() {
         Router.back();
     }
 }

@@ -2,24 +2,29 @@ package app.controller;
 
 import app.client.ConnectionFailureException;
 import app.controller.component.MainMenuController;
-import app.controller.popup.PopUpPlateNotFoundController;
 import app.data.order.Status;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.OrdersService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-12-01
+ */
 @RouteMapping(title = "Realizar Checkout")
 public class CheckoutController {
-    public Label lblMessage;
+
     @FXML
-    private MainMenuController menuController;
+    public Label lblMessage;
 
     @FXML
     private TextField fieldLicensePlate;
+
+    private MainMenuController menuController;
 
     private OrdersService service;
 
@@ -31,7 +36,10 @@ public class CheckoutController {
         menuController.btnCheckout.getStyleClass().add("button-menu-selected");
     }
 
-    public void handleOnActionBtnCheckout(ActionEvent actionEvent) {
+    /**
+     * This method use the service {@link OrdersService} to search a license plate with check in open and call {@link CheckOutConfirmationController} to save like pay
+     */
+    public void handleOnActionBtnCheckout() {
         try {
             var order = service.findOpenByLicensePlate(fieldLicensePlate.getText());
 
