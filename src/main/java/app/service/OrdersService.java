@@ -3,8 +3,6 @@ package app.service;
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
 import app.data.Order;
-import app.data.Plan;
-import app.data.order.PaymentMethod;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -14,8 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * This class is responsible for the Garage Inc. orders transactions
- * Can get orders, create a new one (check in), update it (checkout) or delete it.
+ * This class is responsible for the Garage Inc. orders transactions Can get orders, create a new one (check in), update it (checkout) or delete it.
  *
  * @author FelipePy
  * @author jlucasrods

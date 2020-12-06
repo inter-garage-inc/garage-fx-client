@@ -2,16 +2,18 @@ package app.service;
 
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
-import app.data.Customer;
 import app.data.Vehicle;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 
 /**
  * This class is responsible for the Garage Inc. vehicles transactions
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-11-30
  */
+
 public class VehiclesService {
 
     /**

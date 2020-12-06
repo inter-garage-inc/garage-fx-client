@@ -24,10 +24,7 @@ import java.io.IOException;
 public class AuthenticationService {
 
     /**
-     * The Json Web Token received on successfully authentication.
-     * Represents the authentication state itself,
-     * if present the user is authenticated,
-     * otherwise they is not.
+     * The Json Web Token received on successfully authentication Represents the authentication state itself, if present the user is authenticated, otherwise they is not.
      */
     private static Jwt jwt;
 
@@ -69,20 +66,21 @@ public class AuthenticationService {
 
     /**
      * This is a helper method that loads the data to the authenticated user account
-     *
      * @return An object of authenticated user or null if an error occurs
-     * @throws IOException
-     * @throws InterruptedException
+     * @throws ConnectionFailureException when the request to the server fails
      */
-    private User loadUser() throws IOException, InterruptedException {
-        var response = GarageClient.get("/authentication");
-        return response.statusCode() == 200
-            ? user = mapper.readValue((String) response.body(), new TypeReference<User>() {})
-            : null;
+    private User loadUser() throws ConnectionFailureException {
+        try {
+            var response = GarageClient.get("/authentication");
+            return response.statusCode() == 200
+                ? user = mapper.readValue((String) response.body(), new TypeReference<User>() {})
+                : null;
+        } catch (IOException | InterruptedException exception) {
+            throw new ConnectionFailureException();
+        }
     }
 
     /**
-     *
      * @return the cached user account if they is authenticated
      */
     public static User claimUser() {
@@ -90,7 +88,6 @@ public class AuthenticationService {
     }
 
     /**
-     *
      * @return the authorization token of authenticated user, if the are
      */
     public static String getAuthorization() {

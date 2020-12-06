@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 
 @RouteMapping(title = "Placa Não Encontrada", popup = true)
 public class PopUpPlateNotFoundController {
+
     @FXML
     private void handleClose(ActionEvent actionEvent) {
         Router.closePopUp();

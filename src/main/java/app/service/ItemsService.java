@@ -3,14 +3,12 @@ package app.service;
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
 import app.data.order.Item;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
 /**
- * This class is responsible for the Garage Inc. Items transactions
- * Can get items, save a new one, update it or delete it.
+ * This class is responsible for the Garage Inc. Items transactions Can get items, save a new one, update it or delete it.
  *
  * @author FelipePy
  * @version 1.0

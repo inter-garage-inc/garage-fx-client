@@ -6,8 +6,12 @@ import app.data.Customer;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.CustomersService;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
 
 @RouteMapping(title = "Exclusão de Cliente", popup = true)
 public class PopUpCustomerDeleteController {
@@ -15,13 +19,18 @@ public class PopUpCustomerDeleteController {
 
     private CustomersService customersService;
 
+    /**
+     * This constructor method receive the data the {@link Customer} from {@link app.controller.CustomerChangeController} using {@link Router} and instance the {@link CustomersService}.
+     */
     public PopUpCustomerDeleteController() {
         customer = (Customer) Router.getUserData();
         customersService = new CustomersService();
     }
 
-    @FXML
-    private void handleOnActionDelete(ActionEvent actionEvent) {
+    /**
+     * This method use the {@link CustomersService} to delete the customer.
+     */
+    public void handleOnActionDelete() {
         try {
             var response = customersService.delete(customer.getId());
             if(response) {

@@ -3,18 +3,27 @@ package app.controller.popup;
 import app.controller.CustomerRegisterController;
 import app.router.RouteMapping;
 import app.router.Router;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-12-01
+ */
 
 @RouteMapping(title = "Cliente Não Encontrado", popup = true)
 public class PopUpCustomerNotFoundController {
-    @FXML
-    private void handleOnActionClose(ActionEvent actionEvent) {
+
+    /**
+     * This method close the pop up using {@link Router}.
+     */
+    public void handleOnActionClose() {
         Router.closePopUp();
     }
 
-    @FXML
-    private void handleOnActionRegister(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link CustomerRegisterController} and close the pop up.
+     */
+    public void handleOnActionRegister() {
         Router.closePopUp();
         Router.goTo(CustomerRegisterController.class, true);
     }
