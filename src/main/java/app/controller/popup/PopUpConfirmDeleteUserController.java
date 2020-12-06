@@ -7,6 +7,11 @@ import app.router.Router;
 import app.service.UsersService;
 import javafx.scene.control.Button;
 
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-11-20
+ */
 
 @RouteMapping(title = "Confirmação de exclusão", popup = true)
 public class PopUpConfirmDeleteUserController {
@@ -19,6 +24,9 @@ public class PopUpConfirmDeleteUserController {
         service = new UsersService();
     }
 
+    /**
+     * This method receive the data the {@link User} from {@link app.controller.UserRegistrationController} using {@link Router} and use the {@link UsersService} to delete the data this user.
+     */
     public void handleOnActionButtonBtnDelete() {
         try {
             user = (User) Router.getUserData();
@@ -35,6 +43,9 @@ public class PopUpConfirmDeleteUserController {
         }
     }
 
+    /**
+     * This method close the pop up using {@link Router}.
+     */
     public void handleOnActionButtonBtnClose() {
         Router.closePopUp();
     }

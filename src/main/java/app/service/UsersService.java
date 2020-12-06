@@ -5,9 +5,7 @@ import app.client.GarageClient;
 import app.data.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
-import java.util.List;
 
 /**
  * This class is responsible for the Garage Inc. users transactions

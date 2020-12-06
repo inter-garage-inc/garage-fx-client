@@ -5,13 +5,12 @@ import app.client.GarageClient;
 import app.data.Catalog;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.util.List;
 
 /**
  * This class is responsible for Garage Inc. catalog transactions
- * Can get the catalogs, save a new one, update it or delete it.
+ Can get the catalogs, save a new one, update it or delete it.
  *
  * @author FelipePy
  * @version 1.0

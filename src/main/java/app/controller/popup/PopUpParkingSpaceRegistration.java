@@ -7,12 +7,15 @@ import app.data.parking.SpaceStatus;
 import app.router.RouteMapping;
 import app.router.Router;
 import app.service.ParkingSpacesService;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+/**
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-11-23
+ */
 
 @RouteMapping(title = "Nova Vaga", popup = true)
 public class PopUpParkingSpaceRegistration {
@@ -28,14 +31,18 @@ public class PopUpParkingSpaceRegistration {
         service = new ParkingSpacesService();
     }
 
-    @FXML
-    private void initialize() {
+    /**
+     * This initialize method transform the text from text field in upper case.
+     */
+    public void initialize() {
         fieldCode.textProperty().addListener((observable, oldValue, newValue) -> fieldCode.setText(newValue
                 .toUpperCase().replaceAll(".*?([A-Z]+[0-9]*+).*$|.()", "$1")));
     }
 
-    @FXML
-    private void handleSpaceRegistration(ActionEvent actionEvent) {
+    /**
+     * This method register a new parking space using {@link ParkingSpacesService}
+     */
+    public void handleSpaceRegistration() {
         try {
             var ps = ParkingSpace.builder()
                     .code(fieldCode.getText())
@@ -51,7 +58,7 @@ public class PopUpParkingSpaceRegistration {
         } catch (IllegalArgumentException exception) {
             labelMessage.setText("Código inválido");
         } catch (ConnectionFailureException exception) {
-            exception.printStackTrace();
+            Router.showPopUp(PopUpServerCloseController.class);
         }
     }
 }

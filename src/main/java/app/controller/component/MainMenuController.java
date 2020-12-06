@@ -4,11 +4,15 @@ import app.controller.*;
 import app.data.user.Role;
 import app.router.Router;
 import app.service.AuthenticationService;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 
+/**
+ * @author FelipePy
+ * @version 1.0
+ * @since 2020-12-12
+ */
 
 public class MainMenuController {
     public Button btnCheckIn;
@@ -23,6 +27,9 @@ public class MainMenuController {
     public MenuItem btnPlansManagement;
     public MenuItem btnCatalogManagement;
 
+    /**
+     * The initialize method receive a {@link app.data.User} using {@link AuthenticationService} to verify which {@link app.data.User} and block the two last buttons case the {@link app.data.User} be {@link Role#EMPLOYEE}
+     */
     public void initialize() {
         var user = AuthenticationService.claimUser();
         if(user.getRole() == Role.EMPLOYEE) {
@@ -36,40 +43,67 @@ public class MainMenuController {
         }
     }
 
-    public void handleOnActionButtonCheckIn(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link CheckInController} using {@link Router}
+     */
+    public void handleOnActionButtonCheckIn() {
         Router.goTo(CheckInController.class, true);
     }
 
-    public void handleOnActionButtonCheckout(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link CheckoutController} using {@link Router}
+     */
+    public void handleOnActionButtonCheckout() {
         Router.goTo(CheckoutController.class, true);
 
     }
 
-    public void handleOnActionButtonMonthly(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link CustomerSearchController} using {@link Router}
+     */
+    public void handleOnActionButtonMonthly() {
         Router.goTo(CustomerSearchController.class, true);
     }
 
+    /**
+     * This method call the {@link CustomerOrdersOpenController} using {@link Router}
+     */
     public void handleOnActionButtonBtnCustomerMonthly() {
         Router.goTo(CustomerOrdersOpenController.class, true);
     }
 
+    /**
+     * This method call the {@link SingleOrdersOpenController} using {@link Router}
+     */
     public void handleOnActionButtonBtnCustomerSingle() {
         Router.goTo(SingleOrdersOpenController.class, true);
     }
 
-    public void handleOnActionButtonParkingSpacesMap(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link ParkingSpacesMapController} using {@link Router}
+     */
+    public void handleOnActionButtonParkingSpacesMap() {
         Router.goTo(ParkingSpacesMapController.class, true);
     }
 
-    public void handleOnActionButtonPlansManagement(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link PlanManagementController} using {@link Router}
+     */
+    public void handleOnActionButtonPlansManagement() {
         Router.goTo(PlanManagementController.class, true);
     }
 
-    public void handleOnActionButtonCatalog(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link CatalogManagementController} using {@link Router}
+     */
+    public void handleOnActionButtonCatalog() {
         Router.goTo(CatalogManagementController.class, true);
     }
 
-    public void handleOnActionButtonUsers(ActionEvent actionEvent) {
+    /**
+     * This method call the {@link PeopleManagementController} using {@link Router}
+     */
+    public void handleOnActionButtonUsers() {
         Router.goTo(PeopleManagementController.class, true);
     }
 }

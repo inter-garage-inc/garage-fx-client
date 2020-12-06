@@ -3,14 +3,11 @@ package app.service;
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
 import app.data.Customer;
-import app.data.Vehicle;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Optional;
 
 /**
  * This class is responsible for the Garage Inc. Customers transactions
@@ -92,7 +89,7 @@ public class CustomersService {
      * @param id Customer id
      * @param customer POJO
      * @return a Customer POJO if is successfully updated or null otherwise
-     * @throws ConnectionFailureException
+     * @throws ConnectionFailureException when request to the server fails
      */
     public Customer update(Long id, Customer customer) throws ConnectionFailureException {
         try {

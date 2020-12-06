@@ -174,13 +174,15 @@ public class Router extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Go back to the previous scene
+     */
     public static void back() {
         try {
             lastStageData = stageDataStack.pop();
             primaryStage.setTitle(lastStageData.getTitle());
             primaryStage.setScene(lastStageData.getScene());
         } catch (IndexOutOfBoundsException exception) {
-            System.err.println("There's no stage data stacked up to get back.");
             throw exception;
         }
     }
@@ -189,22 +191,48 @@ public class Router extends Application {
         return !stageDataStack.isEmpty();
     }
 
+    /**
+     * This method the used to {@link #showPopUp(Class)} the pop up
+     too is passed the {@link Object} using {@link #setUserData(Object) and {@link #getUserData()}}
+     And a {@link Integer} to close the pop up, closing using {@link #closePopUp(Integer)}
+     *
+     * @param clazz controller of scene to switch
+     * @param userData Data can be sent and claimed between different scenes.
+     * @param time time to close the pop up
+     */
     public static void showPopUp(Class<?> clazz, Object userData, Integer time) {
         setUserData(userData);
         showPopUp(clazz);
         closePopUp(time);
     }
 
+    /**
+     * This method use {@link #showPopUp(Class)} to show the pop up
+     too is passed the {@link Object} using {@link #setUserData(Object) and {@link #getUserData()}}
+     *
+     * @param clazz controller of scene to switch
+     * @param userData Data can be sent and claimed between different scenes.
+     */
     public static void showPopUp(Class<?> clazz, Object userData) {
         setUserData(userData);
         showPopUp(clazz);
     }
 
+    /**
+     * This method use {@link #showPopUp(Class)} to show the pop up
+     and with time to closing using {@link #closePopUp(Integer)}
+     * @param clazz controller of scene to switch
+     * @param time time to close the pop up
+     */
     public static void showPopUp(Class<?> clazz, Integer time) {
         showPopUp(clazz);
         closePopUp(time);
     }
 
+    /**
+     * This method show the pop up
+     * @param clazz controller of scene to switch
+     */
     public static void showPopUp(Class<?> clazz) {
         Router.clazz = clazz;
         if(lastPopUp != null) {
@@ -219,16 +247,26 @@ public class Router extends Application {
         lastPopUp.show();
     }
 
+    /**
+     * This method close the pop up using {@link #closePopUp(Integer)}
+     */
     public static void closePopUp() {
         closePopUp(0);
     }
 
+    /**
+     * This method close the pop up with {@link #closePopUp(Integer)}
+     * @param time time to close the pop-up
+     */
     public static void closePopUp(Integer time) {
         PauseTransition delay = new PauseTransition(Duration.seconds(time));
         delay.setOnFinished(event -> lastPopUp.close());
         delay.play();
     }
 
+    /**
+     * This method is used to make the system more visible to the user
+     */
     public static void reOpenEffect() {
         primaryStage.hide();
         primaryStage.centerOnScreen();

@@ -5,12 +5,12 @@ import app.client.GarageClient;
 import app.data.parking.ParkingSpace;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.util.List;
 
 /**
- * This class is responsible for the Garage Inc. parking spaces transactions
- * Can get parking spaces, create a new one, update it or delete it.
+ * This class is responsible for the Garage Inc. parking spaces transactions Can get parking spaces, create a new one, update it or delete it.
  *
  * @author jlucasrods
  * @version 1.0

@@ -2,7 +2,6 @@ package app.service;
 
 import app.client.ConnectionFailureException;
 import app.client.GarageClient;
-import app.data.Catalog;
 import app.data.Plan;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,8 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * This class is responsible for the Garage Inc. plans transactions
- * Can get plans, create a new one, update it or delete it.
+ * This class is responsible for the Garage Inc. plans transactions Can get plans, create a new one, update it or delete it.
  *
  * @author ttarora
  * @version 1.0
@@ -49,7 +47,7 @@ public class PlanService {
      *
      * @param id Plan id
      * @return a Plan POJO if the plan is successfully found or null otherwise
-     * @throws ConnectionFailureException
+     * @throws ConnectionFailureException when request to the server fails
      */
     public Plan findById(Long id) throws ConnectionFailureException {
         try {
