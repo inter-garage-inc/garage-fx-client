@@ -13,8 +13,20 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+/**
+ * This class is responsible for the Garage Inc. orders transactions
+ * Can get orders, create a new one (check in), update it (checkout) or delete it.
+ *
+ * @author FelipePy
+ * @author jlucasrods
+ * @version 1.0
+ * @since 2020-11-13
+ */
 public class OrdersService {
 
+    /**
+     * Helper tool to serialize and deserialize POJO and Json to each other
+     */
     private ObjectMapper mapper;
 
     public OrdersService() {
@@ -22,6 +34,13 @@ public class OrdersService {
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
+    /**
+     * This method is used to create a new Order
+     *
+     * @param order POJO
+     * @return a Order POJO if is successfully created or null otherwise
+     * @throws ConnectionFailureException when request to the server fails
+     */
     public Order create(Order order) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(order);
@@ -36,6 +55,13 @@ public class OrdersService {
         }
     }
 
+    /**
+     * This method is used to get an open order by license plate of check in
+     *
+     * @param licensePlate POJO
+     * @return a Order POJO if a open order is successfully found or null otherwise
+     * @throws ConnectionFailureException when request to the server fails
+     */
     public Order findOpenByLicensePlate(String licensePlate) throws ConnectionFailureException {
         try {
             var response = GarageClient.get("/orders/open/license-plate/" + URLEncoder.encode(licensePlate, StandardCharsets.UTF_8));
@@ -47,6 +73,13 @@ public class OrdersService {
         }
     }
 
+    /**
+     * This method is used to check out an open order
+     *
+     * @param order POJO
+     * @return true if the order is successfully closed or null otherwise
+     * @throws ConnectionFailureException when request to the server fails
+     */
     public Boolean close(Order order) throws ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(order);
@@ -57,6 +90,14 @@ public class OrdersService {
         }
     }
 
+    /**
+     * This method is used to update an order
+     *
+     * @param id Order id
+     * @param order POJO
+     * @return true if the order is successfully updated or null otherwise
+     * @throws ConnectionFailureException when request to the server fails
+     */
     public Boolean update(Long id, Order order) throws  ConnectionFailureException {
         try {
             var payload = mapper.writeValueAsString(order);
@@ -68,6 +109,12 @@ public class OrdersService {
         }
     }
 
+    /**
+     * This method is used to get all existing orders, be open, closed or canceled
+     *
+     * @return a List of Order POJOs
+     * @throws ConnectionFailureException when request to the server fails
+     */
     public List<Order> findAll() throws ConnectionFailureException {
         try {
             var response = GarageClient.get("/orders");
